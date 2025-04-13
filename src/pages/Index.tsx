@@ -7,6 +7,8 @@ import NFTRaritySection from '@/components/NFTRaritySection';
 import HowToPlay from '@/components/HowToPlay';
 import NFTShowcase from '@/components/NFTShowcase';
 import Newsletter from '@/components/Newsletter';
+import TestimonialSection from '@/components/TestimonialSection';
+import JoinCTA from '@/components/JoinCTA';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -19,6 +21,8 @@ const Index = () => {
         <NFTRaritySection />
         <HowToPlay />
         <NFTShowcase />
+        <TestimonialSection />
+        <JoinCTA />
         <Newsletter />
       </main>
       <Footer />

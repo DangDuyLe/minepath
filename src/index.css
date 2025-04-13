@@ -13,44 +13,44 @@
 
 @layer base {
   :root {
-    --background: 235 24% 19%;
+    --background: 225 20% 12%; /* Dark background similar to the image */
     --foreground: 0 0% 98%;
 
-    --card: 235 14% 23%;
+    --card: 225 25% 15%; /* Slightly lighter card backgrounds */
     --card-foreground: 0 0% 98%;
 
-    --popover: 235 14% 23%;
+    --popover: 225 25% 15%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 267 100% 64%;
+    --primary: 256 74% 73%; /* Purple from image */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 155 100% 45%;
-    --secondary-foreground: 235 24% 19%;
+    --secondary: 194 100% 50%; /* Bright blue accent */
+    --secondary-foreground: 225 20% 12%;
 
-    --muted: 235 12% 35%;
+    --muted: 225 12% 25%;
     --muted-foreground: 0 0% 80%;
 
     --accent: 194 100% 50%;
-    --accent-foreground: 235 24% 19%;
+    --accent-foreground: 225 20% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 235 10% 34%;
-    --input: 235 10% 34%;
-    --ring: 267 100% 64%;
+    --border: 225 20% 20%;
+    --input: 225 20% 20%;
+    --ring: 256 74% 73%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 235 24% 17%;
+    --sidebar-background: 225 24% 10%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 267 100% 64%;
+    --sidebar-primary: 256 74% 73%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 235 12% 25%;
+    --sidebar-accent: 225 12% 25%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 235 12% 25%;
-    --sidebar-ring: 267 100% 64%;
+    --sidebar-border: 225 12% 25%;
+    --sidebar-ring: 256 74% 73%;
   }
 }
 
@@ -103,7 +103,22 @@
   }
   
   .bg-solana-gradient {
-    @apply bg-gradient-to-r from-solana-purple via-solana-blue to-solana-green;
+    @apply bg-gradient-to-r from-[#9b87f5] via-[#1EAEDB] to-[#7E69AB];
+  }
+
+  /* Modern card style matching the image */
+  .card-modern {
+    @apply bg-[#1A1F2C]/90 backdrop-blur-sm border border-[#2A2F3C]/80 rounded-lg shadow-lg;
+  }
+
+  /* Modern button style matching the image */
+  .btn-modern {
+    @apply bg-[#9b87f5] hover:bg-[#7E69AB] text-white rounded-md px-6 py-3 font-medium transition-colors;
+  }
+
+  /* Gradient text style */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9b87f5] to-[#1EAEDB];
   }
 }
 
@@ -114,6 +129,10 @@
   
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .neo-blur {
+    @apply backdrop-blur-xl bg-[#1A1F2C]/80 border border-[#2A2F3C]/80 rounded-xl shadow-lg;
   }
 }
 
@@ -131,4 +150,9 @@
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.6; filter: brightness(1); }
   50% { opacity: 1; filter: brightness(1.3); }
+}
+
+@keyframes modal-appear {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
 }

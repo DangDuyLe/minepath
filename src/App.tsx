@@ -21,7 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/nfts" element={<NFTCatalog />} />
           <Route path="/how-to-play" element={<HowToPlayPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/store" element={<Index />} /> {/* Temporary route for store */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
