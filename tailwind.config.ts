@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,32 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Minecraft/Solana themed colors
+				minecraft: {
+					green: '#5aa918',
+					dirt: '#8b5a2b',
+					stone: '#7f7f7f',
+					blue: '#215aff',
+					black: '#25252a'
+				},
+				solana: {
+					purple: '#9945ff',
+					green: '#14f195',
+					blue: '#00c2ff',
+					black: '#141221',
+				},
+				rarity: {
+					common: '#b0b0b0',
+					uncommon: '#55ff55',
+					rare: '#5555ff',
+					epic: '#aa00aa',
+					legendary: '#ffaa00',
 				}
+			},
+			fontFamily: {
+				minecraft: ['"Minecraft"', 'monospace'],
+				poppins: ['Poppins', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +110,45 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						opacity: '1',
+						boxShadow: '0 0 10px rgba(255, 170, 0, 0.8)'
+					},
+					'50%': {
+						opacity: '0.7',
+						boxShadow: '0 0 20px rgba(255, 170, 0, 0.4)'
+					}
+				},
+				'shimmer': {
+					'0%': {
+						backgroundPosition: '-200% 0',
+					},
+					'100%': {
+						backgroundPosition: '200% 0',
+					},
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'shimmer': 'shimmer 2s linear infinite'
+			},
+			backgroundImage: {
+				'minecraft-gradient': 'linear-gradient(to right, #5aa918, #215aff)',
+				'solana-gradient': 'linear-gradient(to right, #9945ff, #14f195)',
+				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%)',
 			}
 		}
 	},
