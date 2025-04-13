@@ -1,15 +1,18 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import WhatIs from '@/components/WhatIs';
 import FeaturesSection from '@/components/FeaturesSection';
+import GameRewards from '@/components/GameRewards';
+import Tokenomics from '@/components/Tokenomics';
 import NFTRaritySection from '@/components/NFTRaritySection';
+import Roadmap from '@/components/Roadmap';
 import HowToPlay from '@/components/HowToPlay';
 import NFTShowcase from '@/components/NFTShowcase';
 import Newsletter from '@/components/Newsletter';
-import TestimonialSection from '@/components/TestimonialSection';
 import JoinCTA from '@/components/JoinCTA';
+import NFTDropMechanics from '@/components/NFTDropMechanics';
 import Footer from '@/components/Footer';
-import NFTDropMechanics from '@/components/NFTDropMechanics'; // Add this import
 
 const Index = () => {
   return (
@@ -17,12 +20,15 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <WhatIs />
+        <GameRewards />
         <FeaturesSection />
         <NFTRaritySection />
-        <NFTDropMechanics /> {/* Add this component here */}
+        <Tokenomics />
+        <NFTDropMechanics />
+        <Roadmap />
         <HowToPlay />
         <NFTShowcase />
-        <TestimonialSection />
         <JoinCTA />
         <Newsletter />
       </main>

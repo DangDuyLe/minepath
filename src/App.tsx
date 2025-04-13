@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import NFTCatalog from "./pages/NFTCatalog";
 import HowToPlayPage from "./pages/HowToPlayPage";
+import StorePage from "./pages/StorePage";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/nfts" element={<NFTCatalog />} />
           <Route path="/how-to-play" element={<HowToPlayPage />} />
-          <Route path="/store" element={<Index />} /> {/* Temporary route for store */}
+          <Route path="/store" element={<StorePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
