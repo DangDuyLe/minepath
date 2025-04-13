@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { ArrowRight } from 'lucide-react';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
@@ -25,24 +26,31 @@ const Newsletter = () => {
   };
   
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gradient-to-b from-background via-solana-purple/5 to-background relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10 bg-[url('/images/bg-pattern.png')] bg-repeat"></div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-minecraft text-2xl md:text-3xl mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-blue to-solana-green">
-              STAY UPDATED
+          <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-solana-purple/20 via-solana-blue/20 to-solana-green/20 mb-4">
+            <div className="px-4 py-1 rounded-full bg-card/60 backdrop-blur-sm text-sm font-medium text-solana-purple">
+              STAY CONNECTED
+            </div>
+          </div>
+          
+          <h2 className="font-minecraft text-3xl md:text-4xl mb-6">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-blue to-solana-green drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+              JOIN THE MINEPATH COMMUNITY
             </span>
           </h2>
           
-          <p className="text-lg text-muted-foreground mb-8">
-            Subscribe to our newsletter for the latest server updates, NFT drops, and community events.
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Subscribe to our newsletter for the latest server updates, NFT drops, and exclusive community events.
           </p>
           
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <Input 
               type="email"
               placeholder="Enter your email address"
-              className="bg-muted/30 border-border"
+              className="bg-background/50 backdrop-blur-sm border-solana-purple/30 focus-visible:ring-solana-purple/50"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -50,10 +58,14 @@ const Newsletter = () => {
             
             <Button 
               type="submit" 
-              className="bg-solana-blue hover:bg-solana-blue/90"
+              className="bg-solana-purple hover:bg-solana-purple/90 text-white group"
               disabled={loading}
             >
-              {loading ? "Subscribing..." : "Subscribe"}
+              {loading ? "Subscribing..." : (
+                <>
+                  Subscribe <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </>
+              )}
             </Button>
           </form>
           

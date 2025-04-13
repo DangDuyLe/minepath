@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { X, ChevronDown, ChevronUp, Wallet } from 'lucide-react';
+import { X, ChevronDown, ChevronUp, Wallet, ExternalLink } from 'lucide-react';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -96,14 +96,14 @@ const WalletModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-solana-purple hover:bg-solana-purple/90">
+        <Button className="bg-gradient-to-r from-solana-purple to-solana-blue hover:bg-solana-purple/90 text-white shadow-md hover:shadow-lg transition-shadow duration-300">
           Connect Wallet
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-[#1A1F2C] border-none text-white p-0 w-full max-w-md rounded-xl">
+      <DialogContent className="bg-[#1A1F2C] border border-solana-purple/20 text-white p-0 w-full max-w-md rounded-xl shadow-xl">
         <div className="relative p-6">
           <button 
-            className="absolute right-4 top-4 rounded-full hover:bg-gray-700/50 p-1.5"
+            className="absolute right-4 top-4 rounded-full hover:bg-solana-purple/20 p-1.5 transition-colors"
             onClick={() => setView('intro')}
           >
             <X size={20} />
@@ -113,7 +113,7 @@ const WalletModal = () => {
             <div className="flex flex-col items-center text-center">
               <h2 className="text-2xl font-bold mb-8 mt-4">You'll need a wallet on Solana to continue</h2>
               
-              <div className="w-24 h-24 rounded-full bg-gradient-to-r from-solana-purple/30 to-solana-green/30 flex items-center justify-center mb-8">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-r from-solana-purple/30 to-solana-green/30 flex items-center justify-center mb-8 animate-pulse-glow">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-r from-solana-purple/50 to-solana-green/50 flex items-center justify-center">
                   <Wallet size={32} className="text-[#00C2FF]" />
                 </div>
@@ -121,17 +121,23 @@ const WalletModal = () => {
               
               <Button 
                 onClick={handleGetStarted}
-                className="w-full py-6 bg-solana-purple hover:bg-solana-purple/90 rounded-md text-white font-medium text-lg"
+                className="w-full py-6 bg-gradient-to-r from-solana-purple to-solana-blue hover:from-solana-purple/90 hover:to-solana-blue/90 rounded-md text-white font-medium text-lg shadow-lg shadow-solana-purple/20"
               >
                 Get started
               </Button>
               
               <button 
                 onClick={() => setView('options')}
-                className="mt-6 flex items-center text-gray-300 hover:text-white"
+                className="mt-6 flex items-center text-gray-300 hover:text-white transition-colors"
               >
                 Already have a wallet? View options <ChevronDown size={16} className="ml-1" />
               </button>
+
+              <div className="mt-8 pt-6 border-t border-gray-700/50 text-sm text-gray-400">
+                <p className="flex items-center justify-center">
+                  New to blockchain? <a href="https://solana.com/learn" target="_blank" rel="noopener noreferrer" className="text-solana-blue ml-2 flex items-center">Learn more <ExternalLink size={14} className="ml-1" /></a>
+                </p>
+              </div>
             </div>
           ) : (
             <div>
@@ -149,7 +155,9 @@ const WalletModal = () => {
                       <span className="ml-3 text-lg">{wallet.name}</span>
                     </div>
                     {wallet.detected && (
-                      <span className="text-gray-400 text-sm">Detected</span>
+                      <span className="text-solana-green text-sm flex items-center">
+                        Detected
+                      </span>
                     )}
                   </button>
                 ))}
@@ -158,7 +166,7 @@ const WalletModal = () => {
               {!showAllOptions && walletOptions.length > 4 && (
                 <button 
                   onClick={() => setShowAllOptions(true)}
-                  className="mt-4 flex items-center justify-center w-full text-gray-300 hover:text-white py-2"
+                  className="mt-4 flex items-center justify-center w-full text-gray-300 hover:text-white py-2 hover:bg-white/5 rounded-md transition-colors"
                 >
                   More options <ChevronDown size={16} className="ml-1" />
                 </button>
@@ -167,11 +175,18 @@ const WalletModal = () => {
               {showAllOptions && (
                 <button 
                   onClick={() => setShowAllOptions(false)}
-                  className="mt-4 flex items-center justify-center w-full text-gray-300 hover:text-white py-2"
+                  className="mt-4 flex items-center justify-center w-full text-gray-300 hover:text-white py-2 hover:bg-white/5 rounded-md transition-colors"
                 >
                   Less options <ChevronUp size={16} className="ml-1" />
                 </button>
               )}
+
+              <div className="mt-6 pt-4 border-t border-gray-700/50">
+                <p className="text-sm text-center text-gray-400">
+                  By connecting your wallet, you agree to our<br />
+                  <span className="text-solana-blue cursor-pointer">Terms of Service</span> and <span className="text-solana-blue cursor-pointer">Privacy Policy</span>
+                </p>
+              </div>
             </div>
           )}
         </div>

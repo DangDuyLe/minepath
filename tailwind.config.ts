@@ -122,11 +122,11 @@ export default {
 				'pulse-glow': {
 					'0%, 100%': {
 						opacity: '1',
-						boxShadow: '0 0 10px rgba(255, 170, 0, 0.8)'
+						boxShadow: '0 0 15px rgba(255, 170, 0, 0.8)'
 					},
 					'50%': {
 						opacity: '0.7',
-						boxShadow: '0 0 20px rgba(255, 170, 0, 0.4)'
+						boxShadow: '0 0 25px rgba(255, 170, 0, 0.4)'
 					}
 				},
 				'shimmer': {
@@ -136,6 +136,29 @@ export default {
 					'100%': {
 						backgroundPosition: '200% 0',
 					},
+				},
+				'rotate-glow': {
+					'0%': {
+						transform: 'rotate(0deg)',
+						filter: 'drop-shadow(0 0 5px rgba(153, 69, 255, 0.7))'
+					},
+					'50%': {
+						filter: 'drop-shadow(0 0 15px rgba(153, 69, 255, 0.9))'
+					},
+					'100%': {
+						transform: 'rotate(360deg)',
+						filter: 'drop-shadow(0 0 5px rgba(153, 69, 255, 0.7))'
+					}
+				},
+				'fade-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
@@ -143,12 +166,21 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-				'shimmer': 'shimmer 2s linear infinite'
+				'shimmer': 'shimmer 2s linear infinite',
+				'rotate-glow': 'rotate-glow 10s linear infinite',
+				'fade-in-up': 'fade-in-up 0.5s ease-out'
 			},
 			backgroundImage: {
 				'minecraft-gradient': 'linear-gradient(to right, #5aa918, #215aff)',
 				'solana-gradient': 'linear-gradient(to right, #9945ff, #14f195)',
 				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%)',
+				'glow-gradient': 'radial-gradient(circle, rgba(153,69,255,0.15) 0%, rgba(20,241,149,0.05) 70%, rgba(0,0,0,0) 100%)',
+			},
+			dropShadow: {
+				'glow-sm': '0 0 3px rgba(153, 69, 255, 0.5)',
+				'glow-md': '0 0 6px rgba(153, 69, 255, 0.5)',
+				'glow-lg': '0 0 12px rgba(153, 69, 255, 0.5)',
+				'text': '0 2px 4px rgba(0, 0, 0, 0.3)',
 			}
 		}
 	},
