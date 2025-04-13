@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -186,6 +185,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 3s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'pulse-slow': 'pulse-glow 4s ease-in-out infinite',
 				'shimmer': 'shimmer 2s linear infinite',
 				'rotate-glow': 'rotate-glow 10s linear infinite',
 				'fade-in-up': 'fade-in-up 0.5s ease-out',
@@ -194,6 +194,7 @@ export default {
 			backgroundImage: {
 				'minecraft-gradient': 'linear-gradient(to right, #5aa918, #215aff)',
 				'modern-gradient': 'linear-gradient(to right, #9b87f5, #1EAEDB)',
+					'solana-gradient': 'linear-gradient(to right, #9945ff, #00c2ff)',
 				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%)',
 				'glow-gradient': 'radial-gradient(circle, rgba(155,135,245,0.15) 0%, rgba(30,174,219,0.05) 70%, rgba(0,0,0,0) 100%)',
 			},

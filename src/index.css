@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -120,6 +119,19 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9b87f5] to-[#1EAEDB];
   }
+  
+  /* 3D-like styling */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .rotate-y-3 {
+    transform: rotateY(3deg);
+  }
 }
 
 @layer utilities {
@@ -130,9 +142,25 @@
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
   }
+  
+  .animate-pulse-slow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
 
   .neo-blur {
     @apply backdrop-blur-xl bg-[#1A1F2C]/80 border border-[#2A2F3C]/80 rounded-xl shadow-lg;
+  }
+  
+  .drop-shadow-glow-sm {
+    filter: drop-shadow(0 0 3px rgba(155, 135, 245, 0.4));
+  }
+  
+  .drop-shadow-glow-md {
+    filter: drop-shadow(0 0 5px rgba(155, 135, 245, 0.5));
+  }
+  
+  .drop-shadow-glow-lg {
+    filter: drop-shadow(0 0 8px rgba(155, 135, 245, 0.6));
   }
 }
 
