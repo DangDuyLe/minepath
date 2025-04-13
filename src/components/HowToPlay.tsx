@@ -7,7 +7,7 @@ const STEPS = [
   {
     number: '01',
     title: 'Join the Server',
-    description: 'Connect to our Minecraft server using the IP address play.blockverseraiders.com'
+    description: 'Connect to our Minecraft server using the IP address play.minepath.com'
   },
   {
     number: '02',
@@ -23,6 +23,11 @@ const STEPS = [
     number: '04',
     title: 'Use Your NFTs',
     description: 'Equip your NFTs in-game to gain special powers and abilities'
+  },
+  {
+    number: '05',
+    title: 'Utilize Your NFTs',
+    description: 'Trade, sell, or use your NFTs in the game to enhance your experience'
   }
 ];
 
@@ -39,7 +44,7 @@ const HowToPlay = () => {
             </h2>
             
             <p className="text-lg text-muted-foreground mb-8">
-              Getting started with BlockVerse Raiders is easy. Follow these simple steps to begin your adventure.
+              Getting started with MinePath is easy. Follow these simple steps to begin your adventure.
             </p>
             
             <div className="space-y-8">
