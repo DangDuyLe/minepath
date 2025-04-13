@@ -1,12 +1,11 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Github, 
   Twitter, 
-  Discord, 
   Youtube, 
-  ArrowRight 
+  ArrowRight,
+  MessageSquare 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -30,8 +29,9 @@ const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-muted/30 hover:bg-muted/50 p-2 rounded-full transition-colors"
+                aria-label="Discord"
               >
-                <Discord size={18} />
+                <MessageSquare size={18} />
               </a>
               <a 
                 href="https://twitter.com" 
