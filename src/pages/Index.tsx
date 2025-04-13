@@ -2,18 +2,16 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import NFTRaritySection from '@/components/NFTRaritySection';
 import FeaturesSection from '@/components/FeaturesSection';
+import NFTRaritySection from '@/components/NFTRaritySection';
 import HowToPlay from '@/components/HowToPlay';
 import NFTShowcase from '@/components/NFTShowcase';
-import JoinCTA from '@/components/JoinCTA';
-import TestimonialSection from '@/components/TestimonialSection';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <main className="flex-grow">
         <Hero />
@@ -21,8 +19,6 @@ const Index = () => {
         <NFTRaritySection />
         <HowToPlay />
         <NFTShowcase />
-        <TestimonialSection />
-        <JoinCTA />
         <Newsletter />
       </main>
       <Footer />
