@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import WalletModal from '@/components/WalletModal';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <span className="font-minecraft text-xl text-gradient bg-solana-gradient bg-clip-text text-transparent">
-                BlockVerse Raiders
+                MinePath
               </span>
             </Link>
           </div>
@@ -37,9 +38,7 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <Button variant="default" className="bg-gradient-to-r from-solana-purple to-solana-blue hover:opacity-90 transition-opacity">
-                Connect Wallet
-              </Button>
+              <WalletModal />
             </div>
           </div>
           <div className="flex md:hidden">
@@ -64,9 +63,7 @@ const Navbar = () => {
             <MobileNavLink href="/wiki" text="Wiki" setIsOpen={setIsOpen} />
             <MobileNavLink href="/gallery" text="NFT Gallery" setIsOpen={setIsOpen} />
             <div className="pt-2">
-              <Button variant="default" className="w-full bg-gradient-to-r from-solana-purple to-solana-blue hover:opacity-90 transition-opacity">
-                Connect Wallet
-              </Button>
+              <WalletModal />
             </div>
           </div>
         </div>

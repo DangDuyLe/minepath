@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -17,7 +18,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="block mb-4">
               <h3 className="font-minecraft text-xl text-gradient bg-solana-gradient bg-clip-text text-transparent">
-                BlockVerse Raiders
+                MinePath
               </h3>
             </Link>
             <p className="text-sm text-muted-foreground mb-4">
@@ -93,7 +94,7 @@ const Footer = () => {
         
         <div className="border-t border-muted/30 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © 2025 BlockVerse Raiders. All rights reserved.
+            © 2025 MinePath. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link to="/privacy" className="text-sm text-muted-foreground hover:text-white transition-colors">
