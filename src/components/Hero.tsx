@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Shield, Sword, Coins, Sparkles } from 'lucide-react';
+import { ArrowRight, Shield, Sword, Coins, Sparkles, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -162,14 +163,16 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              <Button size="lg" className="group bg-gradient-to-r from-solana-purple to-solana-blue hover:shadow-lg hover:shadow-solana-purple/20 transition-all duration-300 text-white border-0">
-                Get Started 
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-              
-              <Button size="lg" variant="outline" className="border-solana-purple/20 hover:border-solana-purple/50 hover:bg-solana-purple/5">
-                Explore NFTs
-              </Button>
+              <Link to="/how-to-play">
+                <button className="minecraft-btn-green flex items-center">
+                  Play Now <ArrowRight className="ml-2 h-4 w-4" />
+                </button>
+              </Link>
+              <Link to="/nfts">
+                <button className="minecraft-btn-blue flex items-center">
+                  View NFTs <Eye className="ml-2 h-4 w-4" />
+                </button>
+              </Link>
             </motion.div>
             
             <motion.div 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -63,7 +62,7 @@ const NFTShowcase = () => {
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover these powerful NFTs that can be earned in the MinePath server to enhance your abilities and transform your gameplay experience.
+            Discover these powerful NFTs that can be earned in-game through mining, combat, and PvP. Drop chances range from Common (1%) to Legendary (0.01%) based on rarity.
           </p>
         </div>
         
@@ -91,48 +90,32 @@ const NFTCard = ({ nft }: { nft: typeof FEATURED_NFTS[0] }) => {
   const rarityClass = `rarity-${nft.rarity}`;
   
   return (
-    <Card className={`overflow-hidden border-2 ${rarityClass} bg-card/50 backdrop-blur-sm hover:transform hover:scale-105 transition-all duration-300 group relative`}>
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-transparent via-transparent to-solana-purple/20 transition-opacity duration-500"></div>
-      
-      <div className="aspect-square relative overflow-hidden">
-        <img 
-          src={nft.image} 
-          alt={nft.name}
-          className="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500" 
-        />
-        <Badge className={`absolute top-3 right-3 ${rarityClass} bg-background/80 backdrop-blur-sm flex items-center gap-1`}>
-          {nft.rarity === 'legendary' && <Sparkles className="h-3 w-3" />}
-          {nft.rarity.charAt(0).toUpperCase() + nft.rarity.slice(1)}
-        </Badge>
-      </div>
-      
-      <CardContent className="p-6 relative">
-        <h3 className={`font-minecraft text-xl mb-2 ${rarityClass} flex items-center gap-2`}>
-          {nft.name}
-          {nft.rarity === 'legendary' && (
-            <span className="animate-pulse-glow inline-flex">
-              <Sparkles className="h-4 w-4" />
-            </span>
-          )}
-        </h3>
+    <div className="group">
+      <div className="relative overflow-hidden minecraft-container transition-all duration-300 group-hover:translate-y-[-4px]">
+        <div className={`absolute top-2 right-2 z-10 px-2 py-1 font-minecraft text-xs ${rarityClass} bg-black/50 backdrop-blur-sm`}>
+          {nft.rarity.toUpperCase()}
+        </div>
         
-        <p className="text-sm text-foreground/80 mb-4">
-          {nft.description}
-        </p>
+        <div className="relative h-64 overflow-hidden bg-theme-darker">
+          <img 
+            src={nft.image} 
+            alt={nft.name}
+            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110 pixelated"
+          />
+        </div>
         
-        <div className="border-t border-border/50 pt-4 mt-4">
-          <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2 font-semibold">Attributes:</div>
-          <div className="grid grid-cols-3 gap-2">
-            {nft.attributes.map((attr, index) => (
-              <div key={index} className="bg-muted/20 p-2 rounded-md text-center hover:bg-muted/30 transition-colors">
-                <div className="text-xs text-muted-foreground">{attr.trait}</div>
-                <div className="text-sm font-semibold">{attr.value}</div>
-              </div>
-            ))}
+        <div className="p-4">
+          <h3 className={`font-minecraft text-xl mb-2 ${rarityClass}`}>{nft.name}</h3>
+          <p className="text-sm text-muted-foreground mb-4">{nft.description}</p>
+          
+          <div className="flex justify-between items-center">
+            <button className="minecraft-btn-purple text-sm px-3 py-1">
+              View Details
+            </button>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 

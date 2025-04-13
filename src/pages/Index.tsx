@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -10,6 +9,7 @@ import Newsletter from '@/components/Newsletter';
 import TestimonialSection from '@/components/TestimonialSection';
 import JoinCTA from '@/components/JoinCTA';
 import Footer from '@/components/Footer';
+import NFTDropMechanics from '@/components/NFTDropMechanics'; // Add this import
 
 const Index = () => {
   return (
@@ -19,6 +19,7 @@ const Index = () => {
         <Hero />
         <FeaturesSection />
         <NFTRaritySection />
+        <NFTDropMechanics /> {/* Add this component here */}
         <HowToPlay />
         <NFTShowcase />
         <TestimonialSection />

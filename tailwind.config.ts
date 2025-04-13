@@ -78,7 +78,17 @@ export default {
 					dirt: '#8b5a2b',
 					stone: '#7f7f7f',
 					blue: '#215aff',
-					black: '#25252a'
+					black: '#25252a',
+					planks: '#bc9862',
+					grass: '#5d923c',
+					door: '#a67847',
+					water: '#2f5fd6',
+					lava: '#db6a0c',
+					coal: '#252525',
+					iron: '#b0b0b0',
+					gold: '#f8bd17',
+					diamond: '#5feaea',
+					emerald: '#4adc65',
 				},
 				solana: {
 					purple: '#9945ff',
