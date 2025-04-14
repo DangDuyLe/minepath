@@ -1,9 +1,9 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import WhatIs from '@/components/WhatIs';
 import FeaturesSection from '@/components/FeaturesSection';
+import GameModes from '@/components/GameModes';
 import GameRewards from '@/components/GameRewards';
 import Tokenomics from '@/components/Tokenomics';
 import NFTRaritySection from '@/components/NFTRaritySection';
@@ -24,6 +24,7 @@ const Index = () => {
         <Hero />
         <JoinCTA />
         <WhatIs />
+        <GameModes />
         <GameRewards />
         <FeaturesSection />
         <NFTRaritySection />
