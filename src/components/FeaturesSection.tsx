@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sword, Shield, Coins, Award, Share2, Sparkles } from 'lucide-react';
+import { Sword, Shield, Coins, Award, Share2, Sparkles, LucideIcon } from 'lucide-react';
 import { MinecraftIcon } from '@/components/ui/minecraft-icon';
 import { EnhancedButton } from '@/components/ui/enhanced-button';
 
@@ -148,7 +148,7 @@ interface FeatureCardProps {
   feature: {
     title: string;
     description: string;
-    icon: React.ComponentType<any>;
+    icon: LucideIcon;
     blockType: string;
     variant: string;
   };
