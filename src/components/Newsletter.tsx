@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -34,7 +35,7 @@ const Newsletter = () => {
   };
   
   return (
-    <section className="py-32 relative overflow-hidden minecraft-dirt-bg">
+    <section className="py-32 relative overflow-hidden" style={{ backgroundImage: "url('/images/bg-dirt.png')", backgroundRepeat: 'repeat', imageRendering: 'pixelated' }}>
       <div className="absolute inset-0 bg-gradient-to-b from-[#9b87f5]/5 via-[#1EAEDB]/10 to-background/95 z-0"></div>
       <div className="absolute inset-0 opacity-10 bg-[url('/images/bg-pattern.png')] bg-repeat z-0"></div>
       

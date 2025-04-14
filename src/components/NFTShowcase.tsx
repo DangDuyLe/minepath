@@ -46,7 +46,7 @@ const FEATURED_NFTS = [
 
 const NFTShowcase = () => {
   return (
-    <section className="py-24 relative overflow-hidden minecraft-dirt-bg">
+    <section className="py-24 relative overflow-hidden" style={{ backgroundImage: "url('/images/bg-dirt.png')", backgroundRepeat: 'repeat', imageRendering: 'pixelated' }}>
       <div className="absolute inset-0 bg-gradient-to-br from-solana-purple/10 via-transparent to-solana-green/10"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
