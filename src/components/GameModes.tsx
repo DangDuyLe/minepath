@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Pickaxe } from './ui/icons/Pickaxe';
-import { Wheat, Swords, Hammer, Crown, ChevronRight } from 'lucide-react';
+import { Wheat, Swords, Hammer, Crown, ChevronRight, Lock } from 'lucide-react';
 import { MinecraftIcon } from '@/components/ui/minecraft-icon';
 
+// Define all game modes but mark which ones are available in current phase
 const GAME_MODES = [
   {
     id: 'mining',
@@ -12,7 +13,9 @@ const GAME_MODES = [
     icon: Pickaxe,
     bgColor: 'bg-minecraft-stone',
     iconVariant: 'diamond',
-    image: '/images/game_mode_mining.png'
+    image: '/images/game_mode_mining.png',
+    available: true,
+    phase: 'Phase 1'
   },
   {
     id: 'farming',
@@ -21,7 +24,9 @@ const GAME_MODES = [
     icon: Wheat,
     bgColor: 'bg-minecraft-grass',
     iconVariant: 'grass',
-    image: '/images/game_mode_farming.png'
+    image: '/images/game_mode_farming.png',
+    available: false,
+    phase: 'Phase 2'
   },
   {
     id: 'pvp',
@@ -30,7 +35,9 @@ const GAME_MODES = [
     icon: Swords,
     bgColor: 'bg-minecraft-diamond',
     iconVariant: 'iron',
-    image: '/images/game_mode_pvp.png'
+    image: '/images/game_mode_pvp.png',
+    available: false,
+    phase: 'Phase 3'
   },
   {
     id: 'crafting',
@@ -39,7 +46,9 @@ const GAME_MODES = [
     icon: Hammer,
     bgColor: 'bg-minecraft-planks',
     iconVariant: 'gold',
-    image: '/images/game_mode_crafting.png'
+    image: '/images/game_mode_crafting.png',
+    available: false,
+    phase: 'Phase 4'
   },
   {
     id: 'bossbattle',
@@ -48,14 +57,16 @@ const GAME_MODES = [
     icon: Crown,
     bgColor: 'bg-solana-purple',
     iconVariant: 'gold',
-    image: '/images/game_mode_boss.png'
+    image: '/images/game_mode_boss.png',
+    available: false,
+    phase: 'Phase 5'
   }
 ];
 
 const GameModes = () => {
-  const [activeMode, setActiveMode] = useState(GAME_MODES[0].id);
-  
-  const selectedMode = GAME_MODES.find(mode => mode.id === activeMode) || GAME_MODES[0];
+  // Currently only Mining is available in Phase 1
+  const availableModes = GAME_MODES.filter(mode => mode.available);
+  const futureModes = GAME_MODES.filter(mode => !mode.available);
   
   return (
     <section className="py-24 relative overflow-hidden">
@@ -102,87 +113,106 @@ const GameModes = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Explore our multi-game Web3 MMORPG ecosystem with five unique gameplay modes, 
-            each offering different ways to earn rewards and progress your journey
+            Our multi-game Web3 MMORPG ecosystem will feature five unique gameplay modes.
+            Currently in Phase 1, only Mining mode is available. Additional modes will unlock in future phases.
           </motion.p>
         </motion.div>
         
-        {/* Mode selector tabs */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 mb-8 no-scrollbar">
-          <div className="flex mx-auto space-x-2">
-            {GAME_MODES.map((mode) => (
-              <motion.button
-                key={mode.id}
-                onClick={() => setActiveMode(mode.id)}
-                className={`minecraft-btn snap-start ${
-                  activeMode === mode.id 
-                    ? 'minecraft-btn-green' 
-                    : 'bg-minecraft-stone border-gray-700 text-white hover:bg-black/80'
-                } whitespace-nowrap min-w-[140px] px-4 font-minecraft`}
-                whileHover={{ y: -3 }}
-                whileTap={{ y: 0 }}
-              >
-                <div className="flex items-center justify-center">
+        {/* Current Available Mode (Phase 1) */}
+        {availableModes.map((mode) => (
+          <motion.div 
+            key={mode.id}
+            className="flex flex-col md:flex-row gap-8 minecraft-panel p-6 border-4 border-minecraft-green mb-16"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="flex-1 relative overflow-hidden border-4 border-minecraft-dirt">
+              <img 
+                src={mode.image} 
+                alt={mode.name} 
+                className="w-full h-64 object-cover pixelated"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/images/placeholder_gamemode.png'
+                }}
+              />
+              
+              <div className="absolute top-0 left-0 bg-minecraft-green p-2 font-minecraft text-white">
+                CURRENT PHASE
+              </div>
+            </div>
+            
+            <div className="flex-1 flex flex-col justify-center">
+              <h3 className="font-minecraft text-2xl mb-4 text-black">{mode.name} Mode</h3>
+              <p className="text-black mb-6 font-minecraft">{mode.description}</p>
+              
+              <ul className="space-y-3">
+                <li className="flex items-center text-sm font-minecraft text-black">
+                  <ChevronRight className="h-4 w-4 text-minecraft-green mr-2" />
+                  Earn $FARM tokens through mining activities
+                </li>
+                <li className="flex items-center text-sm font-minecraft text-black">
+                  <ChevronRight className="h-4 w-4 text-minecraft-green mr-2" />
+                  Collect Tool NFTs with special mining abilities
+                </li>
+                <li className="flex items-center text-sm font-minecraft text-black">
+                  <ChevronRight className="h-4 w-4 text-minecraft-green mr-2" />
+                  Unlock rare lootboxes with valuable rewards
+                </li>
+              </ul>
+              
+              <div className="mt-6">
+                <button className="minecraft-3d-btn text-sm">
+                  Start Mining Now
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+        
+        {/* Future Modes (Locked) */}
+        <h3 className="font-minecraft text-xl text-white text-center mb-6">UPCOMING GAME MODES</h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {futureModes.map((mode) => (
+            <motion.div 
+              key={mode.id}
+              className="minecraft-container border-gray-700 p-6 relative"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+            >
+              <div className="absolute top-2 right-2 bg-minecraft-stone px-2 py-1 text-xs font-minecraft text-white">
+                {mode.phase}
+              </div>
+              
+              <div className="flex items-center mb-4">
+                <div className="relative mr-4">
                   <MinecraftIcon 
                     icon={mode.icon as any} 
-                    size="sm" 
+                    size="md" 
                     variant={mode.iconVariant as any} 
-                    className="mr-2" 
+                    className="opacity-50"
                   />
-                  {mode.name}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Lock className="h-3 w-3 text-white" />
+                  </div>
                 </div>
-              </motion.button>
-            ))}
-          </div>
+                <h4 className="font-minecraft text-lg text-white opacity-50">{mode.name}</h4>
+              </div>
+              
+              <p className="text-white/50 text-sm font-minecraft mb-4">{mode.description}</p>
+              
+              <div className="mt-auto">
+                <button className="minecraft-btn bg-minecraft-stone/50 text-white/50 w-full text-sm cursor-not-allowed font-minecraft" disabled>
+                  Coming Soon
+                </button>
+              </div>
+            </motion.div>
+          ))}
         </div>
-        
-        {/* Mode content display */}
-        <motion.div 
-          className="flex flex-col md:flex-row gap-8 minecraft-panel p-6 border-4 border-gray-800"
-          key={activeMode}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          {/* Image display */}
-          <div className="flex-1 relative overflow-hidden border-4 border-minecraft-dirt">
-            <img 
-              src={selectedMode.image} 
-              alt={selectedMode.name} 
-              className="w-full h-64 object-cover pixelated"
-              onError={(e) => {
-                // Fallback to a default image if the specified one doesn't exist
-                (e.target as HTMLImageElement).src = '/images/placeholder_gamemode.png'
-              }}
-            />
-            
-            {/* Mode label */}
-            <div className={`absolute top-0 left-0 ${selectedMode.bgColor} p-2 font-minecraft text-white`}>
-              {selectedMode.name}
-            </div>
-          </div>
-          
-          {/* Description */}
-          <div className="flex-1 flex flex-col justify-center">
-            <h3 className="font-minecraft text-2xl mb-4 text-black">{selectedMode.name} Mode</h3>
-            <p className="text-black mb-6 font-minecraft">{selectedMode.description}</p>
-            
-            <ul className="space-y-3">
-              {['Earn tokens', 'Collect NFTs', 'Upgrade gear'].map((feature, idx) => (
-                <li key={idx} className="flex items-center text-sm font-minecraft text-black">
-                  <ChevronRight className="h-4 w-4 text-minecraft-green mr-2" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            
-            <div className="mt-6">
-              <button className="minecraft-3d-btn text-sm">
-                Start {selectedMode.name} Now
-              </button>
-            </div>
-          </div>
-        </motion.div>
         
         {/* Phase launch countdown */}
         <motion.div 
@@ -192,10 +222,10 @@ const GameModes = () => {
           transition={{ delay: 0.2, duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="font-minecraft text-minecraft-gold text-sm mb-2 text-center">NEXT PHASE LAUNCH IN:</div>
+          <div className="font-minecraft text-minecraft-gold text-sm mb-2 text-center">PHASE 2 LAUNCH IN:</div>
           <div className="flex justify-center gap-4 font-minecraft text-white">
             <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
-              <div className="text-xl text-minecraft-green">07</div>
+              <div className="text-xl text-minecraft-green">112</div>
               <div className="text-xs">Days</div>
             </div>
             <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">

@@ -95,9 +95,9 @@ const WalletModal = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="minecraft-btn-purple py-3 px-6 text-base font-minecraft flex items-center bg-gradient-to-r from-solana-purple to-solana-blue hover:bg-solana-purple/90 text-white shadow-md hover:shadow-lg transition-shadow duration-300">
+        {/* <Button className="minecraft-btn-purple py-3 px-6 text-base font-minecraft flex items-center bg-gradient-to-r from-solana-purple to-solana-blue hover:bg-solana-purple/90 text-white shadow-md hover:shadow-lg transition-shadow duration-300">
           Connect Wallet <Wallet className="ml-2 h-5 w-5" />
-        </Button>
+        </Button> */}
       </DialogTrigger>
       <DialogContent className="bg-[#1A1F2C] border border-solana-purple/20 text-white p-0 w-full max-w-md rounded-xl shadow-xl">
         <div className="relative p-6">
