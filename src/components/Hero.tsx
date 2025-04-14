@@ -4,6 +4,7 @@ import { ArrowRight, Shield, Sword, Coins, Sparkles, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { EnhancedButton } from './ui/enhanced-button';
+import { Pickaxe } from './ui/icons/Pickaxe'; // Import the Pickaxe component
 
 const Hero = () => {
   return (

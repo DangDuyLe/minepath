@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Card, CardProps } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 
 interface EnhancedCardProps extends React.ComponentPropsWithoutRef<typeof Card> {
   hoverEffect?: 'glow' | 'scale' | 'rotate' | 'none';

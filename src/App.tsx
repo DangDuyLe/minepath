@@ -23,12 +23,8 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster toastOptions={{
-        style: toastStyles,
-      }} />
-      <Sonner toastOptions={{
-        style: toastStyles,
-      }} />
+      <Toaster />
+      <Sonner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
