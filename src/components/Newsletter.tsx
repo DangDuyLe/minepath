@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -35,12 +34,10 @@ const Newsletter = () => {
   };
   
   return (
-    <section className="py-32 relative overflow-hidden minecraft-wood-bg">
-      {/* Background elements */}
+    <section className="py-32 relative overflow-hidden minecraft-dirt-bg">
       <div className="absolute inset-0 bg-gradient-to-b from-[#9b87f5]/5 via-[#1EAEDB]/10 to-background/95 z-0"></div>
       <div className="absolute inset-0 opacity-10 bg-[url('/images/bg-pattern.png')] bg-repeat z-0"></div>
       
-      {/* Decorative elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-[#9b87f5]/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#1EAEDB]/10 rounded-full blur-3xl"></div>
       
@@ -78,7 +75,6 @@ const Newsletter = () => {
                   required
                   disabled={loading}
                 />
-                {/* Minecraft-style corner pixels */}
                 <div className="absolute top-0 left-0 w-2 h-2 bg-white/10"></div>
                 <div className="absolute bottom-0 right-0 w-2 h-2 bg-black/20"></div>
               </div>
