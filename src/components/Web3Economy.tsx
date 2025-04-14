@@ -1,0 +1,163 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Coins, TrendingUp, Wallet, Landmark } from 'lucide-react';
+import { MinecraftIcon } from '@/components/ui/minecraft-icon';
+import WalletModal from '@/components/WalletModal';
+
+const Web3Economy = () => {
+  return (
+    <section className="py-24 relative overflow-hidden minecraft-stone-bg">
+      <div className="absolute inset-0 bg-gradient-to-br from-solana-purple/20 via-transparent to-solana-green/20 z-0"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-solana-blue/20 via-solana-purple/20 to-solana-green/20 mb-4">
+            <div className="px-4 py-1.5 rounded-full bg-card/60 backdrop-blur-sm text-sm font-medium text-solana-blue">
+              BLOCKCHAIN POWERED
+            </div>
+          </div>
+          
+          <h2 className="font-minecraft text-4xl md:text-5xl mb-6">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-purple to-solana-green drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+              POWER YOUR JOURNEY WITH WEB3
+            </span>
+          </h2>
+          
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Our integrated Web3 ecosystem gives you real ownership of in-game assets and rewards, all powered by Solana blockchain technology.
+          </p>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {/* $FARM & $PATH Tokens */}
+          <motion.div 
+            className="bg-card/40 backdrop-blur-md p-6 border border-solana-purple/20"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center mb-4">
+              <MinecraftIcon icon={Coins} size="lg" variant="gold" className="mr-4" />
+              <h3 className="font-minecraft text-2xl text-minecraft-gold">$FARM & $PATH TOKENS</h3>
+            </div>
+            <p className="mb-4">
+              Earn $FARM through gameplay and $PATH via staking, both with real-world value on Raydium DEX.
+            </p>
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="bg-black/30 p-4 text-center">
+                <div className="font-minecraft text-minecraft-gold text-lg">$FARM</div>
+                <div className="text-sm">Utility Token</div>
+                <div className="mt-2 text-sm">Mine, Farm, Battle to earn</div>
+              </div>
+              <div className="bg-black/30 p-4 text-center">
+                <div className="font-minecraft text-solana-green text-lg">$PATH</div>
+                <div className="text-sm">Governance Token</div>
+                <div className="mt-2 text-sm">Stake $FARM to earn</div>
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* NFT Ecosystem */}
+          <motion.div 
+            className="bg-card/40 backdrop-blur-md p-6 border border-solana-purple/20"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center mb-4">
+              <MinecraftIcon icon={TrendingUp} size="lg" variant="diamond" className="mr-4" />
+              <h3 className="font-minecraft text-2xl text-minecraft-diamond">NFT ECOSYSTEM</h3>
+            </div>
+            <p className="mb-4">
+              Own unique Tools, Pets, Weapons, and Land NFTs that can be traded for profit on Solana marketplaces.
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-black/30 p-3 text-center">
+                <div className="font-minecraft text-rarity-common text-md">Common</div>
+                <div className="text-xs">1% Drop Rate</div>
+              </div>
+              <div className="bg-black/30 p-3 text-center">
+                <div className="font-minecraft text-rarity-uncommon text-md">Uncommon</div>
+                <div className="text-xs">0.5% Drop Rate</div>
+              </div>
+              <div className="bg-black/30 p-3 text-center">
+                <div className="font-minecraft text-rarity-rare text-md">Rare</div>
+                <div className="text-xs">0.1% Drop Rate</div>
+              </div>
+              <div className="bg-black/30 p-3 text-center">
+                <div className="font-minecraft text-rarity-legendary text-md">Legendary</div>
+                <div className="text-xs">0.01% Drop Rate</div>
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* DeFi Staking */}
+          <motion.div 
+            className="bg-card/40 backdrop-blur-md p-6 border border-solana-purple/20"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center mb-4">
+              <MinecraftIcon icon={Landmark} size="lg" variant="diamond" className="mr-4" />
+              <h3 className="font-minecraft text-2xl text-minecraft-emerald">DEFI STAKING</h3>
+            </div>
+            <p className="mb-4">
+              Lock $FARM or NFTs to earn $PATH, with APY up to 50% in Phase 3. The longer you stake, the more you earn!
+            </p>
+            <div className="bg-black/30 p-4 flex justify-between items-center">
+              <div>
+                <div className="font-minecraft text-minecraft-emerald text-lg">STAKE NOW</div>
+                <div className="text-sm">APY: 25-50%</div>
+              </div>
+              <div className="font-minecraft text-white text-sm bg-minecraft-emerald p-2">
+                Phase 3 Feature
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Land Ownership */}
+          <motion.div 
+            className="bg-card/40 backdrop-blur-md p-6 border border-solana-purple/20"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center mb-4">
+              <MinecraftIcon icon={Wallet} size="lg" variant="iron" className="mr-4" />
+              <h3 className="font-minecraft text-2xl text-minecraft-iron">LAND OWNERSHIP</h3>
+            </div>
+            <p className="mb-4">
+              Purchase Land NFTs to expand your empire, boost resource generation, and rent to other players for passive income.
+            </p>
+            <div className="bg-black/30 p-4 flex justify-between items-center">
+              <div>
+                <div className="font-minecraft text-minecraft-iron text-lg">OWN LAND</div>
+                <div className="text-sm">16×16 to 64×64 plots</div>
+              </div>
+              <div className="font-minecraft text-white text-sm bg-minecraft-iron p-2">
+                Phase 4 Feature
+              </div>
+            </div>
+          </motion.div>
+        </div>
+        
+        <div className="text-center">
+          <WalletModal />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Web3Economy;

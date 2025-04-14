@@ -15,6 +15,8 @@ import JoinCTA from '@/components/JoinCTA';
 import NFTDropMechanics from '@/components/NFTDropMechanics';
 import Footer from '@/components/Footer';
 import TestimonialSection from '@/components/TestimonialSection';
+import Web3Economy from '@/components/Web3Economy'; // Add this new component
+import CommunitySection from '@/components/CommunitySection'; // Add this new component
 
 const Index = () => {
   return (
@@ -27,9 +29,11 @@ const Index = () => {
         <GameModes />
         <GameRewards />
         <FeaturesSection />
+        <Web3Economy /> {/* Add Web3 Economy section */}
         <NFTRaritySection />
         <Tokenomics />
         <NFTDropMechanics />
+        <CommunitySection /> {/* Add Community section */}
         <HowToPlay />
         <TestimonialSection />
         <NFTShowcase />

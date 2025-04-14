@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Copy, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -61,7 +60,7 @@ const JoinCTA = () => {
                 </div>
                 
                 <button className="minecraft-3d-btn inline-flex items-center justify-center">
-                  How to Connect <ArrowRight className="ml-2 h-4 w-4" />
+                  Join Server Now <ArrowRight className="ml-2 h-4 w-4" />
                 </button>
               </div>
             </div>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Shield, Share2 } from 'lucide-react';
@@ -28,13 +27,13 @@ const WhatIs = () => {
           >
             <div className="minecraft-panel inline-block p-1.5 bg-minecraft-stone border-4 border-gray-800">
               <div className="px-4 py-1.5 bg-minecraft-dirt text-sm font-minecraft text-white border-b-4 border-minecraft-dirt/70">
-                WHAT IS
+                WHY CHOOSE
               </div>
             </div>
             
             <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6">
               <span className="text-minecraft-purple drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                MINE<span className="text-white"></span> <span className="text-minecraft-blue">PATH</span>
+                MINE<span className="text-white">PATH</span> <span className="text-minecraft-blue">SERVER</span>
               </span>
             </h2>
             

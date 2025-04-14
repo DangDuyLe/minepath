@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,6 +15,8 @@ const toastStyles = {
   color: 'white',
   border: '4px solid #8b5a2b',
   fontFamily: '"Minecraft", monospace',
+  boxShadow: '0 4px 0 rgba(0,0,0,0.3)',
+  imageRendering: 'pixelated' as 'pixelated'
 };
 
 const queryClient = new QueryClient();
