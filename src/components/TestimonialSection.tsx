@@ -87,7 +87,7 @@ const TestimonialSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {TESTIMONIALS.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} variant={index === 0 ? 'dirt' : index === 1 ? 'stone' : 'planks'} />
+            <TestimonialCard key={index} testimonial={testimonial} variant={index === 0 ? 'gold' : index === 1 ? 'stone' : 'planks'} />
           ))}
         </div>
       </div>
@@ -97,7 +97,7 @@ const TestimonialSection = () => {
 
 interface TestimonialCardProps {
   testimonial: typeof TESTIMONIALS[0];
-  variant: 'dirt' | 'stone' | 'planks';
+  variant: 'stone' | 'diamond' | 'gold' | 'purple' | 'iron' | 'planks' | 'gradient';
 }
 
 const TestimonialCard = ({ testimonial, variant }: TestimonialCardProps) => {

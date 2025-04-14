@@ -35,39 +35,40 @@ const Newsletter = () => {
   
   return (
     <section className="relative py-32 overflow-hidden minecraft-dirt-bg">
-      {/* Background elements */}
+      {/* Background elements - more subtle */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-glowstone.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/images/bg-glowstone.png')] bg-repeat"></div>
         
-        {/* Minecraft particles */}
+        {/* Minecraft particles - fewer, more subtle */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(10)].map((_, i) => (
             <div
               key={i}
-              className="absolute pixelated w-2 h-2 bg-white opacity-30"
+              className="absolute pixelated w-1.5 h-1.5 bg-white opacity-20"
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-                animation: `float ${5 + Math.random() * 5}s ease-in-out infinite ${Math.random() * 5}s`
+                animation: `float-subtle ${8 + Math.random() * 10}s ease-in-out infinite ${Math.random() * 5}s`
               }}
             />
           ))}
         </div>
         
-        {/* Floating blocks */}
+        {/* Floating blocks - fewer, more elegant */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(8)].map((_, i) => (
+          {[...Array(4)].map((_, i) => (
             <div
               key={`block-${i}`}
               className="absolute pixelated w-8 h-8"
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-                backgroundImage: `url('/images/${['dirt', 'stone', 'diamond', 'gold'][Math.floor(Math.random() * 4)]}_block.png')`,
+                backgroundImage: `url('/images/${['gold', 'emerald'][Math.floor(Math.random() * 2)]}_block.png')`,
                 backgroundSize: 'cover',
-                transform: 'rotate(10deg)',
+                transform: 'rotate(5deg)',
+                opacity: 0.6,
                 imageRendering: 'pixelated',
-                animation: `float ${7 + Math.random() * 7}s ease-in-out infinite ${Math.random() * 7}s, rotate ${15 + Math.random() * 10}s linear infinite ${Math.random() * 10}s`
+                animation: `float-subtle ${10 + Math.random() * 15}s ease-in-out infinite ${Math.random() * 7}s, rotate-slow ${30 + Math.random() * 20}s linear infinite ${Math.random() * 10}s`
               }}
             />
           ))}
@@ -77,22 +78,30 @@ const Newsletter = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           className="max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8 }}
         >
-          <MinecraftCard variant="planks" bordered className="p-8 md:p-12 shadow-xl">
+          <div className="bg-black/40 backdrop-blur-md border border-solana-purple/30 p-8 md:p-12 shadow-lg">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 minecraft-container mb-6 border-minecraft-gold">
+              <motion.div 
+                className="inline-flex items-center justify-center w-16 h-16 bg-black/50 border border-solana-gold/30 mb-6 rounded-none"
+                animate={{ 
+                  boxShadow: ['0 0 0 rgba(255,215,0,0)', '0 0 20px rgba(255,215,0,0.3)', '0 0 0 rgba(255,215,0,0)']
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
                 <Mail className="h-8 w-8 text-minecraft-gold" />
-              </div>
+              </motion.div>
               
-              <h2 className="font-minecraft text-3xl md:text-4xl mb-4 text-minecraft-gold">
-                JOIN THE MINEPATH COMMUNITY
+              <h2 className="font-minecraft text-3xl md:text-4xl mb-4">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-gold via-solana-gold to-solana-green">
+                  JOIN THE MINEPATH COMMUNITY
+                </span>
               </h2>
               
-              <p className="text-lg text-white mb-0 max-w-2xl mx-auto font-minecraft">
+              <p className="text-lg text-white/90 mb-0 max-w-2xl mx-auto font-minecraft leading-relaxed">
                 Subscribe to our newsletter for the latest server updates, NFT drops, and exclusive community events.
               </p>
             </div>
@@ -102,14 +111,12 @@ const Newsletter = () => {
                 <Input 
                   type="email"
                   placeholder="Enter your email address"
-                  className="bg-black/70 border-2 border-minecraft-dirt focus-visible:ring-minecraft-gold/50 pl-4 h-12 pr-4 font-minecraft"
+                  className="bg-black/50 border border-solana-purple/30 focus-visible:ring-solana-gold/50 pl-4 h-12 pr-4 font-minecraft"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={loading}
                 />
-                <div className="absolute top-0 left-0 w-2 h-2 bg-white/10"></div>
-                <div className="absolute bottom-0 right-0 w-2 h-2 bg-black/20"></div>
               </div>
               
               <Button 
@@ -117,22 +124,29 @@ const Newsletter = () => {
                 className={`minecraft-btn-green h-12 min-w-[140px] ${submitted ? 'bg-minecraft-green hover:bg-minecraft-green/90' : ''}`}
                 disabled={loading}
               >
-                {loading ? "Subscribing..." : submitted ? (
-                  <>
-                    Subscribed <CheckCircle2 className="ml-2 h-5 w-5" />
-                  </>
+                {loading ? (
+                  <span className="flex items-center">
+                    <span className="minecraft-loading mr-2"></span>
+                    <span>Subscribing</span>
+                  </span>
+                ) : submitted ? (
+                  <span className="flex items-center">
+                    <CheckCircle2 className="mr-2 h-5 w-5" />
+                    <span>Subscribed</span>
+                  </span>
                 ) : (
-                  <>
-                    Subscribe <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </>
+                  <span className="flex items-center">
+                    <span>Subscribe</span>
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 )}
               </Button>
             </form>
             
-            <p className="text-sm text-white/70 mt-6 text-center font-minecraft">
+            <p className="text-sm text-white/50 mt-6 text-center font-minecraft">
               We respect your privacy and will never share your information.
             </p>
-          </MinecraftCard>
+          </div>
         </motion.div>
       </div>
     </section>
