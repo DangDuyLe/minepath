@@ -56,9 +56,9 @@ const JoinCTA = () => {
         </div>
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 ]">
         
-        <div className="minecraft-panel p-8 md:p-12 border-4 border-minecraft-dirt relative">
+        <div className="minecraft-panel p-8 md:p-12 border-4 border-minecraft-dirt relative bg-[#1e1e1e]">
           <div className="absolute -top-4 -left-4 w-8 h-8 bg-minecraft-stone"></div>
           <div className="absolute -top-4 -right-4 w-8 h-8 bg-minecraft-stone"></div>
           <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-minecraft-stone"></div>

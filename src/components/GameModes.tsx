@@ -15,7 +15,8 @@ const GAME_MODES = [
     iconVariant: 'diamond',
     image: '/images/game_mode_mining.png',
     available: true,
-    phase: 'Phase 1'
+    phase: 'Phase 1',
+    additionalImages: ['/images/mining_1.png', '/images/mining_2.png']
   },
   {
     id: 'farming',
@@ -25,7 +26,8 @@ const GAME_MODES = [
     bgColor: 'bg-minecraft-grass',
     iconVariant: 'grass',
     available: false,
-    phase: 'Phase 2'
+    phase: 'Phase 2',
+    previewImage: '/images/farming_preview.png'
   },
   {
     id: 'pvp',
@@ -35,7 +37,8 @@ const GAME_MODES = [
     bgColor: 'bg-minecraft-diamond',
     iconVariant: 'iron',
     available: false,
-    phase: 'Phase 3'
+    phase: 'Phase 3',
+    previewImage: '/images/pvp_preview.png'
   },
   {
     id: 'crafting',
@@ -45,7 +48,8 @@ const GAME_MODES = [
     bgColor: 'bg-minecraft-planks',
     iconVariant: 'gold',
     available: false,
-    phase: 'Phase 4'
+    phase: 'Phase 4',
+    previewImage: '/images/crafting_preview.png'
   },
   {
     id: 'bossbattle',
@@ -55,7 +59,8 @@ const GAME_MODES = [
     bgColor: 'bg-solana-purple',
     iconVariant: 'gold',
     available: false,
-    phase: 'Phase 5'
+    phase: 'Phase 5',
+    previewImage: '/images/boss_preview.png'
   }
 ];
 
@@ -192,6 +197,20 @@ const GameModes = () => {
                 </li>
               </ul>
               
+              {/* Additional screenshots in a grid */}
+              {mode.additionalImages && (
+                <div className="mt-6 grid grid-cols-2 gap-2">
+                  {mode.additionalImages.map((img, idx) => (
+                    <img 
+                      key={idx}
+                      src={img}
+                      alt={`${mode.name} screenshot ${idx+1}`}
+                      className="h-24 w-full object-cover border-2 border-minecraft-dirt pixelated"
+                    />
+                  ))}
+                </div>
+              )}
+              
               <div className="mt-6">
                 <button className="minecraft-3d-btn text-sm">
                   Start Mining Now
@@ -218,6 +237,20 @@ const GameModes = () => {
               <div className="absolute top-2 right-2 bg-minecraft-stone px-2 py-1 text-xs font-minecraft text-white">
                 {mode.phase}
               </div>
+              
+              {/* Preview image with lock overlay */}
+              {mode.previewImage && (
+                <div className="relative mb-4 h-32 overflow-hidden">
+                  <img 
+                    src={mode.previewImage}
+                    alt={`${mode.name} preview`}
+                    className="w-full h-full object-cover pixelated grayscale opacity-50"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                    <Lock className="h-8 w-8 text-white opacity-70" />
+                  </div>
+                </div>
+              )}
               
               <div className="flex items-center mb-4">
                 <div className="relative mr-4">

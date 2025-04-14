@@ -87,6 +87,19 @@ const Web3Economy = () => {
             <p className="mb-4">
               Earn $FARM through gameplay and $PATH via staking, both with real-world value on Raydium DEX.
             </p>
+            
+            {/* Token image showcases */}
+            <div className="flex justify-center mb-4 gap-4">
+              <div className="relative">
+                <img src="/images/token_farm.png" alt="FARM Token" className="h-16 w-16 pixelated" />
+                <div className="absolute -top-2 -right-2 bg-minecraft-gold text-xs px-1 font-minecraft">$FARM</div>
+              </div>
+              <div className="relative">
+                <img src="/images/token_path.png" alt="PATH Token" className="h-16 w-16 pixelated" />
+                <div className="absolute -top-2 -right-2 bg-solana-green text-xs px-1 font-minecraft">$PATH</div>
+              </div>
+            </div>
+            
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="bg-black/30 p-4 text-center">
                 <div className="font-minecraft text-minecraft-gold text-lg">$FARM</div>
@@ -116,6 +129,16 @@ const Web3Economy = () => {
             <p className="mb-4">
               Own unique Tools, Pets, Weapons, and Land NFTs that can be traded for profit on Solana marketplaces.
             </p>
+            
+            {/* NFT item showcase */}
+            <div className="flex justify-center mb-4 gap-2 overflow-x-auto py-2">
+              {['diamond_pickaxe', 'golden_apple', 'netherite_helmet', 'enchanted_book', 'diamond_sword'].map((item, i) => (
+                <div key={i} className="relative bg-black/30 p-2 border border-gray-700">
+                  <img src={`/images/${item}.png`} alt={item} className="h-12 w-12 object-contain pixelated" />
+                </div>
+              ))}
+            </div>
+            
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-black/30 p-3 text-center">
                 <div className="font-minecraft text-rarity-common text-md">Common</div>

@@ -95,6 +95,13 @@ const Newsletter = () => {
                 <Mail className="h-8 w-8 text-minecraft-gold" />
               </motion.div>
               
+              {/* Decorative Minecraft items */}
+              <div className="flex justify-center gap-4 mb-6">
+                <img src="/images/paper.png" alt="Paper" className="h-10 w-10 pixelated" />
+                <img src="/images/book.png" alt="Book" className="h-10 w-10 pixelated" />
+                <img src="/images/written_book.png" alt="Written Book" className="h-10 w-10 pixelated" />
+              </div>
+              
               <h2 className="font-minecraft text-3xl md:text-4xl mb-4">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-gold via-solana-gold to-solana-green">
                   JOIN THE MINEPATH COMMUNITY

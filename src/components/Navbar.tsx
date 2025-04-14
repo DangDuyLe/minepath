@@ -34,6 +34,7 @@ const Navbar = () => {
                 initial={{ opacity: 1 }}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="flex items-center"
               >
                 <span className="font-minecraft text-2xl">
                   <span className="text-minecraft-green">Mine</span>
@@ -43,6 +44,12 @@ const Navbar = () => {
                   className="h-0.5 w-0 bg-gradient-to-r from-solana-blue to-solana-green group-hover:w-full transition-all duration-300"
                 ></motion.div>
               </motion.div>
+              {/* Small world image */}
+              <img 
+                src="/images/minecraft_world.png" 
+                alt="Minecraft World" 
+                className="h-8 w-auto ml-2 hidden md:block pixelated" 
+              />
             </Link>
             <div className="hidden lg:block ml-16">
               <div className="flex items-center space-x-8">

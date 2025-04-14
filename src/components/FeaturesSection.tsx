@@ -10,42 +10,48 @@ const features = [
     description: "Transform your hard-earned Minecraft items into tradable NFTs on the Solana blockchain.",
     icon: Sword,
     blockType: "diamond",
-    variant: "diamond"
+    variant: "diamond",
+    image: "/images/feature_mint.png"
   },
   {
     title: "Secure Ownership",
     description: "True ownership of your items, secured by blockchain technology that can't be hacked or duplicated.",
     icon: Shield,
     blockType: "iron",
-    variant: "stone"
+    variant: "stone",
+    image: "/images/feature_secure.png"
   },
   {
     title: "Trade & Sell",
     description: "Trade your NFTs with other players or sell them on our marketplace for real cryptocurrency.",
     icon: Coins,
     blockType: "gold",
-    variant: "gold"
+    variant: "gold",
+    image: "/images/feature_trade.png"
   },
   {
     title: "Collect Rarities",
     description: "Discover and collect rare items with different tiers of scarcity – from common to legendary.",
     icon: Award,
     blockType: "emerald",
-    variant: "grass"
+    variant: "grass",
+    image: "/images/feature_collect.png"
   },
   {
     title: "Cross-Server Usage",
     description: "Use your NFT items across multiple compatible Minecraft servers in our network.",
     icon: Share2,
     blockType: "lapis",
-    variant: "diamond"
+    variant: "diamond",
+    image: "/images/feature_servers.png"
   },
   {
     title: "Special Abilities",
     description: "Legendary NFTs grant special abilities and perks that regular Minecraft items don't have.",
     icon: Sparkles,
     blockType: "redstone",
-    variant: "stone"
+    variant: "stone",
+    image: "/images/feature_abilities.png"
   },
 ];
 
@@ -179,6 +185,7 @@ interface FeatureCardProps {
     icon: LucideIcon;
     blockType: string;
     variant: string;
+    image: string;
   };
   index: number;
 }
@@ -208,6 +215,18 @@ const FeatureCard = ({ feature, index }: FeatureCardProps) => {
             backgroundSize: '4px 4px',
             imageRendering: 'pixelated'
           }}></div>
+          
+          {/* Feature Image */}
+          <div className="relative z-10 mb-4 overflow-hidden h-28">
+            <img 
+              src={feature.image} 
+              alt={feature.title} 
+              className="pixelated w-full h-full object-cover"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/images/placeholder_feature.png'
+              }}
+            />
+          </div>
           
           {/* Icon */}
           <div className="relative z-10 mb-6">
