@@ -32,7 +32,7 @@ const Index = () => {
         <HowToPlay />
         <TestimonialSection />
         <NFTShowcase />
-
+        <Roadmap />
         <Newsletter />
       </main>
       <Footer />
