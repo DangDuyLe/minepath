@@ -3,6 +3,7 @@ import React from 'react';
 import { Copy, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ServerStatus from './ServerStatus';
+import { MinecraftProgress } from './ui/minecraft-progress';
 
 const JoinCTA = () => {
   const { toast } = useToast();
@@ -32,9 +33,19 @@ const JoinCTA = () => {
                 JOIN THE ADVENTURE TODAY
               </h2>
               
-              <p className="text-lg text-foreground/80 mb-6">
+              <p className="text-lg text-foreground/80 mb-6 font-minecraft">
                 Ready to earn NFTs while playing Minecraft? Our luck-based drop system rewards mining valuable blocks and monster kills with NFTs ranging from Common to Legendary!
               </p>
+
+              <div className="mb-6">
+                <p className="text-sm text-white mb-2">Server Population:</p>
+                <MinecraftProgress value={72} max={100} height="md" animated variant="green" className="mb-2" />
+                <div className="flex justify-between text-xs">
+                  <span>0</span>
+                  <span>500</span>
+                  <span>1000 players</span>
+                </div>
+              </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="relative">

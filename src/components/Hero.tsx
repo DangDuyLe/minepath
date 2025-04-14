@@ -27,6 +27,25 @@ const Hero = () => {
             />
           ))}
         </div>
+        
+        {/* Floating blocks */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={`block-${i}`}
+              className="absolute pixelated w-8 h-8"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                backgroundImage: `url('/images/${['dirt', 'stone', 'diamond', 'gold'][Math.floor(Math.random() * 4)]}_block.png')`,
+                backgroundSize: 'cover',
+                transform: 'rotate(10deg)',
+                imageRendering: 'pixelated',
+                animation: `float ${7 + Math.random() * 7}s ease-in-out infinite ${Math.random() * 7}s, rotate ${15 + Math.random() * 10}s linear infinite ${Math.random() * 10}s`
+              }}
+            />
+          ))}
+        </div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -87,6 +106,29 @@ const Hero = () => {
                 </button>
               </Link>
             </motion.div>
+
+            <motion.div
+              className="mt-8 p-4 bg-black/50 border-2 border-minecraft-dirt"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+            >
+              <div className="font-minecraft text-minecraft-gold text-sm mb-2">NEXT NFT DROP IN:</div>
+              <div className="flex justify-center gap-4 font-minecraft text-white">
+                <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
+                  <div className="text-xl text-minecraft-green">12</div>
+                  <div className="text-xs">Hours</div>
+                </div>
+                <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
+                  <div className="text-xl text-minecraft-green">45</div>
+                  <div className="text-xs">Minutes</div>
+                </div>
+                <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
+                  <div className="text-xl text-minecraft-green">32</div>
+                  <div className="text-xs">Seconds</div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
           
           {/* Right content - Minecraft character */}
@@ -119,19 +161,19 @@ const Hero = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="flex flex-wrap justify-center gap-10 lg:gap-16 opacity-60 hover:opacity-100 transition-opacity duration-300">
-            <div className="flex items-center text-xl font-minecraft">
+            <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border-2 border-minecraft-dirt">
               <Shield className="mr-2 h-6 w-6 text-minecraft-diamond" />
               <span>KYC</span>
             </div>
-            <div className="flex items-center text-xl font-minecraft">
+            <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border-2 border-minecraft-dirt">
               <Sword className="mr-2 h-6 w-6 text-minecraft-iron" />
               <span>DAPP</span>
             </div>
-            <div className="flex items-center text-xl font-minecraft">
+            <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border-2 border-minecraft-dirt">
               <Sparkles className="mr-2 h-6 w-6 text-minecraft-emerald" />
               <span>Audit</span>
             </div>
-            <div className="flex items-center text-xl font-minecraft">
+            <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border-2 border-minecraft-dirt">
               <Coins className="mr-2 h-6 w-6 text-minecraft-gold" />
               <span>Dextools</span>
             </div>

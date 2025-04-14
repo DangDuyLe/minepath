@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { ArrowRight, Mail, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { MinecraftCard } from './ui/minecraft-card';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
@@ -34,7 +35,7 @@ const Newsletter = () => {
   };
   
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section className="py-32 relative overflow-hidden minecraft-wood-bg">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#9b87f5]/5 via-[#1EAEDB]/10 to-background/95 z-0"></div>
       <div className="absolute inset-0 opacity-10 bg-[url('/images/bg-pattern.png')] bg-repeat z-0"></div>
@@ -51,19 +52,17 @@ const Newsletter = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <div className="neo-blur p-8 md:p-12 shadow-xl shadow-[#9b87f5]/5">
+          <MinecraftCard variant="planks" bordered className="p-8 md:p-12 shadow-xl">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#9b87f5]/10 mb-6">
-                <Mail className="h-8 w-8 text-[#9b87f5]" />
+              <div className="inline-flex items-center justify-center w-16 h-16 minecraft-container mb-6 border-minecraft-gold">
+                <Mail className="h-8 w-8 text-minecraft-gold" />
               </div>
               
-              <h2 className="font-minecraft text-3xl md:text-4xl mb-4">
-                <span className="text-gradient drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                  JOIN THE MINEPATH COMMUNITY
-                </span>
+              <h2 className="font-minecraft text-3xl md:text-4xl mb-4 text-minecraft-gold">
+                JOIN THE MINEPATH COMMUNITY
               </h2>
               
-              <p className="text-lg text-muted-foreground mb-0 max-w-2xl mx-auto">
+              <p className="text-lg text-white mb-0 max-w-2xl mx-auto font-minecraft">
                 Subscribe to our newsletter for the latest server updates, NFT drops, and exclusive community events.
               </p>
             </div>
@@ -73,17 +72,20 @@ const Newsletter = () => {
                 <Input 
                   type="email"
                   placeholder="Enter your email address"
-                  className="bg-[#1A1F2C]/70 backdrop-blur-sm border-[#2A2F3C] focus-visible:ring-[#9b87f5]/50 pl-4 h-12 pr-4"
+                  className="bg-black/70 border-2 border-minecraft-dirt focus-visible:ring-minecraft-gold/50 pl-4 h-12 pr-4 font-minecraft"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={loading}
                 />
+                {/* Minecraft-style corner pixels */}
+                <div className="absolute top-0 left-0 w-2 h-2 bg-white/10"></div>
+                <div className="absolute bottom-0 right-0 w-2 h-2 bg-black/20"></div>
               </div>
               
               <Button 
                 type="submit" 
-                className={`bg-[#9b87f5] hover:bg-[#7E69AB] text-white group h-12 min-w-[140px] ${submitted ? 'bg-green-500 hover:bg-green-600' : ''}`}
+                className={`minecraft-btn-green h-12 min-w-[140px] ${submitted ? 'bg-minecraft-green hover:bg-minecraft-green/90' : ''}`}
                 disabled={loading}
               >
                 {loading ? "Subscribing..." : submitted ? (
@@ -98,10 +100,10 @@ const Newsletter = () => {
               </Button>
             </form>
             
-            <p className="text-sm text-muted-foreground mt-6 text-center">
+            <p className="text-sm text-white/70 mt-6 text-center font-minecraft">
               We respect your privacy and will never share your information.
             </p>
-          </div>
+          </MinecraftCard>
         </motion.div>
       </div>
     </section>

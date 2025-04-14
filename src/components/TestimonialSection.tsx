@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star, Quote } from 'lucide-react';
+import { MinecraftCard } from './ui/minecraft-card';
 
 const TESTIMONIALS = [
   {
@@ -26,12 +27,12 @@ const TESTIMONIALS = [
 
 const TestimonialSection = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden minecraft-stone-bg">
       <div className="absolute inset-0 bg-gradient-to-br from-solana-blue/10 via-transparent to-solana-purple/10"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-solana-blue/20 via-solana-green/20 to-solana-purple/20 mb-4">
-            <div className="px-4 py-1 rounded-full bg-card/60 backdrop-blur-sm text-sm font-medium text-solana-blue">
+          <div className="inline-block p-1.5 rounded-none bg-gradient-to-r from-solana-blue/20 via-solana-green/20 to-solana-purple/20 mb-4 border-2 border-minecraft-dirt">
+            <div className="px-4 py-1 bg-black/60 backdrop-blur-sm text-sm font-minecraft text-solana-blue">
               COMMUNITY SPEAKS
             </div>
           </div>
@@ -42,14 +43,14 @@ const TestimonialSection = () => {
             </span>
           </h2>
           
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-minecraft">
             Don't just take our word for it. Here's what our community has to say about their MinePath experience.
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {TESTIMONIALS.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
+            <TestimonialCard key={index} testimonial={testimonial} variant={index === 0 ? 'dirt' : index === 1 ? 'stone' : 'planks'} />
           ))}
         </div>
       </div>
@@ -57,39 +58,46 @@ const TestimonialSection = () => {
   );
 };
 
-const TestimonialCard = ({ testimonial }: { testimonial: typeof TESTIMONIALS[0] }) => {
+interface TestimonialCardProps {
+  testimonial: typeof TESTIMONIALS[0];
+  variant: 'dirt' | 'stone' | 'planks';
+}
+
+const TestimonialCard = ({ testimonial, variant }: TestimonialCardProps) => {
   return (
-    <Card className="bg-card/30 backdrop-blur-sm border border-border/50 h-full hover:shadow-lg hover:shadow-solana-purple/10 transition-all duration-300 hover:transform hover:-translate-y-1 group">
-      <CardContent className="p-6 flex flex-col h-full relative">
-        <div className="absolute top-3 right-3 text-solana-purple opacity-20 group-hover:opacity-50 transition-opacity">
-          <Quote className="h-10 w-10" />
+    <MinecraftCard 
+      variant={variant}
+      bordered={true}
+      className="p-6 h-full transition-all duration-300 hover:transform hover:-translate-y-1"
+    >
+      <div className="absolute top-3 right-3 text-solana-purple opacity-20 group-hover:opacity-50 transition-opacity">
+        <Quote className="h-10 w-10" />
+      </div>
+      
+      <div className="flex mb-4">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} className="h-4 w-4 fill-solana-purple text-solana-purple" />
+        ))}
+      </div>
+      
+      <p className="text-white font-minecraft italic flex-grow relative z-10 mb-4">
+        "{testimonial.text}"
+      </p>
+      
+      <div className="flex items-center mt-6 pt-4 border-t-2 border-white/20">
+        <div className="w-12 h-12 overflow-hidden mr-4 border-2 border-minecraft-gold minecraft-container">
+          <img 
+            src={testimonial.avatar} 
+            alt={testimonial.author} 
+            className="w-full h-full object-cover pixelated" 
+          />
         </div>
-        
-        <div className="flex mb-4">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="h-4 w-4 fill-solana-purple text-solana-purple" />
-          ))}
+        <div>
+          <div className="font-minecraft text-minecraft-gold">{testimonial.author}</div>
+          <div className="text-sm text-white/70 font-minecraft">{testimonial.role}</div>
         </div>
-        
-        <p className="text-foreground/80 italic flex-grow relative z-10">
-          "{testimonial.text}"
-        </p>
-        
-        <div className="flex items-center mt-6 pt-4 border-t border-border/30">
-          <div className="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-solana-purple/30">
-            <img 
-              src={testimonial.avatar} 
-              alt={testimonial.author} 
-              className="w-full h-full object-cover" 
-            />
-          </div>
-          <div>
-            <div className="font-medium text-white">{testimonial.author}</div>
-            <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+      </div>
+    </MinecraftCard>
   );
 };
 
