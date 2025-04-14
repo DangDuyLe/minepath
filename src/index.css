@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -57,10 +58,16 @@
     background-image: url("/images/bg-dirt.png");
     background-repeat: repeat;
     background-attachment: fixed;
+    image-rendering: pixelated;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-minecraft;
+  }
+  
+  /* No rounded corners for true Minecraft look */
+  * {
+    border-radius: 0 !important;
   }
 }
 
@@ -95,38 +102,6 @@
     animation: shimmer 2s linear infinite;
   }
   
-  .bg-solana-gradient {
-    @apply bg-gradient-to-r from-[#9b87f5] via-[#1EAEDB] to-[#7E69AB];
-  }
-
-  /* Modern card style matching the image */
-  .card-modern {
-    @apply bg-[#1A1F2C]/90 backdrop-blur-sm border border-[#2A2F3C]/80 rounded-lg shadow-lg;
-  }
-
-  /* Modern button style matching the image */
-  .btn-modern {
-    @apply bg-[#9b87f5] hover:bg-[#7E69AB] text-white rounded-md px-6 py-3 font-medium transition-colors;
-  }
-
-  /* Gradient text style */
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#9b87f5] to-[#1EAEDB];
-  }
-  
-  /* 3D-like styling */
-  .perspective-1000 {
-    perspective: 1000px;
-  }
-
-  .transform-style-3d {
-    transform-style: preserve-3d;
-  }
-
-  .rotate-y-3 {
-    transform: rotateY(3deg);
-  }
-
   /* Minecraft-styled components */
   .minecraft-btn {
     @apply font-minecraft py-2 px-4 border-2 border-b-4 border-t-0 border-l-0 border-r-4 transition-all duration-100 hover:translate-y-[2px] hover:border-b-2 active:translate-y-[4px] active:border-b-0;
@@ -137,7 +112,7 @@
   }
   
   .minecraft-btn-blue {
-    @apply minecraft-btn bg-solana-blue border-solana-blue/70 text-white hover:bg-solana-blue/90;
+    @apply minecraft-btn bg-minecraft-blue border-minecraft-blue/70 text-white hover:bg-minecraft-blue/90;
   }
   
   .minecraft-btn-purple {
@@ -151,16 +126,19 @@
   .minecraft-dirt-bg {
     background-image: url("/images/bg-dirt.png");
     background-repeat: repeat;
+    image-rendering: pixelated;
   }
   
   .minecraft-stone-bg {
     background-image: url("/images/bg-stone.png");
     background-repeat: repeat;
+    image-rendering: pixelated;
   }
   
   .minecraft-wood-bg {
     background-image: url("/images/bg-planks.png");
     background-repeat: repeat;
+    image-rendering: pixelated;
   }
   
   .pixelated {
@@ -168,7 +146,7 @@
   }
   
   .minecraft-container {
-    @apply border-4 border-theme-gray bg-black/70 p-6 rounded-none;
+    @apply border-4 border-theme-gray bg-black/70 p-6;
   }
 
   /* Enhanced Minecraft UI Elements */
@@ -196,7 +174,7 @@
   }
 
   .minecraft-progress-bar {
-    @apply h-full bg-solana-green/80;
+    @apply h-full bg-minecraft-green;
     box-shadow: inset 0 2px 0 rgba(255,255,255,0.3);
   }
 
@@ -231,7 +209,7 @@
 
   /* Minecraft tooltip */
   .minecraft-tooltip {
-    @apply absolute z-50 bg-gray-900/90 border border-gray-700 p-2 rounded-none text-white text-xs;
+    @apply absolute z-50 bg-gray-900/90 border border-gray-700 p-2 text-white text-xs;
     min-width: 200px;
   }
 
@@ -302,6 +280,7 @@
     background-size: 20px 20px;
     opacity: 0.05;
     pointer-events: none;
+    image-rendering: pixelated;
   }
 }
 
@@ -318,20 +297,8 @@
     animation: pulse-glow 4s ease-in-out infinite;
   }
 
-  .neo-blur {
-    @apply backdrop-blur-xl bg-[#1A1F2C]/80 border border-[#2A2F3C]/80 rounded-xl shadow-lg;
-  }
-  
-  .drop-shadow-glow-sm {
-    filter: drop-shadow(0 0 3px rgba(155, 135, 245, 0.4));
-  }
-  
-  .drop-shadow-glow-md {
-    filter: drop-shadow(0 0 5px rgba(155, 135, 245, 0.5));
-  }
-  
-  .drop-shadow-glow-lg {
-    filter: drop-shadow(0 0 8px rgba(155, 135, 245, 0.6));
+  .pixelated {
+    image-rendering: pixelated !important;
   }
 }
 
@@ -349,11 +316,6 @@
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.6; filter: brightness(1); }
   50% { opacity: 1; filter: brightness(1.3); }
-}
-
-@keyframes modal-appear {
-  0% { opacity: 0; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1); }
 }
 
 /* Minecraft-like loading animation */
@@ -401,6 +363,6 @@
 
 .minecraft-loading::after {
   content: "";
-  @apply absolute inset-0 rounded-full;
+  @apply absolute inset-0;
   animation: minecraft-loading 1s linear infinite;
 }

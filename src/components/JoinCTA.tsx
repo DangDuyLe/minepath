@@ -1,5 +1,5 @@
+
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { Copy, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ServerStatus from './ServerStatus';
@@ -20,10 +20,15 @@ const JoinCTA = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ServerStatus />
         
-        <div className="minecraft-container p-8 md:p-12 border-4 border-minecraft-dirt">
+        <div className="minecraft-panel p-8 md:p-12 border-4 border-minecraft-dirt relative">
+          <div className="absolute -top-4 -left-4 w-8 h-8 bg-minecraft-stone"></div>
+          <div className="absolute -top-4 -right-4 w-8 h-8 bg-minecraft-stone"></div>
+          <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-minecraft-stone"></div>
+          <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-minecraft-stone"></div>
+          
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
-              <h2 className="font-minecraft text-2xl md:text-3xl mb-4 text-white">
+              <h2 className="font-minecraft text-2xl md:text-3xl mb-4 text-minecraft-green">
                 JOIN THE ADVENTURE TODAY
               </h2>
               
@@ -33,18 +38,18 @@ const JoinCTA = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="relative">
-                  <div className="flex items-center bg-[#1A1F2C]/60 border-2 border-minecraft-dirt rounded-none px-4 py-2">
-                    <span className="font-mono text-foreground/90">play.minepath.com</span>
+                  <div className="flex items-center bg-black/60 border-2 border-minecraft-dirt rounded-none px-4 py-2">
+                    <span className="font-minecraft text-white">play.minepath.com</span>
                     <button 
                       onClick={copyServerAddress}
-                      className="ml-2 p-1 hover:text-[#9b87f5] transition-colors"
+                      className="ml-2 p-1 hover:text-minecraft-green transition-colors"
                     >
                       <Copy size={16} />
                     </button>
                   </div>
                 </div>
                 
-                <button className="minecraft-btn-green inline-flex items-center justify-center">
+                <button className="minecraft-3d-btn inline-flex items-center justify-center">
                   How to Connect <ArrowRight className="ml-2 h-4 w-4" />
                 </button>
               </div>

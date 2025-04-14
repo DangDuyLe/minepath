@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -5,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, ChevronRight, Search, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { MinecraftIcon } from '@/components/ui/minecraft-icon';
+import { MinecraftCard } from '@/components/ui/minecraft-card';
 
 // Sample store items
 const STORE_ITEMS = [
@@ -86,27 +89,23 @@ const StorePage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center mb-8">
             <Link to="/">
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="border-solana-purple text-solana-purple hover:bg-solana-purple/10 group"
-              >
+              <button className="minecraft-btn bg-minecraft-stone border-minecraft-stone/50 text-white flex items-center justify-center group">
                 <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" /> 
                 Back to Home
-              </Button>
+              </button>
             </Link>
           </div>
           
           <motion.div 
-            className="minecraft-container border-4 border-minecraft-dirt mb-10"
+            className="minecraft-panel mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 p-6">
               <div>
-                <h1 className="font-minecraft text-3xl md:text-4xl text-solana-green mb-2">GAME STORE</h1>
-                <p className="text-sm text-muted-foreground">Purchase in-game items using $BLOC tokens</p>
+                <h1 className="font-minecraft text-3xl md:text-4xl text-black mb-2">GAME STORE</h1>
+                <p className="text-sm text-black/70 font-minecraft">Purchase in-game items using $BLOC tokens</p>
               </div>
               
               <div className="flex items-center space-x-4">
@@ -114,7 +113,7 @@ const StorePage = () => {
                   <input
                     type="text"
                     placeholder="Search items..."
-                    className="bg-black/60 border-2 border-minecraft-dirt pl-10 pr-4 py-2 w-64 text-white placeholder:text-gray-400"
+                    className="bg-black/60 font-minecraft border-2 border-minecraft-dirt pl-10 pr-4 py-2 w-64 text-white placeholder:text-gray-400"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -122,9 +121,9 @@ const StorePage = () => {
                 </div>
                 
                 <div className="relative">
-                  <Button className="minecraft-btn-purple">
+                  <button className="minecraft-btn-green">
                     <ShoppingCart className="h-4 w-4 mr-2" /> Cart (0)
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
@@ -139,8 +138,8 @@ const StorePage = () => {
                 className={`minecraft-btn ${
                   selectedCategory === category 
                     ? 'minecraft-btn-green' 
-                    : 'bg-black/60 border-gray-700 text-white hover:bg-black/80'
-                } whitespace-nowrap capitalize min-w-[120px]`}
+                    : 'bg-minecraft-stone border-gray-700 text-white hover:bg-black/80'
+                } whitespace-nowrap capitalize min-w-[120px] font-minecraft`}
               >
                 {category}
               </button>
@@ -165,15 +164,15 @@ const StorePage = () => {
                       alt={item.name} 
                       className="w-16 h-16 object-contain pixelated"
                     />
-                    <div className="absolute -top-3 -right-3 bg-solana-purple/90 text-white text-xs font-minecraft px-2 py-1 rounded-sm">
+                    <div className="absolute -top-3 -right-3 bg-minecraft-gold text-black text-xs font-minecraft px-2 py-1">
                       {item.price} {item.currency}
                     </div>
                   </div>
                   
-                  <h3 className="font-minecraft text-lg mb-2 text-center">{item.name}</h3>
-                  <p className="text-xs text-muted-foreground text-center mb-4">{item.description}</p>
+                  <h3 className="font-minecraft text-lg mb-2 text-center text-white">{item.name}</h3>
+                  <p className="text-xs text-gray-300 text-center mb-4 font-minecraft">{item.description}</p>
                   
-                  <button className="minecraft-btn-purple text-sm w-full">
+                  <button className="minecraft-btn-green text-sm w-full">
                     Add to Cart
                   </button>
                 </div>
@@ -183,22 +182,22 @@ const StorePage = () => {
           
           {/* Pagination - Minecraft style */}
           <div className="flex justify-center">
-            <button className="minecraft-btn bg-black/60 border-gray-700 text-white px-3">Previous</button>
+            <button className="minecraft-btn bg-minecraft-stone border-gray-700 text-white px-3 font-minecraft">Previous</button>
             <div className="mx-2 flex">
               {[1, 2, 3].map(page => (
                 <button 
                   key={page} 
-                  className={`w-10 h-10 flex items-center justify-center ${
+                  className={`w-10 h-10 flex items-center justify-center font-minecraft ${
                     page === 1 
                       ? 'minecraft-btn-green' 
-                      : 'minecraft-btn bg-black/60 border-gray-700 text-white'
+                      : 'minecraft-btn bg-minecraft-stone border-gray-700 text-white'
                   }`}
                 >
                   {page}
                 </button>
               ))}
             </div>
-            <button className="minecraft-btn bg-black/60 border-gray-700 text-white px-3">Next</button>
+            <button className="minecraft-btn bg-minecraft-stone border-gray-700 text-white px-3 font-minecraft">Next</button>
           </div>
         </div>
       </main>

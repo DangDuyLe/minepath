@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -13,10 +14,11 @@ import Newsletter from '@/components/Newsletter';
 import JoinCTA from '@/components/JoinCTA';
 import NFTDropMechanics from '@/components/NFTDropMechanics';
 import Footer from '@/components/Footer';
+import TestimonialSection from '@/components/TestimonialSection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg">
       <Navbar />
       <main className="flex-grow">
         <Hero />
@@ -26,8 +28,8 @@ const Index = () => {
         <NFTRaritySection />
         <Tokenomics />
         <NFTDropMechanics />
-        <Roadmap />
         <HowToPlay />
+        <TestimonialSection />
         <NFTShowcase />
         <JoinCTA />
         <Newsletter />
