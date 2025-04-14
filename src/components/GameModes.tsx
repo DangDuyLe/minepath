@@ -9,7 +9,7 @@ const GAME_MODES = [
   {
     id: 'mining',
     name: 'Mining',
-    description: 'Dig quặng to earn $FARM, upgrade with Tool NFTs, and unlock rare lootboxes.',
+    description: 'Collect ores to earn $FARM, upgrade with Tool NFTs, and unlock rare lootboxes.',
     icon: Pickaxe,
     bgColor: 'bg-minecraft-stone',
     iconVariant: 'diamond',
@@ -24,7 +24,6 @@ const GAME_MODES = [
     icon: Wheat,
     bgColor: 'bg-minecraft-grass',
     iconVariant: 'grass',
-    image: '/images/game_mode_farming.png',
     available: false,
     phase: 'Phase 2'
   },
@@ -35,7 +34,6 @@ const GAME_MODES = [
     icon: Swords,
     bgColor: 'bg-minecraft-diamond',
     iconVariant: 'iron',
-    image: '/images/game_mode_pvp.png',
     available: false,
     phase: 'Phase 3'
   },
@@ -46,7 +44,6 @@ const GAME_MODES = [
     icon: Hammer,
     bgColor: 'bg-minecraft-planks',
     iconVariant: 'gold',
-    image: '/images/game_mode_crafting.png',
     available: false,
     phase: 'Phase 4'
   },
@@ -57,7 +54,6 @@ const GAME_MODES = [
     icon: Crown,
     bgColor: 'bg-solana-purple',
     iconVariant: 'gold',
-    image: '/images/game_mode_boss.png',
     available: false,
     phase: 'Phase 5'
   }

@@ -105,7 +105,7 @@ const JoinCTA = () => {
             
             <div className="w-full md:w-auto">
               <img 
-                src="/images/minecraft-character.png" 
+                src="/images/minecraft_character.png" 
                 alt="Minecraft Character with NFT" 
                 className="pixelated h-48 md:h-60 w-auto object-contain mx-auto" 
               />
