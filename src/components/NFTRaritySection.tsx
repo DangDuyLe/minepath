@@ -161,8 +161,11 @@ const NFTRaritySection = () => {
 
 const RarityCard = ({ rarity }: { rarity: typeof RARITY_TYPES[0] }) => {
   return (
-    <Card className={`overflow-hidden border-4 border-gray-800 ${rarity.block} transition-all duration-300 hover:transform hover:scale-105`}>
-      <div className="p-6 relative">
+    <Card className={`overflow-hidden border-4 border-gray-800 ${rarity.block} transition-all duration-300 hover:transform hover:scale-105 relative`}>
+      {/* Dark overlay to make the background darker while preserving color */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      
+      <div className="p-6 relative z-10">
         {/* Pixelated grid overlay */}
         <div className="absolute inset-0 opacity-10" style={{ 
           backgroundImage: 'url("/images/pixel_pattern.png")',
@@ -170,25 +173,25 @@ const RarityCard = ({ rarity }: { rarity: typeof RARITY_TYPES[0] }) => {
           imageRendering: 'pixelated'
         }}></div>
         
-        <div className={`flex items-center justify-center mb-6 w-14 h-14 mx-auto border-4 border-gray-800 ${rarity.className === 'rarity-legendary' ? 'animate-pulse-glow' : ''}`}>
+        <div className={`flex items-center justify-center mb-6 w-14 h-14 mx-auto border-4 border-gray-800 ${rarity.className === 'rarity-legendary' ? 'animate-pulse-glow' : ''} relative z-10`}>
           <div className={rarity.className}>
             {rarity.icon}
           </div>
         </div>
         
-        <h3 className={`font-minecraft text-xl text-center mb-2 ${rarity.className}`}>
+        <h3 className={`font-minecraft text-xl text-center mb-2 ${rarity.className} relative z-10`}>
           {rarity.name}
         </h3>
         
-        <div className="text-sm text-center mb-4 text-white">
+        <div className="text-sm text-center mb-4 text-white relative z-10">
           Drop Chance: <span className={`font-semibold ${rarity.className}`}>{rarity.dropChance}</span>
         </div>
         
-        <p className="text-sm text-white mb-4 text-center font-minecraft tracking-wide">
+        <p className="text-sm text-white mb-4 text-center font-minecraft tracking-wide relative z-10">
           {rarity.description}
         </p>
         
-        <div className="mt-4 bg-minecraft-black/60 backdrop-blur-sm p-3 border-2 border-gray-800">
+        <div className="mt-4 bg-minecraft-black/60 backdrop-blur-sm p-3 border-2 border-gray-800 relative z-10">
           <div className="text-xs uppercase tracking-wide text-white mb-2 font-minecraft text-center">Examples:</div>
           <ul className="text-sm space-y-1 font-minecraft">
             {rarity.examples.map((example, index) => (
@@ -201,10 +204,10 @@ const RarityCard = ({ rarity }: { rarity: typeof RARITY_TYPES[0] }) => {
         </div>
         
         {/* Corner pixels */}
-        <div className="absolute top-0 left-0 w-2 h-2 bg-white/20"></div>
-        <div className="absolute top-0 right-0 w-2 h-2 bg-white/20"></div>
-        <div className="absolute bottom-0 left-0 w-2 h-2 bg-black/40"></div>
-        <div className="absolute bottom-0 right-0 w-2 h-2 bg-black/40"></div>
+        <div className="absolute top-0 left-0 w-2 h-2 bg-white/20 z-10"></div>
+        <div className="absolute top-0 right-0 w-2 h-2 bg-white/20 z-10"></div>
+        <div className="absolute bottom-0 left-0 w-2 h-2 bg-black/40 z-10"></div>
+        <div className="absolute bottom-0 right-0 w-2 h-2 bg-black/40 z-10"></div>
       </div>
     </Card>
   );

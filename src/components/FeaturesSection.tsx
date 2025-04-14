@@ -207,7 +207,10 @@ const FeatureCard = ({ feature, index }: FeatureCardProps) => {
       variants={item}
       transition={{ duration: 0.5, delay: index * 0.05 }}
     >
-      <div className={`border-4 border-gray-800 ${blockBgs[index % blockBgs.length]} minecraft-3d-container h-full`}>
+      <div className={`border-4 border-gray-800 ${blockBgs[index % blockBgs.length]} minecraft-3d-container h-full relative`}>
+        {/* Dark overlay to make the background darker while preserving color */}
+        <div className="absolute inset-0 bg-black"></div>
+        
         <div className="p-6 flex flex-col h-full relative">
           {/* Pixelated overlay texture */}
           <div className="absolute inset-0 opacity-10" style={{ 

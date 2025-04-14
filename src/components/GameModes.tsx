@@ -167,7 +167,7 @@ const GameModes = () => {
               <img 
                 src={mode.image} 
                 alt={mode.name} 
-                className="w-full h-64 object-cover pixelated"
+                className="w-full  object-cover pixelated"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = '/images/placeholder_gamemode.png'
                 }}
@@ -178,8 +178,8 @@ const GameModes = () => {
               </div>
             </div>
             
-            <div className="flex-1 flex flex-col justify-center">
-              <h3 className="font-minecraft text-2xl mb-4 text-black">{mode.name} Mode</h3>
+            <div className="flex-1 flex flex-col justify-center ">
+              <h3 className="font-minecraft text-2xl mb-4 ">{mode.name} Mode</h3>
               <p className="text-black mb-6 font-minecraft">{mode.description}</p>
               
               <ul className="space-y-3">
