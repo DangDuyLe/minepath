@@ -9,14 +9,16 @@ import NFTCatalog from "@/pages/NFTCatalog";
 import HowToPlayPage from "@/pages/HowToPlayPage";
 import StorePage from "@/pages/StorePage";
 
-// Create a custom Minecraft-themed toast styles
+// Enhanced Minecraft-themed toast styles
 const toastStyles = {
   background: 'url("/images/bg-planks.png")',
   color: 'white',
   border: '4px solid #8b5a2b',
   fontFamily: '"Minecraft", monospace',
   boxShadow: '0 4px 0 rgba(0,0,0,0.3)',
-  imageRendering: 'pixelated' as 'pixelated'
+  imageRendering: 'pixelated' as 'pixelated',
+  letterSpacing: '0.5px',
+  textShadow: '1px 1px 0px rgba(0,0,0,0.8)'
 };
 
 const queryClient = new QueryClient();
