@@ -17,6 +17,7 @@ import Footer from '@/components/Footer';
 import TestimonialSection from '@/components/TestimonialSection';
 import Web3Economy from '@/components/Web3Economy'; // Add this new component
 import CommunitySection from '@/components/CommunitySection'; // Add this new component
+import ServerStatus from '@/components/ServerStatus';
 
 const Index = () => {
   return (
@@ -39,6 +40,7 @@ const Index = () => {
         <NFTShowcase />
         <Roadmap />
         <Newsletter />
+        <ServerStatus /> {/* Add Server Status section */}
       </main>
       <Footer />
     </div>

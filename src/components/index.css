@@ -278,6 +278,16 @@
 
   /* Enhanced Minecraft container with depth */
   .minecraft-3d-container {
+    @apply relative bg-black/70 p-6 border-t-4 border-b-4 border-l-0 border-r-0;
+    border-image: url('/images/dirt_border.png') 4 stretch;
+    box-shadow: 
+      inset 0 4px 0 rgba(255,255,255,0.1),
+      inset 0 -4px 0 rgba(0,0,0,0.3);
+  }
+
+  /* Visual block effects */
+  .block-effect {
+    position: relative;
   }
 
   .block-effect:after {

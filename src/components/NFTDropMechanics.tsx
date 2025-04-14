@@ -42,8 +42,47 @@ const NFTDropMechanics = () => {
   ];
 
   return (
-    <section className="py-20 minecraft-stone-bg">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 relative overflow-hidden minecraft-dirt-bg">
+      {/* Background elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-nether.png')] bg-repeat"></div>
+        
+        {/* Minecraft particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute pixelated w-2 h-2 bg-white opacity-30"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 5}s ease-in-out infinite ${Math.random() * 5}s`
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Floating blocks */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={`block-${i}`}
+              className="absolute pixelated w-8 h-8"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                backgroundImage: `url('/images/${['dirt', 'stone', 'diamond', 'gold'][Math.floor(Math.random() * 4)]}_block.png')`,
+                backgroundSize: 'cover',
+                transform: 'rotate(10deg)',
+                imageRendering: 'pixelated',
+                animation: `float ${7 + Math.random() * 7}s ease-in-out infinite ${Math.random() * 7}s, rotate ${15 + Math.random() * 10}s linear infinite ${Math.random() * 10}s`
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}

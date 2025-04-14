@@ -7,7 +7,7 @@ const CommunitySection = () => {
   return (
     <section className="py-24 relative overflow-hidden minecraft-dirt-bg">
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-pattern.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-nether.png')] bg-repeat"></div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

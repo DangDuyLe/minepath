@@ -69,7 +69,7 @@ const FeaturesSection = () => {
     <section className="relative py-24 overflow-hidden minecraft-dirt-bg">
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-pattern.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-stone.png')] bg-repeat"></div>
         
         {/* Minecraft particles */}
         <div className="absolute inset-0 overflow-hidden">
