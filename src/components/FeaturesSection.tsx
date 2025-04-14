@@ -9,42 +9,42 @@ const features = [
   {
     title: "Mint In-Game Items",
     description: "Transform your hard-earned Minecraft items into tradable NFTs on the Solana blockchain.",
-    icon: <Sword className="h-8 w-8 text-minecraft-purple" />,
+    icon: Sword,
     blockType: "diamond",
     variant: "diamond"
   },
   {
     title: "Secure Ownership",
     description: "True ownership of your items, secured by blockchain technology that can't be hacked or duplicated.",
-    icon: <Shield className="h-8 w-8 text-minecraft-iron" />,
+    icon: Shield,
     blockType: "iron",
     variant: "stone"
   },
   {
     title: "Trade & Sell",
     description: "Trade your NFTs with other players or sell them on our marketplace for real cryptocurrency.",
-    icon: <Coins className="h-8 w-8 text-minecraft-gold" />,
+    icon: Coins,
     blockType: "gold",
     variant: "gold"
   },
   {
     title: "Collect Rarities",
     description: "Discover and collect rare items with different tiers of scarcity – from common to legendary.",
-    icon: <Award className="h-8 w-8 text-rarity-legendary" />,
+    icon: Award,
     blockType: "emerald",
     variant: "grass"
   },
   {
     title: "Cross-Server Usage",
     description: "Use your NFT items across multiple compatible Minecraft servers in our network.",
-    icon: <Share2 className="h-8 w-8 text-minecraft-blue" />,
+    icon: Share2,
     blockType: "lapis",
     variant: "diamond"
   },
   {
     title: "Special Abilities",
     description: "Legendary NFTs grant special abilities and perks that regular Minecraft items don't have.",
-    icon: <Sparkles className="h-8 w-8 text-rarity-epic" />,
+    icon: Sparkles,
     blockType: "redstone",
     variant: "stone"
   },
@@ -148,7 +148,7 @@ interface FeatureCardProps {
   feature: {
     title: string;
     description: string;
-    icon: JSX.Element;
+    icon: React.ComponentType<any>;
     blockType: string;
     variant: string;
   };
@@ -184,7 +184,7 @@ const FeatureCard = ({ feature, index }: FeatureCardProps) => {
           {/* Icon */}
           <div className="relative z-10 mb-6">
             <MinecraftIcon 
-              icon={() => feature.icon} 
+              icon={feature.icon} 
               size="lg" 
               variant={feature.variant as any}
               className="border-4 border-gray-800"
