@@ -20,7 +20,7 @@ const Footer = () => {
             <Link to="/" className="block mb-6">
               <img src="/images/minecraft-logo.png" alt="MinePath" className="h-8 w-auto mb-2 pixelated" />
               <h3 className="font-minecraft text-xl text-minecraft-green">
-                BLOCKVERSE RAIDERS
+                MinePath
               </h3>
             </Link>
             <p className="text-sm text-white mb-6 font-minecraft">
@@ -81,7 +81,7 @@ const Footer = () => {
                 Connect to our Minecraft server 
               </p>
               <div className="bg-black/50 border-2 border-minecraft-dirt px-3 py-2 mb-3 flex items-center justify-between">
-                <span className="font-minecraft text-sm text-white">play.blockverse.com</span>
+                <span className="font-minecraft text-sm text-white">play.minepath.com</span>
                 <Zap className="h-4 w-4 text-minecraft-green" />
               </div>
               <button className="w-full minecraft-btn-green flex items-center justify-center text-sm">
@@ -93,7 +93,7 @@ const Footer = () => {
         
         <div className="border-t-4 border-minecraft-dirt mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-xs text-white font-minecraft">
-            © 2025 BlockVerse Raiders. All rights reserved.
+            © 2025 MinePath. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex gap-6">
             <a href="/privacy" className="text-xs text-white hover:text-minecraft-green transition-colors font-minecraft">

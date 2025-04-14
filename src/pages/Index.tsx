@@ -22,6 +22,7 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <JoinCTA />
         <WhatIs />
         <GameRewards />
         <FeaturesSection />
@@ -31,7 +32,7 @@ const Index = () => {
         <HowToPlay />
         <TestimonialSection />
         <NFTShowcase />
-        <JoinCTA />
+
         <Newsletter />
       </main>
       <Footer />

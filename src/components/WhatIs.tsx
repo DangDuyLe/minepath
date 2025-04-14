@@ -34,12 +34,12 @@ const WhatIs = () => {
             
             <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6">
               <span className="text-minecraft-purple drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                BLOCK<span className="text-white">VERSE</span> <span className="text-minecraft-blue">RAIDERS</span>
+                MINE<span className="text-white"></span> <span className="text-minecraft-blue">PATH</span>
               </span>
             </h2>
             
             <p className="text-lg text-white mb-8 font-minecraft leading-relaxed tracking-wide">
-              BlockVerse Raiders is a groundbreaking Minecraft project that seamlessly integrates 
+              MinePath is a groundbreaking Minecraft project that seamlessly integrates 
               Solana blockchain technology into the gameplay experience. 
               This integration brings forth a new dimension of possibilities, allowing players to 
               interact with cryptocurrency within the game environment.
@@ -89,7 +89,7 @@ const WhatIs = () => {
                   </div>
                   <div>
                     <h3 className="font-minecraft text-xl mb-2 text-minecraft-gold">Interoperability</h3>
-                    <p className="text-white font-minecraft text-sm leading-relaxed">Tokens earned in-game can be used beyond BlockVerse Raiders, with interoperability on various platforms and ecosystems including trading on exchanges.</p>
+                    <p className="text-white font-minecraft text-sm leading-relaxed">Tokens earned in-game can be used beyond MinePath, with interoperability on various platforms and ecosystems including trading on exchanges.</p>
                   </div>
                 </div>
               </MinecraftCard>
@@ -110,7 +110,7 @@ const WhatIs = () => {
               <div className="relative z-10 border-4 border-minecraft-dirt overflow-hidden">
                 <img 
                   src="/images/minecraft_world.png" 
-                  alt="BlockVerse Raiders Minecraft World" 
+                  alt="MinePath Minecraft World" 
                   className="w-full pixelated"
                 />
                 

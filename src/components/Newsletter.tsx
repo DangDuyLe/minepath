@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -35,12 +34,45 @@ const Newsletter = () => {
   };
   
   return (
-    <section className="py-32 relative overflow-hidden" style={{ backgroundImage: "url('/images/bg-dirt.png')", backgroundRepeat: 'repeat', imageRendering: 'pixelated' }}>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#9b87f5]/5 via-[#1EAEDB]/10 to-background/95 z-0"></div>
-      <div className="absolute inset-0 opacity-10 bg-[url('/images/bg-pattern.png')] bg-repeat z-0"></div>
-      
-      <div className="absolute top-20 left-10 w-64 h-64 bg-[#9b87f5]/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#1EAEDB]/10 rounded-full blur-3xl"></div>
+    <section className="relative py-32 overflow-hidden minecraft-dirt-bg">
+      {/* Background elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-pattern.png')] bg-repeat"></div>
+        
+        {/* Minecraft particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute pixelated w-2 h-2 bg-white opacity-30"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 5}s ease-in-out infinite ${Math.random() * 5}s`
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Floating blocks */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={`block-${i}`}
+              className="absolute pixelated w-8 h-8"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                backgroundImage: `url('/images/${['dirt', 'stone', 'diamond', 'gold'][Math.floor(Math.random() * 4)]}_block.png')`,
+                backgroundSize: 'cover',
+                transform: 'rotate(10deg)',
+                imageRendering: 'pixelated',
+                animation: `float ${7 + Math.random() * 7}s ease-in-out infinite ${Math.random() * 7}s, rotate ${15 + Math.random() * 10}s linear infinite ${Math.random() * 10}s`
+              }}
+            />
+          ))}
+        </div>
+      </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
