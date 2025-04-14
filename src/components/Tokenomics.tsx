@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
+import { MinecraftProgress } from '@/components/ui/minecraft-progress';
 
 const TOKENOMICS_DATA = [
   { name: 'Liquidity', value: 40, color: '#9945FF' },
@@ -10,10 +12,27 @@ const TOKENOMICS_DATA = [
   { name: 'Community', value: 10, color: '#8B5CF6' },
 ];
 
+// Minecraft chest contents animation
+const chestContents = [
+  { name: "Diamond", color: "#5feaea", amount: "x64", delay: 0.1 },
+  { name: "Emerald", color: "#4adc65", amount: "x32", delay: 0.2 },
+  { name: "Gold", color: "#f8bd17", amount: "x48", delay: 0.3 },
+  { name: "Iron", color: "#b0b0b0", amount: "x64", delay: 0.4 },
+];
+
 const Tokenomics = () => {
   return (
     <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-solana-blue/10 via-background/95 to-background/90 z-0"></div>
+      {/* Minecraft underground cave background */}
+      <div className="absolute inset-0 minecraft-stone-bg opacity-20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-minecraft-black/70 via-minecraft-black/90 to-minecraft-black/70 z-0"></div>
+      
+      {/* Decorative ore blocks */}
+      <div className="absolute left-10 bottom-20 w-8 h-8 bg-minecraft-diamond border-4 border-gray-800 pixelated"></div>
+      <div className="absolute right-10 top-20 w-8 h-8 bg-minecraft-gold border-4 border-gray-800 pixelated"></div>
+      <div className="absolute left-1/3 top-10 w-6 h-6 bg-minecraft-emerald border-4 border-gray-800 pixelated animate-float"></div>
+      <div className="absolute right-1/3 bottom-10 w-6 h-6 bg-minecraft-iron border-4 border-gray-800 pixelated animate-float" style={{animationDelay: '1.5s'}}></div>
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           className="text-center mb-16"
@@ -22,65 +41,147 @@ const Tokenomics = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-solana-green/20 via-solana-purple/20 to-solana-blue/20 mb-4">
-            <div className="px-4 py-1.5 rounded-full bg-card/60 backdrop-blur-sm text-sm font-medium text-solana-green border border-solana-green/10">
+          <div className="minecraft-panel inline-block p-1.5 bg-minecraft-stone border-4 border-gray-800">
+            <div className="px-4 py-1.5 bg-minecraft-emerald font-minecraft text-white text-sm border-b-4 border-minecraft-emerald/70">
               TOKENOMICS
             </div>
           </div>
           
-          <h2 className="font-minecraft text-4xl md:text-5xl mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-green to-solana-blue drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+          <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-minecraft-emerald via-minecraft-blue to-minecraft-green drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]">
               SUPPLY & DISTRIBUTION
             </span>
           </h2>
           
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
+          <p className="text-lg text-white max-w-2xl mx-auto mb-12 font-minecraft tracking-wide">
             Our token distribution is designed to support long-term growth and community rewards while maintaining 
             a sustainable economy.
           </p>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="h-[400px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={TOKENOMICS_DATA}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={80}
-                    outerRadius={140}
-                    paddingAngle={5}
-                    dataKey="value"
-                    label={({name, percent}) => `${name} ${(percent * 100).toFixed(0)}%`}
-                    labelLine={false}
-                  >
-                    {TOKENOMICS_DATA.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} stroke="transparent" />
-                    ))}
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
+              {/* Minecraft-styled pie chart border */}
+              <div className="relative h-full">
+                <div className="absolute inset-0 border-4 border-gray-800 bg-minecraft-black/60"></div>
+                <ResponsiveContainer width="100%" height="100%" className="relative z-10">
+                  <PieChart>
+                    <Pie
+                      data={TOKENOMICS_DATA}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={80}
+                      outerRadius={140}
+                      paddingAngle={5}
+                      dataKey="value"
+                      label={({name, percent}) => `${name} ${(percent * 100).toFixed(0)}%`}
+                      labelLine={false}
+                    >
+                      {TOKENOMICS_DATA.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} stroke="#000" strokeWidth={2} />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
+                
+                {/* Corner pixels */}
+                <div className="absolute top-0 left-0 w-3 h-3 bg-white/20"></div>
+                <div className="absolute top-0 right-0 w-3 h-3 bg-white/20"></div>
+                <div className="absolute bottom-0 left-0 w-3 h-3 bg-black/40"></div>
+                <div className="absolute bottom-0 right-0 w-3 h-3 bg-black/40"></div>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-card/50 backdrop-blur-md rounded-xl p-6 border border-solana-purple/10 group hover:bg-card/70 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-2 text-solana-purple">10M</h3>
-                <p className="text-sm text-muted-foreground">Total Supply</p>
+              {/* Minecraft chest animation */}
+              <motion.div 
+                initial={{ scale: 0.9, y: 20 }}
+                whileInView={{ scale: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="minecraft-chest col-span-full mb-8 bg-minecraft-planks border-4 border-gray-800 p-6"
+              >
+                <h3 className="font-minecraft text-2xl mb-6 text-minecraft-gold text-center">TOTAL SUPPLY</h3>
+                <div className="bg-minecraft-black/60 border-2 border-gray-800 p-4">
+                  <div className="flex justify-center items-center">
+                    <div className="text-minecraft-gold font-minecraft text-5xl animate-pulse-glow">
+                      10M
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-4">
+                  <ul className="space-y-2">
+                    {chestContents.map((item, index) => (
+                      <motion.li 
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: item.delay }}
+                        viewport={{ once: true }}
+                        className="flex justify-between items-center bg-minecraft-black/40 border-2 border-gray-800 px-3 py-2"
+                      >
+                        <span className="font-minecraft" style={{ color: item.color }}>{item.name}</span>
+                        <span className="font-minecraft text-white">{item.amount}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+              
+              <div className="bg-minecraft-stone border-4 border-gray-800 p-4 group hover:bg-minecraft-stone/70 transition-all duration-300">
+                <h3 className="font-minecraft text-3xl mb-4 text-minecraft-blue">4M</h3>
+                <p className="text-sm text-white font-minecraft">Liquidity</p>
+                <div className="mt-3">
+                  <MinecraftProgress 
+                    value={40} 
+                    max={100} 
+                    variant="blue" 
+                    height="md" 
+                    showValue 
+                  />
+                </div>
               </div>
               
-              <div className="bg-card/50 backdrop-blur-md rounded-xl p-6 border border-solana-purple/10 group hover:bg-card/70 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-2 text-solana-blue">4M</h3>
-                <p className="text-sm text-muted-foreground">Liquidity</p>
+              <div className="bg-minecraft-stone border-4 border-gray-800 p-4 group hover:bg-minecraft-stone/70 transition-all duration-300">
+                <h3 className="font-minecraft text-3xl mb-4 text-minecraft-green">2M</h3>
+                <p className="text-sm text-white font-minecraft">Development</p>
+                <div className="mt-3">
+                  <MinecraftProgress 
+                    value={20} 
+                    max={100} 
+                    variant="green" 
+                    height="md" 
+                    showValue 
+                  />
+                </div>
               </div>
               
-              <div className="bg-card/50 backdrop-blur-md rounded-xl p-6 border border-solana-purple/10 group hover:bg-card/70 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-2 text-solana-green">2M</h3>
-                <p className="text-sm text-muted-foreground">Development</p>
+              <div className="bg-minecraft-stone border-4 border-gray-800 p-4 group hover:bg-minecraft-stone/70 transition-all duration-300">
+                <h3 className="font-minecraft text-3xl mb-4 text-minecraft-gold">2M</h3>
+                <p className="text-sm text-white font-minecraft">Marketing</p>
+                <div className="mt-3">
+                  <MinecraftProgress 
+                    value={20} 
+                    max={100} 
+                    variant="gold" 
+                    height="md" 
+                    showValue 
+                  />
+                </div>
               </div>
               
-              <div className="bg-card/50 backdrop-blur-md rounded-xl p-6 border border-solana-purple/10 group hover:bg-card/70 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-2 text-rarity-legendary">2M</h3>
-                <p className="text-sm text-muted-foreground">Marketing</p>
+              <div className="bg-minecraft-stone border-4 border-gray-800 p-4 group hover:bg-minecraft-stone/70 transition-all duration-300">
+                <h3 className="font-minecraft text-3xl mb-4 text-rarity-epic">2M</h3>
+                <p className="text-sm text-white font-minecraft">Team & Community</p>
+                <div className="mt-3">
+                  <MinecraftProgress 
+                    value={20} 
+                    max={100} 
+                    variant="red" 
+                    height="md" 
+                    showValue 
+                  />
+                </div>
               </div>
             </div>
           </div>

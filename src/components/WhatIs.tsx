@@ -1,11 +1,21 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Shield, Share2 } from 'lucide-react';
+import { MinecraftIcon } from '@/components/ui/minecraft-icon';
+import { MinecraftCard } from '@/components/ui/minecraft-card';
 
 const WhatIs = () => {
   return (
     <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-solana-blue/10 via-background/95 to-background/90 z-0"></div>
+      {/* Minecraft texture background */}
+      <div className="absolute inset-0 minecraft-stone-bg opacity-20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-minecraft-black/80 via-minecraft-black/90 to-minecraft-black/80 z-0"></div>
+
+      {/* Floating Minecraft blocks */}
+      <div className="absolute left-10 top-1/3 w-12 h-12 bg-minecraft-dirt border-2 border-black/40 pixelated animate-float"></div>
+      <div className="absolute right-20 bottom-1/4 w-8 h-8 bg-minecraft-stone border-2 border-black/40 pixelated animate-float" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute left-1/4 bottom-20 w-10 h-10 bg-minecraft-grass border-2 border-black/40 pixelated animate-float" style={{ animationDelay: '2s' }}></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
@@ -16,19 +26,19 @@ const WhatIs = () => {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-solana-blue/20 via-solana-purple/20 to-solana-green/20 mb-4">
-              <div className="px-4 py-1.5 rounded-full bg-card/60 backdrop-blur-sm text-sm font-medium text-solana-blue border border-solana-blue/10">
+            <div className="minecraft-panel inline-block p-1.5 bg-minecraft-stone border-4 border-gray-800">
+              <div className="px-4 py-1.5 bg-minecraft-dirt text-sm font-minecraft text-white border-b-4 border-minecraft-dirt/70">
                 WHAT IS
               </div>
             </div>
             
-            <h2 className="font-minecraft text-4xl md:text-5xl mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-purple to-solana-blue drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                BLOCK<span className="text-white">VERSE</span> RAIDERS
+            <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6">
+              <span className="text-minecraft-purple drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                BLOCK<span className="text-white">VERSE</span> <span className="text-minecraft-blue">RAIDERS</span>
               </span>
             </h2>
             
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-white mb-8 font-minecraft leading-relaxed tracking-wide">
               BlockVerse Raiders is a groundbreaking Minecraft project that seamlessly integrates 
               Solana blockchain technology into the gameplay experience. 
               This integration brings forth a new dimension of possibilities, allowing players to 
@@ -36,35 +46,53 @@ const WhatIs = () => {
             </p>
             
             <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-solana-purple/10 flex items-center justify-center flex-shrink-0">
-                  <Sparkles className="h-6 w-6 text-solana-purple" />
+              <MinecraftCard variant="diamond" bordered className="p-0">
+                <div className="flex gap-4 p-4">
+                  <div className="flex-shrink-0">
+                    <MinecraftIcon 
+                      icon={Sparkles} 
+                      size="lg" 
+                      variant="diamond"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-minecraft text-xl mb-2 text-minecraft-diamond">Blockchain Ownership</h3>
+                    <p className="text-white font-minecraft text-sm leading-relaxed">Players can link their Solana wallets to their game accounts securely via Web3 authentication, enabling them to manage and execute transactions for in-game assets directly.</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-minecraft text-xl mb-2">Blockchain Ownership</h3>
-                  <p className="text-muted-foreground">Players can link their Solana wallets to their game accounts securely via Web3 authentication, enabling them to manage and execute transactions for in-game assets directly.</p>
-                </div>
-              </div>
+              </MinecraftCard>
               
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-solana-blue/10 flex items-center justify-center flex-shrink-0">
-                  <Shield className="h-6 w-6 text-solana-blue" />
+              <MinecraftCard variant="stone" bordered className="p-0">
+                <div className="flex gap-4 p-4">
+                  <div className="flex-shrink-0">
+                    <MinecraftIcon 
+                      icon={Shield} 
+                      size="lg" 
+                      variant="iron"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-minecraft text-xl mb-2 text-minecraft-iron">Decentralized Governance</h3>
+                    <p className="text-white font-minecraft text-sm leading-relaxed">The game utilizes tokens for decentralized decision-making, giving players a say in its development through DAOs and voting systems.</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-minecraft text-xl mb-2">Decentralized Governance</h3>
-                  <p className="text-muted-foreground">The game utilizes tokens for decentralized decision-making, giving players a say in its development through DAOs and voting systems.</p>
-                </div>
-              </div>
+              </MinecraftCard>
               
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-solana-green/10 flex items-center justify-center flex-shrink-0">
-                  <Share2 className="h-6 w-6 text-solana-green" />
+              <MinecraftCard variant="gold" bordered className="p-0">
+                <div className="flex gap-4 p-4">
+                  <div className="flex-shrink-0">
+                    <MinecraftIcon 
+                      icon={Share2} 
+                      size="lg" 
+                      variant="gold"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-minecraft text-xl mb-2 text-minecraft-gold">Interoperability</h3>
+                    <p className="text-white font-minecraft text-sm leading-relaxed">Tokens earned in-game can be used beyond BlockVerse Raiders, with interoperability on various platforms and ecosystems including trading on exchanges.</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-minecraft text-xl mb-2">Interoperability</h3>
-                  <p className="text-muted-foreground">Tokens earned in-game can be used beyond BlockVerse Raiders, with interoperability on various platforms and ecosystems including trading on exchanges.</p>
-                </div>
-              </div>
+              </MinecraftCard>
             </div>
           </motion.div>
           
@@ -75,25 +103,29 @@ const WhatIs = () => {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="relative rounded-xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-solana-purple/20 to-solana-blue/10 z-0"></div>
-              <img 
-                src="/images/minecraft_world.png" 
-                alt="BlockVerse Raiders Minecraft World" 
-                className="relative z-10 w-full shadow-lg"
-              />
+            <div className="relative">
+              {/* Minecraft-style frame */}
+              <div className="absolute -inset-4 bg-minecraft-stone border-4 border-gray-800"></div>
               
-              {/* Floating badges */}
-              <div className="absolute top-5 left-5 px-4 py-2 bg-solana-purple/90 backdrop-blur-sm rounded-md text-white text-sm font-medium shadow-lg">
-                <div className="flex items-center">
-                  <Sparkles className="mr-2 h-4 w-4" />
-                  <span>NFT Enabled</span>
+              <div className="relative z-10 border-4 border-minecraft-dirt overflow-hidden">
+                <img 
+                  src="/images/minecraft_world.png" 
+                  alt="BlockVerse Raiders Minecraft World" 
+                  className="w-full pixelated"
+                />
+                
+                {/* Floating badges */}
+                <div className="absolute top-5 left-5 px-4 py-2 minecraft-diamond-btn">
+                  <div className="flex items-center">
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    <span className="font-minecraft text-sm">NFT Enabled</span>
+                  </div>
                 </div>
-              </div>
-              <div className="absolute bottom-5 right-5 px-4 py-2 bg-solana-blue/90 backdrop-blur-sm rounded-md text-white text-sm font-medium shadow-lg">
-                <div className="flex items-center">
-                  <Shield className="mr-2 h-4 w-4" />
-                  <span>Solana Powered</span>
+                <div className="absolute bottom-5 right-5 px-4 py-2 minecraft-3d-btn">
+                  <div className="flex items-center">
+                    <Shield className="mr-2 h-4 w-4" />
+                    <span className="font-minecraft text-sm">Solana Powered</span>
+                  </div>
                 </div>
               </div>
             </div>
