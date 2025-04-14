@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import the fonts.css file */
+@import '../fonts.css';
+
 @font-face {
   font-family: "Minecraft";
   src: url("/fonts/Minecraft.woff2") format("woff2");
@@ -58,15 +61,22 @@
     background-repeat: repeat;
     background-attachment: fixed;
     image-rendering: pixelated;
+    font-family: 'minecraftregular', monospace !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-minecraft;
+    font-family: 'minecraftbold', monospace !important;
   }
   
   /* No rounded corners for true Minecraft look */
   * {
     border-radius: 0 !important;
+  }
+
+  /* Ensure all text uses the Minecraft font */
+  p, span, div, button, a, input, textarea, select {
+    font-family: 'minecraftregular', monospace !important;
   }
 }
 
@@ -268,16 +278,6 @@
 
   /* Enhanced Minecraft container with depth */
   .minecraft-3d-container {
-    @apply relative bg-black/70 p-6 border-t-4 border-b-4 border-l-0 border-r-0;
-    border-image: url('/images/dirt_border.png') 4 stretch;
-    box-shadow: 
-      inset 0 4px 0 rgba(255,255,255,0.1),
-      inset 0 -4px 0 rgba(0,0,0,0.3);
-  }
-
-  /* Visual block effects */
-  .block-effect {
-    position: relative;
   }
 
   .block-effect:after {
