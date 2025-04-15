@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { EyeIcon, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const FEATURED_NFTS = [
   {
@@ -45,79 +47,81 @@ const FEATURED_NFTS = [
 
 const NFTShowcase = () => {
   return (
-    <section className="relative py-24 overflow-hidden minecraft-dirt-bg">
-      {/* Background elements */}
+    <section className="relative py-24 overflow-hidden">
+      {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-endstone.png')] bg-repeat"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center" 
+          style={{ 
+            backgroundImage: "url('/public/lovable-uploads/5c79ef56-9243-4973-b744-f05067bf5ead.png')",
+            filter: "brightness(0.4)",
+            backgroundSize: "cover"
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
         
-        {/* Minecraft particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute pixelated w-2 h-2 bg-white opacity-30"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float ${5 + Math.random() * 5}s ease-in-out infinite ${Math.random() * 5}s`
-              }}
-            />
-          ))}
-        </div>
+        {/* Animated overlay pattern */}
+        <div className="absolute inset-0 bg-[url('/images/bg-pattern.png')] bg-repeat opacity-10"></div>
         
-        {/* Floating blocks */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={`block-${i}`}
-              className="absolute pixelated w-8 h-8"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                backgroundImage: `url('/images/${['dirt', 'stone', 'diamond', 'gold'][Math.floor(Math.random() * 4)]}_block.png')`,
-                backgroundSize: 'cover',
-                transform: 'rotate(10deg)',
-                imageRendering: 'pixelated',
-                animation: `float ${7 + Math.random() * 7}s ease-in-out infinite ${Math.random() * 7}s, rotate ${15 + Math.random() * 10}s linear infinite ${Math.random() * 10}s`
-              }}
-            />
-          ))}
+        {/* Geometric patterns along left edge */}
+        <div className="absolute left-0 inset-y-0 w-16 opacity-20">
+          <div className="h-full w-full bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat-y"></div>
         </div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-solana-blue/20 via-solana-purple/20 to-solana-green/20 mb-4">
-            <div className="px-4 py-1 rounded-full bg-card/60 backdrop-blur-sm text-sm font-medium text-solana-blue">
+          <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 mb-5">
+            <div className="px-4 py-1 rounded-full bg-black/60 backdrop-blur-sm text-sm font-medium text-cyan-400">
               FEATURED NFTs
             </div>
           </div>
           
-          <h2 className="font-minecraft text-4xl md:text-5xl mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-blue to-solana-green drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="font-minecraft text-4xl md:text-5xl mb-6 text-white"
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
               POWER UP YOUR GAMEPLAY
             </span>
-          </h2>
+          </motion.h2>
           
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover these powerful NFTs that can be earned in-game through mining, combat, and PvP. Drop chances range from Common (1%) to Legendary (0.01%) based on rarity.
-          </p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-lg text-white/80 max-w-2xl mx-auto"
+          >
+            Discover these powerful NFTs that can be earned in-game through mining, combat, and PvP. 
+            Drop chances range from Common (1%) to Legendary (0.01%) based on rarity.
+          </motion.p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {FEATURED_NFTS.map((nft) => (
-            <NFTCard key={nft.id} nft={nft} />
+          {FEATURED_NFTS.map((nft, index) => (
+            <motion.div
+              key={nft.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <NFTCard nft={nft} />
+            </motion.div>
           ))}
         </div>
         
         <div className="text-center">
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-solana-purple text-solana-purple hover:bg-solana-purple/10 group"
-          >
-            View All NFTs <EyeIcon className="ml-2 h-4 w-4 group-hover:animate-pulse" />
-          </Button>
+          <button className="play-now-btn relative px-8 py-3 bg-black text-white font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group border border-cyan-400/50">
+            <span className="relative z-10 flex items-center justify-center">
+              View All NFTs <EyeIcon className="ml-2 h-4 w-4" />
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </button>
         </div>
       </div>
     </section>
@@ -126,28 +130,48 @@ const NFTShowcase = () => {
 
 const NFTCard = ({ nft }: { nft: typeof FEATURED_NFTS[0] }) => {
   const rarityClass = `rarity-${nft.rarity}`;
+  const rarityColors = {
+    common: "from-gray-400 to-gray-300",
+    uncommon: "from-green-500 to-green-400",
+    rare: "from-blue-500 to-blue-400",
+    epic: "from-purple-500 to-purple-400",
+    legendary: "from-amber-500 to-amber-400"
+  };
   
   return (
     <div className="group">
-      <div className="relative overflow-hidden minecraft-container transition-all duration-300 group-hover:translate-y-[-4px]">
+      <div className="glass-card overflow-hidden transition-all duration-300 group-hover:translate-y-[-4px]">
         <div className={`absolute top-2 right-2 z-10 px-2 py-1 font-minecraft text-xs ${rarityClass} bg-black/50 backdrop-blur-sm`}>
           {nft.rarity.toUpperCase()}
         </div>
         
-        <div className="relative h-64 overflow-hidden bg-theme-darker">
+        <div className="relative h-64 overflow-hidden bg-black/30">
           <img 
             src={nft.image} 
             alt={nft.name}
             className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110 pixelated"
           />
+          
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <div className="space-y-1">
+              {nft.attributes.map((attr, index) => (
+                <div key={index} className="flex justify-between text-xs">
+                  <span className="text-gray-300">{attr.trait}:</span>
+                  <span className="text-cyan-400 font-bold">{attr.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
         
-        <div className="p-4">
-          <h3 className={`font-minecraft text-xl mb-2 ${rarityClass}`}>{nft.name}</h3>
-          <p className="text-sm text-muted-foreground mb-4">{nft.description}</p>
+        <div className="p-4 bg-black/70 backdrop-blur-md border-t border-cyan-400/20">
+          <h3 className={`font-minecraft text-xl mb-2 text-gradient bg-gradient-to-r ${rarityColors[nft.rarity]}`}>{nft.name}</h3>
+          <p className="text-sm text-white/80 mb-4">{nft.description}</p>
           
           <div className="flex justify-between items-center">
-            <button className="minecraft-btn-purple text-sm px-3 py-1">
+            <button className="text-sm bg-black px-3 py-1 border border-cyan-400/30 text-cyan-400 hover:bg-cyan-400/10 transition-colors duration-300">
               View Details
             </button>
           </div>

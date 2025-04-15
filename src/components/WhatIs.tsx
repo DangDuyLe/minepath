@@ -1,162 +1,128 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Shield, Share2 } from 'lucide-react';
-import { MinecraftIcon } from '@/components/ui/minecraft-icon';
-import { MinecraftCard } from '@/components/ui/minecraft-card';
+import { Sparkles, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const WhatIs = () => {
   return (
-    <section className="py-24 relative overflow-hidden minecraft-dirt-bg">
-      {/* Background elements */}
+    <section className="relative py-32 overflow-hidden">
+      {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-pattern.png')] bg-repeat"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center" 
+          style={{ 
+            backgroundImage: "url('/public/lovable-uploads/8803d135-44be-4876-9f33-1154e36310a3.png')",
+            filter: "brightness(0.35)",
+            backgroundSize: "cover"
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
         
-        {/* Minecraft particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute pixelated w-2 h-2 bg-white opacity-30"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float ${5 + Math.random() * 5}s ease-in-out infinite ${Math.random() * 5}s`
-              }}
-            />
-          ))}
-        </div>
+        {/* Animated overlay pattern */}
+        <div className="absolute inset-0 bg-[url('/images/bg-pattern.png')] bg-repeat opacity-10"></div>
         
-        {/* Floating blocks */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={`block-${i}`}
-              className="absolute pixelated w-8 h-8"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                backgroundImage: `url('/images/${['dirt', 'stone', 'diamond', 'gold'][Math.floor(Math.random() * 4)]}_block.png')`,
-                backgroundSize: 'cover',
-                transform: 'rotate(10deg)',
-                imageRendering: 'pixelated',
-                animation: `float ${7 + Math.random() * 7}s ease-in-out infinite ${Math.random() * 7}s, rotate ${15 + Math.random() * 10}s linear infinite ${Math.random() * 10}s`
-              }}
-            />
-          ))}
+        {/* Geometric patterns along left edge */}
+        <div className="absolute left-0 inset-y-0 w-16 opacity-20">
+          <div className="h-full w-full bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat-y"></div>
         </div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <motion.div 
-            className="flex-1"
-            initial={{ opacity: 0, x: -50 }}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="minecraft-panel inline-block p-1.5 bg-minecraft-stone border-4 border-gray-800">
-              <div className="px-4 py-1.5 bg-minecraft-dirt text-sm font-minecraft text-white border-b-4 border-minecraft-dirt/70">
-                WHY CHOOSE
+            <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 mb-5">
+              <div className="px-4 py-1 rounded-full bg-black/60 backdrop-blur-sm text-sm font-medium text-cyan-400">
+                OUR MISSION
               </div>
             </div>
             
-            <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6">
-              <span className="text-minecraft-purple drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                MINE<span className="text-white">PATH</span> <span className="text-minecraft-blue">SERVER</span>
-              </span>
+            <h2 className="text-4xl md:text-5xl font-minecraft mb-6 text-white">
+              What is <span className="text-cyan-400">MinePath</span>?
             </h2>
             
-            <p className="text-lg text-white mb-8 font-minecraft leading-relaxed tracking-wide">
-              MinePath is a groundbreaking Minecraft project that seamlessly integrates 
-              Solana blockchain technology into the gameplay experience. 
-              This integration brings forth a new dimension of possibilities, allowing players to 
-              interact with cryptocurrency within the game environment.
+            <p className="text-lg leading-relaxed text-white/80 mb-6">
+              MinePath combines the beloved gameplay of Minecraft with Solana blockchain technology, creating a unique 
+              play-to-earn experience where your mining and exploration efforts are rewarded with valuable NFTs.
             </p>
             
-            <div className="space-y-6">
-              <MinecraftCard variant="diamond" bordered className="p-0">
-                <div className="flex gap-4 p-4">
-                  <div className="flex-shrink-0">
-                    <MinecraftIcon 
-                      icon={Sparkles} 
-                      size="lg" 
-                      variant="diamond"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-minecraft text-xl mb-2 text-minecraft-diamond">Blockchain Ownership</h3>
-                    <p className="text-white font-minecraft text-sm leading-relaxed">Players can link their Solana wallets to their game accounts securely via Web3 authentication, enabling them to manage and execute transactions for in-game assets directly.</p>
-                  </div>
-                </div>
-              </MinecraftCard>
-              
-              <MinecraftCard variant="stone" bordered className="p-0">
-                <div className="flex gap-4 p-4">
-                  <div className="flex-shrink-0">
-                    <MinecraftIcon 
-                      icon={Shield} 
-                      size="lg" 
-                      variant="iron"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-minecraft text-xl mb-2 text-minecraft-iron">Decentralized Governance</h3>
-                    <p className="text-white font-minecraft text-sm leading-relaxed">The game utilizes tokens for decentralized decision-making, giving players a say in its development through DAOs and voting systems.</p>
-                  </div>
-                </div>
-              </MinecraftCard>
-              
-              <MinecraftCard variant="gold" bordered className="p-0">
-                <div className="flex gap-4 p-4">
-                  <div className="flex-shrink-0">
-                    <MinecraftIcon 
-                      icon={Share2} 
-                      size="lg" 
-                      variant="gold"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-minecraft text-xl mb-2 text-minecraft-gold">Interoperability</h3>
-                    <p className="text-white font-minecraft text-sm leading-relaxed">Tokens earned in-game can be used beyond MinePath, with interoperability on various platforms and ecosystems including trading on exchanges.</p>
-                  </div>
-                </div>
-              </MinecraftCard>
+            <div className="space-y-6 mb-8">
+              <Feature title="Play & Earn" description="Mine, fight, and explore to earn NFTs that have real-world value" />
+              <Feature title="Fair Distribution" description="NFTs drop based on mining valuable blocks and defeating monsters" />
+              <Feature title="Community Owned" description="Governance tokens empower players to vote on future developments" />
             </div>
+            
+            <Link to="/how-to-play">
+              <button className="flex items-center gap-2 group">
+                <span className="font-minecraft text-white group-hover:text-cyan-400 transition-colors">
+                  Learn more about our ecosystem
+                </span>
+                <ArrowRight className="h-5 w-5 text-cyan-400 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </motion.div>
           
-          <motion.div 
-            className="flex-1 order-first lg:order-last"
-            initial={{ opacity: 0, scale: 0.9 }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true, margin: "-100px" }}
+            className="relative"
           >
-            <div className="relative">
-              {/* Minecraft-style frame */}
-              <div className="absolute -inset-4 bg-minecraft-stone border-4 border-gray-800"></div>
+            <div className="relative z-10 border border-cyan-500/30 p-1.5 bg-black/40 backdrop-blur-md">
+              <img 
+                src="/images/minecraft_world.png"
+                alt="Minecraft world" 
+                className="w-full h-auto pixelated"
+              />
               
-              <div className="relative z-10 border-4 border-minecraft-dirt overflow-hidden">
-                <img 
-                  src="/images/minecraft_world.png" 
-                  alt="MinePath Minecraft World" 
-                  className="w-full pixelated"
-                />
-                
-                {/* Floating badges */}
-                <div className="absolute top-5 left-5 px-4 py-2 minecraft-diamond-btn">
-                  <div className="flex items-center">
-                    <Sparkles className="mr-2 h-4 w-4" />
-                    <span className="font-minecraft text-sm">NFT Enabled</span>
-                  </div>
-                </div>
-                <div className="absolute bottom-5 right-5 px-4 py-2 minecraft-3d-btn">
-                  <div className="flex items-center">
-                    <Shield className="mr-2 h-4 w-4" />
-                    <span className="font-minecraft text-sm">Solana Powered</span>
-                  </div>
-                </div>
+              <div className="absolute -bottom-4 -right-4 p-3 bg-black/80 border border-cyan-400/30 max-w-xs">
+                <p className="text-sm text-white">
+                  <span className="text-cyan-400 font-bold">The First Minecraft x Solana Project</span> with real 
+                  ownership of in-game assets as NFTs
+                </p>
               </div>
+            </div>
+            
+            {/* Floating Decorative Elements */}
+            <div className="absolute top-1/2 -left-16 transform -translate-y-1/2">
+              <motion.img 
+                src="/images/diamond_block.png" 
+                alt="Diamond block" 
+                className="w-16 h-16 pixelated"
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotate: [0, 5, 0]
+                }}
+                transition={{ 
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </div>
+            
+            <div className="absolute -bottom-8 left-1/4">
+              <motion.img 
+                src="/images/gold_block.png" 
+                alt="Gold block" 
+                className="w-12 h-12 pixelated"
+                animate={{ 
+                  y: [0, -8, 0],
+                  rotate: [0, -5, 0]
+                }}
+                transition={{ 
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              />
             </div>
           </motion.div>
         </div>
@@ -164,5 +130,17 @@ const WhatIs = () => {
     </section>
   );
 };
+
+const Feature = ({ title, description }) => (
+  <div className="flex items-start">
+    <div className="mr-4 mt-1">
+      <div className="w-3 h-3 bg-cyan-400"></div>
+    </div>
+    <div>
+      <h3 className="font-minecraft text-xl text-cyan-400 mb-1">{title}</h3>
+      <p className="text-white/80">{description}</p>
+    </div>
+  </div>
+);
 
 export default WhatIs;

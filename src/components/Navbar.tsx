@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight, Sparkles } from 'lucide-react';
@@ -75,9 +76,12 @@ const Navbar = () => {
                 <span>STORE</span>
               </button>
             </Link>
-            <button className="minecraft-3d-btn hover:scale-105 transition-transform">
-              GET STARTED
-            </button>
+            <Link to="/how-to-play">
+              <button className="play-now-btn relative px-8 py-3 bg-white text-black font-minecraft tracking-wider text-sm hover:scale-105 transition-all duration-300 overflow-hidden group">
+                <span className="relative z-10">PLAY NOW</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </button>
+            </Link>
           </div>
           <div className="lg:hidden">
             <button
@@ -116,7 +120,7 @@ const Navbar = () => {
                   Store
                 </Link>
                 <Link 
-                  to="/get-started" 
+                  to="/how-to-play" 
                   className="minecraft-3d-btn block text-center"
                   onClick={() => setIsOpen(false)}
                 >

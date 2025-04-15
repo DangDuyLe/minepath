@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { Copy, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ServerStatus from './ServerStatus';
 import { MinecraftProgress } from './ui/minecraft-progress';
+import { motion } from 'framer-motion';
 
 const JoinCTA = () => {
   const { toast } = useToast();
@@ -16,68 +18,47 @@ const JoinCTA = () => {
   };
   
   return (
-    <section className="py-16 relative overflow-hidden minecraft-dirt-bg">
-      {/* Background elements */}
+    <section className="relative py-16 overflow-hidden">
+      {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-pattern.png')] bg-repeat"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center" 
+          style={{ 
+            backgroundImage: "url('/public/lovable-uploads/93a3ca40-773c-46b3-a9ed-3d3cc2c433de.png')",
+            filter: "brightness(0.5)",
+            backgroundSize: "cover"
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
         
-        {/* Minecraft particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute pixelated w-2 h-2 bg-white opacity-30"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float ${5 + Math.random() * 5}s ease-in-out infinite ${Math.random() * 5}s`
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Floating blocks */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={`block-${i}`}
-              className="absolute pixelated w-8 h-8"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                backgroundImage: `url('/images/${['dirt', 'stone', 'diamond', 'gold'][Math.floor(Math.random() * 4)]}_block.png')`,
-                backgroundSize: 'cover',
-                transform: 'rotate(10deg)',
-                imageRendering: 'pixelated',
-                animation: `float ${7 + Math.random() * 7}s ease-in-out infinite ${Math.random() * 7}s, rotate ${15 + Math.random() * 10}s linear infinite ${Math.random() * 10}s`
-              }}
-            />
-          ))}
-        </div>
+        {/* Animated overlay pattern */}
+        <div className="absolute inset-0 bg-[url('/images/bg-pattern.png')] bg-repeat opacity-10"></div>
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 ]">
-        
-        <div className="minecraft-panel p-8 md:p-12 border-4 border-minecraft-dirt relative bg-[#1e1e1e]">
-          <div className="absolute -top-4 -left-4 w-8 h-8 bg-minecraft-stone"></div>
-          <div className="absolute -top-4 -right-4 w-8 h-8 bg-minecraft-stone"></div>
-          <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-minecraft-stone"></div>
-          <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-minecraft-stone"></div>
-          
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="bg-black/60 backdrop-blur-md border border-blue-400/20 p-8 md:p-10 shadow-lg"
+        >
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <h2 className="font-minecraft text-2xl md:text-3xl mb-4 text-minecraft-green">
-                JOIN THE ADVENTURE TODAY
+            <div className="max-w-2xl">
+              <h2 className="font-minecraft text-3xl md:text-4xl mb-4 text-white">
+                <span className="text-cyan-400">JOIN THE ADVENTURE</span> TODAY
               </h2>
               
-              <p className="text-lg text-foreground/80 mb-6 font-minecraft">
+              <p className="text-lg text-white/90 mb-6 font-minecraft leading-relaxed">
                 Ready to earn NFTs while playing Minecraft? Our luck-based drop system rewards mining valuable blocks and monster kills with NFTs ranging from Common to Legendary!
               </p>
 
               <div className="mb-6">
                 <p className="text-sm text-white mb-2">Server Population:</p>
-                <MinecraftProgress value={72} max={100} height="md" animated variant="green" className="mb-2" />
-                <div className="flex justify-between text-xs">
+                <div className="w-full h-3 bg-black/50 border border-blue-300/30 overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 w-[72%]"></div>
+                </div>
+                <div className="flex justify-between text-xs mt-1 text-white/70">
                   <span>0</span>
                   <span>500</span>
                   <span>1000 players</span>
@@ -86,32 +67,43 @@ const JoinCTA = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="relative">
-                  <div className="flex items-center bg-black/60 border-2 border-minecraft-dirt rounded-none px-4 py-2">
+                  <div className="flex items-center bg-black/60 border border-blue-400/30 px-4 py-2">
                     <span className="font-minecraft text-white">play.minepath.com</span>
                     <button 
                       onClick={copyServerAddress}
-                      className="ml-2 p-1 hover:text-minecraft-green transition-colors"
+                      className="ml-3 p-1 hover:text-cyan-400 transition-colors"
                     >
                       <Copy size={16} />
                     </button>
                   </div>
                 </div>
                 
-                <button className="minecraft-3d-btn inline-flex items-center justify-center">
-                  Join Server Now <ArrowRight className="ml-2 h-4 w-4" />
+                <button className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group inline-flex items-center justify-center">
+                  <span className="relative z-10 flex items-center">
+                    Join Server Now <ArrowRight className="ml-2 h-4 w-4" />
+                  </span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </button>
               </div>
             </div>
             
             <div className="w-full md:w-auto">
-              <img 
+              <motion.img
+                initial={{ y: 10 }}
+                animate={{ y: -10 }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut"
+                }}
                 src="/images/minecraft_character.png" 
                 alt="Minecraft Character with NFT" 
-                className="pixelated h-48 md:h-60 w-auto object-contain mx-auto" 
+                className="pixelated h-56 md:h-64 w-auto object-contain mx-auto" 
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

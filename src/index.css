@@ -65,6 +65,7 @@
 
   body {
     @apply bg-background text-foreground;
+    background-color: #1c2637;
     background-image: url("/images/bg-dirt.png");
     background-repeat: repeat;
     background-attachment: fixed;
@@ -96,6 +97,51 @@
 }
 
 @layer components {
+  /* PLAY NOW button styling from sample */
+  .play-now-btn {
+    box-shadow: 0 0 15px rgba(0, 195, 255, 0.4);
+    text-shadow: none;
+    letter-spacing: 2px;
+  }
+  
+  .play-now-btn:hover {
+    box-shadow: 0 0 25px rgba(0, 195, 255, 0.6);
+  }
+
+  /* Geometric patterns background for sections */
+  .geometric-pattern-bg {
+    background-image: url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png');
+    background-repeat: repeat;
+    background-size: 60px;
+    opacity: 0.1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+  }
+  
+  /* Enhanced section styling */
+  .modern-section {
+    position: relative;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Enhanced card styling */
+  .glass-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 195, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    border-color: rgba(0, 195, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 195, 255, 0.3);
+  }
+
   .rarity-common {
     @apply text-rarity-common border-rarity-common;
   }

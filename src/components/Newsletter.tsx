@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -34,44 +35,25 @@ const Newsletter = () => {
   };
   
   return (
-    <section className="relative py-32 overflow-hidden minecraft-dirt-bg">
-      {/* Background elements - more subtle */}
+    <section className="relative py-32 overflow-hidden">
+      {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/images/bg-glowstone.png')] bg-repeat"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center" 
+          style={{ 
+            backgroundImage: "url('/public/lovable-uploads/93a3ca40-773c-46b3-a9ed-3d3cc2c433de.png')",
+            filter: "brightness(0.4)",
+            backgroundSize: "cover"
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
         
-        {/* Minecraft particles - fewer, more subtle */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(10)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute pixelated w-1.5 h-1.5 bg-white opacity-20"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float-subtle ${8 + Math.random() * 10}s ease-in-out infinite ${Math.random() * 5}s`
-              }}
-            />
-          ))}
-        </div>
+        {/* Animated overlay pattern */}
+        <div className="absolute inset-0 bg-[url('/images/bg-pattern.png')] bg-repeat opacity-10"></div>
         
-        {/* Floating blocks - fewer, more elegant */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(4)].map((_, i) => (
-            <div
-              key={`block-${i}`}
-              className="absolute pixelated w-8 h-8"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                backgroundImage: `url('/images/${['gold', 'emerald'][Math.floor(Math.random() * 2)]}_block.png')`,
-                backgroundSize: 'cover',
-                transform: 'rotate(5deg)',
-                opacity: 0.6,
-                imageRendering: 'pixelated',
-                animation: `float-subtle ${10 + Math.random() * 15}s ease-in-out infinite ${Math.random() * 7}s, rotate-slow ${30 + Math.random() * 20}s linear infinite ${Math.random() * 10}s`
-              }}
-            />
-          ))}
+        {/* Geometric patterns along left edge */}
+        <div className="absolute left-0 inset-y-0 w-16 opacity-20">
+          <div className="h-full w-full bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat-y"></div>
         </div>
       </div>
       
@@ -83,27 +65,20 @@ const Newsletter = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <div className="bg-black/40 backdrop-blur-md border border-solana-purple/30 p-8 md:p-12 shadow-lg">
+          <div className="bg-black/60 backdrop-blur-md border border-cyan-400/30 p-8 md:p-12 shadow-lg">
             <div className="text-center mb-8">
               <motion.div 
-                className="inline-flex items-center justify-center w-16 h-16 bg-black/50 border border-solana-gold/30 mb-6 rounded-none"
+                className="inline-flex items-center justify-center w-16 h-16 bg-black/50 border border-cyan-400/30 mb-6"
                 animate={{ 
-                  boxShadow: ['0 0 0 rgba(255,215,0,0)', '0 0 20px rgba(255,215,0,0.3)', '0 0 0 rgba(255,215,0,0)']
+                  boxShadow: ['0 0 0 rgba(0,195,255,0)', '0 0 20px rgba(0,195,255,0.3)', '0 0 0 rgba(0,195,255,0)']
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <Mail className="h-8 w-8 text-minecraft-gold" />
+                <Mail className="h-8 w-8 text-cyan-400" />
               </motion.div>
               
-              {/* Decorative Minecraft items */}
-              <div className="flex justify-center gap-4 mb-6">
-                <img src="/images/paper.png" alt="Paper" className="h-10 w-10 pixelated" />
-                <img src="/images/book.png" alt="Book" className="h-10 w-10 pixelated" />
-                <img src="/images/written_book.png" alt="Written Book" className="h-10 w-10 pixelated" />
-              </div>
-              
-              <h2 className="font-minecraft text-3xl md:text-4xl mb-4">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-gold via-solana-gold to-solana-green">
+              <h2 className="font-minecraft text-3xl md:text-4xl mb-4 text-white">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
                   JOIN THE MINEPATH COMMUNITY
                 </span>
               </h2>
@@ -118,7 +93,7 @@ const Newsletter = () => {
                 <Input 
                   type="email"
                   placeholder="Enter your email address"
-                  className="bg-black/50 border border-solana-purple/30 focus-visible:ring-solana-gold/50 pl-4 h-12 pr-4 font-minecraft"
+                  className="bg-black/50 border border-cyan-400/30 focus-visible:ring-cyan-400/50 pl-4 h-12 pr-4 font-minecraft text-white"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -126,28 +101,31 @@ const Newsletter = () => {
                 />
               </div>
               
-              <Button 
+              <button 
                 type="submit" 
-                className={`minecraft-btn-green h-12 min-w-[140px] ${submitted ? 'bg-minecraft-green hover:bg-minecraft-green/90' : ''}`}
+                className={`play-now-btn relative px-6 py-2 bg-black text-white font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group border border-cyan-400/50 h-12 min-w-[140px] ${submitted ? 'border-green-500/50' : ''}`}
                 disabled={loading}
               >
-                {loading ? (
-                  <span className="flex items-center">
-                    <span className="minecraft-loading mr-2"></span>
-                    <span>Subscribing</span>
-                  </span>
-                ) : submitted ? (
-                  <span className="flex items-center">
-                    <CheckCircle2 className="mr-2 h-5 w-5" />
-                    <span>Subscribed</span>
-                  </span>
-                ) : (
-                  <span className="flex items-center">
-                    <span>Subscribe</span>
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                )}
-              </Button>
+                <span className="relative z-10 flex items-center justify-center">
+                  {loading ? (
+                    <>
+                      <span className="minecraft-loading mr-2"></span>
+                      <span>Subscribing</span>
+                    </>
+                  ) : submitted ? (
+                    <>
+                      <CheckCircle2 className="mr-2 h-5 w-5 text-green-500" />
+                      <span className="text-green-500">Subscribed</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Subscribe</span>
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </>
+                  )}
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </button>
             </form>
             
             <p className="text-sm text-white/50 mt-6 text-center font-minecraft">
