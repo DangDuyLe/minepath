@@ -147,7 +147,7 @@ const FeaturesSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+            <span className="bg-clip-text ">
               PLAY, <span className="text-cyan-400">EARN</span>, <span className="text-blue-500">EVOLVE</span>
             </span>
           </motion.h2>

@@ -145,7 +145,7 @@ const GameModes = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+            <span className="bg-clip-text ">
               DISCOVER THE <span className="text-cyan-400">MINEPATH</span> UNIVERSE
             </span>
           </motion.h2>

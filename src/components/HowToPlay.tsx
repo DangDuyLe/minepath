@@ -107,7 +107,7 @@ const HowToPlay = () => {
             viewport={{ once: true }}
             className="font-minecraft text-4xl md:text-5xl mb-6 text-white"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+            <span className="bg-clip-text">
               HOW TO PLAY
             </span>
           </motion.h2>

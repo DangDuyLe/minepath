@@ -84,8 +84,8 @@ const Tokenomics = () => {
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]">
-              SUPPLY & DISTRIBUTION
+            <span className="bg-clip-text ">
+              SUPPLY & <span className="text-blue-500">DISTRIBUTION</span>
             </span>
           </h2>
           

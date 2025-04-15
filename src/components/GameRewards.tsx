@@ -101,7 +101,7 @@ const GameRewards = () => {
             </div>
             
             <h2 className="font-minecraft text-4xl md:text-5xl mb-6 text-white">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+              <span className="bg-clip-text ">
                 PLAY, <span className="text-cyan-400">MINE</span>, <span className="text-blue-500">EARN</span>
               </span>
             </h2>
@@ -160,7 +160,7 @@ const GameRewards = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-500/10 pointer-events-none"></div>
                 
                 <img 
-                  src="/images/minecraft_mining.png" 
+                  src="/images/minecraft_mining_reward.png" 
                   alt="Minecraft mining rewards" 
                   className="w-full pixelated"
                 />

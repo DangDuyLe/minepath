@@ -61,7 +61,7 @@ const NFTShowcase = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
         
         {/* Animated overlay pattern */}
-        <div className="absolute inset-0 bg-[url('/images/bg-pattern.png')] bg-repeat opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('/images/bg-icemountain.png')] bg-repeat "></div>
         
         {/* Geometric patterns along left edge */}
         <div className="absolute left-0 inset-y-0 w-16 opacity-20">
@@ -84,7 +84,7 @@ const NFTShowcase = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="font-minecraft text-4xl md:text-5xl mb-6 text-white"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            <span className="bg-clip-text ">
               POWER UP YOUR GAMEPLAY
             </span>
           </motion.h2>

@@ -105,7 +105,7 @@ const NFTDropMechanics = () => {
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">HOW TO EARN NFTs</span>
+            <span className="bg-clip-text ">HOW TO EARN <span className="text-blue-500">NFTs</span></span>
           </h2>
           
           <p className="text-lg text-white/80 max-w-3xl mx-auto">

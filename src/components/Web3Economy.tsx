@@ -69,8 +69,8 @@ const Web3Economy = () => {
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-              POWER YOUR JOURNEY WITH WEB3
+            <span className="bg-clip-text ">
+              POWER YOUR JOURNEY <span className="text-blue-500">WITH WEB3</span> 
             </span>
           </h2>
           

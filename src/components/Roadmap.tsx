@@ -9,7 +9,7 @@ const ROADMAP_DATA = [
   {
     year: "Q2 2025",
     title: "Phase 1: Mining",
-    description: "Dig quặng to earn $FARM, upgrade with Tool NFTs, and unlock rare lootboxes.",
+    description: "Dig ores to earn $FARM, upgrade with Tool NFTs, and unlock rare lootboxes.",
     icon: Pickaxe,
     iconVariant: "diamond",
     isActive: true,
@@ -142,7 +142,7 @@ const Roadmap = () => {
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]">
+            <span className="bg-clip-text ">
               THE FUTURE OF MINEPATH
             </span>
           </h2>

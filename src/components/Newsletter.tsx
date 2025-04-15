@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -35,25 +34,50 @@ const Newsletter = () => {
   };
   
   return (
-    <section className="relative py-32 overflow-hidden">
-      {/* Background with overlay */}
+    <section className="relative py-32 overflow-hidden" style={{ 
+      background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed' 
+    }}>
+      {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center" 
-          style={{ 
-            backgroundImage: "url('/public/lovable-uploads/93a3ca40-773c-46b3-a9ed-3d3cc2c433de.png')",
-            filter: "brightness(0.4)",
-            backgroundSize: "cover"
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ 
+          background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
+        }}></div>
         
-        {/* Animated overlay pattern */}
-        <div className="absolute inset-0 bg-[url('/images/bg-pattern.png')] bg-repeat opacity-10"></div>
+        {/* Minecraft particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute pixelated w-2 h-2 bg-white opacity-30"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 5}s ease-in-out infinite ${Math.random() * 5}s`
+              }}
+            />
+          ))}
+        </div>
         
-        {/* Geometric patterns along left edge */}
-        <div className="absolute left-0 inset-y-0 w-16 opacity-20">
-          <div className="h-full w-full bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat-y"></div>
+        {/* Floating blocks */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={`block-${i}`}
+              className="absolute pixelated w-8 h-8"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                backgroundImage: `url('/images/${['dirt', 'stone', 'diamond', 'gold'][Math.floor(Math.random() * 4)]}_block.png')`,
+                backgroundSize: 'cover',
+                transform: 'rotate(10deg)',
+                imageRendering: 'pixelated',
+                animation: `float ${7 + Math.random() * 7}s ease-in-out infinite ${Math.random() * 7}s, rotate ${15 + Math.random() * 10}s linear infinite ${Math.random() * 10}s`
+              }}
+            />
+          ))}
         </div>
       </div>
       
@@ -70,7 +94,7 @@ const Newsletter = () => {
               <motion.div 
                 className="inline-flex items-center justify-center w-16 h-16 bg-black/50 border border-cyan-400/30 mb-6"
                 animate={{ 
-                  boxShadow: ['0 0 0 rgba(0,195,255,0)', '0 0 20px rgba(0,195,255,0.3)', '0 0 0 rgba(0,195,255,0)']
+                  boxShadow: ['0 0 0 rgba(0,195,255,0)', '0 0 20px rgba(10, 224, 239, 0.3)', '0 0 0 rgba(0,195,255,0)']
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
@@ -78,7 +102,7 @@ const Newsletter = () => {
               </motion.div>
               
               <h2 className="font-minecraft text-3xl md:text-4xl mb-4 text-white">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                <span className="bg-clip-text ">
                   JOIN THE MINEPATH COMMUNITY
                 </span>
               </h2>

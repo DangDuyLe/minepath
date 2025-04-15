@@ -130,12 +130,12 @@ const NFTRaritySection = () => {
             viewport={{ once: true }}
           >
             <span 
-              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
+              className="text-transparent text-white "
               style={{
                 animation: "color-shift 10s linear infinite"
               }}
             >
-              DISCOVER THE POWER TIERS
+              DISCOVER THE  <span className="text-blue-500">POWER TIERS</span>
             </span>
           </motion.h2>
           
