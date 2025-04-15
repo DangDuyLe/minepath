@@ -34,17 +34,16 @@ const Hero = () => {
       {/* Immersive Background */}
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center" 
+          className="absolute inset-0 bg-cover bg-center opacity-2" 
           style={{ 
-            backgroundImage: "url('/public/lovable-uploads/b09ed5f0-7d5b-4644-ad60-1adafe2c4510.png')",
+            backgroundImage: "url('/images/bg-shrine.png')",
             filter: "brightness(0.7)",
             backgroundSize: "cover"
           }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
         
-        {/* Animated overlay pattern */}
-        <div className="absolute inset-0 bg-[url('/images/bg-pattern.png')] bg-repeat opacity-10"></div>
+        
         
         {/* Geometric patterns along left edge */}
         <div className="absolute left-0 inset-y-0 w-16 opacity-20">
@@ -111,67 +110,49 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="relative mx-auto max-w-lg">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-500/10 rounded-xl blur-2xl"></div>
+              <div className="absolute inset-0  rounded-xl blur-2xl"></div>
               
               <div className="relative z-10 transform hover:scale-105 transition-all duration-700">
                 <img 
-                  src="/public/lovable-uploads/59420a89-a80b-4162-86c1-a7453d4886a2.png" 
+                  src="/images/swordshield.png" 
                   alt="Minecraft world with buildings" 
-                  className="w-full h-auto rounded-lg shadow-2xl border-2 border-white/10" 
+                  className="w-full h-auto rounded-lg shadow-2xl " 
                 />
                 
-                <div className="absolute -bottom-6 right-0 left-0 mx-auto w-max">
-                  <div className="bg-black/80 backdrop-blur-md p-3 border border-white/20 rounded-lg">
-                    <div className="font-minecraft text-minecraft-gold text-sm mb-1 text-center">NEXT NFT DROP IN:</div>
-                    <div className="flex justify-center gap-3 font-minecraft text-white">
-                      <div className="bg-black/70 border border-blue-300/30 p-2 w-16 backdrop-blur-md">
-                        <div className="text-xl text-cyan-400">{timeLeft.hours.toString().padStart(2, '0')}</div>
-                        <div className="text-xs">Hours</div>
-                      </div>
-                      <div className="bg-black/70 border border-blue-300/30 p-2 w-16 backdrop-blur-md">
-                        <div className="text-xl text-cyan-400">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-                        <div className="text-xs">Minutes</div>
-                      </div>
-                      <div className="bg-black/70 border border-blue-300/30 p-2 w-16 backdrop-blur-md">
-                        <div className="text-xl text-cyan-400">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-                        <div className="text-xs">Seconds</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </motion.div>
         </div>
-        
-        {/* Logo bar */}
-        <motion.div 
-          className="mt-20 pt-10 absolute left-0 right-0 bottom-8"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <div className="flex flex-wrap justify-center gap-10 lg:gap-16 opacity-60 hover:opacity-100 transition-opacity duration-300">
-            <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30">
-              <Shield className="mr-2 h-6 w-6 text-cyan-400" />
-              <span>KYC</span>
-            </div>
-            <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30">
-              <Sword className="mr-2 h-6 w-6 text-cyan-400" />
-              <span>DAPP</span>
-            </div>
-            <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30">
-              <Sparkles className="mr-2 h-6 w-6 text-cyan-400" />
-              <span>Audit</span>
-            </div>
-            <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30">
-              <Coins className="mr-2 h-6 w-6 text-cyan-400" />
-              <span>Dextools</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
+
+      {/* Logo bar */}
+      <motion.div 
+        className="mt-20 pt-10 absolute left-0 right-0 bottom-8"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <div className="flex flex-wrap justify-center gap-10 lg:gap-16 opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30">
+            <Shield className="mr-2 h-6 w-6 text-cyan-400" />
+            <span>KYC</span>
+          </div>
+          <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30">
+            <Sword className="mr-2 h-6 w-6 text-cyan-400" />
+            <span>DAPP</span>
+          </div>
+          <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30">
+            <Sparkles className="mr-2 h-6 w-6 text-cyan-400" />
+            <span>Audit</span>
+          </div>
+          <div className="flex items-center text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30">
+            <Coins className="mr-2 h-6 w-6 text-cyan-400" />
+            <span>Dextools</span>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };

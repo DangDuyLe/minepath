@@ -9,18 +9,11 @@ const WhatIs = () => {
     <section className="relative py-32 overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center" 
-          style={{ 
-            backgroundImage: "url('/public/lovable-uploads/8803d135-44be-4876-9f33-1154e36310a3.png')",
-            filter: "brightness(0.35)",
-            backgroundSize: "cover"
-          }}
-        ></div>
+        
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
         
         {/* Animated overlay pattern */}
-        <div className="absolute inset-0 bg-[url('/images/bg-pattern.png')] bg-repeat opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('/images/bg-mountain.png')] bg-repeat opacity-4"></div>
         
         {/* Geometric patterns along left edge */}
         <div className="absolute left-0 inset-y-0 w-16 opacity-20">

@@ -287,34 +287,7 @@ const GameModes = () => {
           ))}
         </div>
         
-        {/* Phase launch countdown */}
-        <motion.div 
-          className="mt-12 p-4 bg-black/40 border border-cyan-400/30 backdrop-blur-sm rounded-lg mx-auto max-w-md"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <div className="font-minecraft text-cyan-400 text-sm mb-2 text-center">PHASE 2 LAUNCH IN:</div>
-          <div className="flex justify-center gap-4 font-minecraft text-white">
-            <div className="bg-black/60 border border-cyan-400/30 backdrop-blur-sm p-2 w-16">
-              <div className="text-xl text-cyan-400">112</div>
-              <div className="text-xs">Days</div>
-            </div>
-            <div className="bg-black/60 border border-cyan-400/30 backdrop-blur-sm p-2 w-16">
-              <div className="text-xl text-cyan-400">12</div>
-              <div className="text-xs">Hours</div>
-            </div>
-            <div className="bg-black/60 border border-cyan-400/30 backdrop-blur-sm p-2 w-16">
-              <div className="text-xl text-cyan-400">45</div>
-              <div className="text-xs">Minutes</div>
-            </div>
-            <div className="bg-black/60 border border-cyan-400/30 backdrop-blur-sm p-2 w-16">
-              <div className="text-xl text-cyan-400">32</div>
-              <div className="text-xs">Seconds</div>
-            </div>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   );
