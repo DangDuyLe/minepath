@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { ChevronRight, Shield, Zap, Star, Crown, Award } from 'lucide-react';
@@ -60,10 +61,17 @@ const RARITY_TYPES = [
 
 const NFTRaritySection = () => {
   return (
-    <section className="py-24 relative overflow-hidden minecraft-dirt-bg">
+    <section className="py-24 relative overflow-hidden" style={{ 
+      background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed' 
+    }}>
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-stone.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ 
+          background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
+        }}></div>
         
         {/* Minecraft particles */}
         <div className="absolute inset-0 overflow-hidden">
@@ -102,15 +110,15 @@ const NFTRaritySection = () => {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="minecraft-panel inline-block p-1.5 bg-minecraft-stone border-4 border-gray-800">
-            <div className="px-4 py-1 bg-minecraft-purple font-minecraft text-white text-sm border-b-4 border-minecraft-purple/70">
+          <div className="inline-block p-1.5 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-4 border border-cyan-400/30">
+            <div className="px-4 py-1 bg-black/60 backdrop-blur-sm font-minecraft text-cyan-400 text-sm">
               NFT RARITIES
             </div>
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
             <motion.span 
-              className="text-rarity-purple drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
               animate={{ 
                 color: [
                   'rgb(176, 176, 176)', // common 
@@ -127,7 +135,7 @@ const NFTRaritySection = () => {
             </motion.span>
           </h2>
           
-          <p className="text-white max-w-2xl mx-auto mb-12 font-minecraft tracking-wide">
+          <p className="text-white/80 max-w-2xl mx-auto mb-12 font-minecraft tracking-wide">
             Explore the different NFT rarities in MinePath and their unique powers and abilities that will transform your gameplay experience.
           </p>
         </div>
@@ -149,7 +157,7 @@ const NFTRaritySection = () => {
         <div className="mt-12 text-center">
           <Link 
             to="/nfts" 
-            className="inline-flex items-center bg-minecraft-stone border-4 border-gray-800 px-4 py-2 font-minecraft text-white hover:bg-minecraft-stone/70 transition-colors group"
+            className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-2 font-minecraft text-white hover:from-cyan-400 hover:to-blue-500 transition-colors group"
           >
             Browse the complete NFT catalog <ChevronRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
           </Link>
@@ -161,7 +169,7 @@ const NFTRaritySection = () => {
 
 const RarityCard = ({ rarity }: { rarity: typeof RARITY_TYPES[0] }) => {
   return (
-    <Card className={`overflow-hidden border-4 border-gray-800 ${rarity.block} transition-all duration-300 hover:transform hover:scale-105 relative`}>
+    <Card className={`overflow-hidden border border-cyan-400/30 backdrop-blur-sm bg-black/40 transition-all duration-300 hover:transform hover:scale-105 relative`}>
       {/* Dark overlay to make the background darker while preserving color */}
       <div className="absolute inset-0 bg-black/40"></div>
       
@@ -173,7 +181,7 @@ const RarityCard = ({ rarity }: { rarity: typeof RARITY_TYPES[0] }) => {
           imageRendering: 'pixelated'
         }}></div>
         
-        <div className={`flex items-center justify-center mb-6 w-14 h-14 mx-auto border-4 border-gray-800 ${rarity.className === 'rarity-legendary' ? 'animate-pulse-glow' : ''} relative z-10`}>
+        <div className={`flex items-center justify-center mb-6 w-14 h-14 mx-auto border border-cyan-400/40 ${rarity.className === 'rarity-legendary' ? 'animate-pulse-glow' : ''} relative z-10 bg-black/60`}>
           <div className={rarity.className}>
             {rarity.icon}
           </div>
@@ -183,19 +191,19 @@ const RarityCard = ({ rarity }: { rarity: typeof RARITY_TYPES[0] }) => {
           {rarity.name}
         </h3>
         
-        <div className="text-sm text-center mb-4 text-white relative z-10">
+        <div className="text-sm text-center mb-4 text-white/80 relative z-10">
           Drop Chance: <span className={`font-semibold ${rarity.className}`}>{rarity.dropChance}</span>
         </div>
         
-        <p className="text-sm text-white mb-4 text-center font-minecraft tracking-wide relative z-10">
+        <p className="text-sm text-white/80 mb-4 text-center font-minecraft tracking-wide relative z-10">
           {rarity.description}
         </p>
         
-        <div className="mt-4 bg-minecraft-black/60 backdrop-blur-sm p-3 border-2 border-gray-800 relative z-10">
-          <div className="text-xs uppercase tracking-wide text-white mb-2 font-minecraft text-center">Examples:</div>
+        <div className="mt-4 bg-black/60 backdrop-blur-sm p-3 border border-cyan-400/30 relative z-10">
+          <div className="text-xs uppercase tracking-wide text-white/80 mb-2 font-minecraft text-center">Examples:</div>
           <ul className="text-sm space-y-1 font-minecraft">
             {rarity.examples.map((example, index) => (
-              <li key={index} className="text-white flex items-center">
+              <li key={index} className="text-white/80 flex items-center">
                 <span className={`mr-2 text-xs ${rarity.className}`}>•</span> 
                 <span>{example}</span>
               </li>

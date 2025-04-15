@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Pickaxe } from './ui/icons/Pickaxe';
@@ -79,10 +80,17 @@ const ROADMAP_DATA = [
 
 const Roadmap = () => {
   return (
-    <section className="py-24 relative overflow-hidden minecraft-dirt-bg">
+    <section className="py-24 relative overflow-hidden" style={{ 
+      background: 'linear-gradient(180deg, rgba(21,26,49,1) 0%, rgba(13,14,22,1) 100%)',
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed' 
+    }}>
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-endstone.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ 
+          background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
+        }}></div>
         
         {/* Minecraft particles */}
         <div className="absolute inset-0 overflow-hidden">
@@ -127,19 +135,19 @@ const Roadmap = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <div className="minecraft-panel inline-block p-1.5 bg-minecraft-stone border-4 border-gray-800">
-            <div className="px-4 py-1.5 bg-minecraft-diamond font-minecraft text-white text-sm border-b-4 border-minecraft-diamond/70">
+          <div className="inline-block p-1.5 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-4 border border-cyan-400/30">
+            <div className="px-4 py-1.5 bg-black/60 backdrop-blur-sm font-minecraft text-cyan-400 text-sm">
               PROJECT TIMELINE
             </div>
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
-            <span className="text-minecraft-gold drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]">
               THE FUTURE OF MINEPATH
             </span>
           </h2>
           
-          <p className="text-lg text-white max-w-2xl mx-auto font-minecraft mb-12">
+          <p className="text-lg text-white/80 max-w-2xl mx-auto font-minecraft mb-12">
             Our development journey spans five major phases, each introducing new gameplay and Web3 features.
           </p>
         </motion.div>
@@ -148,7 +156,7 @@ const Roadmap = () => {
         {ROADMAP_DATA.filter(phase => phase.isActive).map((phase, index) => (
           <motion.div 
             key={`featured-${index}`}
-            className="mb-20 minecraft-container border-4 border-minecraft-green p-6"
+            className="mb-20 bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -156,10 +164,10 @@ const Roadmap = () => {
           >
             <div className="flex flex-col md:flex-row gap-8">
               <div className="flex-1 relative">
-                <div className="absolute -top-8 -left-8 bg-minecraft-green p-2 font-minecraft text-white">
+                <div className="absolute -top-8 -left-8 bg-gradient-to-r from-cyan-500 to-blue-600 p-2 font-minecraft text-white">
                   CURRENT PHASE
                 </div>
-                <h3 className="font-minecraft text-2xl mb-4 text-minecraft-green">{phase.title}</h3>
+                <h3 className="font-minecraft text-2xl mb-4 text-cyan-400">{phase.title}</h3>
                 <div className="flex items-center mb-6">
                   <MinecraftIcon 
                     icon={phase.icon as any} 
@@ -167,15 +175,15 @@ const Roadmap = () => {
                     variant={phase.iconVariant as any} 
                     className="mr-4"
                   />
-                  <p className="text-white font-minecraft">{phase.description}</p>
+                  <p className="text-white/80 font-minecraft">{phase.description}</p>
                 </div>
                 
-                <div className="bg-black/40 p-4 mb-6">
-                  <h4 className="font-minecraft text-xl mb-4 text-minecraft-green">Phase Features:</h4>
+                <div className="bg-black/60 p-4 mb-6 border border-cyan-400/20">
+                  <h4 className="font-minecraft text-xl mb-4 text-cyan-400">Phase Features:</h4>
                   <ul className="space-y-3">
                     {phase.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start text-white">
-                        <span className="font-minecraft text-minecraft-green mr-2">▶</span>
+                      <li key={itemIndex} className="flex items-start text-white/80">
+                        <span className="font-minecraft text-cyan-400 mr-2">▶</span>
                         <span className="font-minecraft text-sm">{item}</span>
                       </li>
                     ))}
@@ -183,13 +191,13 @@ const Roadmap = () => {
                 </div>
                 
                 <div className="flex justify-start">
-                  <button className="minecraft-btn-green font-minecraft flex items-center">
+                  <button className="bg-gradient-to-r from-cyan-500 to-blue-600 font-minecraft px-6 py-2 flex items-center text-white hover:from-cyan-400 hover:to-blue-500 transition-colors">
                     Start Mining Now <ArrowRight className="ml-2 h-4 w-4" />
                   </button>
                 </div>
               </div>
               
-              <div className="flex-1 border-4 border-minecraft-dirt">
+              <div className="flex-1 border border-cyan-400/30">
                 <img 
                   src="/images/game_mode_mining.png" 
                   alt="Mining Game Mode" 
@@ -205,7 +213,7 @@ const Roadmap = () => {
         
         <div className="relative">
           {/* Central timeline line */}
-          <div className="absolute top-0 bottom-0 left-1/2 w-1 bg-minecraft-dirt/50 transform -translate-x-1/2"></div>
+          <div className="absolute top-0 bottom-0 left-1/2 w-1 bg-cyan-400/30 transform -translate-x-1/2"></div>
           
           <div className="space-y-16">
             {ROADMAP_DATA.map((phase, index) => (
@@ -218,8 +226,8 @@ const Roadmap = () => {
                 viewport={{ once: true, margin: "-50px" }}
               >
                 <div className="w-full md:w-5/12 text-center md:text-right">
-                  <div className="inline-block p-2 bg-minecraft-stone border-2 border-gray-800 mb-3">
-                    <div className="px-4 py-1 font-minecraft text-sm text-white">
+                  <div className="inline-block p-2 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-3 border border-cyan-400/30">
+                    <div className="px-4 py-1 font-minecraft text-sm text-cyan-400 bg-black/60 backdrop-blur-sm">
                       {phase.year}
                     </div>
                   </div>
@@ -228,7 +236,7 @@ const Roadmap = () => {
                 </div>
                 
                 <div className="relative">
-                  <div className={`w-12 h-12 flex items-center justify-center ${phase.isActive ? 'bg-minecraft-green' : 'bg-minecraft-stone'} border-4 border-gray-800 z-10 relative`}>
+                  <div className={`w-12 h-12 flex items-center justify-center ${phase.isActive ? 'bg-gradient-to-r from-cyan-500 to-blue-600' : 'bg-black/60'} border border-cyan-400/30 z-10 relative`}>
                     <MinecraftIcon 
                       icon={phase.icon as any} 
                       size="sm" 
@@ -238,12 +246,12 @@ const Roadmap = () => {
                 </div>
                 
                 <div className="w-full md:w-5/12">
-                  <div className={`${phase.isActive ? 'bg-black/60 border-minecraft-green' : 'bg-black/40 border-gray-700'} p-4 border-2`}>
+                  <div className={`${phase.isActive ? 'bg-black/60 border-cyan-400/30' : 'bg-black/40 border-cyan-400/20'} p-4 border rounded-lg backdrop-blur-sm`}>
                     <ul className="space-y-3">
                       {phase.items.map((item, itemIndex) => (
                         <li key={itemIndex} className="flex items-start">
-                          <span className={`${phase.isActive ? 'text-minecraft-green' : 'text-minecraft-stone'} mr-2 mt-1`}>▶</span>
-                          <span className="text-white font-minecraft text-sm">{item}</span>
+                          <span className={`${phase.isActive ? 'text-cyan-400' : 'text-blue-500/80'} mr-2 mt-1`}>▶</span>
+                          <span className="text-white/80 font-minecraft text-sm">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -256,27 +264,26 @@ const Roadmap = () => {
         
         {/* Phase launch countdown */}
         <motion.div 
-          className="mt-16 p-4 bg-black/50 border-2 border-minecraft-dirt mx-auto max-w-md"
+          className="mt-16 p-4 bg-black/50 border border-cyan-400/30 mx-auto max-w-md rounded-lg"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="font-minecraft text-minecraft-gold text-sm mb-2 text-center">PHASE 2 LAUNCH IN:</div>
+          <div className="font-minecraft text-cyan-400 text-sm mb-2 text-center">PHASE 2 LAUNCH IN:</div>
           <div className="flex justify-center gap-4 font-minecraft text-white">
-            <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
-              <div className="text-xl text-minecraft-green">112</div>
-              <div className="text-xs">Days</div>
+            <div className="bg-black/70 border border-cyan-400/20 p-2 w-16">
+              <div className="text-xl text-cyan-400">112</div>
+              <div className="text-xs text-white/70">Days</div>
             </div>
-            <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
-              <div className="text-xl text-minecraft-green">12</div>
-              <div className="text-xs">Hours</div>
+            <div className="bg-black/70 border border-cyan-400/20 p-2 w-16">
+              <div className="text-xl text-cyan-400">12</div>
+              <div className="text-xs text-white/70">Hours</div>
             </div>
-            <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
-              <div className="text-xl text-minecraft-green">45</div>
-              <div className="text-xs">Minutes</div>
+            <div className="bg-black/70 border border-cyan-400/20 p-2 w-16">
+              <div className="text-xl text-cyan-400">45</div>
+              <div className="text-xs text-white/70">Minutes</div>
             </div>
-
           </div>
         </motion.div>
       </div>

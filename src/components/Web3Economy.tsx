@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Coins, TrendingUp, Wallet, Landmark } from 'lucide-react';
@@ -6,10 +7,17 @@ import WalletModal from '@/components/WalletModal';
 
 const Web3Economy = () => {
   return (
-    <section className="py-24 relative overflow-hidden minecraft-dirt-bg">
+    <section className="py-24 relative overflow-hidden" style={{ 
+      background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed' 
+    }}>
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-stone.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ 
+          background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
+        }}></div>
         
         {/* Minecraft particles */}
         <div className="absolute inset-0 overflow-hidden">
@@ -54,19 +62,19 @@ const Web3Economy = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-solana-blue/20 via-solana-purple/20 to-solana-green/20 mb-4">
-            <div className="px-4 py-1.5 rounded-full bg-card/60 backdrop-blur-sm text-sm font-medium text-solana-blue">
+          <div className="inline-block p-1.5 rounded-none bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-4 border border-cyan-400/30">
+            <div className="px-4 py-1.5 rounded-none bg-black/60 backdrop-blur-sm text-sm font-minecraft text-cyan-400">
               BLOCKCHAIN POWERED
             </div>
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-purple to-solana-green drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
               POWER YOUR JOURNEY WITH WEB3
             </span>
           </h2>
           
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Our integrated Web3 ecosystem gives you real ownership of in-game assets and rewards, all powered by Solana blockchain technology.
           </p>
         </motion.div>
@@ -74,7 +82,7 @@ const Web3Economy = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {/* $FARM & $PATH Tokens */}
           <motion.div 
-            className="bg-card/40 backdrop-blur-md p-6 border border-solana-purple/20"
+            className="bg-black/40 backdrop-blur-md p-6 border border-cyan-400/30 rounded-lg"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -84,7 +92,7 @@ const Web3Economy = () => {
               <MinecraftIcon icon={Coins} size="lg" variant="gold" className="mr-4" />
               <h3 className="font-minecraft text-2xl text-minecraft-gold">$FARM & $PATH TOKENS</h3>
             </div>
-            <p className="mb-4">
+            <p className="mb-4 text-white/80">
               Earn $FARM through gameplay and $PATH via staking, both with real-world value on Raydium DEX.
             </p>
             
@@ -101,22 +109,22 @@ const Web3Economy = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-4 mb-4">
-              <div className="bg-black/30 p-4 text-center">
+              <div className="bg-black/50 p-4 text-center border border-cyan-400/20">
                 <div className="font-minecraft text-minecraft-gold text-lg">$FARM</div>
-                <div className="text-sm">Utility Token</div>
-                <div className="mt-2 text-sm">Mine, Farm, Battle to earn</div>
+                <div className="text-sm text-white/80">Utility Token</div>
+                <div className="mt-2 text-sm text-white/80">Mine, Farm, Battle to earn</div>
               </div>
-              <div className="bg-black/30 p-4 text-center">
+              <div className="bg-black/50 p-4 text-center border border-cyan-400/20">
                 <div className="font-minecraft text-solana-green text-lg">$PATH</div>
-                <div className="text-sm">Governance Token</div>
-                <div className="mt-2 text-sm">Stake $FARM to earn</div>
+                <div className="text-sm text-white/80">Governance Token</div>
+                <div className="mt-2 text-sm text-white/80">Stake $FARM to earn</div>
               </div>
             </div>
           </motion.div>
           
           {/* NFT Ecosystem */}
           <motion.div 
-            className="bg-card/40 backdrop-blur-md p-6 border border-solana-purple/20"
+            className="bg-black/40 backdrop-blur-md p-6 border border-cyan-400/30 rounded-lg"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -126,42 +134,42 @@ const Web3Economy = () => {
               <MinecraftIcon icon={TrendingUp} size="lg" variant="diamond" className="mr-4" />
               <h3 className="font-minecraft text-2xl text-minecraft-diamond">NFT ECOSYSTEM</h3>
             </div>
-            <p className="mb-4">
+            <p className="mb-4 text-white/80">
               Own unique Tools, Pets, Weapons, and Land NFTs that can be traded for profit on Solana marketplaces.
             </p>
             
             {/* NFT item showcase */}
             <div className="flex justify-center mb-4 gap-2 overflow-x-auto py-2">
               {['diamond_pickaxe', 'golden_apple', 'netherite_helmet', 'enchanted_book', 'diamond_sword'].map((item, i) => (
-                <div key={i} className="relative bg-black/30 p-2 border border-gray-700">
+                <div key={i} className="relative bg-black/50 p-2 border border-cyan-400/20">
                   <img src={`/images/${item}.png`} alt={item} className="h-12 w-12 object-contain pixelated" />
                 </div>
               ))}
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-black/30 p-3 text-center">
+              <div className="bg-black/50 p-3 text-center border border-cyan-400/20">
                 <div className="font-minecraft text-rarity-common text-md">Common</div>
-                <div className="text-xs">1% Drop Rate</div>
+                <div className="text-xs text-white/80">1% Drop Rate</div>
               </div>
-              <div className="bg-black/30 p-3 text-center">
+              <div className="bg-black/50 p-3 text-center border border-cyan-400/20">
                 <div className="font-minecraft text-rarity-uncommon text-md">Uncommon</div>
-                <div className="text-xs">0.5% Drop Rate</div>
+                <div className="text-xs text-white/80">0.5% Drop Rate</div>
               </div>
-              <div className="bg-black/30 p-3 text-center">
+              <div className="bg-black/50 p-3 text-center border border-cyan-400/20">
                 <div className="font-minecraft text-rarity-rare text-md">Rare</div>
-                <div className="text-xs">0.1% Drop Rate</div>
+                <div className="text-xs text-white/80">0.1% Drop Rate</div>
               </div>
-              <div className="bg-black/30 p-3 text-center">
+              <div className="bg-black/50 p-3 text-center border border-cyan-400/20">
                 <div className="font-minecraft text-rarity-legendary text-md">Legendary</div>
-                <div className="text-xs">0.01% Drop Rate</div>
+                <div className="text-xs text-white/80">0.01% Drop Rate</div>
               </div>
             </div>
           </motion.div>
           
           {/* DeFi Staking */}
           <motion.div 
-            className="bg-card/40 backdrop-blur-md p-6 border border-solana-purple/20"
+            className="bg-black/40 backdrop-blur-md p-6 border border-cyan-400/30 rounded-lg"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -171,15 +179,15 @@ const Web3Economy = () => {
               <MinecraftIcon icon={Landmark} size="lg" variant="diamond" className="mr-4" />
               <h3 className="font-minecraft text-2xl text-minecraft-emerald">DEFI STAKING</h3>
             </div>
-            <p className="mb-4">
+            <p className="mb-4 text-white/80">
               Lock $FARM or NFTs to earn $PATH, with APY up to 50% in Phase 3. The longer you stake, the more you earn!
             </p>
-            <div className="bg-black/30 p-4 flex justify-between items-center">
+            <div className="bg-black/50 p-4 flex justify-between items-center border border-cyan-400/20">
               <div>
                 <div className="font-minecraft text-minecraft-emerald text-lg">STAKE NOW</div>
-                <div className="text-sm">APY: 25-50%</div>
+                <div className="text-sm text-white/80">APY: 25-50%</div>
               </div>
-              <div className="font-minecraft text-white text-sm bg-minecraft-emerald p-2">
+              <div className="font-minecraft text-white text-sm bg-gradient-to-r from-cyan-500 to-blue-600 p-2">
                 Phase 3 Feature
               </div>
             </div>
@@ -187,7 +195,7 @@ const Web3Economy = () => {
           
           {/* Land Ownership */}
           <motion.div 
-            className="bg-card/40 backdrop-blur-md p-6 border border-solana-purple/20"
+            className="bg-black/40 backdrop-blur-md p-6 border border-cyan-400/30 rounded-lg"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -197,15 +205,15 @@ const Web3Economy = () => {
               <MinecraftIcon icon={Wallet} size="lg" variant="iron" className="mr-4" />
               <h3 className="font-minecraft text-2xl text-minecraft-iron">LAND OWNERSHIP</h3>
             </div>
-            <p className="mb-4">
+            <p className="mb-4 text-white/80">
               Purchase Land NFTs to expand your empire, boost resource generation, and rent to other players for passive income.
             </p>
-            <div className="bg-black/30 p-4 flex justify-between items-center">
+            <div className="bg-black/50 p-4 flex justify-between items-center border border-cyan-400/20">
               <div>
                 <div className="font-minecraft text-minecraft-iron text-lg">OWN LAND</div>
-                <div className="text-sm">16×16 to 64×64 plots</div>
+                <div className="text-sm text-white/80">16×16 to 64×64 plots</div>
               </div>
-              <div className="font-minecraft text-white text-sm bg-minecraft-iron p-2">
+              <div className="font-minecraft text-white text-sm bg-gradient-to-r from-cyan-500 to-blue-600 p-2">
                 Phase 4 Feature
               </div>
             </div>

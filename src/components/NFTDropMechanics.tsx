@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldAlert, Clock, BarChart3, Award, Axe } from 'lucide-react';
@@ -42,10 +43,17 @@ const NFTDropMechanics = () => {
   ];
 
   return (
-    <section className="py-20 relative overflow-hidden minecraft-dirt-bg">
+    <section className="py-20 relative overflow-hidden" style={{ 
+      background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed' 
+    }}>
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-nether.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ 
+          background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
+        }}></div>
         
         {/* Minecraft particles */}
         <div className="absolute inset-0 overflow-hidden">
@@ -90,24 +98,24 @@ const NFTDropMechanics = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="inline-block p-1.5 rounded-none bg-gradient-to-r from-solana-blue/20 via-solana-purple/20 to-solana-green/20 mb-4 border border-minecraft-dirt">
-            <div className="px-4 py-1 rounded-none bg-card/60 backdrop-blur-sm text-sm font-minecraft text-solana-blue">
+          <div className="inline-block p-1.5 rounded-none bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-4 border border-cyan-400/30">
+            <div className="px-4 py-1 rounded-none bg-black/60 backdrop-blur-sm text-sm font-minecraft text-cyan-400">
               NFT DROP SYSTEM
             </div>
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 text-white">
-            HOW TO EARN NFTs
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">HOW TO EARN NFTs</span>
           </h2>
           
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-white/80 max-w-3xl mx-auto">
             Our server features a luck-based NFT drop system that rewards your gameplay with valuable blockchain items
           </p>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <div className="minecraft-container border-4 border-minecraft-dirt p-6">
-            <h3 className="font-minecraft text-2xl mb-4 text-solana-blue">Drop Triggers</h3>
+          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg">
+            <h3 className="font-minecraft text-2xl mb-4 text-cyan-400">Drop Triggers</h3>
             
             <div className="space-y-4">
               <div className="flex items-start">
@@ -116,34 +124,34 @@ const NFTDropMechanics = () => {
                 </div>
                 <div>
                   <h4 className="font-minecraft text-lg text-minecraft-green">Mining</h4>
-                  <p className="text-sm text-muted-foreground">Mining valuable blocks like diamond, emerald, and ancient debris has a chance to drop NFTs</p>
+                  <p className="text-sm text-white/80">Mining valuable blocks like diamond, emerald, and ancient debris has a chance to drop NFTs</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="mt-1 mr-4 text-solana-purple">
+                <div className="mt-1 mr-4 text-cyan-400">
                   <Award size={24} />
                 </div>
                 <div>
-                  <h4 className="font-minecraft text-lg text-solana-purple">Monster Kills</h4>
-                  <p className="text-sm text-muted-foreground">Defeating hostile mobs and bosses gives you a chance to earn NFT rewards</p>
+                  <h4 className="font-minecraft text-lg text-cyan-400">Monster Kills</h4>
+                  <p className="text-sm text-white/80">Defeating hostile mobs and bosses gives you a chance to earn NFT rewards</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="mt-1 mr-4 text-solana-blue">
+                <div className="mt-1 mr-4 text-blue-500">
                   <ShieldAlert size={24} />
                 </div>
                 <div>
-                  <h4 className="font-minecraft text-lg text-solana-blue">PvP Combat</h4>
-                  <p className="text-sm text-muted-foreground">Selected PvP battles in designated arenas can also trigger NFT drops</p>
+                  <h4 className="font-minecraft text-lg text-blue-500">PvP Combat</h4>
+                  <p className="text-sm text-white/80">Selected PvP battles in designated arenas can also trigger NFT drops</p>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="minecraft-container border-4 border-minecraft-dirt p-6">
-            <h3 className="font-minecraft text-2xl mb-4 text-solana-blue">Safeguards & Balance</h3>
+          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg">
+            <h3 className="font-minecraft text-2xl mb-4 text-cyan-400">Safeguards & Balance</h3>
             
             <div className="space-y-4">
               <div className="flex items-start">
@@ -152,27 +160,27 @@ const NFTDropMechanics = () => {
                 </div>
                 <div>
                   <h4 className="font-minecraft text-lg text-minecraft-green">Cooldown System</h4>
-                  <p className="text-sm text-muted-foreground">After earning an NFT, a cooldown period applies before you can earn another one</p>
+                  <p className="text-sm text-white/80">After earning an NFT, a cooldown period applies before you can earn another one</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="mt-1 mr-4 text-solana-purple">
+                <div className="mt-1 mr-4 text-cyan-400">
                   <BarChart3 size={24} />
                 </div>
                 <div>
-                  <h4 className="font-minecraft text-lg text-solana-purple">Diminishing Returns</h4>
-                  <p className="text-sm text-muted-foreground">Repetitive actions like farming the same mob will yield fewer drops over time</p>
+                  <h4 className="font-minecraft text-lg text-cyan-400">Diminishing Returns</h4>
+                  <p className="text-sm text-white/80">Repetitive actions like farming the same mob will yield fewer drops over time</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="mt-1 mr-4 text-solana-blue">
+                <div className="mt-1 mr-4 text-blue-500">
                   <ShieldAlert size={24} />
                 </div>
                 <div>
-                  <h4 className="font-minecraft text-lg text-solana-blue">Anti-Farming</h4>
-                  <p className="text-sm text-muted-foreground">Low-value actions are excluded to prevent exploitation of the system</p>
+                  <h4 className="font-minecraft text-lg text-blue-500">Anti-Farming</h4>
+                  <p className="text-sm text-white/80">Low-value actions are excluded to prevent exploitation of the system</p>
                 </div>
               </div>
             </div>
@@ -185,42 +193,42 @@ const NFTDropMechanics = () => {
           {dropRarities.map((rarity, index) => (
             <motion.div 
               key={index}
-              className="minecraft-container border-4 border-minecraft-dirt p-4 flex flex-col items-center text-center"
+              className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 flex flex-col items-center text-center rounded-lg"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
               <h4 className={`font-minecraft text-xl mb-2 ${rarity.color}`}>{rarity.name}</h4>
-              <div className="mb-2 bg-black/30 px-3 py-1 rounded-none border border-minecraft-dirt">
-                <span className="font-mono">{rarity.chance}</span> chance
+              <div className="mb-2 bg-black/50 px-3 py-1 border border-cyan-400/20">
+                <span className="font-mono text-white/80">{rarity.chance}</span> chance
               </div>
-              <p className="text-sm mb-2 text-muted-foreground">Expected after:</p>
-              <p className="font-minecraft text-sm mb-3">{rarity.playtime}</p>
-              <p className="text-xs text-muted-foreground mt-auto">Examples: {rarity.examples}</p>
+              <p className="text-sm mb-2 text-white/60">Expected after:</p>
+              <p className="font-minecraft text-sm mb-3 text-white/80">{rarity.playtime}</p>
+              <p className="text-xs text-white/60 mt-auto">Examples: {rarity.examples}</p>
             </motion.div>
           ))}
         </div>
         
-        <div className="minecraft-container border-4 border-minecraft-dirt p-6 max-w-4xl mx-auto">
-          <h3 className="font-minecraft text-xl mb-4 text-center text-solana-blue">Pro Tips for NFT Hunters</h3>
+        <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 max-w-4xl mx-auto rounded-lg">
+          <h3 className="font-minecraft text-xl mb-4 text-center text-cyan-400">Pro Tips for NFT Hunters</h3>
           
           <ul className="space-y-2">
             <li className="flex items-start">
-              <span className="font-minecraft text-minecraft-green mr-2">▶</span>
-              <span className="text-sm">Vary your activities between mining and combat for the best chances</span>
+              <span className="font-minecraft text-cyan-400 mr-2">▶</span>
+              <span className="text-sm text-white/80">Vary your activities between mining and combat for the best chances</span>
             </li>
             <li className="flex items-start">
-              <span className="font-minecraft text-minecraft-green mr-2">▶</span>
-              <span className="text-sm">Boss fights and rare ore mining have higher drop rates</span>
+              <span className="font-minecraft text-cyan-400 mr-2">▶</span>
+              <span className="text-sm text-white/80">Boss fights and rare ore mining have higher drop rates</span>
             </li>
             <li className="flex items-start">
-              <span className="font-minecraft text-minecraft-green mr-2">▶</span>
-              <span className="text-sm">Join server events for boosted drop chances during special periods</span>
+              <span className="font-minecraft text-cyan-400 mr-2">▶</span>
+              <span className="text-sm text-white/80">Join server events for boosted drop chances during special periods</span>
             </li>
             <li className="flex items-start">
-              <span className="font-minecraft text-minecraft-green mr-2">▶</span>
-              <span className="text-sm">Legendary items are extremely rare - expect to play for 75+ hours before finding one</span>
+              <span className="font-minecraft text-cyan-400 mr-2">▶</span>
+              <span className="text-sm text-white/80">Legendary items are extremely rare - expect to play for 75+ hours before finding one</span>
             </li>
           </ul>
         </div>

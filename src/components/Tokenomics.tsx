@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
@@ -21,10 +22,17 @@ const chestContents = [
 
 const Tokenomics = () => {
   return (
-    <section className="py-24 relative overflow-hidden minecraft-dirt-bg">
+    <section className="py-24 relative overflow-hidden" style={{ 
+      background: 'linear-gradient(180deg, rgba(21,26,49,1) 0%, rgba(13,14,22,1) 100%)',
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed' 
+    }}>
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-nether.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ 
+          background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
+        }}></div>
         
         {/* Minecraft particles */}
         <div className="absolute inset-0 overflow-hidden">
@@ -69,19 +77,19 @@ const Tokenomics = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <div className="minecraft-panel inline-block p-1.5 bg-minecraft-stone border-4 border-gray-800">
-            <div className="px-4 py-1.5 bg-minecraft-emerald font-minecraft text-white text-sm border-b-4 border-minecraft-emerald/70">
+          <div className="inline-block p-1.5 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-4 border border-cyan-400/30">
+            <div className="px-4 py-1.5 bg-black/60 backdrop-blur-sm font-minecraft text-cyan-400 text-sm">
               TOKENOMICS
             </div>
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-minecraft-emerald via-minecraft-blue to-minecraft-green drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]">
               SUPPLY & DISTRIBUTION
             </span>
           </h2>
           
-          <p className="text-lg text-white max-w-2xl mx-auto mb-12 font-minecraft tracking-wide">
+          <p className="text-lg text-white/80 max-w-2xl mx-auto mb-12 font-minecraft tracking-wide">
             Our token distribution is designed to support long-term growth and community rewards while maintaining 
             a sustainable economy.
           </p>
@@ -90,7 +98,7 @@ const Tokenomics = () => {
             <div className="h-[400px]">
               {/* Minecraft-styled pie chart border */}
               <div className="relative h-full">
-                <div className="absolute inset-0 border-4 border-gray-800 bg-minecraft-black/60"></div>
+                <div className="absolute inset-0 border border-cyan-400/30 bg-black/60 backdrop-blur-sm"></div>
                 <ResponsiveContainer width="100%" height="100%" className="relative z-10">
                   <PieChart>
                     <Pie
@@ -126,10 +134,10 @@ const Tokenomics = () => {
                 whileInView={{ scale: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="minecraft-chest col-span-full mb-8 bg-minecraft-planks border-4 border-gray-800 p-6"
+                className="minecraft-chest col-span-full mb-8 bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg"
               >
                 <h3 className="font-minecraft text-2xl mb-6 text-minecraft-gold text-center">TOTAL SUPPLY</h3>
-                <div className="bg-minecraft-black/60 border-2 border-gray-800 p-4">
+                <div className="bg-black/60 border border-cyan-400/30 p-4">
                   <div className="flex justify-center items-center">
                     <div className="text-minecraft-gold font-minecraft text-5xl animate-pulse-glow">
                       10M
@@ -146,7 +154,7 @@ const Tokenomics = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: item.delay }}
                         viewport={{ once: true }}
-                        className="flex justify-between items-center bg-minecraft-black/40 border-2 border-gray-800 px-3 py-2"
+                        className="flex justify-between items-center bg-black/50 border border-cyan-400/20 px-3 py-2"
                       >
                         <span className="font-minecraft" style={{ color: item.color }}>{item.name}</span>
                         <span className="font-minecraft text-white">{item.amount}</span>
@@ -156,9 +164,9 @@ const Tokenomics = () => {
                 </div>
               </motion.div>
               
-              <div className="bg-minecraft-stone border-4 border-gray-800 p-4 group hover:bg-minecraft-stone/70 transition-all duration-300">
+              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
                 <h3 className="font-minecraft text-3xl mb-4 text-minecraft-blue">4M</h3>
-                <p className="text-sm text-white font-minecraft">Liquidity</p>
+                <p className="text-sm text-white/80 font-minecraft">Liquidity</p>
                 <div className="mt-3">
                   <MinecraftProgress 
                     value={40} 
@@ -170,9 +178,9 @@ const Tokenomics = () => {
                 </div>
               </div>
               
-              <div className="bg-minecraft-stone border-4 border-gray-800 p-4 group hover:bg-minecraft-stone/70 transition-all duration-300">
+              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
                 <h3 className="font-minecraft text-3xl mb-4 text-minecraft-green">2M</h3>
-                <p className="text-sm text-white font-minecraft">Development</p>
+                <p className="text-sm text-white/80 font-minecraft">Development</p>
                 <div className="mt-3">
                   <MinecraftProgress 
                     value={20} 
@@ -184,9 +192,9 @@ const Tokenomics = () => {
                 </div>
               </div>
               
-              <div className="bg-minecraft-stone border-4 border-gray-800 p-4 group hover:bg-minecraft-stone/70 transition-all duration-300">
+              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
                 <h3 className="font-minecraft text-3xl mb-4 text-minecraft-gold">2M</h3>
-                <p className="text-sm text-white font-minecraft">Marketing</p>
+                <p className="text-sm text-white/80 font-minecraft">Marketing</p>
                 <div className="mt-3">
                   <MinecraftProgress 
                     value={20} 
@@ -198,9 +206,9 @@ const Tokenomics = () => {
                 </div>
               </div>
               
-              <div className="bg-minecraft-stone border-4 border-gray-800 p-4 group hover:bg-minecraft-stone/70 transition-all duration-300">
+              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
                 <h3 className="font-minecraft text-3xl mb-4 text-rarity-epic">2M</h3>
-                <p className="text-sm text-white font-minecraft">Team & Community</p>
+                <p className="text-sm text-white/80 font-minecraft">Team & Community</p>
                 <div className="mt-3">
                   <MinecraftProgress 
                     value={20} 

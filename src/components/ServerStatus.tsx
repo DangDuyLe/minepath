@@ -80,12 +80,12 @@ const ServerStatus = () => {
             
             <div className="mt-4 sm:mt-0">
               <div className="flex items-center">
-                <div className="font-minecraft bg-black/60 p-2 border border-cyan-400/30 rounded-l-md text-white/80">
+                <div className="font-minecraft bg-black/60 p-2 border border-cyan-400/30 text-white/80">
                   {serverAddress}
                 </div>
                 <button 
                   onClick={copyServerAddress}
-                  className="p-2 bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:from-cyan-400 hover:to-blue-400 border border-cyan-400/30 rounded-r-md transition-colors"
+                  className="p-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 border border-cyan-400/30 transition-colors"
                 >
                   <Copy size={16} className="text-white" />
                 </button>
