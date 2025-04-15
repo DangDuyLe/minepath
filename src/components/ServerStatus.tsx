@@ -41,11 +41,27 @@ const ServerStatus = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
     >
+      {/* Background elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
         <div className="absolute top-0 left-0 w-full h-full" style={{ 
           background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
         }}></div>
+        
+        {/* Minecraft particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute pixelated w-2 h-2 bg-white opacity-30"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 5}s ease-in-out infinite ${Math.random() * 5}s`
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -63,7 +79,7 @@ const ServerStatus = () => {
                 <span className="mr-2 text-white/80">Status:</span>
                 {isOnline ? (
                   <span className="text-green-500 flex items-center">
-                    <span className="h-2 w-2 bg-green-500 rounded-full mr-1"></span> Online
+                    <span className="h-2 w-2 bg-green-500 rounded-full mr-1 animate-pulse"></span> Online
                   </span>
                 ) : (
                   <span className="text-red-500 flex items-center">
@@ -73,14 +89,15 @@ const ServerStatus = () => {
               </div>
               {playerCount !== null && isOnline && (
                 <div className="text-sm">
-                  <span className="text-white/60">Players:</span> {playerCount}/1000
+                  <span className="text-white/60">Players:</span> 
+                  <span className="text-cyan-400 ml-1">{playerCount}/1000</span>
                 </div>
               )}
             </div>
             
             <div className="mt-4 sm:mt-0">
               <div className="flex items-center">
-                <div className="font-minecraft bg-black/60 p-2 border border-cyan-400/30 text-white/80">
+                <div className="font-minecraft bg-black/60 p-2 border border-cyan-400/30 text-cyan-400">
                   {serverAddress}
                 </div>
                 <button 

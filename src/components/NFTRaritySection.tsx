@@ -110,34 +110,44 @@ const NFTRaritySection = () => {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-block p-1.5 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-4 border border-cyan-400/30">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-block p-1.5 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-4 border border-cyan-400/30"
+          >
             <div className="px-4 py-1 bg-black/60 backdrop-blur-sm font-minecraft text-cyan-400 text-sm">
               NFT RARITIES
             </div>
-          </div>
+          </motion.div>
           
-          <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
-            <motion.span 
+          <motion.h2 
+            className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <span 
               className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
-              animate={{ 
-                color: [
-                  'rgb(176, 176, 176)', // common 
-                  'rgb(85, 255, 85)',   // uncommon
-                  'rgb(85, 85, 255)',   // rare
-                  'rgb(170, 0, 170)',   // epic
-                  'rgb(255, 170, 0)',   // legendary
-                  'rgb(176, 176, 176)'  // back to common
-                ]
+              style={{
+                animation: "color-shift 10s linear infinite"
               }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
             >
               DISCOVER THE POWER TIERS
-            </motion.span>
-          </h2>
+            </span>
+          </motion.h2>
           
-          <p className="text-white/80 max-w-2xl mx-auto mb-12 font-minecraft tracking-wide">
+          <motion.p 
+            className="text-white/80 max-w-2xl mx-auto mb-12 font-minecraft tracking-wide"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             Explore the different NFT rarities in MinePath and their unique powers and abilities that will transform your gameplay experience.
-          </p>
+          </motion.p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -154,14 +164,20 @@ const NFTRaritySection = () => {
           ))}
         </div>
         
-        <div className="mt-12 text-center">
+        <motion.div 
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
           <Link 
             to="/nfts" 
             className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-2 font-minecraft text-white hover:from-cyan-400 hover:to-blue-500 transition-colors group"
           >
             Browse the complete NFT catalog <ChevronRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -169,11 +185,11 @@ const NFTRaritySection = () => {
 
 const RarityCard = ({ rarity }: { rarity: typeof RARITY_TYPES[0] }) => {
   return (
-    <Card className={`overflow-hidden border border-cyan-400/30 backdrop-blur-sm bg-black/40 transition-all duration-300 hover:transform hover:scale-105 relative`}>
+    <Card className={`overflow-hidden border border-cyan-400/30 backdrop-blur-sm bg-black/40 transition-all duration-300 hover:transform hover:scale-105 relative h-full`}>
       {/* Dark overlay to make the background darker while preserving color */}
       <div className="absolute inset-0 bg-black/40"></div>
       
-      <div className="p-6 relative z-10">
+      <div className="p-6 relative z-10 h-full flex flex-col">
         {/* Pixelated grid overlay */}
         <div className="absolute inset-0 opacity-10" style={{ 
           backgroundImage: 'url("/images/pixel_pattern.png")',
@@ -199,7 +215,7 @@ const RarityCard = ({ rarity }: { rarity: typeof RARITY_TYPES[0] }) => {
           {rarity.description}
         </p>
         
-        <div className="mt-4 bg-black/60 backdrop-blur-sm p-3 border border-cyan-400/30 relative z-10">
+        <div className="mt-auto bg-black/60 backdrop-blur-sm p-3 border border-cyan-400/30 relative z-10">
           <div className="text-xs uppercase tracking-wide text-white/80 mb-2 font-minecraft text-center">Examples:</div>
           <ul className="text-sm space-y-1 font-minecraft">
             {rarity.examples.map((example, index) => (
