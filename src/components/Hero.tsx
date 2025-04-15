@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Shield, Sword, Coins, Sparkles, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -145,23 +144,6 @@ const Hero = () => {
           </motion.div>
         </div>
         
-        {/* Side Navigation */}
-        <motion.div 
-          className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1, duration: 0.5 }}
-        >
-          <div className="flex flex-col gap-4">
-            <NavDot label="MOTIVATION" />
-            <NavDot label="WORLDS" />
-            <NavDot label="GAMEPLAY" />
-            <NavDot label="ECONOMY" />
-            <NavDot label="TECHNOLOGY" />
-            <NavDot label="ASSETS" />
-          </div>
-        </motion.div>
-        
         {/* Logo bar */}
         <motion.div 
           className="mt-20 pt-10 absolute left-0 right-0 bottom-8"
@@ -193,12 +175,5 @@ const Hero = () => {
     </div>
   );
 };
-
-const NavDot = ({ label }) => (
-  <div className="group flex items-center justify-end">
-    <span className="text-white/70 mr-2 text-xs font-minecraft group-hover:text-cyan-400 transition-colors">{label}</span>
-    <div className="w-2 h-2 bg-white/50 group-hover:bg-cyan-400 rounded-full transition-colors"></div>
-  </div>
-);
 
 export default Hero;
