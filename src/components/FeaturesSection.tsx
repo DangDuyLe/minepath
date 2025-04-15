@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sword, Shield, Coins, Award, Share2, Sparkles, LucideIcon } from 'lucide-react';
@@ -72,10 +73,17 @@ const item = {
 
 const FeaturesSection = () => {
   return (
-    <section className="relative py-24 overflow-hidden minecraft-dirt-bg">
+    <section className="py-24 relative overflow-hidden" style={{ 
+      background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed' 
+    }}>
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-stone.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ 
+          background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
+        }}></div>
         
         {/* Minecraft particles */}
         <div className="absolute inset-0 overflow-hidden">
@@ -125,27 +133,27 @@ const FeaturesSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="minecraft-panel inline-block p-1.5 bg-minecraft-stone border-4 border-gray-800"
+            className="inline-block p-1.5 rounded-md backdrop-blur-sm bg-gradient-to-r from-blue-600/20 to-purple-600/20 mb-5"
           >
-            <div className="px-4 py-1.5 bg-minecraft-green font-minecraft text-white text-sm border-b-4 border-minecraft-green/70">
+            <div className="px-4 py-1.5 font-minecraft text-cyan-400 text-sm border-b border-cyan-400/30">
               SERVER FEATURES
             </div>
           </motion.div>
           
           <motion.h2 
-            className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white"
+            className="font-minecraft text-4xl md:text-5xl mb-6 text-white"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span className="text-minecraft-blue drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]">
-              PLAY, <span className="text-minecraft-purple">EARN</span>, <span className="text-minecraft-green">EVOLVE</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+              PLAY, <span className="text-cyan-400">EARN</span>, <span className="text-blue-500">EVOLVE</span>
             </span>
           </motion.h2>
           
           <motion.p 
-            className="text-white max-w-2xl mx-auto font-minecraft tracking-wide"
+            className="text-white/80 max-w-2xl mx-auto font-minecraft tracking-wide"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -169,9 +177,10 @@ const FeaturesSection = () => {
         </motion.div>
         
         <div className="mt-16 text-center">
-          <EnhancedButton minecraftStyle="grass" size="lg">
-            <span className="font-minecraft text-base">JOIN OUR SERVER</span>
-          </EnhancedButton>
+          <button className="play-now-btn relative px-8 py-3 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group">
+            <span className="relative z-10">JOIN OUR SERVER</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </button>
         </div>
       </div>
     </section>
@@ -191,25 +200,15 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ feature, index }: FeatureCardProps) => {
-  // Different block backgrounds for each card
-  const blockBgs = [
-    "bg-minecraft-dirt",
-    "bg-minecraft-stone",
-    "bg-minecraft-planks",
-    "bg-minecraft-grass",
-    "bg-minecraft-diamond",
-    "bg-minecraft-gold"
-  ];
-  
   return (
     <motion.div 
       className="h-full"
       variants={item}
       transition={{ duration: 0.5, delay: index * 0.05 }}
     >
-      <div className={`border-4 border-gray-800 ${blockBgs[index % blockBgs.length]} minecraft-3d-container h-full relative`}>
-        {/* Dark overlay to make the background darker while preserving color */}
-        <div className="absolute inset-0 bg-black"></div>
+      <div className="bg-black/30 backdrop-blur-sm border border-cyan-400/30 rounded-lg h-full relative overflow-hidden">
+        {/* Dark overlay for better readability */}
+        <div className="absolute inset-0 bg-black/20"></div>
         
         <div className="p-6 flex flex-col h-full relative">
           {/* Pixelated overlay texture */}
@@ -220,7 +219,7 @@ const FeatureCard = ({ feature, index }: FeatureCardProps) => {
           }}></div>
           
           {/* Feature Image */}
-          <div className="relative z-10 mb-4 overflow-hidden h-28">
+          <div className="relative z-10 mb-4 overflow-hidden h-28 rounded-lg">
             <img 
               src={feature.image} 
               alt={feature.title} 
@@ -233,27 +232,18 @@ const FeatureCard = ({ feature, index }: FeatureCardProps) => {
           
           {/* Icon */}
           <div className="relative z-10 mb-6">
-            <MinecraftIcon 
-              icon={feature.icon} 
-              size="lg" 
-              variant={feature.variant as any}
-              className="border-4 border-gray-800"
-            />
+            <div className="w-12 h-12 bg-black/40 border border-cyan-400/30 backdrop-blur-sm rounded-lg flex items-center justify-center">
+              <feature.icon className="h-6 w-6 text-cyan-400" />
+            </div>
           </div>
           
-          <h3 className="font-minecraft text-xl mb-3 text-white relative z-10">
+          <h3 className="font-minecraft text-xl mb-3 text-cyan-400 relative z-10">
             {feature.title}
           </h3>
           
-          <p className="text-sm text-white font-minecraft tracking-wide relative z-10 leading-relaxed">
+          <p className="text-sm text-white/80 font-minecraft tracking-wide relative z-10 leading-relaxed">
             {feature.description}
           </p>
-          
-          {/* Decorative corner pixels */}
-          <div className="absolute top-0 left-0 w-2 h-2 bg-white/20"></div>
-          <div className="absolute top-0 right-0 w-2 h-2 bg-white/20"></div>
-          <div className="absolute bottom-0 left-0 w-2 h-2 bg-gray-900/40"></div>
-          <div className="absolute bottom-0 right-0 w-2 h-2 bg-gray-900/40"></div>
         </div>
       </div>
     </motion.div>

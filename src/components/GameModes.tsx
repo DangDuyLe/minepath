@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Pickaxe } from './ui/icons/Pickaxe';
@@ -70,10 +71,17 @@ const GameModes = () => {
   const futureModes = GAME_MODES.filter(mode => !mode.available);
   
   return (
-    <section className="py-24 relative overflow-hidden minecraft-dirt-bg">
+    <section className="relative py-24 overflow-hidden" style={{ 
+      background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed' 
+    }}>
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('/images/bg-pattern.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ 
+          background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
+        }}></div>
         
         {/* Minecraft particles */}
         <div className="absolute inset-0 overflow-hidden">
@@ -123,27 +131,27 @@ const GameModes = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="minecraft-panel inline-block p-1.5 bg-minecraft-stone border-4 border-gray-800"
+            className="inline-block p-1.5 rounded-md backdrop-blur-sm bg-gradient-to-r from-blue-600/20 to-purple-600/20 mb-5"
           >
-            <div className="px-4 py-1.5 bg-minecraft-blue font-minecraft text-white text-sm border-b-4 border-minecraft-blue/70">
+            <div className="px-4 py-1.5 font-minecraft text-cyan-400 text-sm border-b border-cyan-400/30">
               GAME MODES
             </div>
           </motion.div>
           
           <motion.h2 
-            className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white"
+            className="font-minecraft text-4xl md:text-5xl mb-6 text-white"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span className="text-solana-blue drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)]">
-              DISCOVER THE <span className="text-solana-green">MINEPATH</span> UNIVERSE
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+              DISCOVER THE <span className="text-cyan-400">MINEPATH</span> UNIVERSE
             </span>
           </motion.h2>
           
           <motion.p 
-            className="text-white max-w-2xl mx-auto font-minecraft tracking-wide"
+            className="text-white/80 max-w-2xl mx-auto font-minecraft tracking-wide"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -158,41 +166,41 @@ const GameModes = () => {
         {availableModes.map((mode) => (
           <motion.div 
             key={mode.id}
-            className="flex flex-col md:flex-row gap-8 minecraft-panel p-6 border-4 border-minecraft-green mb-16"
+            className="flex flex-col md:flex-row gap-8 bg-black/30 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-6 mb-16"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <div className="flex-1 relative overflow-hidden border-4 border-minecraft-dirt">
+            <div className="flex-1 relative overflow-hidden border border-cyan-400/30 rounded-lg">
               <img 
                 src={mode.image} 
                 alt={mode.name} 
-                className="w-full  object-cover pixelated"
+                className="w-full object-cover pixelated"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = '/images/placeholder_gamemode.png'
                 }}
               />
               
-              <div className="absolute top-0 left-0 bg-minecraft-green p-2 font-minecraft text-white">
+              <div className="absolute top-0 left-0 bg-cyan-400/80 p-2 font-minecraft text-black">
                 CURRENT PHASE
               </div>
             </div>
             
-            <div className="flex-1 flex flex-col justify-center ">
-              <h3 className="font-minecraft text-2xl mb-4 ">{mode.name} Mode</h3>
-              <p className="text-black mb-6 font-minecraft">{mode.description}</p>
+            <div className="flex-1 flex flex-col justify-center">
+              <h3 className="font-minecraft text-2xl mb-4 text-cyan-400">{mode.name} Mode</h3>
+              <p className="text-white/80 mb-6 font-minecraft">{mode.description}</p>
               
               <ul className="space-y-3">
-                <li className="flex items-center text-sm font-minecraft text-black">
-                  <ChevronRight className="h-4 w-4 text-minecraft-green mr-2" />
+                <li className="flex items-center text-sm font-minecraft text-white/80">
+                  <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
                   Earn $FARM tokens through mining activities
                 </li>
-                <li className="flex items-center text-sm font-minecraft text-black">
-                  <ChevronRight className="h-4 w-4 text-minecraft-green mr-2" />
+                <li className="flex items-center text-sm font-minecraft text-white/80">
+                  <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
                   Collect Tool NFTs with special mining abilities
                 </li>
-                <li className="flex items-center text-sm font-minecraft text-black">
-                  <ChevronRight className="h-4 w-4 text-minecraft-green mr-2" />
+                <li className="flex items-center text-sm font-minecraft text-white/80">
+                  <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
                   Unlock rare lootboxes with valuable rewards
                 </li>
               </ul>
@@ -205,15 +213,16 @@ const GameModes = () => {
                       key={idx}
                       src={img}
                       alt={`${mode.name} screenshot ${idx+1}`}
-                      className="h-24 w-full object-cover border-2 border-minecraft-dirt pixelated"
+                      className="h-24 w-full object-cover border border-cyan-400/30 rounded-md pixelated"
                     />
                   ))}
                 </div>
               )}
               
               <div className="mt-6">
-                <button className="minecraft-3d-btn text-sm">
-                  Start Mining Now
+                <button className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group">
+                  <span className="relative z-10">Start Mining Now</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </button>
               </div>
             </div>
@@ -221,32 +230,32 @@ const GameModes = () => {
         ))}
         
         {/* Future Modes (Locked) */}
-        <h3 className="font-minecraft text-xl text-white text-center mb-6">UPCOMING GAME MODES</h3>
+        <h3 className="font-minecraft text-xl text-cyan-400 text-center mb-6">UPCOMING GAME MODES</h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {futureModes.map((mode) => (
             <motion.div 
               key={mode.id}
-              className="minecraft-container border-gray-700 p-6 relative"
+              className="bg-black/30 backdrop-blur-sm border border-blue-500/20 rounded-lg p-6 relative"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
             >
-              <div className="absolute top-2 right-2 bg-minecraft-stone px-2 py-1 text-xs font-minecraft text-white">
+              <div className="absolute top-2 right-2 bg-blue-500/20 px-2 py-1 text-xs font-minecraft text-white/80 backdrop-blur-sm rounded-md">
                 {mode.phase}
               </div>
               
               {/* Preview image with lock overlay */}
               {mode.previewImage && (
-                <div className="relative mb-4 h-32 overflow-hidden">
+                <div className="relative mb-4 h-32 overflow-hidden rounded-md">
                   <img 
                     src={mode.previewImage}
                     alt={`${mode.name} preview`}
                     className="w-full h-full object-cover pixelated grayscale opacity-50"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm">
                     <Lock className="h-8 w-8 text-white opacity-70" />
                   </div>
                 </div>
@@ -270,7 +279,7 @@ const GameModes = () => {
               <p className="text-white/50 text-sm font-minecraft mb-4">{mode.description}</p>
               
               <div className="mt-auto">
-                <button className="minecraft-btn bg-minecraft-stone/50 text-white/50 w-full text-sm cursor-not-allowed font-minecraft" disabled>
+                <button className="w-full text-sm cursor-not-allowed font-minecraft bg-blue-400/10 text-blue-400/40 py-2 border border-blue-400/20 backdrop-blur-sm rounded-md" disabled>
                   Coming Soon
                 </button>
               </div>
@@ -280,28 +289,28 @@ const GameModes = () => {
         
         {/* Phase launch countdown */}
         <motion.div 
-          className="mt-12 p-4 bg-black/50 border-2 border-minecraft-dirt mx-auto max-w-md"
+          className="mt-12 p-4 bg-black/40 border border-cyan-400/30 backdrop-blur-sm rounded-lg mx-auto max-w-md"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="font-minecraft text-minecraft-gold text-sm mb-2 text-center">PHASE 2 LAUNCH IN:</div>
+          <div className="font-minecraft text-cyan-400 text-sm mb-2 text-center">PHASE 2 LAUNCH IN:</div>
           <div className="flex justify-center gap-4 font-minecraft text-white">
-            <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
-              <div className="text-xl text-minecraft-green">112</div>
+            <div className="bg-black/60 border border-cyan-400/30 backdrop-blur-sm p-2 w-16">
+              <div className="text-xl text-cyan-400">112</div>
               <div className="text-xs">Days</div>
             </div>
-            <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
-              <div className="text-xl text-minecraft-green">12</div>
+            <div className="bg-black/60 border border-cyan-400/30 backdrop-blur-sm p-2 w-16">
+              <div className="text-xl text-cyan-400">12</div>
               <div className="text-xs">Hours</div>
             </div>
-            <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
-              <div className="text-xl text-minecraft-green">45</div>
+            <div className="bg-black/60 border border-cyan-400/30 backdrop-blur-sm p-2 w-16">
+              <div className="text-xl text-cyan-400">45</div>
               <div className="text-xs">Minutes</div>
             </div>
-            <div className="bg-black/70 border-2 border-minecraft-dirt p-2 w-16">
-              <div className="text-xl text-minecraft-green">32</div>
+            <div className="bg-black/60 border border-cyan-400/30 backdrop-blur-sm p-2 w-16">
+              <div className="text-xl text-cyan-400">32</div>
               <div className="text-xs">Seconds</div>
             </div>
           </div>
