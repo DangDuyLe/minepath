@@ -32,7 +32,6 @@ const Index = () => {
   <Web3Economy />         
   <GameModes />            
   <GameRewards />         
-  <NFTRaritySection />    
   <NFTDropMechanics />    
   <Tokenomics />           
            

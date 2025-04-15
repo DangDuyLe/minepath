@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldAlert, Clock, BarChart3, Award, Axe } from 'lucide-react';
@@ -7,35 +6,30 @@ const NFTDropMechanics = () => {
   const dropRarities = [
     { 
       name: "Common", 
-      chance: "~1%", 
       color: "text-rarity-common",
       playtime: "~1 hour of gameplay",
       examples: "Stone Pickaxe, Leather Armor"
     },
     { 
       name: "Uncommon", 
-      chance: "~0.5%", 
       color: "text-rarity-uncommon",
       playtime: "~5 hours of gameplay",
       examples: "Iron Tools, Chain Armor"
     },
     { 
       name: "Rare", 
-      chance: "~0.1%", 
       color: "text-rarity-rare",
       playtime: "~20 hours of gameplay",
       examples: "Diamond Tools, Special Potions"
     },
     { 
       name: "Epic", 
-      chance: "~0.02%", 
       color: "text-rarity-epic",
       playtime: "~45 hours of gameplay",
       examples: "Enchanted Diamond Gear, Special Weapons"
     },
     { 
       name: "Legendary", 
-      chance: "~0.01%", 
       color: "text-rarity-legendary",
       playtime: "75+ hours of gameplay",
       examples: "Unique Weapons, Special Abilities"
@@ -200,9 +194,6 @@ const NFTDropMechanics = () => {
               viewport={{ once: true }}
             >
               <h4 className={`font-minecraft text-xl mb-2 ${rarity.color}`}>{rarity.name}</h4>
-              <div className="mb-2 bg-black/50 px-3 py-1 border border-cyan-400/20">
-                <span className="font-mono text-white/80">{rarity.chance}</span> chance
-              </div>
               <p className="text-sm mb-2 text-white/60">Expected after:</p>
               <p className="font-minecraft text-sm mb-3 text-white/80">{rarity.playtime}</p>
               <p className="text-xs text-white/60 mt-auto">Examples: {rarity.examples}</p>
