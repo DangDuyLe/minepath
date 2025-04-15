@@ -22,27 +22,29 @@ import ServerStatus from '@/components/ServerStatus';
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg">
-      <Navbar />
-      <main className="flex-grow">
-        <Hero />
-        <JoinCTA />
-        <WhatIs />
-        <GameModes />
-        <GameRewards />
-        <FeaturesSection />
-        <Web3Economy /> {/* Add Web3 Economy section */}
-        <NFTRaritySection />
-        <Tokenomics />
-        <NFTDropMechanics />
-        <CommunitySection /> {/* Add Community section */}
-        <HowToPlay />
-        <TestimonialSection />
-        <NFTShowcase />
-        <Roadmap />
-        <Newsletter />
-        <ServerStatus /> {/* Add Server Status section */}
-      </main>
-      <Footer />
+     <Navbar />
+<main className="flex-grow">
+  <Hero />                 
+  <JoinCTA />              
+  <WhatIs />              
+  <FeaturesSection />   
+  <HowToPlay />   
+  <Web3Economy />         
+  <GameModes />            
+  <GameRewards />         
+  <NFTRaritySection />    
+  <NFTDropMechanics />    
+  <Tokenomics />           
+           
+  <CommunitySection />     
+  <TestimonialSection />  
+  <NFTShowcase />          
+  <Roadmap />              
+  <ServerStatus />         
+  <Newsletter />          
+</main>
+<Footer />
+
     </div>
   );
 };

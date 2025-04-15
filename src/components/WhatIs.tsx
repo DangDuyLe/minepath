@@ -13,7 +13,7 @@ const WhatIs = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
         
         {/* Animated overlay pattern */}
-        <div className="absolute inset-0 bg-[url('/images/bg-mountain.png')] bg-repeat opacity-4"></div>
+        <div className="absolute inset-0 bg-[url('/images/bg-mountain.png')] bg-no-repeat bg-cover bg-center opacity-4"></div>
         
         {/* Geometric patterns along left edge */}
         <div className="absolute left-0 inset-y-0 w-16 opacity-20">
@@ -85,8 +85,8 @@ const WhatIs = () => {
             {/* Floating Decorative Elements */}
             <div className="absolute top-1/2 -left-16 transform -translate-y-1/2">
               <motion.img 
-                src="/images/diamond_block.png" 
-                alt="Diamond block" 
+                src="/images/diamond.png" 
+                alt="Diamond" 
                 className="w-16 h-16 pixelated"
                 animate={{ 
                   y: [0, -10, 0],
@@ -102,8 +102,8 @@ const WhatIs = () => {
             
             <div className="absolute -bottom-8 left-1/4">
               <motion.img 
-                src="/images/gold_block.png" 
-                alt="Gold block" 
+                src="/images/gold.png" 
+                alt="Gold" 
                 className="w-12 h-12 pixelated"
                 animate={{ 
                   y: [0, -8, 0],

@@ -128,8 +128,8 @@ const JoinCTA = () => {
                 }}
                 src="/images/minecraft_character.png" 
                 alt="Minecraft Character with NFT" 
-                className="pixelated h-56 md:h-64 w-auto object-contain mx-auto" 
-              />
+                className="pixelated h-72 md:h-96 w-auto object-contain mx-auto"
+                />
             </div>
           </div>
         </motion.div>

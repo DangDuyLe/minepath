@@ -219,7 +219,7 @@ const FeatureCard = ({ feature, index }: FeatureCardProps) => {
           }}></div>
           
           {/* Feature Image */}
-          <div className="relative z-10 mb-4 overflow-hidden h-28 rounded-lg">
+          <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg">
             <img 
               src={feature.image} 
               alt={feature.title} 

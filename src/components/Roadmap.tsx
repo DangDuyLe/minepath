@@ -262,30 +262,7 @@ const Roadmap = () => {
           </div>
         </div>
         
-        {/* Phase launch countdown */}
-        <motion.div 
-          className="mt-16 p-4 bg-black/50 border border-cyan-400/30 mx-auto max-w-md rounded-lg"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <div className="font-minecraft text-cyan-400 text-sm mb-2 text-center">PHASE 2 LAUNCH IN:</div>
-          <div className="flex justify-center gap-4 font-minecraft text-white">
-            <div className="bg-black/70 border border-cyan-400/20 p-2 w-16">
-              <div className="text-xl text-cyan-400">112</div>
-              <div className="text-xs text-white/70">Days</div>
-            </div>
-            <div className="bg-black/70 border border-cyan-400/20 p-2 w-16">
-              <div className="text-xl text-cyan-400">12</div>
-              <div className="text-xs text-white/70">Hours</div>
-            </div>
-            <div className="bg-black/70 border border-cyan-400/20 p-2 w-16">
-              <div className="text-xl text-cyan-400">45</div>
-              <div className="text-xs text-white/70">Minutes</div>
-            </div>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   );

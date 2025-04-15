@@ -125,11 +125,11 @@ const CommunitySection = () => {
             <div className="bg-black/50 p-4 border border-cyan-400/20 rounded-md">
               <div className="flex justify-between items-center mb-4">
                 <div>
-                  <div className="font-minecraft text-cyan-400">DRAGON HUNT</div>
+                  <div className="font-minecraft text-cyan-400">Server Opening</div>
                   <div className="text-xs text-white/70">Starting in 3 days</div>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 p-1.5 text-sm text-white/80 border border-cyan-400/20 rounded-md">
-                  LEGENDARY REWARDS
+                  GREAT REWARDS
                 </div>
               </div>
               <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-2 px-4 rounded-md text-sm font-minecraft">
