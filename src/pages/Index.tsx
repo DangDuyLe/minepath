@@ -1,10 +1,12 @@
 
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import WhatIs from '@/components/WhatIs';
 import JoinCTA from '@/components/JoinCTA';
 import ScrollToTop from '@/components/ScrollToTop';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Loader } from 'lucide-react';
 
 // Optimize initial load with more fine-grained code splitting
 const FeaturesSection = lazy(() => import('@/components/FeaturesSection'));
@@ -23,32 +25,134 @@ const Web3Economy = lazy(() => import('@/components/Web3Economy'));
 const CommunitySection = lazy(() => import('@/components/CommunitySection'));
 const ServerStatus = lazy(() => import('@/components/ServerStatus'));
 
-// Enhanced loading component for better visual feedback
+// Enhanced loading component with animation
 const SectionLoader = () => (
-  <div className="w-full py-16 flex flex-col justify-center items-center space-y-4">
-    <div className="minecraft-loading"></div>
-    <span className="text-minecraft-diamond font-minecraft text-sm animate-pulse">Loading world chunks...</span>
+  <div className="w-full py-12 flex flex-col justify-center items-center space-y-3">
+    <motion.div 
+      className="minecraft-loading"
+      animate={{ 
+        scale: [1, 1.1, 1],
+        rotate: [0, 180, 360]
+      }}
+      transition={{ 
+        duration: 2, 
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+    />
+    <motion.span 
+      className="text-minecraft-diamond font-minecraft text-sm"
+      animate={{ 
+        opacity: [0.5, 1, 0.5],
+      }}
+      transition={{ 
+        duration: 1.5, 
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+    >
+      Mining resources...
+    </motion.span>
   </div>
 );
 
 const Index = () => {
-  // Preload critical images for performance
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  
+  // Simulate loading process for better perceived performance
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    
+    // Simulate progress loading for better UX
+    const interval = setInterval(() => {
+      setLoadingProgress(prev => {
+        const newProgress = prev + (100 - prev) * 0.1;
+        return newProgress > 99 ? 100 : newProgress;
+      });
+    }, 150);
+    
+    // Preload critical images for faster perceived performance
     const imagesToPreload = [
       '/images/bg-shrine.png',
       '/images/swordshield.png',
       '/images/diamond.png',
-      '/images/gold.png'
+      '/images/gold.png',
+      '/images/minecraft_character.png'
     ];
     
     imagesToPreload.forEach(src => {
       const img = new Image();
       img.src = src;
     });
+    
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
   }, []);
   
+  // Page transition variants
+  const pageVariants = {
+    initial: { opacity: 0 },
+    animate: { 
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut" } 
+    },
+    exit: { 
+      opacity: 0,
+      transition: { duration: 0.3, ease: "easeIn" } 
+    }
+  };
+  
+  if (isLoading) {
+    return (
+      <div className="min-h-screen minecraft-dirt-bg flex flex-col justify-center items-center">
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-6"
+        >
+          <img src="/images/diamond_pickaxe.png" alt="Loading" className="w-16 h-16 pixelated animate-pulse-slow" />
+        </motion.div>
+        
+        <div className="w-64 h-4 relative bg-black/60 border-2 border-minecraft-stone mb-4">
+          <motion.div 
+            className="absolute top-0 left-0 h-full bg-minecraft-diamond"
+            initial={{ width: "0%" }}
+            animate={{ width: `${loadingProgress}%` }}
+            transition={{ ease: "easeOut" }}
+          />
+        </div>
+        
+        <motion.p 
+          className="text-white font-minecraft text-sm"
+          animate={{ 
+            opacity: [0.7, 1, 0.7],
+          }}
+          transition={{ 
+            duration: 1.5, 
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          Loading MinePath...
+        </motion.p>
+      </div>
+    );
+  }
+  
   return (
-    <div className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg">
+    <motion.div 
+      className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <Navbar />
       <main className="flex-grow">
         {/* Critical path components loaded eagerly */}
@@ -58,37 +162,61 @@ const Index = () => {
         
         {/* Lazy-loaded components with enhanced suspense transitions */}
         <Suspense fallback={<SectionLoader />}>
-          <div className="space-y-0">
+          <motion.div 
+            className="space-y-0"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
             <FeaturesSection />
             <HowToPlay />
             <Web3Economy />
-          </div>
+          </motion.div>
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
-          <div className="space-y-0">
+          <motion.div 
+            className="space-y-0"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
             <GameModes />
             <GameRewards />
             <NFTDropMechanics />
-          </div>
+          </motion.div>
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
-          <div className="space-y-0">
+          <motion.div 
+            className="space-y-0"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
             <NFTRaritySection />
             <Tokenomics />
             <CommunitySection />
             <TestimonialSection />
-          </div>
+          </motion.div>
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
-          <div className="space-y-0">
+          <motion.div 
+            className="space-y-0"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
             <NFTShowcase />
             <Roadmap />
             <ServerStatus />
             <Newsletter />
-          </div>
+          </motion.div>
         </Suspense>
       </main>
       
@@ -97,7 +225,7 @@ const Index = () => {
       </Suspense>
       
       <ScrollToTop />
-    </div>
+    </motion.div>
   );
 };
 
