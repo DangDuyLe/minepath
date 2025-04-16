@@ -1,12 +1,12 @@
 
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import WhatIs from '@/components/WhatIs';
 import JoinCTA from '@/components/JoinCTA';
 import ScrollToTop from '@/components/ScrollToTop';
 
-// Lazy-load components that are further down the page for better initial load performance
+// Optimize initial load with more fine-grained code splitting
 const FeaturesSection = lazy(() => import('@/components/FeaturesSection'));
 const GameModes = lazy(() => import('@/components/GameModes'));
 const GameRewards = lazy(() => import('@/components/GameRewards'));
@@ -23,14 +23,30 @@ const Web3Economy = lazy(() => import('@/components/Web3Economy'));
 const CommunitySection = lazy(() => import('@/components/CommunitySection'));
 const ServerStatus = lazy(() => import('@/components/ServerStatus'));
 
-// Simple loading component for Suspense fallback
+// Enhanced loading component for better visual feedback
 const SectionLoader = () => (
-  <div className="w-full py-16 flex justify-center items-center">
+  <div className="w-full py-16 flex flex-col justify-center items-center space-y-4">
     <div className="minecraft-loading"></div>
+    <span className="text-minecraft-diamond font-minecraft text-sm animate-pulse">Loading world chunks...</span>
   </div>
 );
 
 const Index = () => {
+  // Preload critical images for performance
+  useEffect(() => {
+    const imagesToPreload = [
+      '/images/bg-shrine.png',
+      '/images/swordshield.png',
+      '/images/diamond.png',
+      '/images/gold.png'
+    ];
+    
+    imagesToPreload.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+  
   return (
     <div className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg">
       <Navbar />
@@ -40,26 +56,43 @@ const Index = () => {
         <JoinCTA />
         <WhatIs />
         
-        {/* Less critical components loaded lazily */}
+        {/* Lazy-loaded components with enhanced suspense transitions */}
         <Suspense fallback={<SectionLoader />}>
-          <FeaturesSection />
-          <HowToPlay />
-          <Web3Economy />
-          <GameModes />
-          <GameRewards />
-          <NFTDropMechanics />
-          <NFTRaritySection />
-          <Tokenomics />
-          <CommunitySection />
-          <TestimonialSection />
-          <NFTShowcase />
-          <Roadmap />
-          <ServerStatus />
-          <Newsletter />
+          <div className="space-y-0">
+            <FeaturesSection />
+            <HowToPlay />
+            <Web3Economy />
+          </div>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <div className="space-y-0">
+            <GameModes />
+            <GameRewards />
+            <NFTDropMechanics />
+          </div>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <div className="space-y-0">
+            <NFTRaritySection />
+            <Tokenomics />
+            <CommunitySection />
+            <TestimonialSection />
+          </div>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <div className="space-y-0">
+            <NFTShowcase />
+            <Roadmap />
+            <ServerStatus />
+            <Newsletter />
+          </div>
         </Suspense>
       </main>
       
-      <Suspense fallback={<div className="h-40"></div>}>
+      <Suspense fallback={<div className="h-40 bg-minecraft-black/60 backdrop-blur-sm"></div>}>
         <Footer />
       </Suspense>
       
