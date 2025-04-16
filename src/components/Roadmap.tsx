@@ -137,7 +137,7 @@ const Roadmap = () => {
         >
           <div className="inline-block p-1.5 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-4 border border-cyan-400/30">
             <div className="px-4 py-1.5 bg-black/60 backdrop-blur-sm font-minecraft text-cyan-400 text-sm">
-              PROJECT TIMELINE
+              PROJECT ROADMAP
             </div>
           </div>
           

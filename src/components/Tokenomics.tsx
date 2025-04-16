@@ -1,23 +1,23 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 import { MinecraftProgress } from '@/components/ui/minecraft-progress';
 
+// Public tokenomics data (advertised)
 const TOKENOMICS_DATA = [
-  { name: 'Liquidity', value: 40, color: '#9945FF' },
-  { name: 'Development', value: 20, color: '#14F195' },
-  { name: 'Marketing', value: 20, color: '#00C2FF' },
-  { name: 'Team', value: 10, color: '#FF9900' },
-  { name: 'Community', value: 10, color: '#8B5CF6' },
+  { name: 'Devs', value: 40, color: '#9945FF' },
+  { name: 'Marketing', value: 10, color: '#14F195' },
+  { name: 'Development', value: 15, color: '#00C2FF' },
+  { name: 'Airdrop & Community', value: 30, color: '#FF9900' },
+  { name: 'Reserve', value: 5, color: '#8B5CF6' },
 ];
 
 // Minecraft chest contents animation
 const chestContents = [
-  { name: "Diamond", color: "#5feaea", amount: "x64", delay: 0.1 },
-  { name: "Emerald", color: "#4adc65", amount: "x32", delay: 0.2 },
-  { name: "Gold", color: "#f8bd17", amount: "x48", delay: 0.3 },
-  { name: "Iron", color: "#b0b0b0", amount: "x64", delay: 0.4 },
+  { name: "$FARM", color: "#5feaea", amount: "30%", delay: 0.1 },
+  { name: "$PATH", color: "#4adc65", amount: "20%", delay: 0.2 },
+  { name: "Land NFT", color: "#f8bd17", amount: "10%", delay: 0.3 },
+  { name: "ToolBox NFT", color: "#b0b0b0", amount: "40%", delay: 0.4 },
 ];
 
 const Tokenomics = () => {
@@ -90,8 +90,8 @@ const Tokenomics = () => {
           </h2>
           
           <p className="text-lg text-white/80 max-w-2xl mx-auto mb-12 font-minecraft tracking-wide">
-            Our token distribution is designed to support long-term growth and community rewards while maintaining 
-            a sustainable economy.
+            MinePath's token distribution is designed for sustained growth through community incentives,
+            strong development, and strategic partnerships across all five phases.
           </p>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -136,11 +136,11 @@ const Tokenomics = () => {
                 viewport={{ once: true }}
                 className="minecraft-chest col-span-full mb-8 bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg"
               >
-                <h3 className="font-minecraft text-2xl mb-6 text-minecraft-gold text-center">TOTAL SUPPLY</h3>
+                <h3 className="font-minecraft text-2xl mb-6 text-minecraft-gold text-center">PROJECT ROADMAP</h3>
                 <div className="bg-black/60 border border-cyan-400/30 p-4">
                   <div className="flex justify-center items-center">
-                    <div className="text-minecraft-gold font-minecraft text-5xl animate-pulse-glow">
-                      10M
+                    <div className="text-minecraft-gold font-minecraft text-4xl animate-pulse-glow">
+                      5 PHASES
                     </div>
                   </div>
                 </div>
@@ -165,8 +165,8 @@ const Tokenomics = () => {
               </motion.div>
               
               <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-minecraft-blue">4M</h3>
-                <p className="text-sm text-white/80 font-minecraft">Liquidity</p>
+                <h3 className="font-minecraft text-3xl mb-4 text-[#9945FF]">40%</h3>
+                <p className="text-sm text-white/80 font-minecraft">Development Team</p>
                 <div className="mt-3">
                   <MinecraftProgress 
                     value={40} 
@@ -176,49 +176,88 @@ const Tokenomics = () => {
                     showValue 
                   />
                 </div>
+                <p className="text-xs text-white/60 mt-2">For server, plugin, and Solana development across all 5 phases</p>
               </div>
               
               <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-minecraft-green">2M</h3>
-                <p className="text-sm text-white/80 font-minecraft">Development</p>
+                <h3 className="font-minecraft text-3xl mb-4 text-[#14F195]">10%</h3>
+                <p className="text-sm text-white/80 font-minecraft">Marketing</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={20} 
+                    value={10} 
                     max={100} 
                     variant="green" 
                     height="md" 
                     showValue 
                   />
                 </div>
+                <p className="text-xs text-white/60 mt-2">For X, Discord, KOL partnerships, and community growth</p>
               </div>
               
               <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-minecraft-gold">2M</h3>
-                <p className="text-sm text-white/80 font-minecraft">Marketing</p>
+                <h3 className="font-minecraft text-3xl mb-4 text-[#00C2FF]">15%</h3>
+                <p className="text-sm text-white/80 font-minecraft">Project Development</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={20} 
+                    value={15} 
+                    max={100} 
+                    variant="blue" 
+                    height="md" 
+                    showValue 
+                  />
+                </div>
+                <p className="text-xs text-white/60 mt-2">Infrastructure, servers, and future expansions</p>
+              </div>
+              
+              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
+                <h3 className="font-minecraft text-3xl mb-4 text-[#FF9900]">30%</h3>
+                <p className="text-sm text-white/80 font-minecraft">Airdrop & Community</p>
+                <div className="mt-3">
+                  <MinecraftProgress 
+                    value={30} 
                     max={100} 
                     variant="gold" 
                     height="md" 
                     showValue 
                   />
                 </div>
+                <p className="text-xs text-white/60 mt-2">$FARM, $PATH tokens and NFT rewards for players</p>
               </div>
               
-              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-rarity-epic">2M</h3>
-                <p className="text-sm text-white/80 font-minecraft">Team & Community</p>
+              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300 col-span-full">
+                <h3 className="font-minecraft text-3xl mb-4 text-[#8B5CF6]">5%</h3>
+                <p className="text-sm text-white/80 font-minecraft">Reserve</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={20} 
+                    value={5} 
                     max={100} 
-                    variant="red" 
+                    variant="blue" 
                     height="md" 
                     showValue 
                   />
                 </div>
+                <p className="text-xs text-white/60 mt-2">For partners, advisors, and strategic initiatives</p>
               </div>
+              
+              {/* Community incentives breakdown */}
+              <motion.div 
+                initial={{ scale: 0.9, y: 20, opacity: 0 }}
+                whileInView={{ scale: 1, y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="col-span-full mt-4 bg-black/40 backdrop-blur-sm border-2 border-[#FF9900]/50 p-4 rounded-lg"
+              >
+                <h3 className="font-minecraft text-xl mb-3 text-center text-[#FF9900]">COMMUNITY REWARDS BREAKDOWN</h3>
+                
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {chestContents.map((item, index) => (
+                    <div key={index} className="bg-black/50 border border-cyan-400/20 p-2 text-center">
+                      <div className="font-minecraft text-lg" style={{ color: item.color }}>{item.name}</div>
+                      <div className="font-minecraft text-white text-sm">{item.amount}</div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>
