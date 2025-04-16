@@ -1,60 +1,68 @@
 
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import WhatIs from '@/components/WhatIs';
-import FeaturesSection from '@/components/FeaturesSection';
-import GameModes from '@/components/GameModes';
-import GameRewards from '@/components/GameRewards';
-import Tokenomics from '@/components/Tokenomics';
-import NFTRaritySection from '@/components/NFTRaritySection';
-import Roadmap from '@/components/Roadmap';
-import HowToPlay from '@/components/HowToPlay';
-import NFTShowcase from '@/components/NFTShowcase';
-import Newsletter from '@/components/Newsletter';
 import JoinCTA from '@/components/JoinCTA';
-import NFTDropMechanics from '@/components/NFTDropMechanics';
-import Footer from '@/components/Footer';
-import TestimonialSection from '@/components/TestimonialSection';
-import Web3Economy from '@/components/Web3Economy';
-import CommunitySection from '@/components/CommunitySection';
-import ServerStatus from '@/components/ServerStatus';
 import ScrollToTop from '@/components/ScrollToTop';
+
+// Lazy-load components that are further down the page for better initial load performance
+const FeaturesSection = lazy(() => import('@/components/FeaturesSection'));
+const GameModes = lazy(() => import('@/components/GameModes'));
+const GameRewards = lazy(() => import('@/components/GameRewards'));
+const Tokenomics = lazy(() => import('@/components/Tokenomics'));
+const NFTRaritySection = lazy(() => import('@/components/NFTRaritySection'));
+const Roadmap = lazy(() => import('@/components/Roadmap'));
+const HowToPlay = lazy(() => import('@/components/HowToPlay'));
+const NFTShowcase = lazy(() => import('@/components/NFTShowcase'));
+const Newsletter = lazy(() => import('@/components/Newsletter'));
+const NFTDropMechanics = lazy(() => import('@/components/NFTDropMechanics'));
+const Footer = lazy(() => import('@/components/Footer'));
+const TestimonialSection = lazy(() => import('@/components/TestimonialSection'));
+const Web3Economy = lazy(() => import('@/components/Web3Economy'));
+const CommunitySection = lazy(() => import('@/components/CommunitySection'));
+const ServerStatus = lazy(() => import('@/components/ServerStatus'));
+
+// Simple loading component for Suspense fallback
+const SectionLoader = () => (
+  <div className="w-full py-16 flex justify-center items-center">
+    <div className="minecraft-loading"></div>
+  </div>
+);
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg">
       <Navbar />
       <main className="flex-grow">
-        {/* Hero and immediate call-to-action */}
+        {/* Critical path components loaded eagerly */}
         <Hero />
         <JoinCTA />
-        
-        {/* Core information about the project */}
         <WhatIs />
-        <FeaturesSection />
-        <HowToPlay />
         
-        {/* Economic and gameplay systems */}
-        <Web3Economy />
-        <GameModes />
-        <GameRewards />
-        <NFTDropMechanics />
-        <Tokenomics />
-        
-        {/* Community and testimonials */}
-        <CommunitySection />
-        <TestimonialSection />
-        
-        {/* NFT showcase and roadmap */}
-        <NFTShowcase />
-        <Roadmap />
-        
-        {/* Final call-to-actions */}
-        <ServerStatus />
-        <Newsletter />
+        {/* Less critical components loaded lazily */}
+        <Suspense fallback={<SectionLoader />}>
+          <FeaturesSection />
+          <HowToPlay />
+          <Web3Economy />
+          <GameModes />
+          <GameRewards />
+          <NFTDropMechanics />
+          <NFTRaritySection />
+          <Tokenomics />
+          <CommunitySection />
+          <TestimonialSection />
+          <NFTShowcase />
+          <Roadmap />
+          <ServerStatus />
+          <Newsletter />
+        </Suspense>
       </main>
-      <Footer />
+      
+      <Suspense fallback={<div className="h-40"></div>}>
+        <Footer />
+      </Suspense>
+      
       <ScrollToTop />
     </div>
   );

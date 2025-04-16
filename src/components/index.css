@@ -102,10 +102,19 @@
   .glass-card {
     @apply bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 transition-all duration-300;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 195, 255, 0.1) inset;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .glass-card:hover {
+    @apply border-cyan-400/50;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), 0 0 12px rgba(0, 195, 255, 0.2) inset;
+    transform: translateY(-3px);
   }
 
   .glow-effect {
-    text-shadow: 0 0 5px currentColor;
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+    animation: pulse-glow 2s ease-in-out infinite;
   }
   
   .shimmer {
@@ -125,6 +134,8 @@
 
   .minecraft-btn {
     @apply font-minecraft py-2 px-4 border-2 border-b-4 border-t-0 border-l-0 border-r-4 transition-all duration-100 hover:translate-y-[2px] hover:border-b-2 active:translate-y-[4px] active:border-b-0;
+    transform-style: preserve-3d;
+    perspective: 1000px;
   }
   
   .minecraft-btn-green {
@@ -170,9 +181,11 @@
   }
 
   @keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(1deg); }
+    50% { transform: translateY(-15px) rotate(0deg); }
+    75% { transform: translateY(-8px) rotate(-1deg); }
+    100% { transform: translateY(0) rotate(0deg); }
   }
 
   @keyframes rotate {
@@ -309,6 +322,10 @@
     animation: float 6s ease-in-out infinite;
   }
   
+  .animate-float-slow {
+    animation: float 10s ease-in-out infinite;
+  }
+  
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
   }
@@ -320,6 +337,18 @@
   .pixelated {
     image-rendering: pixelated !important;
   }
+  
+  .animate-hover-bounce {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .animate-hover-bounce:hover {
+    transform: translateY(-5px);
+  }
+  
+  .animate-spin-slow {
+    animation: rotate 15s linear infinite;
+  }
 }
 
 @keyframes shimmer {
@@ -328,9 +357,11 @@
 }
 
 @keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0); }
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(1deg); }
+  50% { transform: translateY(-15px) rotate(0deg); }
+  75% { transform: translateY(-8px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
 }
 
 @keyframes pulse-glow {
@@ -377,11 +408,24 @@
 }
 
 .minecraft-loading {
-  @apply w-4 h-4 relative;
+  @apply w-6 h-6 relative;
 }
 
 .minecraft-loading::after {
   content: "";
   @apply absolute inset-0;
   animation: minecraft-loading 1s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.blur-in {
+  filter: blur(5px);
+  transition: filter 0.3s ease-in-out;
+}
+
+.blur-in.loaded {
+  filter: blur(0);
 }

@@ -8,16 +8,33 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 500) {
+      // Use a higher threshold for better user experience
+      if (window.pageYOffset > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
+    // Add throttling for better performance
+    let throttleTimeout: number | null = null;
+    const throttledToggleVisibility = () => {
+      if (throttleTimeout === null) {
+        throttleTimeout = window.setTimeout(() => {
+          toggleVisibility();
+          throttleTimeout = null;
+        }, 200);
+      }
+    };
 
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    window.addEventListener('scroll', throttledToggleVisibility);
+
+    return () => {
+      if (throttleTimeout) {
+        clearTimeout(throttleTimeout);
+      }
+      window.removeEventListener('scroll', throttledToggleVisibility);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -32,11 +49,12 @@ const ScrollToTop = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-2 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-lg border border-cyan-400/30 opacity-70 hover:opacity-100 transition-opacity duration-200"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          whileHover={{ scale: 1.1 }}
+          className="fixed bottom-8 right-8 z-50 p-3 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-lg border border-cyan-400/30 opacity-80 hover:opacity-100 transition-all duration-300"
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
+          whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(0, 195, 255, 0.6)" }}
+          whileTap={{ scale: 0.95 }}
           aria-label="Scroll to top"
         >
           <ChevronUp className="w-6 h-6 text-white" />
