@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -15,35 +16,46 @@ import JoinCTA from '@/components/JoinCTA';
 import NFTDropMechanics from '@/components/NFTDropMechanics';
 import Footer from '@/components/Footer';
 import TestimonialSection from '@/components/TestimonialSection';
-import Web3Economy from '@/components/Web3Economy'; // Add this new component
-import CommunitySection from '@/components/CommunitySection'; // Add this new component
+import Web3Economy from '@/components/Web3Economy';
+import CommunitySection from '@/components/CommunitySection';
 import ServerStatus from '@/components/ServerStatus';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg">
-     <Navbar />
-<main className="flex-grow">
-  <Hero />                 
-  <JoinCTA />              
-  <WhatIs />              
-  <FeaturesSection />   
-  <HowToPlay />   
-  <Web3Economy />         
-  <GameModes />            
-  <GameRewards />         
-  <NFTDropMechanics />    
-  <Tokenomics />           
-           
-  <CommunitySection />     
-  <TestimonialSection />  
-  <NFTShowcase />          
-  <Roadmap />              
-  <ServerStatus />         
-  <Newsletter />          
-</main>
-<Footer />
-
+      <Navbar />
+      <main className="flex-grow">
+        {/* Hero and immediate call-to-action */}
+        <Hero />
+        <JoinCTA />
+        
+        {/* Core information about the project */}
+        <WhatIs />
+        <FeaturesSection />
+        <HowToPlay />
+        
+        {/* Economic and gameplay systems */}
+        <Web3Economy />
+        <GameModes />
+        <GameRewards />
+        <NFTDropMechanics />
+        <Tokenomics />
+        
+        {/* Community and testimonials */}
+        <CommunitySection />
+        <TestimonialSection />
+        
+        {/* NFT showcase and roadmap */}
+        <NFTShowcase />
+        <Roadmap />
+        
+        {/* Final call-to-actions */}
+        <ServerStatus />
+        <Newsletter />
+      </main>
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 };

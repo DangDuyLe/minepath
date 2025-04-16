@@ -69,12 +69,10 @@
     font-family: 'minecraftbold', monospace !important;
   }
   
-  /* No rounded corners for true Minecraft look */
   * {
     border-radius: 0 !important;
   }
 
-  /* Ensure all text uses the Minecraft font */
   p, span, div, button, a, input, textarea, select {
     font-family: 'minecraftregular', monospace !important;
   }
@@ -101,6 +99,11 @@
     @apply text-rarity-legendary border-rarity-legendary;
   }
 
+  .glass-card {
+    @apply bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 transition-all duration-300;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 195, 255, 0.1) inset;
+  }
+
   .glow-effect {
     text-shadow: 0 0 5px currentColor;
   }
@@ -111,7 +114,15 @@
     animation: shimmer 2s linear infinite;
   }
   
-  /* Minecraft-styled components */
+  .section-divider {
+    @apply relative h-8 w-full overflow-hidden my-4;
+  }
+
+  .section-divider::after {
+    content: "";
+    @apply absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent top-1/2 transform -translate-y-1/2;
+  }
+
   .minecraft-btn {
     @apply font-minecraft py-2 px-4 border-2 border-b-4 border-t-0 border-l-0 border-r-4 transition-all duration-100 hover:translate-y-[2px] hover:border-b-2 active:translate-y-[4px] active:border-b-0;
   }
@@ -158,7 +169,6 @@
     @apply border-4 border-theme-gray bg-black/70 p-6;
   }
 
-  /* Custom Keyframes for Minecraft effects */
   @keyframes float {
     0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -170,7 +180,6 @@
     to { transform: rotate(360deg); }
   }
 
-  /* Enhanced Minecraft UI Elements */
   .minecraft-inventory-slot {
     @apply bg-black/70 border-4 relative;
     border-image: url('/images/inventory_border.png') 4 stretch;
@@ -189,7 +198,6 @@
     pointer-events: none;
   }
 
-  /* Minecraft progress bar */
   .minecraft-progress {
     @apply h-4 bg-black/50 border-2 border-gray-800 relative overflow-hidden;
   }
@@ -199,13 +207,11 @@
     box-shadow: inset 0 2px 0 rgba(255,255,255,0.3);
   }
 
-  /* Minecraft chest UI */
   .minecraft-chest {
     @apply bg-[#C6C6C6] border-4 border-[#555555] p-2 relative;
     box-shadow: inset 2px 2px 0 #DBDBDB, inset -2px -2px 0 #555555;
   }
 
-  /* Minecraft hotbar */
   .minecraft-hotbar {
     @apply flex justify-center mt-4;
   }
@@ -219,7 +225,6 @@
     box-shadow: 0 0 0 2px white;
   }
 
-  /* Minecraft crafting table */
   .minecraft-crafting-grid {
     @apply grid grid-cols-3 gap-1 p-2 bg-[#C6C6C6] border-2 border-gray-800;
   }
@@ -228,13 +233,11 @@
     @apply w-10 h-10 bg-gray-900/50 border-2 border-gray-800;
   }
 
-  /* Minecraft tooltip */
   .minecraft-tooltip {
     @apply absolute z-50 bg-gray-900/90 border border-gray-700 p-2 text-white text-xs;
     min-width: 200px;
   }
 
-  /* Minecraft item hover effect */
   .minecraft-item-hover {
     transition: transform 0.1s ease-in-out;
   }
@@ -244,7 +247,6 @@
     filter: brightness(1.2);
   }
 
-  /* Stylized 3D Minecraft-like button */
   .minecraft-3d-btn {
     @apply relative py-2 px-4 bg-[#759C43] border-b-4 border-[#527A26] text-white font-minecraft text-center transition-all duration-150;
     text-shadow: 2px 2px 0 #405E1E;
@@ -260,7 +262,6 @@
     transform: translateY(4px);
   }
 
-  /* Stylized Minecraft diamond button */
   .minecraft-diamond-btn {
     @apply relative py-2 px-4 bg-[#5feaea] border-b-4 border-[#45a6a6] text-white font-minecraft text-center transition-all duration-150;
     text-shadow: 2px 2px 0 #3d8c8c;
@@ -276,7 +277,6 @@
     transform: translateY(4px);
   }
 
-  /* Enhanced Minecraft container with depth */
   .minecraft-3d-container {
     @apply relative bg-black/70 p-6 border-t-4 border-b-4 border-l-0 border-r-0;
     border-image: url('/images/dirt_border.png') 4 stretch;
@@ -285,7 +285,6 @@
       inset 0 -4px 0 rgba(0,0,0,0.3);
   }
 
-  /* Visual block effects */
   .block-effect {
     position: relative;
   }
@@ -339,7 +338,6 @@
   50% { opacity: 1; filter: brightness(1.3); }
 }
 
-/* Minecraft-like loading animation */
 @keyframes minecraft-loading {
   0% { 
     box-shadow: 
