@@ -1,12 +1,15 @@
+
 import React from 'react';
 import { Copy, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ServerStatus from './ServerStatus';
 import { MinecraftProgress } from './ui/minecraft-progress';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const JoinCTA = () => {
   const { toast } = useToast();
+  const isMobile = useIsMobile();
   
   const copyServerAddress = () => {
     navigator.clipboard.writeText('play.minepath.com');
@@ -17,7 +20,7 @@ const JoinCTA = () => {
   };
   
   return (
-    <section className="relative py-16 overflow-hidden" style={{ 
+    <section className="relative py-12 md:py-16 overflow-hidden" style={{ 
       background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
       backgroundSize: 'cover',
       backgroundAttachment: 'fixed' 
@@ -29,9 +32,9 @@ const JoinCTA = () => {
           background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
         }}></div>
         
-        {/* Minecraft particles */}
+        {/* Minecraft particles - reduced for mobile */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(isMobile ? 10 : 20)].map((_, i) => (
             <div
               key={i}
               className="absolute pixelated w-2 h-2 bg-white opacity-30"
@@ -44,12 +47,12 @@ const JoinCTA = () => {
           ))}
         </div>
         
-        {/* Floating blocks */}
+        {/* Floating blocks - reduced for mobile */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(8)].map((_, i) => (
+          {[...Array(isMobile ? 4 : 8)].map((_, i) => (
             <div
               key={`block-${i}`}
-              className="absolute pixelated w-8 h-8"
+              className="absolute pixelated w-6 md:w-8 h-6 md:h-8"
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
@@ -70,20 +73,20 @@ const JoinCTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="bg-black/60 backdrop-blur-md border border-blue-400/20 p-8 md:p-10 shadow-lg"
+          className="bg-black/60 backdrop-blur-md border border-blue-400/20 p-6 md:p-8 lg:p-10 shadow-lg"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="max-w-2xl">
-              <h2 className="font-minecraft text-3xl md:text-4xl mb-4 text-white">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="w-full lg:max-w-2xl">
+              <h2 className="font-minecraft text-2xl sm:text-3xl md:text-4xl mb-4 text-white text-center lg:text-left">
                 <span className="text-cyan-400">JOIN THE ADVENTURE</span> TODAY
               </h2>
               
-              <p className="text-lg text-white/90 mb-6 font-minecraft leading-relaxed">
+              <p className="text-base md:text-lg text-white/90 mb-6 font-minecraft leading-relaxed text-center lg:text-left">
                 Ready to earn NFTs while playing Minecraft? Our luck-based drop system rewards mining valuable blocks and monster kills with NFTs ranging from Common to Legendary!
               </p>
 
               <div className="mb-6">
-                <p className="text-sm text-white mb-2">Server Population:</p>
+                <p className="text-sm text-white mb-2 text-center lg:text-left">Server Population:</p>
                 <div className="w-full h-3 bg-black/50 border border-blue-300/30 overflow-hidden">
                   <div className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 w-[72%]"></div>
                 </div>
@@ -94,20 +97,21 @@ const JoinCTA = () => {
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="relative">
-                  <div className="flex items-center bg-black/60 border border-blue-400/30 px-4 py-2">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <div className="relative w-full sm:w-auto">
+                  <div className="flex items-center bg-black/60 border border-blue-400/30 px-4 py-2 w-full">
                     <span className="font-minecraft text-white">play.minepath.com</span>
                     <button 
                       onClick={copyServerAddress}
-                      className="ml-3 p-1 hover:text-cyan-400 transition-colors"
+                      className="ml-3 p-1 hover:text-cyan-400 transition-colors ml-auto"
+                      aria-label="Copy server address"
                     >
                       <Copy size={16} />
                     </button>
                   </div>
                 </div>
                 
-                <button className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group inline-flex items-center justify-center">
+                <button className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group inline-flex items-center justify-center w-full sm:w-auto">
                   <span className="relative z-10 flex items-center">
                     Join Server Now <ArrowRight className="ml-2 h-4 w-4" />
                   </span>
@@ -116,7 +120,7 @@ const JoinCTA = () => {
               </div>
             </div>
             
-            <div className="w-full md:w-auto">
+            <div className="w-full lg:w-auto mt-6 lg:mt-0 flex justify-center">
               <motion.img
                 initial={{ y: 10 }}
                 animate={{ y: -10 }}
@@ -128,8 +132,8 @@ const JoinCTA = () => {
                 }}
                 src="/images/minecraft_character.png" 
                 alt="Minecraft Character with NFT" 
-                className="pixelated h-72 md:h-96 w-auto object-contain mx-auto"
-                />
+                className="pixelated h-56 sm:h-64 md:h-72 lg:h-96 w-auto object-contain mx-auto"
+              />
             </div>
           </div>
         </motion.div>

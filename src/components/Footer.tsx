@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Github, Twitter, Zap, ArrowRight, MessageSquare, Globe, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const FooterLink = ({ href, text }: { href: string; text: string }) => (
   <li className="mb-2.5">
@@ -14,8 +15,10 @@ const FooterLink = ({ href, text }: { href: string; text: string }) => (
 );
 
 const Footer = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <footer className="relative border-t-4 border-cyan-400/30 pt-16 pb-6 overflow-hidden" style={{ 
+    <footer className="relative border-t-4 border-cyan-400/30 pt-12 md:pt-16 pb-6 overflow-hidden" style={{ 
       background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
       backgroundSize: 'cover',
       backgroundAttachment: 'fixed' 
@@ -27,9 +30,9 @@ const Footer = () => {
           background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
         }}></div>
         
-        {/* Minecraft particles */}
+        {/* Minecraft particles - reduced for mobile */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(10)].map((_, i) => (
+          {[...Array(isMobile ? 5 : 10)].map((_, i) => (
             <div
               key={i}
               className="absolute pixelated w-2 h-2 bg-white opacity-30"
@@ -44,7 +47,7 @@ const Footer = () => {
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
           <motion.div 
             className="col-span-1 md:col-span-1"
             initial={{ opacity: 0, y: 20 }}
@@ -131,7 +134,7 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <h4 className="font-minecraft text-lg mb-4 text-cyan-400 border-b border-cyan-400/30 pb-2">PLAY NOW</h4>
-            <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-5">
+            <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 md:p-5">
               <p className="text-sm text-white/80 mb-3 font-minecraft">
                 Connect to our Minecraft server 
               </p>
@@ -146,7 +149,7 @@ const Footer = () => {
           </motion.div>
         </div>
         
-        <div className="border-t border-cyan-400/30 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-cyan-400/30 mt-8 md:mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-xs text-white/60 font-minecraft flex items-center">
             <Heart size={12} className="text-cyan-400 mr-1" /> © 2025 MinePath. All rights reserved.
           </p>

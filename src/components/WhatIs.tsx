@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight } from 'lucide-react';
@@ -6,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const WhatIs = () => {
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-16 md:py-32 overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         
@@ -22,7 +21,7 @@ const WhatIs = () => {
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -35,16 +34,16 @@ const WhatIs = () => {
               </div>
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-minecraft mb-6 text-white">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-minecraft mb-6 text-white text-center lg:text-left">
               What is <span className="text-cyan-400">MinePath</span>?
             </h2>
             
-            <p className="text-lg leading-relaxed text-white/80 mb-6">
+            <p className="text-base md:text-lg leading-relaxed text-white/80 mb-6 text-center lg:text-left">
               MinePath combines the beloved gameplay of Minecraft with Solana blockchain technology, creating a unique 
               play-to-earn experience where your mining and exploration efforts are rewarded with valuable NFTs.
             </p>
             
-            <div className="space-y-6 mb-8">
+            <div className="space-y-4 md:space-y-6 mb-8">
               <Feature title="Play & Earn" description="Mine, fight, and explore to earn NFTs that have real-world value" />
               <Feature title="Fair Distribution" description="NFTs drop based on mining valuable blocks and defeating monsters" />
               <Feature title="Community Owned" description="Governance tokens empower players to vote on future developments" />
@@ -65,7 +64,7 @@ const WhatIs = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="relative"
+            className="relative mt-8 lg:mt-0"
           >
             <div className="relative z-10 border border-cyan-500/30 p-1.5 bg-black/40 backdrop-blur-md">
               <img 

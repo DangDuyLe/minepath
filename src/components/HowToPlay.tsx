@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const STEPS = [
   {
@@ -38,8 +39,10 @@ const STEPS = [
 ];
 
 const HowToPlay = () => {
+  const isMobile = useIsMobile();
+  
   return (
-    <section className="py-24 relative overflow-hidden" style={{ 
+    <section className="py-16 md:py-24 relative overflow-hidden" style={{ 
       background: 'linear-gradient(180deg, rgba(21,26,49,1) 0%, rgba(13,14,22,1) 100%)',
       backgroundSize: 'cover',
       backgroundAttachment: 'fixed' 
@@ -51,9 +54,9 @@ const HowToPlay = () => {
           background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
         }}></div>
         
-        {/* Minecraft particles */}
+        {/* Minecraft particles - reduced for mobile */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(isMobile ? 10 : 20)].map((_, i) => (
             <div
               key={i}
               className="absolute pixelated w-2 h-2 bg-white opacity-30"
@@ -66,12 +69,12 @@ const HowToPlay = () => {
           ))}
         </div>
         
-        {/* Floating blocks */}
+        {/* Floating blocks - reduced for mobile */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(8)].map((_, i) => (
+          {[...Array(isMobile ? 4 : 8)].map((_, i) => (
             <div
               key={`block-${i}`}
-              className="absolute pixelated w-8 h-8"
+              className="absolute pixelated w-6 md:w-8 h-6 md:h-8"
               style={{
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
@@ -87,7 +90,7 @@ const HowToPlay = () => {
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -105,7 +108,7 @@ const HowToPlay = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="font-minecraft text-4xl md:text-5xl mb-6 text-white"
+            className="font-minecraft text-3xl md:text-4xl lg:text-5xl mb-6 text-white"
           >
             <span className="bg-clip-text">
               HOW TO PLAY
@@ -117,17 +120,17 @@ const HowToPlay = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-lg text-white/80 max-w-3xl mx-auto"
+            className="text-base lg:text-lg text-white/80 max-w-3xl mx-auto"
           >
             Join our Minecraft server and start earning NFTs that have real value. Follow these simple steps to get started:
           </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mb-12 md:mb-16">
           {STEPS.map((step, index) => (
             <motion.div 
               key={index}
-              className="bg-black/30 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-6 relative"
+              className="bg-black/30 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-4 md:p-6 relative"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -138,14 +141,14 @@ const HowToPlay = () => {
               </div>
               
               <div className="flex justify-center mb-4">
-                <img src={step.icon} alt={step.title} className="h-16 w-16 pixelated" />
+                <img src={step.icon} alt={step.title} className="h-12 w-12 md:h-16 md:w-16 pixelated" />
               </div>
               
-              <h3 className="font-minecraft text-lg mb-2 text-center text-cyan-400">
+              <h3 className="font-minecraft text-base md:text-lg mb-2 text-center text-cyan-400">
                 {step.title}
               </h3>
               
-              <p className="text-sm text-center text-white/80">
+              <p className="text-xs md:text-sm text-center text-white/80">
                 {step.description}
               </p>
             </motion.div>
@@ -154,7 +157,7 @@ const HowToPlay = () => {
         
         <div className="text-center">
           <motion.button 
-            className="play-now-btn relative px-8 py-3 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group inline-flex items-center"
+            className="play-now-btn relative px-6 md:px-8 py-2 md:py-3 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group inline-flex items-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}

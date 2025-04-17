@@ -34,11 +34,7 @@ const Newsletter = () => {
   };
   
   return (
-    <section className="relative py-32 overflow-hidden" style={{ 
-      background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
-      backgroundSize: 'cover',
-      backgroundAttachment: 'fixed' 
-    }}>
+    <section className="relative py-24 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
@@ -82,32 +78,20 @@ const Newsletter = () => {
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div 
-          className="max-w-3xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="bg-black/60 backdrop-blur-md border border-cyan-400/30 p-8 md:p-12 shadow-lg">
-            <div className="text-center mb-8">
+        <motion.div className="max-w-3xl mx-auto">
+          <div className="bg-black/60 backdrop-blur-md border border-cyan-400/30 p-6 md:p-8 lg:p-12 shadow-lg">
+            <div className="text-center mb-6 md:mb-8">
               <motion.div 
-                className="inline-flex items-center justify-center w-16 h-16 bg-black/50 border border-cyan-400/30 mb-6"
-                animate={{ 
-                  boxShadow: ['0 0 0 rgba(0,195,255,0)', '0 0 20px rgba(10, 224, 239, 0.3)', '0 0 0 rgba(0,195,255,0)']
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
+                className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-black/50 border border-cyan-400/30 mb-4 md:mb-6"
               >
-                <Mail className="h-8 w-8 text-cyan-400" />
+                <Mail className="h-6 w-6 md:h-8 md:w-8 text-cyan-400" />
               </motion.div>
               
-              <h2 className="font-minecraft text-3xl md:text-4xl mb-4 text-white">
-                <span className="bg-clip-text ">
-                  JOIN THE MINEPATH COMMUNITY
-                </span>
+              <h2 className="font-minecraft text-2xl md:text-3xl lg:text-4xl mb-4 text-white">
+                JOIN THE MINEPATH COMMUNITY
               </h2>
               
-              <p className="text-lg text-white/90 mb-0 max-w-2xl mx-auto font-minecraft leading-relaxed">
+              <p className="text-base md:text-lg text-white/90 mb-0 max-w-2xl mx-auto font-minecraft leading-relaxed">
                 Subscribe to our newsletter for the latest server updates, NFT drops, and exclusive community events.
               </p>
             </div>
@@ -152,7 +136,7 @@ const Newsletter = () => {
               </button>
             </form>
             
-            <p className="text-sm text-white/50 mt-6 text-center font-minecraft">
+            <p className="text-xs md:text-sm text-white/50 mt-6 text-center font-minecraft">
               We respect your privacy and will never share your information.
             </p>
           </div>
