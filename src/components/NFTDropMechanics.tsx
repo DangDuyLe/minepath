@@ -37,7 +37,7 @@ const NFTDropMechanics = () => {
   ];
 
   return (
-    <section className="py-20 relative overflow-hidden" style={{ 
+    <section className="py-16 md:py-24 relative overflow-hidden" style={{ 
       background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
       backgroundSize: 'cover',
       backgroundAttachment: 'fixed' 
@@ -107,9 +107,9 @@ const NFTDropMechanics = () => {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg">
-            <h3 className="font-minecraft text-2xl mb-4 text-cyan-400">Drop Triggers</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-16">
+          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 md:p-6 rounded-lg">
+            <h3 className="font-minecraft text-xl md:text-2xl mb-4 text-cyan-400">Drop Triggers</h3>
             
             <div className="space-y-4">
               <div className="flex items-start">
@@ -144,8 +144,8 @@ const NFTDropMechanics = () => {
             </div>
           </div>
           
-          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg">
-            <h3 className="font-minecraft text-2xl mb-4 text-cyan-400">Safeguards & Balance</h3>
+          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 md:p-6 rounded-lg">
+            <h3 className="font-minecraft text-xl md:text-2xl mb-4 text-cyan-400">Safeguards & Balance</h3>
             
             <div className="space-y-4">
               <div className="flex items-start">
@@ -181,13 +181,13 @@ const NFTDropMechanics = () => {
           </div>
         </div>
         
-        <h3 className="font-minecraft text-2xl mb-6 text-center text-white">NFT Rarity Tiers</h3>
+        <h3 className="font-minecraft text-xl md:text-2xl mb-6 text-center text-white">NFT Rarity Tiers</h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8 md:mb-12">
           {dropRarities.map((rarity, index) => (
             <motion.div 
               key={index}
-              className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 flex flex-col items-center text-center rounded-lg"
+              className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 md:p-6 flex flex-col items-center text-center rounded-lg"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}

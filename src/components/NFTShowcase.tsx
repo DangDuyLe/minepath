@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -47,7 +46,7 @@ const FEATURED_NFTS = [
 
 const NFTShowcase = () => {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-16 md:py-24 overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <div 
@@ -101,7 +100,7 @@ const NFTShowcase = () => {
           </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-16">
           {FEATURED_NFTS.map((nft, index) => (
             <motion.div
               key={nft.id}
@@ -129,23 +128,10 @@ const NFTShowcase = () => {
 };
 
 const NFTCard = ({ nft }: { nft: typeof FEATURED_NFTS[0] }) => {
-  const rarityClass = `rarity-${nft.rarity}`;
-  const rarityColors = {
-    common: "from-gray-400 to-gray-300",
-    uncommon: "from-green-500 to-green-400",
-    rare: "from-blue-500 to-blue-400",
-    epic: "from-purple-500 to-purple-400",
-    legendary: "from-amber-500 to-amber-400"
-  };
-  
   return (
     <div className="group">
       <div className="glass-card overflow-hidden transition-all duration-300 group-hover:translate-y-[-4px]">
-        <div className={`absolute top-2 right-2 z-10 px-2 py-1 font-minecraft text-xs ${rarityClass} bg-black/50 backdrop-blur-sm`}>
-          {nft.rarity.toUpperCase()}
-        </div>
-        
-        <div className="relative h-64 overflow-hidden bg-black/30">
+        <div className="relative h-48 md:h-64 overflow-hidden bg-black/30">
           <img 
             src={nft.image} 
             alt={nft.name}
@@ -167,7 +153,7 @@ const NFTCard = ({ nft }: { nft: typeof FEATURED_NFTS[0] }) => {
         </div>
         
         <div className="p-4 bg-black/70 backdrop-blur-md border-t border-cyan-400/20">
-          <h3 className={`font-minecraft text-xl mb-2 text-gradient bg-gradient-to-r ${rarityColors[nft.rarity]}`}>{nft.name}</h3>
+          <h3 className="font-minecraft text-lg md:text-xl mb-2 text-gradient">{nft.name}</h3>
           <p className="text-sm text-white/80 mb-4">{nft.description}</p>
           
           <div className="flex justify-between items-center">

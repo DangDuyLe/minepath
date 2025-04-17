@@ -1,11 +1,9 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Pickaxe } from './ui/icons/Pickaxe';
 import { Wheat, Swords, Hammer, Crown, ChevronRight, Lock } from 'lucide-react';
 import { MinecraftIcon } from '@/components/ui/minecraft-icon';
 
-// Define all game modes but mark which ones are available in current phase
 const GAME_MODES = [
   {
     id: 'mining',
@@ -66,24 +64,21 @@ const GAME_MODES = [
 ];
 
 const GameModes = () => {
-  // Currently only Mining is available in Phase 1
   const availableModes = GAME_MODES.filter(mode => mode.available);
   const futureModes = GAME_MODES.filter(mode => !mode.available);
   
   return (
-    <section className="relative py-24 overflow-hidden" style={{ 
+    <section className="relative py-16 md:py-24 overflow-hidden" style={{ 
       background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
       backgroundSize: 'cover',
       backgroundAttachment: 'fixed' 
     }}>
-      {/* Background elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
         <div className="absolute top-0 left-0 w-full h-full" style={{ 
           background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
         }}></div>
         
-        {/* Minecraft particles */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(20)].map((_, i) => (
             <div
@@ -98,7 +93,6 @@ const GameModes = () => {
           ))}
         </div>
         
-        {/* Floating blocks */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(8)].map((_, i) => (
             <div
@@ -162,77 +156,71 @@ const GameModes = () => {
           </motion.p>
         </motion.div>
         
-        {/* Current Available Mode (Phase 1) */}
-        {availableModes.map((mode) => (
-          <motion.div 
-            key={mode.id}
-            className="flex flex-col md:flex-row gap-8 bg-black/30 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-6 mb-16"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <div className="flex-1 relative overflow-hidden border border-cyan-400/30 rounded-lg">
-              <img 
-                src={mode.image} 
-                alt={mode.name} 
-                className="w-full object-cover pixelated"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/images/placeholder_gamemode.png'
-                }}
-              />
-              
-              <div className="absolute top-0 left-0 bg-cyan-400/80 p-2 font-minecraft text-black">
-                CURRENT PHASE
-              </div>
-            </div>
+        <motion.div 
+          className="flex flex-col md:flex-row gap-6 md:gap-8 bg-black/30 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-4 md:p-6 mb-8 md:mb-16"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="flex-1 relative overflow-hidden border border-cyan-400/30 rounded-lg h-48 md:h-auto">
+            <img 
+              src={mode.image} 
+              alt={mode.name} 
+              className="w-full h-full object-cover pixelated"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/images/placeholder_gamemode.png'
+              }}
+            />
             
-            <div className="flex-1 flex flex-col justify-center">
-              <h3 className="font-minecraft text-2xl mb-4 text-cyan-400">{mode.name} Mode</h3>
-              <p className="text-white/80 mb-6 font-minecraft">{mode.description}</p>
-              
-              <ul className="space-y-3">
-                <li className="flex items-center text-sm font-minecraft text-white/80">
-                  <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                  Earn $FARM tokens through mining activities
-                </li>
-                <li className="flex items-center text-sm font-minecraft text-white/80">
-                  <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                  Collect Tool NFTs with special mining abilities
-                </li>
-                <li className="flex items-center text-sm font-minecraft text-white/80">
-                  <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                  Unlock rare lootboxes with valuable rewards
-                </li>
-              </ul>
-              
-              {/* Additional screenshots in a grid */}
-              {mode.additionalImages && (
-                <div className="mt-6 grid grid-cols-2 gap-2">
-                  {mode.additionalImages.map((img, idx) => (
-                    <img 
-                      key={idx}
-                      src={img}
-                      alt={`${mode.name} screenshot ${idx+1}`}
-                      className="h-24 w-full object-cover border border-cyan-400/30 rounded-md pixelated"
-                    />
-                  ))}
-                </div>
-              )}
-              
-              <div className="mt-6">
-                <button className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group">
-                  <span className="relative z-10">Start Mining Now</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                </button>
-              </div>
+            <div className="absolute top-0 left-0 bg-cyan-400/80 p-2 font-minecraft text-black text-sm md:text-base">
+              CURRENT PHASE
             </div>
-          </motion.div>
-        ))}
+          </div>
+          
+          <div className="flex-1 flex flex-col justify-center">
+            <h3 className="font-minecraft text-xl md:text-2xl mb-4 text-cyan-400">{mode.name} Mode</h3>
+            <p className="text-white/80 mb-6 font-minecraft text-sm md:text-base">{mode.description}</p>
+            
+            <ul className="space-y-3">
+              <li className="flex items-center text-sm font-minecraft text-white/80">
+                <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
+                Earn $FARM tokens through mining activities
+              </li>
+              <li className="flex items-center text-sm font-minecraft text-white/80">
+                <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
+                Collect Tool NFTs with special mining abilities
+              </li>
+              <li className="flex items-center text-sm font-minecraft text-white/80">
+                <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
+                Unlock rare lootboxes with valuable rewards
+              </li>
+            </ul>
+            
+            {mode.additionalImages && (
+              <div className="mt-6 grid grid-cols-2 gap-2">
+                {mode.additionalImages.map((img, idx) => (
+                  <img 
+                    key={idx}
+                    src={img}
+                    alt={`${mode.name} screenshot ${idx+1}`}
+                    className="h-24 w-full object-cover border border-cyan-400/30 rounded-md pixelated"
+                  />
+                ))}
+              </div>
+            )}
+            
+            <div className="mt-6">
+              <button className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group">
+                <span className="relative z-10">Start Mining Now</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </button>
+            </div>
+          </div>
+        </motion.div>
         
-        {/* Future Modes (Locked) */}
-        <h3 className="font-minecraft text-xl text-cyan-400 text-center mb-6">UPCOMING GAME MODES</h3>
+        <h3 className="font-minecraft text-lg md:text-xl text-cyan-400 text-center mb-6">UPCOMING GAME MODES</h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-16">
           {futureModes.map((mode) => (
             <motion.div 
               key={mode.id}
@@ -247,7 +235,6 @@ const GameModes = () => {
                 {mode.phase}
               </div>
               
-              {/* Preview image with lock overlay */}
               {mode.previewImage && (
                 <div className="relative mb-4 h-32 overflow-hidden rounded-md">
                   <img 
@@ -286,8 +273,6 @@ const GameModes = () => {
             </motion.div>
           ))}
         </div>
-        
-        
       </div>
     </section>
   );

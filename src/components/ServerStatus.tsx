@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Copy } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -30,17 +29,7 @@ const ServerStatus = () => {
   };
 
   return (
-    <motion.div 
-      className="relative py-12 overflow-hidden" 
-      style={{ 
-        background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed' 
-      }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-    >
+    <motion.div className="relative py-8 md:py-12 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
@@ -66,16 +55,16 @@ const ServerStatus = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
-          className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg mb-8"
+          className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 md:p-6 rounded-lg mb-8"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col sm:flex-row items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
             <div>
-              <h3 className="font-minecraft text-xl mb-2 text-cyan-400">Server Status</h3>
-              <div className="flex items-center mb-1">
+              <h3 className="font-minecraft text-lg md:text-xl mb-2 text-cyan-400 text-center sm:text-left">Server Status</h3>
+              <div className="flex items-center justify-center sm:justify-start mb-1">
                 <span className="mr-2 text-white/80">Status:</span>
                 {isOnline ? (
                   <span className="text-green-500 flex items-center">
@@ -95,9 +84,9 @@ const ServerStatus = () => {
               )}
             </div>
             
-            <div className="mt-4 sm:mt-0">
-              <div className="flex items-center">
-                <div className="font-minecraft bg-black/60 p-2 border border-cyan-400/30 text-cyan-400">
+            <div className="w-full sm:w-auto">
+              <div className="flex items-center justify-center sm:justify-start">
+                <div className="font-minecraft bg-black/60 p-2 border border-cyan-400/30 text-cyan-400 text-sm md:text-base">
                   {serverAddress}
                 </div>
                 <button 
