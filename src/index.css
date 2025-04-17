@@ -66,7 +66,7 @@
   body {
     @apply bg-background text-foreground;
     background-color: #1c2637;
-    background-image: url("/images/bg-dirt.png");
+    /* Removing reference to deleted file */
     background-repeat: repeat;
     background-attachment: fixed;
     image-rendering: pixelated;
