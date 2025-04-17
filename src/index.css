@@ -193,39 +193,8 @@
     @apply border-2 border-gray-800 bg-[#C6C6C6] p-4;
   }
   
-  .minecraft-dirt-bg {
-    background-image: url("/images/bg-dirt.png");
-    background-repeat: repeat;
-    image-rendering: pixelated;
-    position: relative;
-  }
-  
-  .minecraft-dirt-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
-    z-index: 0;
-  }
-  
-  .minecraft-stone-bg {
-    background-image: url("/images/bg-stone.png");
-    background-repeat: repeat;
-    image-rendering: pixelated;
-  }
-  
-  .minecraft-wood-bg {
-    background-image: url("/images/bg-planks.png");
-    background-repeat: repeat;
-    image-rendering: pixelated;
-  }
-  
-  .pixelated {
-    image-rendering: pixelated;
-  }
+
+ 
   
   .minecraft-container {
     @apply border-4 border-theme-gray bg-black/70 p-6;

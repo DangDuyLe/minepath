@@ -57,7 +57,6 @@
 
   body {
     @apply bg-background text-foreground;
-    background-image: url("/images/bg-dirt.png");
     background-repeat: repeat;
     background-attachment: fixed;
     image-rendering: pixelated;
@@ -155,19 +154,16 @@
   }
   
   .minecraft-dirt-bg {
-    background-image: url("/images/bg-dirt.png");
     background-repeat: repeat;
     image-rendering: pixelated;
   }
   
   .minecraft-stone-bg {
-    background-image: url("/images/bg-stone.png");
     background-repeat: repeat;
     image-rendering: pixelated;
   }
   
   .minecraft-wood-bg {
-    background-image: url("/images/bg-planks.png");
     background-repeat: repeat;
     image-rendering: pixelated;
   }
