@@ -1,5 +1,8 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { MinecraftCard } from '@/components/ui/minecraft-card';
+import { EnhancedButton } from '@/components/ui/enhanced-button';
 
 interface GameMode {
   id: number;
@@ -122,6 +125,7 @@ const GameModes = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Game mode details - left side on desktop, bottom on mobile */}
           <motion.div 
             className="order-2 lg:order-1"
             initial={{ opacity: 0, x: -30 }}
@@ -129,7 +133,11 @@ const GameModes = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg">
+            <MinecraftCard 
+              variant="gradient" 
+              bordered 
+              className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg"
+            >
               <h3 className="text-2xl md:text-3xl font-minecraft mb-4 text-cyan-400">
                 {modes[selectedMode].title}
               </h3>
@@ -140,6 +148,7 @@ const GameModes = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
+                key={selectedMode} // Force re-animation when mode changes
                 className="space-y-4"
               >
                 {modes[selectedMode].features.map((feature, index) => (
@@ -153,31 +162,56 @@ const GameModes = () => {
                   </motion.li>
                 ))}
               </motion.ul>
-            </div>
+            </MinecraftCard>
           </motion.div>
 
+          {/* Game mode selection - right side on desktop, top on mobile */}
           <div className="order-1 lg:order-2">
             <div className="grid grid-cols-2 gap-4">
-              {modes.map((gameMode, index) => (
+              {modes.map((gameMode) => (
                 <button
                   key={gameMode.id}
-                  onClick={() => setSelectedMode(index)}
+                  onClick={() => setSelectedMode(gameMode.id)}
                   className={`relative p-4 border-2 transition-all duration-300 ${
-                    selectedMode === index
+                    selectedMode === gameMode.id
                       ? 'border-cyan-400 bg-cyan-400/10'
                       : 'border-cyan-400/30 bg-black/40 hover:border-cyan-400/50'
-                  }`}
+                  } rounded overflow-hidden`}
+                  aria-selected={selectedMode === gameMode.id}
+                  aria-label={`Select ${gameMode.title} game mode`}
                 >
-                  <img
-                    src={gameMode.image}
-                    alt={gameMode.title}
-                    className="w-full h-auto mb-4 pixelated"
-                  />
-                  <h4 className="text-sm md:text-base font-minecraft text-white">
+                  <div className="aspect-w-4 aspect-h-3 mb-4">
+                    <img
+                      src={gameMode.image}
+                      alt={gameMode.title}
+                      className="w-full h-full object-cover pixelated"
+                      loading="lazy"
+                    />
+                  </div>
+                  <h4 className="text-sm md:text-base font-minecraft text-white truncate">
                     {gameMode.title}
                   </h4>
+                  
+                  {/* Selection indicator */}
+                  {selectedMode === gameMode.id && (
+                    <motion.div 
+                      className="absolute inset-0 bg-cyan-400/5 border-2 border-cyan-400/30 pointer-events-none"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      layoutId="selectedIndicator"
+                    />
+                  )}
                 </button>
               ))}
+            </div>
+            
+            <div className="mt-6 flex justify-center">
+              <EnhancedButton 
+                minecraftStyle="diamond" 
+                className="w-full sm:w-auto"
+              >
+                Start Playing Now
+              </EnhancedButton>
             </div>
           </div>
         </div>
