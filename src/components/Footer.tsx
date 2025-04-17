@@ -65,7 +65,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://twitter.com" 
+                href="https://x.com/MinePath_RPG" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-black/40 backdrop-blur-sm border border-cyan-400/30 text-white flex items-center justify-center hover:bg-cyan-500/20 transition-colors"
@@ -73,7 +73,7 @@ const Footer = () => {
                 <Twitter size={16} className="text-cyan-400" />
               </a>
               <a 
-                href="https://discord.com" 
+                href="https://discord.gg/HDc5QYXz" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-black/40 backdrop-blur-sm border border-cyan-400/30 text-white flex items-center justify-center hover:bg-cyan-500/20 transition-colors"

@@ -155,7 +155,7 @@ const CommunitySection = () => {
             </p>
             <div className="grid grid-cols-2 gap-4">
               <a 
-                href="https://discord.gg/minepath" 
+                href="https://discord.gg/HDc5QYXz" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-indigo-600 hover:bg-indigo-700 flex items-center justify-center py-3 rounded-md text-white font-minecraft transition-colors"
@@ -164,7 +164,7 @@ const CommunitySection = () => {
                 Join Discord
               </a>
               <a 
-                href="https://twitter.com/minepath" 
+                href="https://x.com/MinePath_RPG" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-blue-500 hover:bg-blue-600 flex items-center justify-center py-3 rounded-md text-white font-minecraft transition-colors"
