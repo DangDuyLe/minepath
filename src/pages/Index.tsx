@@ -48,7 +48,6 @@ const Index = () => {
           <GameModes />
           <GameRewards />
           <NFTDropMechanics />
-          <NFTRaritySection />
           <Tokenomics />
           <CommunitySection />
           <TestimonialSection />
