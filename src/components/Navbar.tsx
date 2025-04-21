@@ -3,20 +3,58 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import AccountDropdown from "./AccountDropdown";
+
+const DEMO_CREDENTIALS = { account: "Dangduy", password: "1234" };
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  // Login state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [accountName, setAccountName] = useState("");
+  const [loginForm, setLoginForm] = useState({ account: "", password: "" });
+  const [loginError, setLoginError] = useState("");
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLoginForm(f => ({
+      ...f,
+      [e.target.name]: e.target.value
+    }));
+    setLoginError("");
+  };
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (
+      loginForm.account === DEMO_CREDENTIALS.account &&
+      loginForm.password === DEMO_CREDENTIALS.password
+    ) {
+      setIsLoggedIn(true);
+      setAccountName(loginForm.account);
+      setLoginForm({ account: "", password: "" });
+      setLoginError("");
+    } else {
+      setLoginError("Invalid credentials");
+    }
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setAccountName("");
+    setLoginError("");
+    setLoginForm({ account: "", password: "" });
+  };
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-black/70 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-5'}`}>
@@ -45,7 +83,6 @@ const Navbar = () => {
                   className="h-0.5 w-0 bg-gradient-to-r from-solana-blue to-solana-green group-hover:w-full transition-all duration-300"
                 ></motion.div>
               </motion.div>
-  
             </Link>
             <div className="hidden lg:block ml-16">
               <div className="flex items-center space-x-8">
@@ -58,7 +95,7 @@ const Navbar = () => {
                     <ChevronDown className="ml-1 h-3 w-3 opacity-70 group-hover:opacity-100 transition-transform group-hover:rotate-180 duration-300" />
                     <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-solana-blue to-solana-green group-hover:w-full transition-all duration-300"></div>
                   </button>
-                  <div className="absolute left-0 mt-1 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                  <div className="absolute left-0 mt-1 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40">
                     <div className="py-2 bg-black/80 backdrop-blur-md border border-solana-purple/30 shadow-lg">
                       <NavLink to="/discord" currentPath={location.pathname} isDropdown>Discord</NavLink>
                       <NavLink to="/wiki" currentPath={location.pathname} isDropdown>Wiki</NavLink>
@@ -69,7 +106,44 @@ const Navbar = () => {
               </div>
             </div>
           </div>
+
+          {/* LOGIN/ACCOUNT AREA - Desktop */}
           <div className="hidden lg:flex items-center space-x-4">
+            {!isLoggedIn ? (
+              <form className="flex gap-2 items-center" onSubmit={handleLogin} autoComplete="off">
+                <input
+                  type="text"
+                  name="account"
+                  className="px-3 py-2 rounded-md font-minecraft text-sm border border-cyan-400/30 bg-black/70 text-white outline-none focus:ring-2 focus:ring-cyan-400 placeholder:text-white/60 w-32"
+                  placeholder="Account Name"
+                  value={loginForm.account}
+                  onChange={handleInputChange}
+                  autoComplete="off"
+                  required
+                />
+                <input
+                  type="password"
+                  name="password"
+                  className="px-3 py-2 rounded-md font-minecraft text-sm border border-cyan-400/30 bg-black/70 text-white outline-none focus:ring-2 focus:ring-cyan-400 placeholder:text-white/60 w-32"
+                  placeholder="Account Password"
+                  value={loginForm.password}
+                  onChange={handleInputChange}
+                  autoComplete="off"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="bg-cyan-400/20 border border-cyan-400/30 text-cyan-400 font-minecraft text-sm px-4 py-2 rounded-md hover:bg-cyan-400/50 transition"
+                >
+                  Login
+                </button>
+                {loginError && (
+                  <span className="text-red-500 ml-2 font-minecraft text-xs">{loginError}</span>
+                )}
+              </form>
+            ) : (
+              <AccountDropdown accountName={accountName} onLogout={handleLogout} />
+            )}
             <Link to="/store">
               <button className="minecraft-diamond-btn flex items-center space-x-2 hover:scale-105 transition-transform">
                 <Sparkles className="h-4 w-4" />
@@ -83,6 +157,8 @@ const Navbar = () => {
               </button>
             </Link>
           </div>
+          
+          {/* MOBILE MENU ICON */}
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -105,6 +181,43 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
+              {/* Account area - mobile */}
+              {!isLoggedIn ? (
+                <form className="flex flex-col gap-2 items-stretch py-2" onSubmit={handleLogin}>
+                  <input
+                    type="text"
+                    name="account"
+                    className="px-3 py-2 rounded-md font-minecraft text-sm border border-cyan-400/30 bg-black/70 text-white outline-none focus:ring-2 focus:ring-cyan-400 placeholder:text-white/60 w-full"
+                    placeholder="Account Name"
+                    value={loginForm.account}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <input
+                    type="password"
+                    name="password"
+                    className="px-3 py-2 rounded-md font-minecraft text-sm border border-cyan-400/30 bg-black/70 text-white outline-none focus:ring-2 focus:ring-cyan-400 placeholder:text-white/60 w-full"
+                    placeholder="Account Password"
+                    value={loginForm.password}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <button
+                    type="submit"
+                    className="bg-cyan-400/20 border border-cyan-400/30 text-cyan-400 font-minecraft text-sm px-4 py-2 rounded-md hover:bg-cyan-400/50 transition"
+                  >
+                    Login
+                  </button>
+                  {loginError && (
+                    <span className="text-red-500 mt-1 font-minecraft text-xs">{loginError}</span>
+                  )}
+                </form>
+              ) : (
+                <div className="py-3">
+                  <AccountDropdown accountName={accountName} onLogout={handleLogout} />
+                </div>
+              )}
+
               <MobileNavLink to="/" currentPath={location.pathname} onClick={() => setIsOpen(false)}>Home</MobileNavLink>
               <MobileNavLink to="/nfts" currentPath={location.pathname} onClick={() => setIsOpen(false)}>NFT Catalog</MobileNavLink>
               <MobileNavLink to="/how-to-play" currentPath={location.pathname} onClick={() => setIsOpen(false)}>How to Play</MobileNavLink>
@@ -181,3 +294,4 @@ const MobileNavLink = ({ to, currentPath, onClick, children }) => {
 };
 
 export default Navbar;
+
