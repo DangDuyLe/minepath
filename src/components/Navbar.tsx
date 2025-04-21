@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronRight, Sparkles, User } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AccountDropdown from "./AccountDropdown";
 
@@ -79,21 +80,6 @@ const Navbar = () => {
               <div className="flex items-center space-x-8">
                 <NavLink to="/" currentPath={location.pathname}>HOME</NavLink>
                 <NavLink to="/nfts" currentPath={location.pathname}>NFT CATALOG</NavLink>
-                <NavLink to="/how-to-play" currentPath={location.pathname}>HOW TO PLAY</NavLink>
-                <div className="relative group">
-                  <button className="font-minecraft text-sm text-white hover:text-solana-blue transition-colors flex items-center group">
-                    <span>RESOURCES</span>
-                    <ChevronDown className="ml-1 h-3 w-3 opacity-70 group-hover:opacity-100 transition-transform group-hover:rotate-180 duration-300" />
-                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-solana-blue to-solana-green group-hover:w-full transition-all duration-300"></div>
-                  </button>
-                  <div className="absolute left-0 mt-1 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40">
-                    <div className="py-2 bg-black/80 backdrop-blur-md border border-solana-purple/30 shadow-lg">
-                      <NavLink to="/discord" currentPath={location.pathname} isDropdown>Discord</NavLink>
-                      <NavLink to="/wiki" currentPath={location.pathname} isDropdown>Wiki</NavLink>
-                      <NavLink to="/gallery" currentPath={location.pathname} isDropdown>NFT Gallery</NavLink>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -110,18 +96,6 @@ const Navbar = () => {
             ) : (
               <AccountDropdown accountName={accountName} onLogout={handleLogout} />
             )}
-            <Link to="/store">
-              <button className="minecraft-diamond-btn flex items-center space-x-2 hover:scale-105 transition-transform">
-                <Sparkles className="h-4 w-4" />
-                <span>STORE</span>
-              </button>
-            </Link>
-            <Link to="/how-to-play">
-              <button className="play-now-btn relative px-8 py-3 bg-white text-black font-minecraft tracking-wider text-sm hover:scale-105 transition-all duration-300 overflow-hidden group">
-                <span className="relative z-10">PLAY NOW</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              </button>
-            </Link>
           </div>
           
           {/* MOBILE MENU ICON */}
@@ -166,26 +140,6 @@ const Navbar = () => {
 
               <MobileNavLink to="/" currentPath={location.pathname} onClick={() => setIsOpen(false)}>Home</MobileNavLink>
               <MobileNavLink to="/nfts" currentPath={location.pathname} onClick={() => setIsOpen(false)}>NFT Catalog</MobileNavLink>
-              <MobileNavLink to="/how-to-play" currentPath={location.pathname} onClick={() => setIsOpen(false)}>How to Play</MobileNavLink>
-              <MobileNavLink to="/discord" currentPath={location.pathname} onClick={() => setIsOpen(false)}>Discord</MobileNavLink>
-              <MobileNavLink to="/wiki" currentPath={location.pathname} onClick={() => setIsOpen(false)}>Wiki</MobileNavLink>
-              <MobileNavLink to="/gallery" currentPath={location.pathname} onClick={() => setIsOpen(false)}>NFT Gallery</MobileNavLink>
-              <div className="pt-4 pb-2 flex flex-col space-y-3">
-                <Link 
-                  to="/store" 
-                  className="minecraft-diamond-btn block text-center"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Store
-                </Link>
-                <Link 
-                  to="/how-to-play" 
-                  className="minecraft-3d-btn block text-center"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Get Started
-                </Link>
-              </div>
             </div>
           </motion.div>
         )}
@@ -195,25 +149,20 @@ const Navbar = () => {
 };
 
 // Helper components for cleaner navigation link styling
-const NavLink = ({ to, currentPath, children, isDropdown = false }) => {
+const NavLink = ({ to, currentPath, children }) => {
   const isActive = currentPath === to;
   
   return (
     <Link 
       to={to} 
-      className={`font-minecraft text-sm relative group ${isDropdown ? 'block px-4 py-2' : ''} ${
+      className={`font-minecraft text-sm relative group ${
         isActive 
           ? 'text-solana-blue' 
           : 'text-white hover:text-solana-blue transition-colors'
       }`}
     >
-      <div className="flex items-center">
-        {isDropdown && <ChevronRight className="mr-1 h-3 w-3 opacity-80 group-hover:translate-x-1 transition-transform" />}
-        <span>{children}</span>
-      </div>
-      {!isDropdown && (
-        <div className={`absolute bottom-0 left-0 h-0.5 ${isActive ? 'w-full bg-gradient-to-r from-solana-blue to-solana-green' : 'w-0 bg-solana-blue group-hover:w-full'} transition-all duration-300`}></div>
-      )}
+      <span>{children}</span>
+      <div className={`absolute bottom-0 left-0 h-0.5 ${isActive ? 'w-full bg-gradient-to-r from-solana-blue to-solana-green' : 'w-0 bg-solana-blue group-hover:w-full'} transition-all duration-300`}></div>
     </Link>
   );
 };
@@ -231,12 +180,10 @@ const MobileNavLink = ({ to, currentPath, onClick, children }) => {
       }`}
       onClick={onClick}
     >
-      <div className="flex items-center">
-        <ChevronRight className={`mr-1 h-4 w-4 ${isActive ? 'text-solana-blue' : 'opacity-80'}`} />
-        <span>{children}</span>
-      </div>
+      <span>{children}</span>
     </Link>
   );
 };
 
 export default Navbar;
+
