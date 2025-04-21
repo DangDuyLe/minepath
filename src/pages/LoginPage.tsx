@@ -33,16 +33,20 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#0d0e16] via-[#20244a] to-[#151a31] px-4">
-      <div className="w-full max-w-md bg-black/60 rounded-lg shadow-xl border-2 border-cyan-400/30 p-8 text-center">
-        <Sparkles className="mx-auto mb-4 h-8 w-8 text-cyan-400" />
-        <h2 className="font-minecraft text-2xl text-cyan-400 mb-2">Login to MinePath</h2>
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-[#1A1F2C] via-[#191b28] to-[#090a12] px-4">
+      <div className="w-full max-w-md glass-card relative rounded-xl shadow-2xl border-4 border-cyan-400/30 p-10 text-center flex flex-col items-center animate-fade-in" style={{
+        boxShadow: "0 4px 40px 0 rgba(9,200,255,0.15), 0 0 0 2px #146C74 inset",
+        background: "linear-gradient(120deg, rgba(0,195,255,0.18) 10%, rgba(191,175,255,0.09) 100%), rgba(0,0,0,0.65)",
+        backdropFilter: "blur(10px)"
+      }}>
+        <Sparkles className="mx-auto mb-4 h-10 w-10 text-cyan-400 drop-shadow-glow animate-pulse-glow" />
+        <h2 className="font-minecraft text-2xl text-cyan-400 mb-2 glow-effect">Login to MinePath</h2>
         <p className="font-minecraft text-white/70 mb-6">Enter demo credentials to proceed.</p>
-        <form className="space-y-4" onSubmit={handleLogin} autoComplete="off">
+        <form className="space-y-4 w-full" onSubmit={handleLogin} autoComplete="off">
           <Input
             type="text"
             name="account"
-            className="bg-black/70 text-white border-cyan-400/30 font-minecraft"
+            className="bg-black/60 text-cyan-200 border-cyan-400/40 font-minecraft"
             placeholder="Account Name"
             value={form.account}
             onChange={handleInputChange}
@@ -53,7 +57,7 @@ const LoginPage: React.FC = () => {
           <Input
             type="password"
             name="password"
-            className="bg-black/70 text-white border-cyan-400/30 font-minecraft"
+            className="bg-black/60 text-cyan-200 border-cyan-400/40 font-minecraft"
             placeholder="Account Password"
             value={form.password}
             onChange={handleInputChange}
@@ -61,11 +65,14 @@ const LoginPage: React.FC = () => {
             autoComplete="off"
           />
           {error && (
-            <div className="text-red-500 font-minecraft text-sm">{error}</div>
+            <div className="text-red-500 font-minecraft text-sm glow-effect animate-pulse">{error}</div>
           )}
           <Button
             type="submit"
-            className="w-full bg-cyan-400/20 text-cyan-400 border border-cyan-400/30 font-minecraft text-lg py-2 rounded-md hover:bg-cyan-400/50 transition"
+            className="w-full minecraft-3d-btn bg-cyan-400/30 text-white border-cyan-400/50 font-minecraft text-lg py-2 rounded-lg glow-effect hover:bg-cyan-400/60 animate-float"
+            style={{
+              background: "linear-gradient(120deg, #13b0ff88 0%, #007aaf66 100%)"
+            }}
           >
             Login
           </Button>
