@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,8 +8,8 @@ import NotFound from "@/pages/NotFound";
 import NFTCatalog from "@/pages/NFTCatalog";
 import HowToPlayPage from "@/pages/HowToPlayPage";
 import StorePage from "@/pages/StorePage";
+import LoginPage from "@/pages/LoginPage";
 
-// Enhanced Minecraft-themed toast styles
 const toastStyles = {
   background: 'url("/images/bg-planks.png")',
   color: 'white',
@@ -38,6 +37,7 @@ const App = () => (
             <Route path="/nfts" element={<NFTCatalog />} />
             <Route path="/how-to-play" element={<HowToPlayPage />} />
             <Route path="/store" element={<StorePage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

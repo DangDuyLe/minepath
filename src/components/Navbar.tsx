@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronRight, Sparkles } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, ChevronDown, ChevronRight, Sparkles, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AccountDropdown from "./AccountDropdown";
 
@@ -11,12 +10,26 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  // Login state
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [accountName, setAccountName] = useState("");
-  const [loginForm, setLoginForm] = useState({ account: "", password: "" });
-  const [loginError, setLoginError] = useState("");
+  // Login state: Only track if logged in
+  const [isLoggedIn, setIsLoggedIn] = useState(() =>
+    Boolean(localStorage.getItem("mp_account"))
+  );
+  const [accountName, setAccountName] = useState(
+    localStorage.getItem("mp_account") || ""
+  );
+
+  // Listen for storage changes (in case of login/logout from another tab)
+  useEffect(() => {
+    const syncAccount = () => {
+      const account = localStorage.getItem("mp_account") || "";
+      setAccountName(account);
+      setIsLoggedIn(Boolean(account));
+    };
+    window.addEventListener("storage", syncAccount);
+    return () => window.removeEventListener("storage", syncAccount);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,34 +39,12 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLoginForm(f => ({
-      ...f,
-      [e.target.name]: e.target.value
-    }));
-    setLoginError("");
-  };
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (
-      loginForm.account === DEMO_CREDENTIALS.account &&
-      loginForm.password === DEMO_CREDENTIALS.password
-    ) {
-      setIsLoggedIn(true);
-      setAccountName(loginForm.account);
-      setLoginForm({ account: "", password: "" });
-      setLoginError("");
-    } else {
-      setLoginError("Invalid credentials");
-    }
-  };
-
+  // Logging out (helper)
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    localStorage.removeItem("mp_account");
     setAccountName("");
-    setLoginError("");
-    setLoginForm({ account: "", password: "" });
+    setIsLoggedIn(false);
+    window.dispatchEvent(new Event("storage"));
   };
 
   return (
@@ -110,37 +101,12 @@ const Navbar = () => {
           {/* LOGIN/ACCOUNT AREA - Desktop */}
           <div className="hidden lg:flex items-center space-x-4">
             {!isLoggedIn ? (
-              <form className="flex gap-2 items-center" onSubmit={handleLogin} autoComplete="off">
-                <input
-                  type="text"
-                  name="account"
-                  className="px-3 py-2 rounded-md font-minecraft text-sm border border-cyan-400/30 bg-black/70 text-white outline-none focus:ring-2 focus:ring-cyan-400 placeholder:text-white/60 w-32"
-                  placeholder="Account Name"
-                  value={loginForm.account}
-                  onChange={handleInputChange}
-                  autoComplete="off"
-                  required
-                />
-                <input
-                  type="password"
-                  name="password"
-                  className="px-3 py-2 rounded-md font-minecraft text-sm border border-cyan-400/30 bg-black/70 text-white outline-none focus:ring-2 focus:ring-cyan-400 placeholder:text-white/60 w-32"
-                  placeholder="Account Password"
-                  value={loginForm.password}
-                  onChange={handleInputChange}
-                  autoComplete="off"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="bg-cyan-400/20 border border-cyan-400/30 text-cyan-400 font-minecraft text-sm px-4 py-2 rounded-md hover:bg-cyan-400/50 transition"
-                >
-                  Login
-                </button>
-                {loginError && (
-                  <span className="text-red-500 ml-2 font-minecraft text-xs">{loginError}</span>
-                )}
-              </form>
+              <button
+                className="bg-cyan-400/20 border border-cyan-400/30 text-cyan-400 font-minecraft text-sm px-4 py-2 rounded-md hover:bg-cyan-400/50 transition flex items-center"
+                onClick={() => navigate("/login")}
+              >
+                <User className="h-4 w-4 mr-2" /> Login
+              </button>
             ) : (
               <AccountDropdown accountName={accountName} onLogout={handleLogout} />
             )}
@@ -183,35 +149,15 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               {/* Account area - mobile */}
               {!isLoggedIn ? (
-                <form className="flex flex-col gap-2 items-stretch py-2" onSubmit={handleLogin}>
-                  <input
-                    type="text"
-                    name="account"
-                    className="px-3 py-2 rounded-md font-minecraft text-sm border border-cyan-400/30 bg-black/70 text-white outline-none focus:ring-2 focus:ring-cyan-400 placeholder:text-white/60 w-full"
-                    placeholder="Account Name"
-                    value={loginForm.account}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <input
-                    type="password"
-                    name="password"
-                    className="px-3 py-2 rounded-md font-minecraft text-sm border border-cyan-400/30 bg-black/70 text-white outline-none focus:ring-2 focus:ring-cyan-400 placeholder:text-white/60 w-full"
-                    placeholder="Account Password"
-                    value={loginForm.password}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="bg-cyan-400/20 border border-cyan-400/30 text-cyan-400 font-minecraft text-sm px-4 py-2 rounded-md hover:bg-cyan-400/50 transition"
-                  >
-                    Login
-                  </button>
-                  {loginError && (
-                    <span className="text-red-500 mt-1 font-minecraft text-xs">{loginError}</span>
-                  )}
-                </form>
+                <button
+                  className="w-full mb-4 bg-cyan-400/20 border border-cyan-400/30 text-cyan-400 font-minecraft text-base px-4 py-2 rounded-md hover:bg-cyan-400/50 transition flex items-center justify-center"
+                  onClick={() => {
+                    setIsOpen(false);
+                    navigate("/login");
+                  }}
+                >
+                  <User className="h-5 w-5 mr-2" /> Login
+                </button>
               ) : (
                 <div className="py-3">
                   <AccountDropdown accountName={accountName} onLogout={handleLogout} />
@@ -294,4 +240,3 @@ const MobileNavLink = ({ to, currentPath, onClick, children }) => {
 };
 
 export default Navbar;
-
