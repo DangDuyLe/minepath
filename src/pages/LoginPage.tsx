@@ -86,7 +86,6 @@ const LoginPage: React.FC = () => {
       }}>
         <Sparkles className="mx-auto mb-4 h-10 w-10 text-cyan-400 drop-shadow-glow animate-pulse-glow" />
         <h2 className="font-minecraft text-2xl text-cyan-400 mb-2 glow-effect">Login to MinePath</h2>
-        <p className="font-minecraft text-white/70 mb-6">Enter demo credentials to proceed.</p>
         <form className="space-y-4 w-full" onSubmit={handleLogin} autoComplete="off">
           <Input
             type="text"
