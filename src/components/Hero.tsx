@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { ArrowRight, Shield, Sword, Coins, Sparkles, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -178,12 +177,20 @@ const Hero = () => {
                 className="relative z-10"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{ 
+                  y: [-5, -15, -5],
+                  transition: { 
+                    duration: 1.5, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }
+                }}
               >
                 <img 
                   ref={heroImageRef}
                   src="/images/swordshield.png" 
                   alt="Minecraft world with buildings" 
-                  className={`w-full h-auto rounded-lg shadow-2xl transition-all duration-700 ${imagesLoaded ? '' : 'blur-in'}`}
+                  className={`w-full h-auto rounded-lg shadow-2xl transition-all duration-700 ${imagesLoaded ? '' : 'blur-in'} cursor-pointer`}
                 />
                 
                 {/* Floating elements around the image - reduced on mobile */}
