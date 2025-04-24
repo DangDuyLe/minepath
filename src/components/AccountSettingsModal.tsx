@@ -1,7 +1,6 @@
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import React from "react";
+import { User, Wallet } from "lucide-react";
 
 type Props = {
   open: boolean;
@@ -10,18 +9,12 @@ type Props = {
 };
 
 const AccountSettingsModal: React.FC<Props> = ({ open, onOpenChange, accountName }) => {
-  const [editing, setEditing] = useState(false);
-  const [inputValue, setInputValue] = useState(accountName);
-
-  // For demo: Does not persist changes, just allows renaming locally
-  const handleSave = () => {
-    setEditing(false);
-    onOpenChange(false);
-  };
+  // Check Phantom wallet connection status
+  const phantomConnected = typeof window !== "undefined" && (window as any).solana?.isPhantom;
+  const phantomAccount = phantomConnected ? (window as any).solana.publicKey?.toString() : null;
 
   if (!open) return null;
 
-  // Glassy style and wow effect
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
       <div
@@ -31,49 +24,44 @@ const AccountSettingsModal: React.FC<Props> = ({ open, onOpenChange, accountName
           backdropFilter: "blur(18px)"
         }}
       >
-        <h2 className="font-minecraft text-2xl text-cyan-400 mb-4 glow-effect">Account Settings</h2>
-        <div className="mb-7">
-          <label className="block font-minecraft mb-2 text-white/80">Account Name</label>
-          {!editing ? (
-            <div className="flex items-center justify-between">
-              <span className="font-minecraft text-white">{inputValue}</span>
-              <Button 
-                size="sm"
-                className="ml-3 border border-cyan-400/40 bg-cyan-400/15 text-cyan-300 glow-effect font-minecraft hover:bg-cyan-400/30 transition"
-                onClick={() => setEditing(true)}
-              >Edit</Button>
-            </div>
-          ) : (
-            <div className="flex items-center">
-              <Input
-                value={inputValue}
-                onChange={e => setInputValue(e.target.value)}
-                className="font-minecraft bg-black/70 text-white border-cyan-400/40 glow-effect"
-                autoFocus
-              />
-              <Button 
-                size="sm"
-                className="ml-3 border border-cyan-400/40 bg-cyan-400/15 text-cyan-300 glow-effect font-minecraft hover:bg-cyan-400/30 transition"
-                onClick={handleSave}
-              >Save</Button>
-              <Button 
-                size="sm"
-                variant="ghost"
-                className="ml-2 text-gray-400 font-minecraft"
-                onClick={() => setEditing(false)}
-              >Cancel</Button>
-            </div>
-          )}
+        <h2 className="font-minecraft text-2xl text-cyan-400 mb-4 glow-effect">Account Information</h2>
+        
+        {/* Account Name */}
+        <div className="mb-6">
+          <div className="flex items-center mb-2">
+            <User className="h-5 w-5 mr-2 text-cyan-400" />
+            <label className="font-minecraft text-white/80">Account Name</label>
+          </div>
+          <div className="bg-black/50 rounded-lg p-3 font-minecraft text-white">
+            {accountName}
+          </div>
         </div>
-        <div className="flex justify-end">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="text-gray-400 font-minecraft"
+
+        {/* Wallet Connection Status */}
+        <div>
+          <div className="flex items-center mb-2">
+            <Wallet className="h-5 w-5 mr-2 text-cyan-400" />
+            <label className="font-minecraft text-white/80">Wallet Connection</label>
+          </div>
+          <div 
+            className={`bg-black/50 rounded-lg p-3 font-minecraft ${
+              phantomConnected ? 'text-green-400' : 'text-red-400'
+            }`}
+          >
+            {phantomConnected 
+              ? `Connected (${phantomAccount ? phantomAccount.slice(0, 10) + '...' : 'Wallet Connected'})` 
+              : 'Not Connected'}
+          </div>
+        </div>
+
+        {/* Close Button */}
+        <div className="flex justify-end mt-6">
+          <button
+            className="text-gray-400 font-minecraft hover:text-white transition"
             onClick={() => onOpenChange(false)}
           >
             Close
-          </Button>
+          </button>
         </div>
       </div>
     </div>
