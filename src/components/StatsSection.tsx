@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-import { ChartLineUp } from 'lucide-react';
+import { ChartLine } from 'lucide-react';
 
 const playerData = [
   { month: 'Jan', players: 1200 },
@@ -34,10 +33,18 @@ const COLORS = ['#00C2FF', '#14F195', '#9945FF', '#FF9900'];
 const StatsSection = () => {
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Background elements */}
+      {/* Background elements - Updated to match Hero */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center" 
+          style={{ 
+            backgroundImage: "url('/images/bg-beach.png')",
+            filter: "brightness(0.7)",
+            backgroundSize: "cover"
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/90"></div>
+        {/* Optional: Add particles or other elements from Hero background if needed */}
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -50,12 +57,12 @@ const StatsSection = () => {
         >
           <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 mb-4">
             <div className="px-4 py-1 rounded-full bg-black/60 backdrop-blur-sm text-sm font-medium text-cyan-400 flex items-center">
-              <ChartLineUp className="w-4 h-4 mr-2" />
+              <ChartLine className="w-4 h-4 mr-2" />
               STATISTICS
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-minecraft mb-6 text-white">
-            Our <span className="text-cyan-400">Growth</span> Numbers
+            Our <span className="text-cyan-400">Growth</span> Numbers (Estimated in 2026)
           </h2>
         </motion.div>
 

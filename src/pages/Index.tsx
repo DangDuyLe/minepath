@@ -39,13 +39,14 @@ const Index = () => {
         <Hero />
         <JoinCTA />
         <WhatIs />
-        <StatsSection />
+
         
         {/* Less critical components loaded lazily */}
         <Suspense fallback={<SectionLoader />}>
           <FeaturesSection />
           <HowToPlay />
           <Web3Economy />
+          <StatsSection />
           <GameModes />
           <GameRewards />
           <NFTDropMechanics />
