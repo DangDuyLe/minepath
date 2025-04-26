@@ -14,9 +14,9 @@ const playerData = [
 
 const nftData = [
   { name: 'Common', value: 45 },
-  { name: 'Rare', value: 30 },
+  { name: 'Rare', value: 35 },
   { name: 'Epic', value: 15 },
-  { name: 'Legendary', value: 10 },
+  { name: 'Legendary', value: 5 },
 ];
 
 const rewardData = [
