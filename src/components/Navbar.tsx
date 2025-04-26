@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, User } from 'lucide-react';
@@ -79,7 +78,6 @@ const Navbar = () => {
             <div className="hidden lg:block ml-16">
               <div className="flex items-center space-x-8">
                 <NavLink to="/" currentPath={location.pathname}>HOME</NavLink>
-                <NavLink to="/nfts" currentPath={location.pathname}>NFT CATALOG</NavLink>
               </div>
             </div>
           </div>
@@ -139,7 +137,6 @@ const Navbar = () => {
               )}
 
               <MobileNavLink to="/" currentPath={location.pathname} onClick={() => setIsOpen(false)}>Home</MobileNavLink>
-              <MobileNavLink to="/nfts" currentPath={location.pathname} onClick={() => setIsOpen(false)}>NFT Catalog</MobileNavLink>
             </div>
           </motion.div>
         )}
