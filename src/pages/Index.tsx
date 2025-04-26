@@ -1,10 +1,10 @@
-
 import React, { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import WhatIs from '@/components/WhatIs';
 import JoinCTA from '@/components/JoinCTA';
 import ScrollToTop from '@/components/ScrollToTop';
+import StatsSection from '@/components/StatsSection';
 
 // Lazy-load components that are further down the page for better initial load performance
 const FeaturesSection = lazy(() => import('@/components/FeaturesSection'));
@@ -39,6 +39,7 @@ const Index = () => {
         <Hero />
         <JoinCTA />
         <WhatIs />
+        <StatsSection />
         
         {/* Less critical components loaded lazily */}
         <Suspense fallback={<SectionLoader />}>
