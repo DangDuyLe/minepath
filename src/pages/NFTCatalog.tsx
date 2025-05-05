@@ -22,113 +22,209 @@ type NFTItem = {
   }[];
 };
 
-// NFT items data
 const NFT_ITEMS: NFTItem[] = [
+  // Explosion Pickaxes I–V (levels 1–5)
   {
-    id: '1',
-    name: "Diamond Pickaxe",
-    image: "/images/diamond_pickaxe.png",
-    rarity: "rare",
+    id: 'exp1',
+    name: "Explosion Pickaxe I",
+    image: "/images/explosion-1.png",
+    rarity: "common",        // level 1
     category: "tool",
     description: "Mine blocks faster and with higher chance of rare drops.",
     attributes: [
       { trait: "Mining Speed", value: "+60%" },
-      { trait: "Durability", value: "1500" },
+      { trait: "Durability",     value: "1500" },
       { trait: "Rare Drop Chance", value: "+15%" }
     ]
   },
   {
-    id: '2',
-    name: "Golden Apple",
-    image: "/images/golden_apple.png",
+    id: 'exp2',
+    name: "Explosion Pickaxe II",
+    image: "/images/explosion-2.png",
+    rarity: "uncommon",      // level 2
+    category: "tool",
+    description: "Enhanced explosion core boosts mining speed and drop rate.",
+    attributes: [
+      { trait: "Mining Speed", value: "+70%" },
+      { trait: "Durability",     value: "1600" },
+      { trait: "Rare Drop Chance", value: "+18%" }
+    ]
+  },
+  {
+    id: 'exp3',
+    name: "Explosion Pickaxe III",
+    image: "/images/explosion-3.png",
+    rarity: "rare",          // level 3
+    category: "tool",
+    description: "High-tier explosion technology for maximum block yield.",
+    attributes: [
+      { trait: "Mining Speed", value: "+80%" },
+      { trait: "Durability",     value: "1700" },
+      { trait: "Rare Drop Chance", value: "+21%" }
+    ]
+  },
+  {
+    id: 'exp4',
+    name: "Explosion Pickaxe IV",
+    image: "/images/explosion-4.png",
+    rarity: "epic",          // level 4
+    category: "tool",
+    description: "Advanced explosion pickaxe with superior mining performance.",
+    attributes: [
+      { trait: "Mining Speed", value: "+90%" },
+      { trait: "Durability",     value: "1800" },
+      { trait: "Rare Drop Chance", value: "+24%" }
+    ]
+  },
+  {
+    id: 'exp5',
+    name: "Explosion Pickaxe V",
+    image: "/images/explosion-5.png",
+    rarity: "legendary",     // level 5
+    category: "tool",
+    description: "Ultimate explosion pickaxe for unparalleled mining efficiency.",
+    attributes: [
+      { trait: "Mining Speed", value: "+100%" },
+      { trait: "Durability",     value: "1900" },
+      { trait: "Rare Drop Chance", value: "+27%" }
+    ]
+  },
+
+  // Laser Pickaxes I–V (levels 1–5)
+  {
+    id: 'laser1',
+    name: "Laser Pickaxe I",
+    image: "/images/laser-1.png",
+    rarity: "common",
+    category: "tool",
+    description: "Basic laser module that slices through blocks with ease.",
+    attributes: [
+      { trait: "Laser Power", value: "+50%" },
+      { trait: "Durability",  value: "1200" },
+      { trait: "Precision",   value: "+10%" }
+    ]
+  },
+  {
+    id: 'laser2',
+    name: "Laser Pickaxe II",
+    image: "/images/laser-2.png",
     rarity: "uncommon",
-    category: "resource",
-    description: "Provides regeneration and absorption effects when consumed.",
+    category: "tool",
+    description: "Upgraded laser lens for increased block penetration.",
     attributes: [
-      { trait: "Health Regen", value: "+20/s" },
-      { trait: "Duration", value: "30s" },
-      { trait: "Absorption", value: "+4 hearts" }
+      { trait: "Laser Power", value: "+60%" },
+      { trait: "Durability",  value: "1300" },
+      { trait: "Precision",   value: "+15%" }
     ]
   },
   {
-    id: '3',
-    name: "Netherite Helmet",
-    image: "/images/netherite_helmet.png",
+    id: 'laser3',
+    name: "Laser Pickaxe III",
+    image: "/images/laser-3.png",
+    rarity: "rare",
+    category: "tool",
+    description: "High-intensity laser for rapid block breaking.",
+    attributes: [
+      { trait: "Laser Power", value: "+70%" },
+      { trait: "Durability",  value: "1400" },
+      { trait: "Precision",   value: "+20%" }
+    ]
+  },
+  {
+    id: 'laser4',
+    name: "Laser Pickaxe IV",
+    image: "/images/laser-4.png",
     rarity: "epic",
-    category: "armor",
-    description: "Superior protection that doesn't burn in lava.",
+    category: "tool",
+    description: "Advanced laser emitter for pinpoint accuracy.",
     attributes: [
-      { trait: "Armor", value: "+3" },
-      { trait: "Knockback Resist", value: "+20%" },
-      { trait: "Fire Resist", value: "+35%" }
+      { trait: "Laser Power", value: "+80%" },
+      { trait: "Durability",  value: "1500" },
+      { trait: "Precision",   value: "+25%" }
     ]
   },
   {
-    id: '4',
-    name: "Enchanted Book",
-    image: "/images/enchanted_book.png",
+    id: 'laser5',
+    name: "Laser Pickaxe V",
+    image: "/images/laser-5.png",
     rarity: "legendary",
     category: "tool",
-    description: "Contains powerful enchantments that can be applied to items.",
+    description: "Cutting-edge laser technology for the ultimate mining tool.",
     attributes: [
-      { trait: "Enchantment Level", value: "V" },
-      { trait: "Type", value: "Rare" },
-      { trait: "Compatibility", value: "Multiple" }
+      { trait: "Laser Power", value: "+90%" },
+      { trait: "Durability",  value: "1600" },
+      { trait: "Precision",   value: "+30%" }
+    ]
+  },
+
+  // Lucky Charms (levels 1, 2, 5, 10, 20)
+  {
+    id: 'charm1',
+    name: "Lucky Charm I",
+    image: "/images/charm-1.png",
+    rarity: "common",        // level 1
+    category: "resource",
+    description: "Provides regeneration and a small luck boost.",
+    attributes: [
+      { trait: "Health Regen", value: "+20/s" },
+      { trait: "Duration",     value: "30s" },
+      { trait: "Absorption",   value: "+4 hearts" }
     ]
   },
   {
-    id: '5',
-    name: "Diamond Sword",
-    image: "/images/diamond_sword.png",
-    rarity: "rare",
-    category: "weapon",
-    description: "Deals significant damage to enemies and has high durability.",
+    id: 'charm2',
+    name: "Lucky Charm II",
+    image: "/images/charm-2.png",
+    rarity: "uncommon",      // level 2
+    category: "resource",
+    description: "Enhanced regenerator with moderate luck increase.",
     attributes: [
-      { trait: "Damage", value: "+7" },
-      { trait: "Durability", value: "1500" },
-      { trait: "Critical Hit", value: "+25%" }
+      { trait: "Health Regen", value: "+30/s" },
+      { trait: "Duration",     value: "45s" },
+      { trait: "Absorption",   value: "+6 hearts" }
     ]
   },
   {
-    id: '6',
-    name: "Dragon's Breath",
-    image: "/images/dragons_breath.png",
-    rarity: "legendary",
-    category: "weapon",
-    description: "Unleashes a powerful flame attack that damages all enemies in front of you.",
+    id: 'charm5',
+    name: "Lucky Charm V",
+    image: "/images/charm-5.png",
+    rarity: "rare",          // level 5
+    category: "resource",
+    description: "Powerful charm granting significant luck and regen.",
     attributes: [
-      { trait: "Damage", value: "+150%" },
-      { trait: "Area Effect", value: "5 blocks" },
-      { trait: "Cooldown", value: "60s" }
+      { trait: "Health Regen", value: "+40/s" },
+      { trait: "Duration",     value: "60s" },
+      { trait: "Absorption",   value: "+8 hearts" }
     ]
   },
   {
-    id: '7',
-    name: "Diamond Defender",
-    image: "/images/diamond_defender.png",
-    rarity: "rare",
-    category: "armor",
-    description: "Creates a temporary shield that absorbs damage from attacks.",
+    id: 'charm10',
+    name: "Lucky Charm X",
+    image: "/images/charm-10.png",
+    rarity: "epic",          // level 10
+    category: "resource",
+    description: "Legendary charm with extended luck and vitality.",
     attributes: [
-      { trait: "Defense", value: "+40%" },
-      { trait: "Duration", value: "15s" },
-      { trait: "Cooldown", value: "45s" }
+      { trait: "Health Regen", value: "+50/s" },
+      { trait: "Duration",     value: "75s" },
+      { trait: "Absorption",   value: "+10 hearts" }
     ]
   },
   {
-    id: '8',
-    name: "Void Walker",
-    image: "/images/void_walker.png",
-    rarity: "epic",
-    category: "cosmetic",
-    description: "Grants temporary invisibility and increased movement speed.",
+    id: 'charm20',
+    name: "Lucky Charm XX",
+    image: "/images/charm-20.png",
+    rarity: "legendary",     // level 20
+    category: "resource",
+    description: "Ultimate charm for maximum luck and health boost.",
     attributes: [
-      { trait: "Speed", value: "+60%" },
-      { trait: "Duration", value: "10s" },
-      { trait: "Cooldown", value: "90s" }
+      { trait: "Health Regen", value: "+60/s" },
+      { trait: "Duration",     value: "90s" },
+      { trait: "Absorption",   value: "+12 hearts" }
     ]
   }
 ];
+
 
 // Filter categories
 const CATEGORIES = [
@@ -202,7 +298,7 @@ const NFTCatalog = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="font-minecraft text-3xl md:text-4xl lg:text-5xl mb-6 text-white"
               >
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-purple to-solana-green">
+                <span className="font-minecraft text-3xl md:text-4xl lg:text-5xl mb-6 text-white">
                   NFT COLLECTION
                 </span>
               </motion.h1>

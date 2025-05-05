@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Twitter } from 'lucide-react';
@@ -62,7 +61,7 @@ const TeamMembers = () => {
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
-        <div className="absolute inset-0 bg-[url('/images/bg-beach.png')] bg-no-repeat bg-cover bg-center opacity-40"></div>
+        <div className="absolute inset-0 bg-[url('/images/bg-sunset.png')] bg-no-repeat bg-cover bg-center opacity-40"></div>
         <div className="absolute left-0 inset-y-0 w-16 opacity-20">
           <div className="h-full w-full bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat-y"></div>
         </div>
@@ -89,8 +88,8 @@ const TeamMembers = () => {
             viewport={{ once: true }}
             className="font-minecraft text-3xl md:text-4xl lg:text-5xl mb-6 text-white"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana-purple to-solana-blue drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-              MEET THE BUILDERS
+            <span className="font-minecraft text-3xl md:text-4xl lg:text-5xl mb-6 text-white">
+              MEET THE <span className="text-blue-500">BUILDERS</span>
             </span>
           </motion.h2>
 
