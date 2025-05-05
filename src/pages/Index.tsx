@@ -1,3 +1,4 @@
+
 import React, { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -22,6 +23,7 @@ const TestimonialSection = lazy(() => import('@/components/TestimonialSection'))
 const Web3Economy = lazy(() => import('@/components/Web3Economy'));
 const CommunitySection = lazy(() => import('@/components/CommunitySection'));
 const ServerStatus = lazy(() => import('@/components/ServerStatus'));
+const TeamMembers = lazy(() => import('@/components/TeamMembers'));
 
 // Simple loading component for Suspense fallback
 const SectionLoader = () => (
@@ -51,6 +53,7 @@ const Index = () => {
           <GameRewards />
           <NFTDropMechanics />
           <Tokenomics />
+          <TeamMembers />
           <CommunitySection />
           <TestimonialSection />
           <NFTShowcase />
