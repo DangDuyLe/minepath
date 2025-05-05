@@ -126,7 +126,7 @@ const TeamMemberCard = ({ member, index }: { member: TeamMember, index: number }
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="bg-black/40 backdrop-blur-sm border border-solana-purple/30 overflow-hidden group"
+      className="bg-black/40 backdrop-blur-sm border border-solana-purple/30 overflow-hidden group flex flex-col h-full"
     >
       <div className="relative h-48 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-solana-purple/20 via-transparent to-black/80 z-10"></div>
@@ -146,20 +146,22 @@ const TeamMemberCard = ({ member, index }: { member: TeamMember, index: number }
         </div>
       </div>
       
-      <div className="p-4 text-center">
+      <div className="p-4 text-center flex flex-col flex-grow">
         <h3 className="font-minecraft text-xl text-white mb-1">{member.name}</h3>
         <div className="text-sm text-solana-purple mb-3">{member.role}</div>
-        <p className="text-sm text-white/70 mb-4 h-20 overflow-hidden">{member.description}</p>
+        <p className="text-sm text-white/70 mb-4 flex-grow">{member.description}</p>
         
-        <a 
-          href={member.twitter}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center text-sm font-minecraft px-3 py-2 text-white bg-gradient-to-r from-solana-blue/20 to-solana-purple/20 border border-solana-purple/30 hover:border-solana-purple/60 transition-all duration-300"
-        >
-          <MinecraftIcon icon={Twitter} size="sm" variant="diamond" className="mr-2" />
-          Follow on X
-        </a>
+        <div className="mt-auto">
+          <a 
+            href={member.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center text-sm font-minecraft px-3 py-2 text-white bg-gradient-to-r from-solana-blue/20 to-solana-purple/20 border border-solana-purple/30 hover:border-solana-purple/60 transition-all duration-300"
+          >
+            <MinecraftIcon icon={Twitter} size="sm" variant="diamond" className="mr-2" />
+            Follow on X
+          </a>
+        </div>
       </div>
     </motion.div>
   );
