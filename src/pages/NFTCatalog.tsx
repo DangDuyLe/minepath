@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -162,69 +161,58 @@ const NFT_ITEMS: NFTItem[] = [
     id: 'charm1',
     name: "Lucky Charm I",
     image: "/images/charm-1.png",
-    rarity: "common",        // level 1
+    rarity: "common",
     category: "resource",
-    description: "Provides regeneration and a small luck boost.",
+    description: "A magical charm that brings a small amount of luck.",
     attributes: [
-      { trait: "Health Regen", value: "+20/s" },
-      { trait: "Duration",     value: "30s" },
-      { trait: "Absorption",   value: "+4 hearts" }
+      { trait: "Luck", value: "+1%" }
     ]
   },
   {
     id: 'charm2',
     name: "Lucky Charm II",
     image: "/images/charm-2.png",
-    rarity: "uncommon",      // level 2
+    rarity: "uncommon",
     category: "resource",
-    description: "Enhanced regenerator with moderate luck increase.",
+    description: "A magical charm that brings a moderate amount of luck.",
     attributes: [
-      { trait: "Health Regen", value: "+30/s" },
-      { trait: "Duration",     value: "45s" },
-      { trait: "Absorption",   value: "+6 hearts" }
+      { trait: "Luck", value: "+2%" }
     ]
   },
   {
     id: 'charm5',
     name: "Lucky Charm V",
     image: "/images/charm-5.png",
-    rarity: "rare",          // level 5
+    rarity: "rare",
     category: "resource",
-    description: "Powerful charm granting significant luck and regen.",
+    description: "A magical charm that brings a significant amount of luck.",
     attributes: [
-      { trait: "Health Regen", value: "+40/s" },
-      { trait: "Duration",     value: "60s" },
-      { trait: "Absorption",   value: "+8 hearts" }
+      { trait: "Luck", value: "+5%" }
     ]
   },
   {
     id: 'charm10',
     name: "Lucky Charm X",
     image: "/images/charm-10.png",
-    rarity: "epic",          // level 10
+    rarity: "epic",
     category: "resource",
-    description: "Legendary charm with extended luck and vitality.",
+    description: "A magical charm that brings a substantial amount of luck.",
     attributes: [
-      { trait: "Health Regen", value: "+50/s" },
-      { trait: "Duration",     value: "75s" },
-      { trait: "Absorption",   value: "+10 hearts" }
+      { trait: "Luck", value: "+10%" }
     ]
   },
   {
     id: 'charm20',
     name: "Lucky Charm XX",
     image: "/images/charm-20.png",
-    rarity: "legendary",     // level 20
+    rarity: "legendary",
     category: "resource",
-    description: "Ultimate charm for maximum luck and health boost.",
+    description: "A magical charm that brings an extraordinary amount of luck.",
     attributes: [
-      { trait: "Health Regen", value: "+60/s" },
-      { trait: "Duration",     value: "90s" },
-      { trait: "Absorption",   value: "+12 hearts" }
+      { trait: "Luck", value: "+20%" }
     ]
   }
 ];
-
 
 // Filter categories
 const CATEGORIES = [

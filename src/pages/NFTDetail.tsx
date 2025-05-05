@@ -37,7 +37,7 @@ const NFT_ITEMS: NFTItem[] = [
     id: 'exp1',
     name: "Explosion Pickaxe I",
     symbol: "EXPICK1",
-    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    image: "/images/explosion-1.png", // Updated image path
     rarity: "uncommon",
     category: "tool",
     description: "A magical pickaxe with explosion enchantment level I",
@@ -58,7 +58,7 @@ const NFT_ITEMS: NFTItem[] = [
     id: 'exp2',
     name: "Explosion Pickaxe II",
     symbol: "EXPICK2",
-    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    image: "/images/explosion-2.png", // Updated image path
     rarity: "rare",
     category: "tool",
     description: "A magical pickaxe with explosion enchantment level II",
@@ -79,7 +79,7 @@ const NFT_ITEMS: NFTItem[] = [
     id: 'exp3',
     name: "Explosion Pickaxe III",
     symbol: "EXPICK3",
-    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    image: "/images/explosion-3.png", // Updated image path
     rarity: "epic",
     category: "tool",
     description: "A magical pickaxe with explosion enchantment level III",
@@ -100,7 +100,7 @@ const NFT_ITEMS: NFTItem[] = [
     id: 'exp4',
     name: "Explosion Pickaxe IV",
     symbol: "EXPICK4",
-    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    image: "/images/explosion-4.png", // Updated image path
     rarity: "legendary",
     category: "tool",
     description: "A magical pickaxe with explosion enchantment level IV",
@@ -122,7 +122,7 @@ const NFT_ITEMS: NFTItem[] = [
     id: 'exp5',
     name: "Explosion Pickaxe V",
     symbol: "EXPICK5",
-    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    image: "/images/explosion-5.png", // Updated image path
     rarity: "mythic",
     category: "tool",
     description: "A magical pickaxe with ultimate explosion enchantment level V",
@@ -146,66 +146,109 @@ const NFT_ITEMS: NFTItem[] = [
   {
     id: 'laser1',
     name: "Laser Pickaxe I",
-    image: "/images/laser-1.png",
-    rarity: "common",
+    symbol: "LASPICK1",
+    image: "/images/laser-1.png", // Keep existing image path
+    rarity: "uncommon",
     category: "tool",
-    description: "Basic laser module that slices through blocks with ease.",
+    description: "A magical pickaxe with laser enchantment level I",
+    achievement: "Novice Laser Miner",
+    specialEnchantments: [
+      { name: "Laser I", description: "Break blocks up to 2 blocks deep" }
+    ],
+    flavorText: "Your pickaxe emits a faint beam",
+    miningLevel: "Uncommon",
     attributes: [
-      { trait: "Laser Power", value: "+50%" },
-      { trait: "Durability",  value: "1200" },
-      { trait: "Precision",   value: "+10%" }
+      { trait: "Efficiency", value: "III" },
+      { trait: "Fortune", value: "I" },
+      { trait: "Durability", value: "II" },
+      { trait: "Laser", value: "I" }
     ]
   },
   {
     id: 'laser2',
     name: "Laser Pickaxe II",
-    image: "/images/laser-2.png",
-    rarity: "uncommon",
+    symbol: "LASPICK2",
+    image: "/images/laser-2.png", // Keep existing image path
+    rarity: "rare",
     category: "tool",
-    description: "Upgraded laser lens for increased block penetration.",
+    description: "A magical pickaxe with laser enchantment level II",
+    achievement: "Skilled Laser Miner",
+    specialEnchantments: [
+      { name: "Laser II", description: "Break blocks up to 3 blocks deep" }
+    ],
+    flavorText: "Your pickaxe cuts through stone with precision",
+    miningLevel: "Rare",
     attributes: [
-      { trait: "Laser Power", value: "+60%" },
-      { trait: "Durability",  value: "1300" },
-      { trait: "Precision",   value: "+15%" }
+      { trait: "Efficiency", value: "IV" },
+      { trait: "Fortune", value: "II" },
+      { trait: "Durability", value: "III" },
+      { trait: "Laser", value: "II" }
     ]
   },
   {
     id: 'laser3',
     name: "Laser Pickaxe III",
-    image: "/images/laser-3.png",
-    rarity: "rare",
+    symbol: "LASPICK3",
+    image: "/images/laser-3.png", // Keep existing image path
+    rarity: "epic",
     category: "tool",
-    description: "High-intensity laser for rapid block breaking.",
+    description: "A magical pickaxe with laser enchantment level III",
+    achievement: "Expert Laser Miner",
+    specialEnchantments: [
+      { name: "Laser III", description: "Break blocks up to 4 blocks deep" }
+    ],
+    flavorText: "Your laser beam penetrates deep into the earth",
+    miningLevel: "Epic",
     attributes: [
-      { trait: "Laser Power", value: "+70%" },
-      { trait: "Durability",  value: "1400" },
-      { trait: "Precision",   value: "+20%" }
+      { trait: "Efficiency", value: "IV" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Laser", value: "III" }
     ]
   },
   {
     id: 'laser4',
     name: "Laser Pickaxe IV",
-    image: "/images/laser-4.png",
-    rarity: "epic",
+    symbol: "LASPICK4",
+    image: "/images/laser-4.png", // Keep existing image path
+    rarity: "legendary",
     category: "tool",
-    description: "Advanced laser emitter for pinpoint accuracy.",
+    description: "A magical pickaxe with laser enchantment level IV",
+    achievement: "Master Laser Miner",
+    specialEnchantments: [
+      { name: "Laser IV", description: "Break blocks up to 5 blocks deep" }
+    ],
+    flavorText: "Your laser beam can pierce through mountains",
+    miningLevel: "Legendary",
     attributes: [
-      { trait: "Laser Power", value: "+80%" },
-      { trait: "Durability",  value: "1500" },
-      { trait: "Precision",   value: "+25%" }
+      { trait: "Efficiency", value: "V" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Mending", value: "I" },
+      { trait: "Laser", value: "IV" }
     ]
   },
   {
     id: 'laser5',
     name: "Laser Pickaxe V",
-    image: "/images/laser-5.png",
-    rarity: "legendary",
+    symbol: "LASPICK5",
+    image: "/images/laser-5.png", // Keep existing image path
+    rarity: "mythic",
     category: "tool",
-    description: "Cutting-edge laser technology for the ultimate mining tool.",
+    description: "A magical pickaxe with laser enchantment level V",
+    achievement: "Legendary Laser Miner",
+    specialEnchantments: [
+      { name: "Laser V", description: "Break blocks up to 6 blocks deep" }
+    ],
+    flavorText: "Cut through stone like butter",
+    miningLevel: "Mythic",
     attributes: [
-      { trait: "Laser Power", value: "+90%" },
-      { trait: "Durability",  value: "1600" },
-      { trait: "Precision",   value: "+30%" }
+      { trait: "Efficiency", value: "V" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Mending", value: "I" },
+      { trait: "Silk Touch", value: "I" },
+      { trait: "Laser", value: "V" }
     ]
   },
 
@@ -213,66 +256,81 @@ const NFT_ITEMS: NFTItem[] = [
   {
     id: 'charm1',
     name: "Lucky Charm I",
-    image: "/images/charm-1.png",
+    symbol: "LUCK1",
+    image: "/images/charm-1.png", // Keep existing image path
     rarity: "common",
     category: "resource",
-    description: "Provides regeneration and a small luck boost.",
+    description: "A magical charm that brings a small amount of luck",
+    specialEnchantments: [
+      { name: "Luck", description: "+1% chance of better drops" }
+    ],
+    flavorText: "Fortune favors the bold",
     attributes: [
-      { trait: "Health Regen", value: "+20/s" },
-      { trait: "Duration",     value: "30s" },
-      { trait: "Absorption",   value: "+4 hearts" }
+      { trait: "Luck", value: "+1%" }
     ]
   },
   {
     id: 'charm2',
     name: "Lucky Charm II",
-    image: "/images/charm-2.png",
+    symbol: "LUCK2",
+    image: "/images/charm-2.png", // Keep existing image path
     rarity: "uncommon",
     category: "resource",
-    description: "Enhanced regenerator with moderate luck increase.",
+    description: "A magical charm that brings a moderate amount of luck",
+    specialEnchantments: [
+      { name: "Luck", description: "+2% chance of better drops" }
+    ],
+    flavorText: "Fortune smiles upon you",
     attributes: [
-      { trait: "Health Regen", value: "+30/s" },
-      { trait: "Duration",     value: "45s" },
-      { trait: "Absorption",   value: "+6 hearts" }
+      { trait: "Luck", value: "+2%" }
     ]
   },
   {
     id: 'charm5',
     name: "Lucky Charm V",
-    image: "/images/charm-5.png",
+    symbol: "LUCK5",
+    image: "/images/charm-5.png", // Keep existing image path
     rarity: "rare",
     category: "resource",
-    description: "Powerful charm granting significant luck and regen.",
+    description: "A magical charm that brings a significant amount of luck",
+    specialEnchantments: [
+      { name: "Luck", description: "+5% chance of better drops" }
+    ],
+    flavorText: "Lady Luck is on your side",
     attributes: [
-      { trait: "Health Regen", value: "+40/s" },
-      { trait: "Duration",     value: "60s" },
-      { trait: "Absorption",   value: "+8 hearts" }
+      { trait: "Luck", value: "+5%" }
     ]
   },
   {
     id: 'charm10',
     name: "Lucky Charm X",
-    image: "/images/charm-10.png",
+    symbol: "LUCK10",
+    image: "/images/charm-10.png", // Keep existing image path
     rarity: "epic",
     category: "resource",
-    description: "Legendary charm with extended luck and vitality.",
+    description: "A magical charm that brings a substantial amount of luck",
+    specialEnchantments: [
+      { name: "Luck", description: "+10% chance of better drops" }
+    ],
+    flavorText: "Luck flows through your veins",
     attributes: [
-      { trait: "Health Regen", value: "+50/s" },
-      { trait: "Duration",     value: "75s" },
-      { trait: "Absorption",   value: "+10 hearts" }
+      { trait: "Luck", value: "+10%" }
     ]
   },
   {
     id: 'charm20',
     name: "Lucky Charm XX",
-    image: "/images/charm-20.png",
+    symbol: "LUCK20",
+    image: "/images/charm-20.png", // Keep existing image path
     rarity: "legendary",
     category: "resource",
-    description: "Ultimate charm for maximum luck and health boost.",
+    description: "A magical charm that brings an extraordinary amount of luck",
+    specialEnchantments: [
+      { name: "Luck", description: "+20% chance of better drops" }
+    ],
+    flavorText: "You are the embodiment of luck itself",
     attributes: [
-      { trait: "Health Regen", value: "+60/s" },
-      { trait: "Duration",     value: "90s" },
-      { trait: "Absorption",   value: "+12 hearts" }
+      { trait: "Luck", value: "+20%" }
     ]
   }
 ];
@@ -514,53 +572,6 @@ const NFTDetail = () => {
                     <div className="text-white font-minecraft">{nft.achievement}</div>
                   </div>
                 )}
-                
-                <div className="flex flex-wrap gap-4">
-                  <button className={`py-2 px-6 bg-black/70 border ${getRarityColor(nft.rarity)} ${getRarityTextColor(nft.rarity)} hover:bg-black font-minecraft transition-colors`}>
-                    Equip Item
-                  </button>
-                  <button className="py-2 px-6 bg-black/70 border border-cyan-400/30 text-cyan-400 hover:bg-black font-minecraft transition-colors">
-                    Send to Friend
-                  </button>
-                </div>
-                
-                <div className="mt-8 p-4 bg-black/50 backdrop-blur-sm border border-cyan-400/30">
-                  <h4 className="font-minecraft text-sm text-cyan-400 mb-2">DROP INFORMATION</h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="text-white/70 text-xs mb-1">Drop Rate</div>
-                      <div className="text-white font-minecraft">
-                        {(() => {
-                          switch (nft.rarity) {
-                            case 'common': return '~1%';
-                            case 'uncommon': return '~0.5%';
-                            case 'rare': return '~0.1%';
-                            case 'epic': return '~0.02%';
-                            case 'legendary': return '~0.01%';
-                            case 'mythic': return '~0.005%';
-                            default: return 'Unknown';
-                          }
-                        })()}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-white/70 text-xs mb-1">Level Requirement</div>
-                      <div className="text-white font-minecraft">
-                        {(() => {
-                          switch (nft.rarity) {
-                            case 'common': return 'Level 1';
-                            case 'uncommon': return 'Level 10';
-                            case 'rare': return 'Level 20';
-                            case 'epic': return 'Level 30';
-                            case 'legendary': return 'Level 40';
-                            case 'mythic': return 'Level 50';
-                            default: return 'Unknown';
-                          }
-                        })()}
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </motion.div>
             </div>
             
