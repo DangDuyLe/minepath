@@ -12,7 +12,7 @@ type NFTItem = {
   id: string;
   name: string;
   image: string;
-  rarity: 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary';
+  rarity: 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic';
   category: 'weapon' | 'armor' | 'tool' | 'pet' | 'cosmetic' | 'resource';
   description: string;
   attributes: {
@@ -27,65 +27,73 @@ const NFT_ITEMS: NFTItem[] = [
     id: 'exp1',
     name: "Explosion Pickaxe I",
     image: "/images/explosion-1.png",
-    rarity: "common",        // level 1
+    rarity: "uncommon",
     category: "tool",
     description: "Mine blocks faster and with higher chance of rare drops.",
     attributes: [
-      { trait: "Mining Speed", value: "+60%" },
-      { trait: "Durability",     value: "1500" },
-      { trait: "Rare Drop Chance", value: "+15%" }
+      { trait: "Efficiency", value: "III" },
+      { trait: "Fortune", value: "I" },
+      { trait: "Durability", value: "II" },
+      { trait: "Explosion", value: "I" }
     ]
   },
   {
     id: 'exp2',
     name: "Explosion Pickaxe II",
     image: "/images/explosion-2.png",
-    rarity: "uncommon",      // level 2
+    rarity: "rare",
     category: "tool",
     description: "Enhanced explosion core boosts mining speed and drop rate.",
     attributes: [
-      { trait: "Mining Speed", value: "+70%" },
-      { trait: "Durability",     value: "1600" },
-      { trait: "Rare Drop Chance", value: "+18%" }
+      { trait: "Efficiency", value: "IV" },
+      { trait: "Fortune", value: "II" },
+      { trait: "Durability", value: "III" },
+      { trait: "Explosion", value: "II" }
     ]
   },
   {
     id: 'exp3',
     name: "Explosion Pickaxe III",
     image: "/images/explosion-3.png",
-    rarity: "rare",          // level 3
+    rarity: "epic",
     category: "tool",
     description: "High-tier explosion technology for maximum block yield.",
     attributes: [
-      { trait: "Mining Speed", value: "+80%" },
-      { trait: "Durability",     value: "1700" },
-      { trait: "Rare Drop Chance", value: "+21%" }
+      { trait: "Efficiency", value: "IV" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Explosion", value: "III" }
     ]
   },
   {
     id: 'exp4',
     name: "Explosion Pickaxe IV",
     image: "/images/explosion-4.png",
-    rarity: "epic",          // level 4
+    rarity: "legendary",
     category: "tool",
     description: "Advanced explosion pickaxe with superior mining performance.",
     attributes: [
-      { trait: "Mining Speed", value: "+90%" },
-      { trait: "Durability",     value: "1800" },
-      { trait: "Rare Drop Chance", value: "+24%" }
+      { trait: "Efficiency", value: "V" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Mending", value: "I" },
+      { trait: "Explosion", value: "IV" }
     ]
   },
   {
     id: 'exp5',
     name: "Explosion Pickaxe V",
     image: "/images/explosion-5.png",
-    rarity: "legendary",     // level 5
+    rarity: "mythic",
     category: "tool",
     description: "Ultimate explosion pickaxe for unparalleled mining efficiency.",
     attributes: [
-      { trait: "Mining Speed", value: "+100%" },
-      { trait: "Durability",     value: "1900" },
-      { trait: "Rare Drop Chance", value: "+27%" }
+      { trait: "Efficiency", value: "V" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Mending", value: "I" },
+      { trait: "Silk Touch", value: "I" },
+      { trait: "Explosion", value: "V" }
     ]
   },
 
@@ -94,65 +102,73 @@ const NFT_ITEMS: NFTItem[] = [
     id: 'laser1',
     name: "Laser Pickaxe I",
     image: "/images/laser-1.png",
-    rarity: "common",
+    rarity: "uncommon",
     category: "tool",
     description: "Basic laser module that slices through blocks with ease.",
     attributes: [
-      { trait: "Laser Power", value: "+50%" },
-      { trait: "Durability",  value: "1200" },
-      { trait: "Precision",   value: "+10%" }
+      { trait: "Efficiency", value: "III" },
+      { trait: "Fortune", value: "I" },
+      { trait: "Durability", value: "II" },
+      { trait: "Laser", value: "I" }
     ]
   },
   {
     id: 'laser2',
     name: "Laser Pickaxe II",
     image: "/images/laser-2.png",
-    rarity: "uncommon",
+    rarity: "rare",
     category: "tool",
     description: "Upgraded laser lens for increased block penetration.",
     attributes: [
-      { trait: "Laser Power", value: "+60%" },
-      { trait: "Durability",  value: "1300" },
-      { trait: "Precision",   value: "+15%" }
+      { trait: "Efficiency", value: "IV" },
+      { trait: "Fortune", value: "II" },
+      { trait: "Durability", value: "III" },
+      { trait: "Laser", value: "II" }
     ]
   },
   {
     id: 'laser3',
     name: "Laser Pickaxe III",
     image: "/images/laser-3.png",
-    rarity: "rare",
+    rarity: "epic",
     category: "tool",
     description: "High-intensity laser for rapid block breaking.",
     attributes: [
-      { trait: "Laser Power", value: "+70%" },
-      { trait: "Durability",  value: "1400" },
-      { trait: "Precision",   value: "+20%" }
+      { trait: "Efficiency", value: "IV" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Laser", value: "III" }
     ]
   },
   {
     id: 'laser4',
     name: "Laser Pickaxe IV",
     image: "/images/laser-4.png",
-    rarity: "epic",
+    rarity: "legendary",
     category: "tool",
     description: "Advanced laser emitter for pinpoint accuracy.",
     attributes: [
-      { trait: "Laser Power", value: "+80%" },
-      { trait: "Durability",  value: "1500" },
-      { trait: "Precision",   value: "+25%" }
+      { trait: "Efficiency", value: "V" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Mending", value: "I" },
+      { trait: "Laser", value: "IV" }
     ]
   },
   {
     id: 'laser5',
     name: "Laser Pickaxe V",
     image: "/images/laser-5.png",
-    rarity: "legendary",
+    rarity: "mythic",
     category: "tool",
     description: "Cutting-edge laser technology for the ultimate mining tool.",
     attributes: [
-      { trait: "Laser Power", value: "+90%" },
-      { trait: "Durability",  value: "1600" },
-      { trait: "Precision",   value: "+30%" }
+      { trait: "Efficiency", value: "V" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Mending", value: "I" },
+      { trait: "Silk Touch", value: "I" },
+      { trait: "Laser", value: "V" }
     ]
   },
 
@@ -233,6 +249,7 @@ const RARITIES = [
   { value: 'rare', label: 'Rare', color: 'text-rarity-rare' },
   { value: 'epic', label: 'Epic', color: 'text-rarity-epic' },
   { value: 'legendary', label: 'Legendary', color: 'text-rarity-legendary' },
+  { value: 'mythic', label: 'Mythic', color: 'text-purple-600' },
 ];
 
 const NFTCatalog = () => {
@@ -429,6 +446,7 @@ const NFTCard = ({ nft, index }: { nft: NFTItem; index: number }) => {
       case 'rare': return 'border-rarity-rare';
       case 'epic': return 'border-rarity-epic';
       case 'legendary': return 'border-rarity-legendary';
+      case 'mythic': return 'border-purple-600';
       default: return '';
     }
   };
@@ -440,6 +458,7 @@ const NFTCard = ({ nft, index }: { nft: NFTItem; index: number }) => {
       case 'rare': return 'text-rarity-rare';
       case 'epic': return 'text-rarity-epic';
       case 'legendary': return 'text-rarity-legendary';
+      case 'mythic': return 'text-purple-600';
       default: return '';
     }
   };
