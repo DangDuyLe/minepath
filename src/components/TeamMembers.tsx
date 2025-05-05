@@ -157,7 +157,7 @@ const TeamMemberCard = ({ member, index }: { member: TeamMember, index: number }
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center text-sm font-minecraft px-3 py-2 text-white bg-gradient-to-r from-solana-blue/20 to-solana-purple/20 border border-solana-purple/30 hover:border-solana-purple/60 transition-all duration-300"
         >
-          <MinecraftIcon icon={Twitter} size="sm" variant="purple" className="mr-2" />
+          <MinecraftIcon icon={Twitter} size="sm" variant="diamond" className="mr-2" />
           Follow on X
         </a>
       </div>
