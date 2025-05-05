@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { EyeIcon, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const FEATURED_NFTS = [
   {
@@ -115,12 +117,14 @@ const NFTShowcase = () => {
         </div>
         
         <div className="text-center">
-          <button className="play-now-btn relative px-8 py-3 bg-black text-white font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group border border-cyan-400/50">
-            <span className="relative z-10 flex items-center justify-center">
-              View All NFTs <EyeIcon className="ml-2 h-4 w-4" />
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-          </button>
+          <Link to="/nfts">
+            <button className="play-now-btn relative px-8 py-3 bg-black text-white font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group border border-cyan-400/50">
+              <span className="relative z-10 flex items-center justify-center">
+                View All NFTs <EyeIcon className="ml-2 h-4 w-4" />
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            </button>
+          </Link>
         </div>
       </div>
     </section>
@@ -157,9 +161,11 @@ const NFTCard = ({ nft }: { nft: typeof FEATURED_NFTS[0] }) => {
           <p className="text-sm text-white/80 mb-4">{nft.description}</p>
           
           <div className="flex justify-between items-center">
-            <button className="text-sm bg-black px-3 py-1 border border-cyan-400/30 text-cyan-400 hover:bg-cyan-400/10 transition-colors duration-300">
-              View Details
-            </button>
+            <Link to="/nfts">
+              <button className="text-sm bg-black px-3 py-1 border border-cyan-400/30 text-cyan-400 hover:bg-cyan-400/10 transition-colors duration-300">
+                View Details
+              </button>
+            </Link>
           </div>
         </div>
       </div>

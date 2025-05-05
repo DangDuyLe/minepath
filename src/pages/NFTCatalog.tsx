@@ -500,9 +500,11 @@ const NFTCard = ({ nft, index }: { nft: NFTItem; index: number }) => {
           
           <div className="flex justify-between items-center">
             <span className="text-xs text-white/60 uppercase">{nft.category}</span>
-            <button className={`text-sm bg-black/80 px-3 py-1 border ${getRarityColor(nft.rarity)} ${getRarityTextColor(nft.rarity)} hover:bg-black transition-colors duration-300`}>
-              View Details
-            </button>
+            <Link to={`/nfts/${nft.id}`}>
+              <button className={`text-sm bg-black/80 px-3 py-1 border ${getRarityColor(nft.rarity)} ${getRarityTextColor(nft.rarity)} hover:bg-black transition-colors duration-300`}>
+                View Details
+              </button>
+            </Link>
           </div>
         </div>
       </MinecraftCard>

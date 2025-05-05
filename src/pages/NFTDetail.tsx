@@ -1,0 +1,527 @@
+
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Star, Shield } from 'lucide-react';
+import { Pickaxe } from '@/components/ui/icons/Pickaxe';
+import { motion } from 'framer-motion';
+import { MinecraftCard } from '@/components/ui/minecraft-card';
+
+// NFT Item type definition (same as in NFTCatalog)
+type NFTItem = {
+  id: string;
+  name: string;
+  image: string;
+  rarity: 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary';
+  category: 'weapon' | 'armor' | 'tool' | 'pet' | 'cosmetic' | 'resource';
+  description: string;
+  attributes: {
+    trait: string;
+    value: string;
+  }[];
+};
+
+// Import the same NFT items from the catalog
+const NFT_ITEMS: NFTItem[] = [
+  // Explosion Pickaxes I–V (levels 1–5)
+  {
+    id: 'exp1',
+    name: "Explosion Pickaxe I",
+    image: "/images/explosion-1.png",
+    rarity: "common",
+    category: "tool",
+    description: "Mine blocks faster and with higher chance of rare drops.",
+    attributes: [
+      { trait: "Mining Speed", value: "+60%" },
+      { trait: "Durability",     value: "1500" },
+      { trait: "Rare Drop Chance", value: "+15%" }
+    ]
+  },
+  {
+    id: 'exp2',
+    name: "Explosion Pickaxe II",
+    image: "/images/explosion-2.png",
+    rarity: "uncommon",
+    category: "tool",
+    description: "Enhanced explosion core boosts mining speed and drop rate.",
+    attributes: [
+      { trait: "Mining Speed", value: "+70%" },
+      { trait: "Durability",     value: "1600" },
+      { trait: "Rare Drop Chance", value: "+18%" }
+    ]
+  },
+  {
+    id: 'exp3',
+    name: "Explosion Pickaxe III",
+    image: "/images/explosion-3.png",
+    rarity: "rare",
+    category: "tool",
+    description: "High-tier explosion technology for maximum block yield.",
+    attributes: [
+      { trait: "Mining Speed", value: "+80%" },
+      { trait: "Durability",     value: "1700" },
+      { trait: "Rare Drop Chance", value: "+21%" }
+    ]
+  },
+  {
+    id: 'exp4',
+    name: "Explosion Pickaxe IV",
+    image: "/images/explosion-4.png",
+    rarity: "epic",
+    category: "tool",
+    description: "Advanced explosion pickaxe with superior mining performance.",
+    attributes: [
+      { trait: "Mining Speed", value: "+90%" },
+      { trait: "Durability",     value: "1800" },
+      { trait: "Rare Drop Chance", value: "+24%" }
+    ]
+  },
+  {
+    id: 'exp5',
+    name: "Explosion Pickaxe V",
+    image: "/images/explosion-5.png",
+    rarity: "legendary",
+    category: "tool",
+    description: "Ultimate explosion pickaxe for unparalleled mining efficiency.",
+    attributes: [
+      { trait: "Mining Speed", value: "+100%" },
+      { trait: "Durability",     value: "1900" },
+      { trait: "Rare Drop Chance", value: "+27%" }
+    ]
+  },
+
+  // Laser Pickaxes I–V (levels 1–5)
+  {
+    id: 'laser1',
+    name: "Laser Pickaxe I",
+    image: "/images/laser-1.png",
+    rarity: "common",
+    category: "tool",
+    description: "Basic laser module that slices through blocks with ease.",
+    attributes: [
+      { trait: "Laser Power", value: "+50%" },
+      { trait: "Durability",  value: "1200" },
+      { trait: "Precision",   value: "+10%" }
+    ]
+  },
+  {
+    id: 'laser2',
+    name: "Laser Pickaxe II",
+    image: "/images/laser-2.png",
+    rarity: "uncommon",
+    category: "tool",
+    description: "Upgraded laser lens for increased block penetration.",
+    attributes: [
+      { trait: "Laser Power", value: "+60%" },
+      { trait: "Durability",  value: "1300" },
+      { trait: "Precision",   value: "+15%" }
+    ]
+  },
+  {
+    id: 'laser3',
+    name: "Laser Pickaxe III",
+    image: "/images/laser-3.png",
+    rarity: "rare",
+    category: "tool",
+    description: "High-intensity laser for rapid block breaking.",
+    attributes: [
+      { trait: "Laser Power", value: "+70%" },
+      { trait: "Durability",  value: "1400" },
+      { trait: "Precision",   value: "+20%" }
+    ]
+  },
+  {
+    id: 'laser4',
+    name: "Laser Pickaxe IV",
+    image: "/images/laser-4.png",
+    rarity: "epic",
+    category: "tool",
+    description: "Advanced laser emitter for pinpoint accuracy.",
+    attributes: [
+      { trait: "Laser Power", value: "+80%" },
+      { trait: "Durability",  value: "1500" },
+      { trait: "Precision",   value: "+25%" }
+    ]
+  },
+  {
+    id: 'laser5',
+    name: "Laser Pickaxe V",
+    image: "/images/laser-5.png",
+    rarity: "legendary",
+    category: "tool",
+    description: "Cutting-edge laser technology for the ultimate mining tool.",
+    attributes: [
+      { trait: "Laser Power", value: "+90%" },
+      { trait: "Durability",  value: "1600" },
+      { trait: "Precision",   value: "+30%" }
+    ]
+  },
+
+  // Lucky Charms (levels 1, 2, 5, 10, 20)
+  {
+    id: 'charm1',
+    name: "Lucky Charm I",
+    image: "/images/charm-1.png",
+    rarity: "common",
+    category: "resource",
+    description: "Provides regeneration and a small luck boost.",
+    attributes: [
+      { trait: "Health Regen", value: "+20/s" },
+      { trait: "Duration",     value: "30s" },
+      { trait: "Absorption",   value: "+4 hearts" }
+    ]
+  },
+  {
+    id: 'charm2',
+    name: "Lucky Charm II",
+    image: "/images/charm-2.png",
+    rarity: "uncommon",
+    category: "resource",
+    description: "Enhanced regenerator with moderate luck increase.",
+    attributes: [
+      { trait: "Health Regen", value: "+30/s" },
+      { trait: "Duration",     value: "45s" },
+      { trait: "Absorption",   value: "+6 hearts" }
+    ]
+  },
+  {
+    id: 'charm5',
+    name: "Lucky Charm V",
+    image: "/images/charm-5.png",
+    rarity: "rare",
+    category: "resource",
+    description: "Powerful charm granting significant luck and regen.",
+    attributes: [
+      { trait: "Health Regen", value: "+40/s" },
+      { trait: "Duration",     value: "60s" },
+      { trait: "Absorption",   value: "+8 hearts" }
+    ]
+  },
+  {
+    id: 'charm10',
+    name: "Lucky Charm X",
+    image: "/images/charm-10.png",
+    rarity: "epic",
+    category: "resource",
+    description: "Legendary charm with extended luck and vitality.",
+    attributes: [
+      { trait: "Health Regen", value: "+50/s" },
+      { trait: "Duration",     value: "75s" },
+      { trait: "Absorption",   value: "+10 hearts" }
+    ]
+  },
+  {
+    id: 'charm20',
+    name: "Lucky Charm XX",
+    image: "/images/charm-20.png",
+    rarity: "legendary",
+    category: "resource",
+    description: "Ultimate charm for maximum luck and health boost.",
+    attributes: [
+      { trait: "Health Regen", value: "+60/s" },
+      { trait: "Duration",     value: "90s" },
+      { trait: "Absorption",   value: "+12 hearts" }
+    ]
+  }
+];
+
+// Helper function to get rarity color
+const getRarityColor = (rarity: string) => {
+  switch (rarity) {
+    case 'common': return 'border-rarity-common';
+    case 'uncommon': return 'border-rarity-uncommon';
+    case 'rare': return 'border-rarity-rare';
+    case 'epic': return 'border-rarity-epic';
+    case 'legendary': return 'border-rarity-legendary';
+    default: return '';
+  }
+};
+
+// Helper function to get rarity text color
+const getRarityTextColor = (rarity: string) => {
+  switch (rarity) {
+    case 'common': return 'text-rarity-common';
+    case 'uncommon': return 'text-rarity-uncommon';
+    case 'rare': return 'text-rarity-rare';
+    case 'epic': return 'text-rarity-epic';
+    case 'legendary': return 'text-rarity-legendary';
+    default: return '';
+  }
+};
+
+// Helper function to get category icon
+const getCategoryIcon = (category: string) => {
+  switch (category) {
+    case 'tool': return <Pickaxe className="h-5 w-5" />;
+    case 'weapon': return <Shield className="h-5 w-5" />;
+    case 'resource': return <Star className="h-5 w-5" />;
+    default: return <Shield className="h-5 w-5" />;
+  }
+};
+
+const NFTDetail = () => {
+  const { id } = useParams<{ id: string }>();
+  const [nft, setNft] = useState<NFTItem | null>(null);
+  const [relatedNfts, setRelatedNfts] = useState<NFTItem[]>([]);
+  
+  useEffect(() => {
+    // Find the NFT with the matching ID
+    const foundNft = NFT_ITEMS.find(item => item.id === id);
+    
+    if (foundNft) {
+      setNft(foundNft);
+      
+      // Find related NFTs (same category, different ID)
+      const related = NFT_ITEMS.filter(
+        item => item.category === foundNft.category && item.id !== id
+      ).slice(0, 4); // Limit to 4 related items
+      
+      setRelatedNfts(related);
+    }
+    
+    // Scroll to top when NFT changes
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  if (!nft) {
+    return (
+      <div className="min-h-screen flex flex-col bg-background">
+        <Navbar />
+        <main className="flex-grow flex items-center justify-center">
+          <div className="text-center p-8">
+            <h1 className="font-minecraft text-2xl mb-4 text-white">NFT Not Found</h1>
+            <p className="mb-6 text-white/80">The NFT you're looking for doesn't exist.</p>
+            <Link to="/nfts">
+              <Button variant="default" className="font-minecraft">
+                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Catalog
+              </Button>
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <Navbar />
+      
+      <main className="flex-grow">
+        {/* NFT Detail Section */}
+        <section className="relative py-16 md:py-24 overflow-hidden">
+          {/* Background with overlay */}
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
+            <div className="absolute inset-0 bg-[url('/images/bg-icemountain.png')] bg-no-repeat bg-cover bg-center opacity-40"></div>
+            <div className="absolute left-0 inset-y-0 w-16 opacity-20">
+              <div className="h-full w-full bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat-y"></div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="mb-8">
+              <Link to="/nfts" className="inline-flex items-center font-minecraft text-white/80 hover:text-white transition-colors">
+                <ArrowLeft className="mr-2 h-4 w-4" /> Back to NFT Catalog
+              </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* NFT Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="relative"
+              >
+                <div className={`aspect-square bg-black/60 backdrop-blur-sm border-4 ${getRarityColor(nft.rarity)} p-8 relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  
+                  {/* Rarity badge */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className={`${getRarityTextColor(nft.rarity)} px-3 py-1 bg-black/70 uppercase font-minecraft text-sm`}>
+                      {nft.rarity}
+                    </div>
+                  </div>
+                  
+                  {/* Pixelated grid overlay */}
+                  <div className="absolute inset-0 opacity-10" style={{ 
+                    backgroundImage: 'url("/images/pixel_pattern.png")',
+                    backgroundSize: '4px 4px',
+                    imageRendering: 'pixelated'
+                  }}></div>
+                  
+                  {/* Glowing effect for legendary and epic items */}
+                  {(nft.rarity === 'legendary' || nft.rarity === 'epic') && (
+                    <div className="absolute inset-0 animate-pulse-slow opacity-30" style={{
+                      background: `radial-gradient(circle, ${nft.rarity === 'legendary' ? 'rgba(255, 215, 0, 0.3)' : 'rgba(163, 53, 238, 0.3)'} 0%, transparent 70%)`
+                    }}></div>
+                  )}
+                  
+                  <img 
+                    src={nft.image} 
+                    alt={nft.name}
+                    className="pixelated object-contain w-full h-full relative z-10"
+                  />
+                  
+                  {/* Particles for high rarity items */}
+                  {(nft.rarity === 'legendary' || nft.rarity === 'epic') && (
+                    <div className="absolute inset-0 overflow-hidden">
+                      {[...Array(15)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute pixelated w-1.5 h-1.5 bg-white opacity-70"
+                          style={{
+                            top: `${Math.random() * 100}%`,
+                            left: `${Math.random() * 100}%`,
+                            animation: `float ${3 + Math.random() * 4}s ease-in-out infinite ${Math.random() * 5}s`
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+              
+              {/* NFT Info */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="inline-block p-1.5 bg-black/70 border border-cyan-400/30 mb-4">
+                  <div className="px-4 py-1 font-minecraft text-cyan-400 text-sm flex items-center">
+                    {getCategoryIcon(nft.category)}
+                    <span className="ml-2">{nft.category.toUpperCase()}</span>
+                  </div>
+                </div>
+                
+                <h1 className={`font-minecraft text-3xl lg:text-4xl mb-4 ${getRarityTextColor(nft.rarity)}`}>
+                  {nft.name}
+                </h1>
+                
+                <p className="text-lg text-white/80 mb-8 font-minecraft">
+                  {nft.description}
+                </p>
+                
+                <div className="mb-8">
+                  <h3 className="font-minecraft text-xl mb-4 text-white">Attributes</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {nft.attributes.map((attr, index) => (
+                      <div 
+                        key={index}
+                        className="bg-black/50 backdrop-blur-sm border border-cyan-400/30 p-4"
+                      >
+                        <div className="text-white/70 text-sm mb-1">{attr.trait}</div>
+                        <div className={`text-lg font-minecraft ${getRarityTextColor(nft.rarity)}`}>
+                          {attr.value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="flex flex-wrap gap-4">
+                  <button className={`py-2 px-6 bg-black/70 border ${getRarityColor(nft.rarity)} ${getRarityTextColor(nft.rarity)} hover:bg-black font-minecraft transition-colors`}>
+                    Equip Item
+                  </button>
+                  <button className="py-2 px-6 bg-black/70 border border-cyan-400/30 text-cyan-400 hover:bg-black font-minecraft transition-colors">
+                    Send to Friend
+                  </button>
+                </div>
+                
+                <div className="mt-8 p-4 bg-black/50 backdrop-blur-sm border border-cyan-400/30">
+                  <h4 className="font-minecraft text-sm text-cyan-400 mb-2">DROP INFORMATION</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <div className="text-white/70 text-xs mb-1">Drop Rate</div>
+                      <div className="text-white font-minecraft">
+                        {(() => {
+                          switch (nft.rarity) {
+                            case 'common': return '~1%';
+                            case 'uncommon': return '~0.5%';
+                            case 'rare': return '~0.1%';
+                            case 'epic': return '~0.02%';
+                            case 'legendary': return '~0.01%';
+                            default: return 'Unknown';
+                          }
+                        })()}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-white/70 text-xs mb-1">Level Requirement</div>
+                      <div className="text-white font-minecraft">
+                        {(() => {
+                          switch (nft.rarity) {
+                            case 'common': return 'Level 1';
+                            case 'uncommon': return 'Level 10';
+                            case 'rare': return 'Level 20';
+                            case 'epic': return 'Level 30';
+                            case 'legendary': return 'Level 40';
+                            default: return 'Unknown';
+                          }
+                        })()}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+            
+            {/* Related NFTs */}
+            {relatedNfts.length > 0 && (
+              <div className="mt-16">
+                <h2 className="font-minecraft text-2xl mb-8 text-white">Related Items</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {relatedNfts.map((related, index) => (
+                    <motion.div
+                      key={related.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                      className="group"
+                    >
+                      <Link to={`/nfts/${related.id}`}>
+                        <MinecraftCard 
+                          variant="gradient" 
+                          className={`overflow-hidden transition-all duration-300 group-hover:translate-y-[-4px] ${getRarityColor(related.rarity)}`}
+                        >
+                          <div className="relative h-40 overflow-hidden bg-black/30">
+                            <img 
+                              src={related.image} 
+                              alt={related.name}
+                              className="object-contain w-full h-full transition-transform duration-500 group-hover:scale-110 pixelated p-4"
+                            />
+                            
+                            <div className="absolute top-2 right-2">
+                              <span className={`text-xs font-minecraft px-2 py-1 ${getRarityTextColor(related.rarity)} bg-black/70 uppercase`}>
+                                {related.rarity}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          <div className="p-3 bg-black/70 backdrop-blur-md">
+                            <h3 className={`font-minecraft text-sm mb-1 ${getRarityTextColor(related.rarity)}`}>
+                              {related.name}
+                            </h3>
+                            <span className="text-xs text-white/60 uppercase">{related.category}</span>
+                          </div>
+                        </MinecraftCard>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default NFTDetail;
