@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -13,82 +12,133 @@ import { MinecraftCard } from '@/components/ui/minecraft-card';
 type NFTItem = {
   id: string;
   name: string;
+  symbol?: string;
   image: string;
-  rarity: 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary';
+  rarity: 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic';
   category: 'weapon' | 'armor' | 'tool' | 'pet' | 'cosmetic' | 'resource';
   description: string;
+  achievement?: string;
+  specialEnchantments?: {
+    name: string;
+    description: string;
+  }[];
+  flavorText?: string;
+  miningLevel?: string;
   attributes: {
     trait: string;
     value: string;
   }[];
 };
 
-// Import the same NFT items from the catalog
+// Import the same NFT items from the catalog with updated information
 const NFT_ITEMS: NFTItem[] = [
   // Explosion Pickaxes I–V (levels 1–5)
   {
     id: 'exp1',
     name: "Explosion Pickaxe I",
-    image: "/images/explosion-1.png",
-    rarity: "common",
+    symbol: "EXPICK1",
+    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    rarity: "uncommon",
     category: "tool",
-    description: "Mine blocks faster and with higher chance of rare drops.",
+    description: "A magical pickaxe with explosion enchantment level I",
+    achievement: "Novice Explosion Miner",
+    specialEnchantments: [
+      { name: "Explosion I", description: "Break blocks in a 3x3 area (vertical plane when mining horizontally, horizontal plane when mining vertically)" }
+    ],
+    flavorText: "The ground trembles slightly",
+    miningLevel: "Uncommon",
     attributes: [
-      { trait: "Mining Speed", value: "+60%" },
-      { trait: "Durability",     value: "1500" },
-      { trait: "Rare Drop Chance", value: "+15%" }
+      { trait: "Efficiency", value: "III" },
+      { trait: "Fortune", value: "I" },
+      { trait: "Durability", value: "II" },
+      { trait: "Explosion", value: "I" }
     ]
   },
   {
     id: 'exp2',
     name: "Explosion Pickaxe II",
-    image: "/images/explosion-2.png",
-    rarity: "uncommon",
+    symbol: "EXPICK2",
+    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    rarity: "rare",
     category: "tool",
-    description: "Enhanced explosion core boosts mining speed and drop rate.",
+    description: "A magical pickaxe with explosion enchantment level II",
+    achievement: "Skilled Explosion Miner",
+    specialEnchantments: [
+      { name: "Explosion II", description: "Break blocks in a 4x4 area (vertical plane when mining horizontally, horizontal plane when mining vertically)" }
+    ],
+    flavorText: "The earth shakes beneath your feet",
+    miningLevel: "Rare",
     attributes: [
-      { trait: "Mining Speed", value: "+70%" },
-      { trait: "Durability",     value: "1600" },
-      { trait: "Rare Drop Chance", value: "+18%" }
+      { trait: "Efficiency", value: "IV" },
+      { trait: "Fortune", value: "II" },
+      { trait: "Durability", value: "III" },
+      { trait: "Explosion", value: "II" }
     ]
   },
   {
     id: 'exp3',
     name: "Explosion Pickaxe III",
-    image: "/images/explosion-3.png",
-    rarity: "rare",
+    symbol: "EXPICK3",
+    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    rarity: "epic",
     category: "tool",
-    description: "High-tier explosion technology for maximum block yield.",
+    description: "A magical pickaxe with explosion enchantment level III",
+    achievement: "Expert Explosion Miner",
+    specialEnchantments: [
+      { name: "Explosion III", description: "Break blocks in a 5x5 area (vertical plane when mining horizontally, horizontal plane when mining vertically)" }
+    ],
+    flavorText: "Mountains crumble at your touch",
+    miningLevel: "Epic",
     attributes: [
-      { trait: "Mining Speed", value: "+80%" },
-      { trait: "Durability",     value: "1700" },
-      { trait: "Rare Drop Chance", value: "+21%" }
+      { trait: "Efficiency", value: "IV" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Explosion", value: "III" }
     ]
   },
   {
     id: 'exp4',
     name: "Explosion Pickaxe IV",
-    image: "/images/explosion-4.png",
-    rarity: "epic",
+    symbol: "EXPICK4",
+    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    rarity: "legendary",
     category: "tool",
-    description: "Advanced explosion pickaxe with superior mining performance.",
+    description: "A magical pickaxe with explosion enchantment level IV",
+    achievement: "Master Explosion Miner",
+    specialEnchantments: [
+      { name: "Explosion IV", description: "Break blocks in a 6x6 area (vertical plane when mining horizontally, horizontal plane when mining vertically)" }
+    ],
+    flavorText: "Your mining power rivals TNT",
+    miningLevel: "Legendary",
     attributes: [
-      { trait: "Mining Speed", value: "+90%" },
-      { trait: "Durability",     value: "1800" },
-      { trait: "Rare Drop Chance", value: "+24%" }
+      { trait: "Efficiency", value: "V" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Mending", value: "I" },
+      { trait: "Explosion", value: "IV" }
     ]
   },
   {
     id: 'exp5',
     name: "Explosion Pickaxe V",
-    image: "/images/explosion-5.png",
-    rarity: "legendary",
+    symbol: "EXPICK5",
+    image: "https://cyan-perfect-clam-972.mypinata.cloud/ipfs/bafkreifri6u3f3ww7u6v2gkkcfsol2ijqbno5qmc77n5h57hytebvtr6n4",
+    rarity: "mythic",
     category: "tool",
-    description: "Ultimate explosion pickaxe for unparalleled mining efficiency.",
+    description: "A magical pickaxe with ultimate explosion enchantment level V",
+    achievement: "Legendary Explosion Miner",
+    specialEnchantments: [
+      { name: "Explosion V", description: "Break blocks in a 7x7 area (vertical plane when mining horizontally, horizontal plane when mining vertically)" }
+    ],
+    flavorText: "The earth trembles before this pickaxe",
+    miningLevel: "Mythic",
     attributes: [
-      { trait: "Mining Speed", value: "+100%" },
-      { trait: "Durability",     value: "1900" },
-      { trait: "Rare Drop Chance", value: "+27%" }
+      { trait: "Efficiency", value: "V" },
+      { trait: "Fortune", value: "III" },
+      { trait: "Durability", value: "III" },
+      { trait: "Mending", value: "I" },
+      { trait: "Silk Touch", value: "I" },
+      { trait: "Explosion", value: "V" }
     ]
   },
 
@@ -235,6 +285,7 @@ const getRarityColor = (rarity: string) => {
     case 'rare': return 'border-rarity-rare';
     case 'epic': return 'border-rarity-epic';
     case 'legendary': return 'border-rarity-legendary';
+    case 'mythic': return 'border-purple-600';
     default: return '';
   }
 };
@@ -247,6 +298,7 @@ const getRarityTextColor = (rarity: string) => {
     case 'rare': return 'text-rarity-rare';
     case 'epic': return 'text-rarity-epic';
     case 'legendary': return 'text-rarity-legendary';
+    case 'mythic': return 'text-purple-600';
     default: return '';
   }
 };
@@ -339,6 +391,15 @@ const NFTDetail = () => {
                 <div className={`aspect-square bg-black/60 backdrop-blur-sm border-4 ${getRarityColor(nft.rarity)} p-8 relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   
+                  {/* Symbol and ID display */}
+                  {nft.symbol && (
+                    <div className="absolute top-4 left-4 z-10">
+                      <div className="px-3 py-1 bg-black/70 font-minecraft text-white/80 text-sm">
+                        {nft.symbol}
+                      </div>
+                    </div>
+                  )}
+                  
                   {/* Rarity badge */}
                   <div className="absolute top-4 right-4 z-10">
                     <div className={`${getRarityTextColor(nft.rarity)} px-3 py-1 bg-black/70 uppercase font-minecraft text-sm`}>
@@ -354,9 +415,13 @@ const NFTDetail = () => {
                   }}></div>
                   
                   {/* Glowing effect for legendary and epic items */}
-                  {(nft.rarity === 'legendary' || nft.rarity === 'epic') && (
+                  {(nft.rarity === 'legendary' || nft.rarity === 'epic' || nft.rarity === 'mythic') && (
                     <div className="absolute inset-0 animate-pulse-slow opacity-30" style={{
-                      background: `radial-gradient(circle, ${nft.rarity === 'legendary' ? 'rgba(255, 215, 0, 0.3)' : 'rgba(163, 53, 238, 0.3)'} 0%, transparent 70%)`
+                      background: `radial-gradient(circle, ${
+                        nft.rarity === 'legendary' ? 'rgba(255, 215, 0, 0.3)' : 
+                        nft.rarity === 'mythic' ? 'rgba(186, 85, 211, 0.3)' : 
+                        'rgba(163, 53, 238, 0.3)'
+                      } 0%, transparent 70%)`
                     }}></div>
                   )}
                   
@@ -367,7 +432,7 @@ const NFTDetail = () => {
                   />
                   
                   {/* Particles for high rarity items */}
-                  {(nft.rarity === 'legendary' || nft.rarity === 'epic') && (
+                  {(nft.rarity === 'legendary' || nft.rarity === 'epic' || nft.rarity === 'mythic') && (
                     <div className="absolute inset-0 overflow-hidden">
                       {[...Array(15)].map((_, i) => (
                         <div
@@ -406,8 +471,27 @@ const NFTDetail = () => {
                   {nft.description}
                 </p>
                 
+                {/* Special Enchantments Section */}
+                {nft.specialEnchantments && nft.specialEnchantments.length > 0 && (
+                  <div className="mb-8 bg-black/50 backdrop-blur-sm border border-cyan-400/30 p-4">
+                    <h3 className="font-minecraft text-pink-400 text-lg mb-3">Special Enchantments</h3>
+                    <div className="space-y-3">
+                      {nft.specialEnchantments.map((enchant, idx) => (
+                        <div key={idx} className="ml-2">
+                          <span className={`font-minecraft ${getRarityTextColor(nft.rarity)}`}>{enchant.name}:</span>
+                          <span className="text-white/80 ml-2">{enchant.description}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {nft.flavorText && (
+                      <div className="mt-4 text-gray-400 italic">"{nft.flavorText}"</div>
+                    )}
+                  </div>
+                )}
+                
+                {/* Attributes Section */}
                 <div className="mb-8">
-                  <h3 className="font-minecraft text-xl mb-4 text-white">Attributes</h3>
+                  <h3 className="font-minecraft text-xl mb-4 text-white">Enchantments</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {nft.attributes.map((attr, index) => (
                       <div 
@@ -422,6 +506,14 @@ const NFTDetail = () => {
                     ))}
                   </div>
                 </div>
+                
+                {/* Achievement Section */}
+                {nft.achievement && (
+                  <div className="mb-8 p-4 bg-black/50 backdrop-blur-sm border border-cyan-400/30">
+                    <h4 className="font-minecraft text-sm text-cyan-400 mb-2">ACHIEVEMENT</h4>
+                    <div className="text-white font-minecraft">{nft.achievement}</div>
+                  </div>
+                )}
                 
                 <div className="flex flex-wrap gap-4">
                   <button className={`py-2 px-6 bg-black/70 border ${getRarityColor(nft.rarity)} ${getRarityTextColor(nft.rarity)} hover:bg-black font-minecraft transition-colors`}>
@@ -445,6 +537,7 @@ const NFTDetail = () => {
                             case 'rare': return '~0.1%';
                             case 'epic': return '~0.02%';
                             case 'legendary': return '~0.01%';
+                            case 'mythic': return '~0.005%';
                             default: return 'Unknown';
                           }
                         })()}
@@ -460,6 +553,7 @@ const NFTDetail = () => {
                             case 'rare': return 'Level 20';
                             case 'epic': return 'Level 30';
                             case 'legendary': return 'Level 40';
+                            case 'mythic': return 'Level 50';
                             default: return 'Unknown';
                           }
                         })()}
