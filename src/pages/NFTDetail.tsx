@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -7,8 +7,9 @@ import { ArrowLeft, Star, Shield } from 'lucide-react';
 import { Pickaxe } from '@/components/ui/icons/Pickaxe';
 import { motion } from 'framer-motion';
 import { MinecraftCard } from '@/components/ui/minecraft-card';
+import { toast } from 'sonner';
 
-// NFT Item type definition (same as in NFTCatalog)
+// NFT Item type definition
 type NFTItem = {
   id: string;
   name: string;
@@ -375,6 +376,7 @@ const NFTDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [nft, setNft] = useState<NFTItem | null>(null);
   const [relatedNfts, setRelatedNfts] = useState<NFTItem[]>([]);
+  const navigate = useNavigate();
   
   useEffect(() => {
     // Find the NFT with the matching ID
@@ -389,20 +391,35 @@ const NFTDetail = () => {
       ).slice(0, 4); // Limit to 4 related items
       
       setRelatedNfts(related);
+    } else if (id) {
+      // If ID exists but NFT not found, show error
+      toast.error('NFT not found', {
+        description: `Could not find NFT with ID: ${id}`,
+      });
+      
+      // Redirect to the catalog after a short delay
+      setTimeout(() => {
+        navigate('/nfts');
+      }, 3000);
     }
     
     // Scroll to top when NFT changes
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [id, navigate]);
 
+  // If no NFT is found, show a loading state while the potential redirect is happening
   if (!nft) {
     return (
       <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center p-8">
-            <h1 className="font-minecraft text-2xl mb-4 text-white">NFT Not Found</h1>
-            <p className="mb-6 text-white/80">The NFT you're looking for doesn't exist.</p>
+            <h1 className="font-minecraft text-2xl mb-4 text-white">
+              {id ? 'NFT Not Found' : 'Loading...'}
+            </h1>
+            <p className="mb-6 text-white/80">
+              {id ? 'The NFT you\'re looking for doesn\'t exist.' : 'Fetching NFT details...'}
+            </p>
             <Link to="/nfts">
               <Button variant="default" className="font-minecraft">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to Catalog
