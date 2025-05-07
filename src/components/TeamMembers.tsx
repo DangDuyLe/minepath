@@ -15,45 +15,46 @@ type TeamMember = {
 const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 1,
-    name: "BlockMaster",
-    role: "Founder & Lead Developer",
-    twitter: "https://twitter.com/blockmaster",
-    image: "/images/user-icon.png",
-    description: "Blockchain architect with 10+ years of experience in game development and Web3 integration."
+    name: "TTMordred",
+    role: "Team Leader",
+    twitter: "https://twitter.com/TTMordred",
+    image: "/images/TTMordred.png",
+    description: "Leads project coordination and feature planning for MinePath."
   },
   {
     id: 2,
     name: "CryptoMiner",
     role: "CTO & Smart Contract Developer",
-    twitter: "https://twitter.com/cryptominer",
+    twitter: "https://twitter.com/blockmaster",
     image: "/images/user-icon.png",
-    description: "Security expert specializing in Solana blockchain and NFT infrastructure."
+    description: "Builds and audits smart contracts on Solana for our core prototype."
   },
   {
     id: 3,
-    name: "PixelQueen",
+    name: "Duynamiq",
     role: "Creative Director",
-    twitter: "https://twitter.com/pixelqueen",
-    image: "/images/user-icon.png",
-    description: "Award-winning pixel artist responsible for all in-game assets and visual design."
+    twitter: "https://x.com/duynamiq",
+    image: "/images/duynamiq.png",
+    description: "Designs pixel art assets and UI mockups to define MinePath’s style."
   },
   {
     id: 4,
     name: "ChainCrafter",
     role: "Community Manager",
-    twitter: "https://twitter.com/chaincrafter",
+    twitter: "https://twitter.com/blockmaster",
     image: "/images/user-icon.png",
-    description: "Discord guru and community builder with expertise in Web3 gaming communities."
+    description: "Manages our Discord and social channels to grow and engage the community."
   },
   {
     id: 5,
     name: "TokenWhisperer",
     role: "Tokenomics Advisor",
-    twitter: "https://twitter.com/tokenwhisperer",
+    twitter: "https://twitter.com/blockmaster",
     image: "/images/user-icon.png",
-    description: "DeFi expert who designed MinePath's dual-token economy and staking mechanics."
+    description: "Designs the dual-token economy and staking mechanics for MinePath."
   }
 ];
+
 
 const TeamMembers = () => {
   return (
@@ -134,15 +135,6 @@ const TeamMemberCard = ({ member, index }: { member: TeamMember, index: number }
           alt={member.name} 
           className="w-full h-full object-cover pixelated" 
         />
-        <div className="absolute inset-0 flex items-center justify-center z-20">
-          <div className="p-2 border-2 border-white/20 rounded-full">
-            <img 
-              src={member.image} 
-              alt={member.name} 
-              className="w-24 h-24 rounded-full object-cover pixelated border border-solana-purple/50" 
-            />
-          </div>
-        </div>
       </div>
       
       <div className="p-4 text-center flex flex-col flex-grow">
