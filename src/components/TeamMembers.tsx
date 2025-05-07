@@ -39,11 +39,11 @@ const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     id: 4,
-    name: "ChainCrafter",
-    role: "Community Manager",
-    twitter: "https://twitter.com/blockmaster",
-    image: "/images/user-icon.png",
-    description: "Manages our Discord and social channels to grow and engage the community."
+    name: "HngPhn",
+    role: "Plugins Manager",
+    twitter: "https://x.com/HngPhan0612",
+    image: "/images/HngPhn.png",
+    description: "Manages our plugins to develop and engaging."
   },
   {
     id: 5,

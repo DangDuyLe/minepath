@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -258,6 +258,10 @@ const NFTCatalog = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Filter NFTs based on selected criteria
   const filteredNFTs = NFT_ITEMS.filter(nft => {
     const matchesCategory = activeCategory === 'all' || nft.category === activeCategory;
