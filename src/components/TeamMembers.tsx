@@ -40,18 +40,18 @@ const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 4,
     name: "HngPhn",
-    role: "Plugins Manager",
+    role: " Tokenomics Advisor",
     twitter: "https://x.com/HngPhan0612",
     image: "/images/HngPhn.png",
-    description: "Manages our plugins to develop and engaging."
+    description: "Designs the dual-token economy and staking mechanics for MinePath."
   },
   {
     id: 5,
     name: "TokenWhisperer",
-    role: "Tokenomics Advisor",
+    role: "Plugins Manager",
     twitter: "https://twitter.com/blockmaster",
     image: "/images/user-icon.png",
-    description: "Designs the dual-token economy and staking mechanics for MinePath."
+    description: "Manages the development of plugins and mods for MinePath’s ecosystem."
   }
 ];
 
