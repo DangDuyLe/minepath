@@ -23,10 +23,10 @@ const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     id: 2,
-    name: "CryptoMiner",
+    name: "Solaze",
     role: "CTO & Smart Contract Developer",
     twitter: "https://twitter.com/blockmaster",
-    image: "/images/user-icon.png",
+    image: "/images/solaze.png",
     description: "Builds and audits smart contracts on Solana for our core prototype."
   },
   {
@@ -47,10 +47,10 @@ const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     id: 5,
-    name: "TokenWhisperer",
+    name: "tienz",
     role: "Plugins Manager",
-    twitter: "https://twitter.com/blockmaster",
-    image: "/images/user-icon.png",
+    twitter: "https://x.com/PhanTin45497753",
+    image: "/images/tienz.png",
     description: "Manages the development of plugins and mods for MinePath’s ecosystem."
   }
 ];
