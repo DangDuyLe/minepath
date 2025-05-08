@@ -25,7 +25,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     id: 2,
     name: "Solaze",
     role: "CTO & Smart Contract Developer",
-    twitter: "https://twitter.com/blockmaster",
+    twitter: "https://x.com/Solazezz",
     image: "/images/solaze.png",
     description: "Builds and audits smart contracts on Solana for our core prototype."
   },
