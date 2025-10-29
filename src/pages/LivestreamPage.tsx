@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
+// import Navbar from '@/components/Navbar';
+import LivestreamParticles from './LivestreamParticles';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -241,7 +242,7 @@ const LivestreamPage = () => {
     setViewer({
       ...viewer,
       isLoggedIn: true,
-      username: "YourUsername" + Math.floor(Math.random() * 1000)
+      username: "MinePathTeam"
     });
     toast({
       title: "Login successful!",
@@ -338,10 +339,17 @@ const LivestreamPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg">
-      <Navbar />
-      
-      <main className="flex-grow container mx-auto px-4 py-8">
+    <div
+      className="min-h-screen flex flex-col relative overflow-hidden"
+      style={{
+        background: 'linear-gradient(180deg, #0d0e16 0%, #151a31 100%)',
+        backgroundSize: 'cover',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* <Navbar /> intentionally hidden on livestream page */}
+      <LivestreamParticles />
+      <main className="flex-grow container mx-auto px-4 py-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Video Player & Info */}
           <div className="lg:col-span-2 space-y-4">
