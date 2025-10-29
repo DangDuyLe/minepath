@@ -17,12 +17,9 @@ const Roadmap = lazy(() => import('@/components/Roadmap'));
 const HowToPlay = lazy(() => import('@/components/HowToPlay'));
 const NFTShowcase = lazy(() => import('@/components/NFTShowcase'));
 const Newsletter = lazy(() => import('@/components/Newsletter'));
-const NFTDropMechanics = lazy(() => import('@/components/NFTDropMechanics'));
 const Footer = lazy(() => import('@/components/Footer'));
 const TestimonialSection = lazy(() => import('@/components/TestimonialSection'));
-const Web3Economy = lazy(() => import('@/components/Web3Economy'));
 const CommunitySection = lazy(() => import('@/components/CommunitySection'));
-const ServerStatus = lazy(() => import('@/components/ServerStatus'));
 const TargetPersonas = lazy(() => import('@/components/TargetPersonas'));
 
 // Simple loading component for Suspense fallback
@@ -48,17 +45,14 @@ const Index = () => {
           <TargetPersonas />
           <FeaturesSection />
           <HowToPlay />
-          <Web3Economy />
           <StatsSection />
           <GameModes />
           <GameRewards />
-          <NFTDropMechanics />
           <Tokenomics />
           <CommunitySection />
           <TestimonialSection />
           <NFTShowcase />
           <Roadmap />
-          <ServerStatus />
           <Newsletter />
         </Suspense>
       </main>

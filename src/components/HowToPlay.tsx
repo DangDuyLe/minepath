@@ -7,32 +7,32 @@ import { useIsMobile } from '@/hooks/use-mobile';
 const STEPS = [
   {
     number: '01',
-    title: 'Join the Server',
-    description: 'Connect to our Minecraft server using the IP address play.minepath.com',
+    title: 'Access the SDK',
+    description: 'Sign up and get instant access to our comprehensive SDK documentation and API keys',
     icon: '/images/icons/minecraft-server.png'
   },
   {
     number: '02',
-    title: 'Link Your Wallet',
-    description: 'Connect your Solana wallet to your Minecraft account using our simple in-game command',
+    title: 'Integrate in Minutes',
+    description: 'Add our plugin to your server with simple configuration. No blockchain expertise needed',
     icon: '/images/icons/minecraft-wallet.png'
   },
   {
     number: '03',
-    title: 'Play & Earn',
-    description: 'Mine valuable blocks and defeat mobs to earn NFT drops based on rarity (1% chance for Common items)',
+    title: 'Configure Economy',
+    description: 'Customize your Mine-to-Earn parameters, drop rates, and tokenomics through our dashboard',
     icon: '/images/icons/minecraft-pickaxe.png'
   },
   {
     number: '04',
-    title: 'Use Your NFTs',
-    description: 'Equip your NFTs in-game to gain special powers and abilities that enhance your gameplay',
+    title: 'Launch & Scale',
+    description: 'Go live with sustainable Web3 economy. Our infrastructure handles all blockchain operations',
     icon: '/images/icons/minecraft-sword.png'
   },
   {
     number: '05',
-    title: 'Trade & Collect',
-    description: 'Build your collection from Common to Legendary items and trade them on the Solana blockchain',
+    title: 'Join Multiverse',
+    description: 'Connect to cross-server marketplace and shared liquidity pool. Grow with the ecosystem',
     icon: '/images/icons/minecraft-diamond.png'
   }
 ];
@@ -73,7 +73,7 @@ const HowToPlay = () => {
             className="font-minecraft text-3xl md:text-4xl lg:text-5xl mb-6 text-white"
           >
             <span className="bg-clip-text">
-              HOW TO PLAY
+              HOW TO <span className="text-cyan-400">INTEGRATE</span>
             </span>
           </motion.h2>
 
@@ -84,7 +84,8 @@ const HowToPlay = () => {
             viewport={{ once: true }}
             className="text-base lg:text-lg text-white/80 max-w-3xl mx-auto"
           >
-            Join our Minecraft server and start earning NFTs that have real value. Follow these simple steps to get started:
+            Launch a sustainable Mine-to-Earn economy on your server in 5 simple steps. 
+            From SDK integration to joining the multiverse:
           </motion.p>
         </div>
         
@@ -126,7 +127,7 @@ const HowToPlay = () => {
             viewport={{ once: true }}
           >
             <span className="relative z-10 flex items-center">
-              Get Started Now <ArrowRight className="ml-2 h-5 w-5" />
+              Access SDK Documentation <ArrowRight className="ml-2 h-5 w-5" />
             </span>
             <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </motion.button>
