@@ -92,7 +92,7 @@ const NFTShowcase = () => {
         <div className="text-center mb-16">
           <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 mb-5">
             <div className="px-4 py-1 rounded-full bg-black/60 backdrop-blur-sm text-sm font-medium text-cyan-400">
-              FEATURED NFTs
+              CREATOR ECONOMY NFTS
             </div>
           </div>
           
@@ -104,7 +104,7 @@ const NFTShowcase = () => {
             className="font-minecraft text-4xl md:text-5xl mb-6 text-white"
           >
             <span className="bg-clip-text ">
-              POWER UP YOUR GAMEPLAY
+              TRUE OWNERSHIP ACROSS SERVERS
             </span>
           </motion.h2>
           
@@ -115,8 +115,8 @@ const NFTShowcase = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-lg text-white/80 max-w-2xl mx-auto"
           >
-            Discover these powerful NFTs that can be earned in-game through mining, combat, and PvP. 
-            Drop chances range from Common (1%) to Legendary (0.01%) based on rarity.
+            Our infrastructure enables true cross-server NFT ownership. Items earned on one server 
+            can be traded, sold, or used across the entire MinePath multiverse.
           </motion.p>
         </div>
         
@@ -138,7 +138,7 @@ const NFTShowcase = () => {
           <Link to="/nfts">
             <button className="play-now-btn relative px-8 py-3 bg-black text-white font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group border border-cyan-400/50">
               <span className="relative z-10 flex items-center justify-center">
-                View All NFTs <EyeIcon className="ml-2 h-4 w-4" />
+                Explore Creator Marketplace <EyeIcon className="ml-2 h-4 w-4" />
               </span>
               <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             </button>

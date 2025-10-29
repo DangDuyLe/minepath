@@ -30,29 +30,47 @@ const WhatIs = () => {
           >
             <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 mb-5">
               <div className="px-4 py-1 rounded-full bg-black/60 backdrop-blur-sm text-sm font-medium text-cyan-400">
-                OUR MISSION
+                THE PROBLEM WE SOLVE
               </div>
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-minecraft mb-6 text-white text-center lg:text-left">
-              What is <span className="text-cyan-400">MinePath</span>?
+              Why <span className="text-cyan-400">MinePath</span>?
             </h2>
             
             <p className="text-base md:text-lg leading-relaxed text-white/80 mb-6 text-center lg:text-left">
-              MinePath combines the beloved gameplay of Minecraft with Solana blockchain technology, creating a unique 
-              play-to-earn experience where your mining and exploration efforts are rewarded with valuable NFTs.
+              The Minecraft ecosystem is broken. Developers waste months rebuilding the same Web3 infrastructure. 
+              Servers are isolated islands. Players have no way to translate 500+ hours of grinding into real value.
             </p>
             
             <div className="space-y-4 md:space-y-6 mb-8">
-              <Feature title="Play & Earn" description="Mine, fight, and explore to earn NFTs that have real-world value" />
-              <Feature title="Fair Distribution" description="NFTs drop based on mining valuable blocks and defeating monsters" />
-              <Feature title="Community Owned" description="Governance tokens empower players to vote on future developments" />
+              <Feature title="Developer Burden" description="Server developers waste time and money rebuilding the same core Web3 stack (wallets, payments, token logic)." />
+              <Feature title="Fragmented Ecosystem" description="Servers are isolated islands with no shared liquidity or interoperability. Value is trapped." />
+              <Feature title="Broken GameFi" description="Current P2E models are inflationary 'farm-to-dump' schemes with zero retention or real fun." />
+              <Feature title="Trapped Value" description="140M+ Minecraft players can't translate their time and creativity into real-world value." />
+            </div>
+            
+            <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 mb-5 mt-8">
+              <div className="px-4 py-1 rounded-full bg-black/60 backdrop-blur-sm text-sm font-medium text-green-400">
+                OUR SOLUTION
+              </div>
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-minecraft mb-6 text-white text-center lg:text-left">
+              The <span className="text-green-400">Infrastructure Layer</span>
+            </h3>
+            
+            <div className="space-y-4 md:space-y-6 mb-8">
+              <Feature title="Plug-and-Play SDK/API" description="Save 90% development time. Connect to a shared ecosystem instantly. Launch in minutes, not months." />
+              <Feature title="Sustainable Economy" description="Built on real transaction fees (swaps, marketplace, crafting)—not inflation. Long-term value and retention." />
+              <Feature title="Seamless Web3" description="Every action (mining, crafting) is an instant on-chain micro-transaction. Zero crypto knowledge needed." />
+              <Feature title="Proven Product" description="Not just an idea. Already built and deployed. A working, battle-tested infrastructure ready to scale." />
             </div>
             
             <Link to="/how-to-play">
               <button className="flex items-center gap-2 group">
                 <span className="font-minecraft text-white group-hover:text-cyan-400 transition-colors">
-                  Learn more about our ecosystem
+                  Explore our infrastructure →
                 </span>
                 <ArrowRight className="h-5 w-5 text-cyan-400 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -75,8 +93,8 @@ const WhatIs = () => {
               
               <div className="absolute -bottom-4 -right-4 p-3 bg-black/80 border border-cyan-400/30 max-w-xs">
                 <p className="text-sm text-white">
-                  <span className="text-cyan-400 font-bold">The First Minecraft x Solana Project</span> with real 
-                  ownership of in-game assets as NFTs
+                  <span className="text-cyan-400 font-bold">B2B2C Model:</span> We empower developers, 
+                  who in turn attract and retain players across the multiverse.
                 </p>
               </div>
             </div>

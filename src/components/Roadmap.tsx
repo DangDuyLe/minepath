@@ -7,73 +7,73 @@ import { MinecraftIcon } from '@/components/ui/minecraft-icon';
 
 const ROADMAP_DATA = [
   {
-    year: "Q2 2025",
-    title: "Phase 1: Mining",
-    description: "Dig ores to earn $FARM, upgrade with Tool NFTs, and unlock rare lootboxes.",
+    year: "Q1 2025",
+    title: "Phase 1: Core SDK Launch",
+    description: "Launch proven SDK/API to initial server partners. Plug-and-play integration for sustainable Mine-to-Earn economies.",
     icon: Pickaxe,
     iconVariant: "diamond",
     isActive: true,
     items: [
-      "Launch mining gameplay mechanics",
-      "Introduce $FARM token",
-      "Release Tool NFTs with gameplay benefits",
-      "Implement lootbox system for rewards"
+      "Release production-ready SDK/API for server developers",
+      "Onboard initial server partners with full support",
+      "Deploy seamless Web3 integration layer",
+      "Launch developer documentation and support portal"
     ]
   },
   {
-    year: "Q4 2025",
-    title: "Phase 2: Farming + Cross-Server",
-    description: "Plant crops, harvest $FARM, and boost yields with Pet NFTs and fertilizers.",
+    year: "Q3 2025",
+    title: "Phase 2: Economic Layer & Connectivity",
+    description: "Scale the inter-server economic layer. Enable cross-server asset transfers and shared liquidity pools.",
     icon: Wheat,
     iconVariant: "grass",
     isActive: false,
     items: [
-      "Add farming gameplay mechanics",
-      "Introduce Pet NFTs for yield boosts",
-      "Enable Cross-Server connectivity",
-      "Expand NFT marketplace integration"
+      "Implement cross-server asset transfer protocol",
+      "Launch shared liquidity pools across servers",
+      "Deploy unified marketplace infrastructure",
+      "Release Mobile SDK for on-the-go access"
     ]
   },
   {
-    year: "Q2 2026",
-    title: "Phase 3: PVP + DeFi + $PATH",
-    description: "Battle in arenas with Weapon NFTs, earn $FARM, and climb leaderboards.",
-    icon: Swords,
+    year: "Q1 2026",
+    title: "Phase 3: Governance & Shared Economy",
+    description: "Launch $PATH governance token. Community-driven decisions and unified economic incentives across the multiverse.",
+    icon: Crown,
     iconVariant: "iron",
     isActive: false,
     items: [
-      "Launch PVP arenas with matchmaking",
-      "Introduce $PATH governance token",
-      "Implement DeFi staking mechanisms",
-      "Create leaderboard and ranking systems"
+      "Launch $PATH governance token on Solana",
+      "Implement on-chain voting and proposal system",
+      "Deploy shared revenue distribution mechanisms",
+      "Create multiverse governance council"
     ]
   },
   {
-    year: "Q4 2026",
-    title: "Phase 4: Crafting + Land NFT",
-    description: "Combine resources to create Armor and Potions, powering up your journey.",
+    year: "Q3 2026",
+    title: "Phase 4: Open Creator Economy",
+    description: "Empower creators to build custom game modes, NFTs, and economies on top of MinePath infrastructure.",
     icon: Hammer,
     iconVariant: "gold",
     isActive: false,
     items: [
-      "Add crafting mechanics for gear and items",
-      "Launch Land NFT ownership system",
-      "Implement resource generation on owned land",
-      "Create rental marketplace for passive income"
+      "Launch creator SDK and NFT minting tools",
+      "Deploy custom game mode framework",
+      "Implement creator revenue sharing system",
+      "Open marketplace for creator-made content"
     ]
   },
   {
-    year: "Q2 2027",
-    title: "Phase 5: Boss Battle MMORPG + Metaverse + Mobile",
-    description: "Form parties, complete quests, and defeat epic bosses for $PATH and Relic NFTs.",
-    icon: Crown,
+    year: "Q1 2027",
+    title: "Phase 5: The Full Multiverse",
+    description: "Complete integration: Mobile app, Metaverse hub, and the fully connected Minecraft multiverse ecosystem.",
+    icon: Swords,
     iconVariant: "gold",
     isActive: false,
     items: [
-      "Implement MMORPG mechanics with boss battles",
-      "Launch Metaverse Mini hub for social interaction",
-      "Release Mobile App for on-the-go access",
-      "Complete full ecosystem integration"
+      "Launch full-featured Mobile App for iOS/Android",
+      "Deploy Metaverse Mini hub for social interaction",
+      "Complete ecosystem integration with all features",
+      "Achieve full decentralization and community ownership"
     ]
   }
 ];
@@ -143,12 +143,13 @@ const Roadmap = () => {
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
             <span className="bg-clip-text ">
-              THE FUTURE OF MINEPATH
+              BUILDING THE MULTIVERSE
             </span>
           </h2>
           
           <p className="text-lg text-white/80 max-w-2xl mx-auto font-minecraft mb-12">
-            Our development journey spans five major phases, each introducing new gameplay and Web3 features.
+            Our five-phase roadmap transforms Minecraft from isolated servers into a connected multiverse 
+            with shared infrastructure, economy, and true creator ownership.
           </p>
         </motion.div>
         
@@ -192,7 +193,7 @@ const Roadmap = () => {
                 
                 <div className="flex justify-start">
                   <button className="bg-gradient-to-r from-cyan-500 to-blue-600 font-minecraft px-6 py-2 flex items-center text-white hover:from-cyan-400 hover:to-blue-500 transition-colors">
-                    Start Mining Now <ArrowRight className="ml-2 h-4 w-4" />
+                    Get SDK Access <ArrowRight className="ml-2 h-4 w-4" />
                   </button>
                 </div>
               </div>

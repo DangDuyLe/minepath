@@ -23,7 +23,7 @@ const TestimonialSection = lazy(() => import('@/components/TestimonialSection'))
 const Web3Economy = lazy(() => import('@/components/Web3Economy'));
 const CommunitySection = lazy(() => import('@/components/CommunitySection'));
 const ServerStatus = lazy(() => import('@/components/ServerStatus'));
-const TeamMembers = lazy(() => import('@/components/TeamMembers'));
+const TargetPersonas = lazy(() => import('@/components/TargetPersonas'));
 
 // Simple loading component for Suspense fallback
 const SectionLoader = () => (
@@ -45,6 +45,7 @@ const Index = () => {
         
         {/* Less critical components loaded lazily */}
         <Suspense fallback={<SectionLoader />}>
+          <TargetPersonas />
           <FeaturesSection />
           <HowToPlay />
           <Web3Economy />
@@ -53,7 +54,6 @@ const Index = () => {
           <GameRewards />
           <NFTDropMechanics />
           <Tokenomics />
-          <TeamMembers />
           <CommunitySection />
           <TestimonialSection />
           <NFTShowcase />

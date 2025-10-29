@@ -8,48 +8,48 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const features = [
   {
-    title: "Mint In-Game Items",
-    description: "Transform your hard-earned Minecraft items into tradable NFTs on the Solana blockchain.",
+    title: "Plug-and-Play SDK",
+    description: "Launch a Mine-to-Earn economy in minutes. No blockchain expertise needed. Save 90% of development time.",
     icon: Sword,
     blockType: "diamond",
     variant: "diamond",
     image: "/images/feature_mint.png"
   },
   {
-    title: "Secure Ownership",
-    description: "True ownership of your items, secured by blockchain technology that can't be hacked or duplicated.",
+    title: "Seamless Web3",
+    description: "Every action is an instant on-chain micro-transaction. Fast, frictionless, zero crypto knowledge required.",
     icon: Shield,
     blockType: "iron",
     variant: "stone",
     image: "/images/feature_secure.png"
   },
   {
-    title: "Trade & Sell",
-    description: "Trade your NFTs with other players or sell them on our marketplace for real cryptocurrency.",
+    title: "Sustainable Economy",
+    description: "Built on real transaction fees, not inflation. Long-term value creation and player retention.",
     icon: Coins,
     blockType: "gold",
     variant: "gold",
     image: "/images/feature_trade.png"
   },
   {
-    title: "Collect Rarities",
-    description: "Discover and collect rare items with different tiers of scarcity – from common to legendary.",
-    icon: Award,
-    blockType: "emerald",
-    variant: "grass",
-    image: "/images/feature_collect.png"
-  },
-  {
-    title: "Cross-Server Usage",
-    description: "Use your NFT items across multiple compatible Minecraft servers in our network.",
+    title: "Cross-Server Connectivity",
+    description: "Shared liquidity and interoperability. Break down silos and connect the Minecraft multiverse.",
     icon: Share2,
     blockType: "lapis",
     variant: "diamond",
     image: "/images/feature_servers.png"
   },
   {
-    title: "Special Abilities",
-    description: "Legendary NFTs grant special abilities and perks that regular Minecraft items don't have.",
+    title: "Proven Product",
+    description: "Not just an idea. Already built, deployed, and battle-tested. Ready to scale to your server.",
+    icon: Award,
+    blockType: "emerald",
+    variant: "grass",
+    image: "/images/feature_collect.png"
+  },
+  {
+    title: "Developer-First API",
+    description: "Comprehensive API and tooling. Full control, easy integration, and ongoing support for your needs.",
     icon: Sparkles,
     blockType: "redstone",
     variant: "stone",
@@ -139,7 +139,7 @@ const FeaturesSection = () => {
             className="inline-block p-1.5 rounded-md backdrop-blur-sm bg-gradient-to-r from-blue-600/20 to-purple-600/20 mb-5"
           >
             <div className="px-4 py-1.5 font-minecraft text-cyan-400 text-sm border-b border-cyan-400/30">
-              SERVER FEATURES
+              INFRASTRUCTURE FEATURES
             </div>
           </motion.div>
           
@@ -151,7 +151,7 @@ const FeaturesSection = () => {
             viewport={{ once: true }}
           >
             <span className="bg-clip-text ">
-              PLAY, <span className="text-cyan-400">EARN</span>, <span className="text-blue-500">EVOLVE</span>
+              BUILD FASTER, <span className="text-cyan-400">SCALE EASIER</span>
             </span>
           </motion.h2>
           
@@ -162,8 +162,8 @@ const FeaturesSection = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Our Minecraft server integrates Solana NFTs for a revolutionary gaming experience, 
-            allowing you to truly own your virtual assets and trade them on the blockchain.
+            Our SDK/API provides everything server developers need to launch a sustainable, fun-first 
+            Mine-to-Earn economy—without the months of blockchain development.
           </motion.p>
         </motion.div>
         
@@ -181,7 +181,7 @@ const FeaturesSection = () => {
         
         <div className="mt-12 md:mt-16 text-center">
           <button className="play-now-btn relative px-6 md:px-8 py-2 md:py-3 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group">
-            <span className="relative z-10">JOIN OUR SERVER</span>
+            <span className="relative z-10">INTEGRATE NOW</span>
             <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </button>
         </div>
