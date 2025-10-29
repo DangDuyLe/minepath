@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styles from './LivestreamPage.module.css';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -186,60 +185,12 @@ interface ChatMessage {
   package?: string;
 }
 
-const confettiColors = ['#ffe259', '#ffa751', '#00ffb2', '#1e293b', '#fff', '#00e1ff', '#ffb347'];
-
-function Confetti({ trigger }) {
-  const [pieces, setPieces] = useState([]);
-  useEffect(() => {
-    if (trigger) {
-      const arr = Array.from({ length: 32 }, (_, i) => ({
-        left: Math.random() * 100,
-        delay: Math.random() * 0.7,
-        color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
-        rotate: Math.random() * 360,
-        size: 8 + Math.random() * 12
-      }));
-      setPieces(arr);
-      const t = setTimeout(() => setPieces([]), 1200);
-      return () => clearTimeout(t);
-    }
-  }, [trigger]);
-  if (!pieces.length) return null;
-  return (
-    <div className={styles.confetti}>
-      {pieces.map((p, i) => (
-        <div key={i} style={{
-          position: 'absolute',
-          left: `${p.left}%`,
-          top: 0,
-          width: p.size,
-          height: p.size * 2,
-          background: p.color,
-          borderRadius: 2,
-          transform: `rotate(${p.rotate}deg)`,
-          opacity: 0.85,
-          animation: `confettiDrop 1.1s ${p.delay}s cubic-bezier(.68,-0.55,.27,1.55) forwards`
-        }} />
-      ))}
-      <style>{`
-        @keyframes confettiDrop {
-          0% { top: 0; opacity: 0.7; }
-          80% { opacity: 1; }
-          100% { top: 90vh; opacity: 0; }
-        }
-      `}</style>
-    </div>
-  );
-}
-
 const LivestreamPage = () => {
   const navigate = useNavigate();
   const [viewer, setViewer] = useState(MOCK_VIEWER);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>(INITIAL_CHAT_MESSAGES);
   const [chatInput, setChatInput] = useState('');
   const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
-  const [confettiTrigger, setConfettiTrigger] = useState(0);
-  const [eventFeed, setEventFeed] = useState([]);
   const [isMuted, setIsMuted] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -363,14 +314,6 @@ const LivestreamPage = () => {
 
     setChatMessages(prev => [...prev, donationMessage]);
 
-    // Add to event feed
-    setEventFeed(feed => [
-      { id: Date.now(), text: `${viewer.username} sent ${pkg.icon} ${pkg.name} (${pkg.cost} coins)` },
-      ...feed.slice(0, 3)
-    ]);
-
-    setConfettiTrigger(t => t + 1);
-
     toast({
       title: "Package purchased!",
       description: `You bought "${pkg.name}" for ${pkg.cost} coins!`,
@@ -395,24 +338,15 @@ const LivestreamPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg relative overflow-x-hidden">
-      <div className={styles['wow-bg']} />
-      <Confetti trigger={confettiTrigger} />
-      {/* Event Feed */}
-      <div className={styles['event-feed']}>
-        {eventFeed.map(ev => (
-          <div key={ev.id} className={styles['event-item']}>
-            {ev.text}
-          </div>
-        ))}
-      </div>
+    <div className="min-h-screen flex flex-col bg-minecraft-black minecraft-dirt-bg">
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-8 relative z-10">
+      
+      <main className="flex-grow container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Video Player & Info */}
           <div className="lg:col-span-2 space-y-4">
             {/* Video Player */}
-            <Card className={"bg-minecraft-darkGray border-4 border-minecraft-brown overflow-hidden " + styles['glow-border']}>
+            <Card className="bg-minecraft-darkGray border-4 border-minecraft-brown overflow-hidden">
               <div className="relative aspect-video bg-black">
                 {/* Mock Video Player */}
                 <div className="absolute inset-0 bg-gradient-to-br from-green-900 to-emerald-950 flex items-center justify-center">
@@ -597,7 +531,7 @@ const LivestreamPage = () => {
           <div className="space-y-4">
             {/* User Info */}
             {viewer.isLoggedIn ? (
-              <Card className="bg-minecraft-darkGray border-4 border-minecraft-brown relative">
+              <Card className="bg-minecraft-darkGray border-4 border-minecraft-brown">
                 <CardHeader>
                   <div className="flex items-center gap-3">
                     <Avatar className="w-12 h-12 border-2 border-minecraft-brown">
@@ -609,8 +543,8 @@ const LivestreamPage = () => {
                     <div className="flex-1">
                       <p className="font-bold text-white">{viewer.username}</p>
                       <div className="flex items-center gap-2 text-yellow-400">
-                        <Coins className={styles['coin-float'] + " w-4 h-4"} />
-                        <span className={styles['coin-float'] + " font-bold text-lg drop-shadow-lg"}>{viewer.coins}</span>
+                        <Coins className="w-4 h-4" />
+                        <span className="font-bold">{viewer.coins}</span>
                       </div>
                     </div>
                   </div>
@@ -676,7 +610,7 @@ const LivestreamPage = () => {
                               </span>
                             </div>
                             {msg.coins ? (
-                              <div className={styles['donation-highlight'] + " bg-gradient-to-r from-yellow-600 to-orange-600 rounded p-2 border-2 border-yellow-400"}>
+                              <div className="bg-gradient-to-r from-yellow-600 to-orange-600 rounded p-2 border-2 border-yellow-400">
                                 <div className="flex items-center gap-2 mb-1">
                                   <Gift className="w-4 h-4 text-white" />
                                   <span className="font-bold text-white text-sm">
