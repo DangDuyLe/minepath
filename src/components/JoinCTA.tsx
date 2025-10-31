@@ -2,7 +2,6 @@
 import React from 'react';
 import { Copy, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import ServerStatus from './ServerStatus';
 import { MinecraftProgress } from './ui/minecraft-progress';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
