@@ -64,13 +64,33 @@ const PERSONAS: Persona[] = [
 
 const TargetPersonas = () => {
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden">
-      {/* Background with overlay */}
+    <section className="relative py-16 md:py-24 overflow-hidden" style={{ 
+      background: 'linear-gradient(180deg, rgba(13,14,22,1) 0%, rgba(21,26,49,1) 100%)',
+      backgroundSize: 'cover',
+      backgroundAttachment: 'fixed' 
+    }}>
+      {/* Background with overlay, đồng bộ với các section khác */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat"></div>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ 
+          background: 'radial-gradient(circle, rgba(10, 21, 77, 0.3) 0%, rgba(13, 14, 22, 0) 70%)'
+        }}></div>
         <div className="absolute inset-0 bg-[url('/images/bg-castle.png')] bg-no-repeat bg-cover bg-center opacity-30"></div>
-        <div className="absolute left-0 inset-y-0 w-16 opacity-20">
-          <div className="h-full w-full bg-[url('/public/lovable-uploads/571ce867-0253-4784-ba20-b363e73c1463.png')] bg-repeat-y"></div>
+        {/* Particle effect */}
+        <div className="absolute inset-0 pointer-events-none z-10">
+          {Array.from({ length: 18 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 rounded-full bg-white/80 shadow-lg animate-pulse-glow"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                opacity: 0.7 + Math.random() * 0.3,
+                animationDuration: `${3 + Math.random() * 3}s`,
+                animationDelay: `${Math.random() * 2}s`,
+              }}
+            />
+          ))}
         </div>
       </div>
       
@@ -110,45 +130,19 @@ const TargetPersonas = () => {
           </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {PERSONAS.map((persona, index) => (
             <PersonaCard 
               key={persona.id} 
-              persona={persona} 
+              persona={{
+                ...persona,
+                painPoints: persona.painPoints.slice(0,2),
+                benefits: persona.benefits.slice(0,2)
+              }}
               index={index} 
             />
           ))}
         </div>
-
-        {/* Value Proposition Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
-        >
-          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 text-center">
-            <Clock className="h-8 w-8 text-cyan-400 mx-auto mb-2" />
-            <div className="font-minecraft text-2xl text-white mb-1">90%</div>
-            <div className="font-minecraft text-xs text-white/60">Time Saved</div>
-          </div>
-          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 text-center">
-            <Users className="h-8 w-8 text-green-400 mx-auto mb-2" />
-            <div className="font-minecraft text-2xl text-white mb-1">140M+</div>
-            <div className="font-minecraft text-xs text-white/60">Potential Users</div>
-          </div>
-          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 text-center">
-            <Rocket className="h-8 w-8 text-purple-400 mx-auto mb-2" />
-            <div className="font-minecraft text-2xl text-white mb-1">B2B2C</div>
-            <div className="font-minecraft text-xs text-white/60">Scalable Model</div>
-          </div>
-          <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 text-center">
-            <Zap className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
-            <div className="font-minecraft text-2xl text-white mb-1">Minutes</div>
-            <div className="font-minecraft text-xs text-white/60">To Integrate</div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
@@ -161,25 +155,36 @@ const PersonaCard = ({ persona, index }: { persona: Persona, index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
       viewport={{ once: true }}
-      className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 overflow-hidden group"
+      className="relative group rounded-2xl bg-white/10 backdrop-blur-[10px] border-2 border-cyan-400/30 shadow-xl overflow-hidden hover:shadow-2xl hover:border-cyan-400/60 transition-all duration-300"
     >
+      {/* Animated border shimmer on hover */}
+      <div className="absolute inset-0 pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="w-full h-full animate-pulse-glow rounded-2xl border-2 border-cyan-400/40"></div>
+      </div>
+      {/* Floating Minecraft block/icon */}
+      <motion.img
+        src={persona.type === 'B2B' ? '/images/diamond_block.png' : '/images/gold_block.png'}
+        alt="Persona Block"
+        className="absolute -top-8 right-6 w-14 h-14 pixelated drop-shadow-lg z-20"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+      />
       {/* Header with gradient */}
-      <div className={`relative p-6 bg-gradient-to-r ${persona.gradient}`}>
+      <div className={`relative p-6 bg-gradient-to-r ${persona.gradient} rounded-t-2xl`}> 
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center">
-            <persona.icon className="h-10 w-10 text-white mr-3" />
+            <persona.icon className="h-10 w-10 text-white mr-3 drop-shadow-lg" />
             <div>
-              <h3 className="font-minecraft text-2xl text-white">{persona.name}</h3>
+              <h3 className="font-minecraft text-2xl text-white drop-shadow">{persona.name}</h3>
               <p className="font-minecraft text-sm text-white/80">{persona.subtitle}</p>
             </div>
           </div>
-          <div className={`px-3 py-1 bg-white/20 backdrop-blur-sm font-minecraft text-xs text-white border border-white/30`}>
+          <div className={`px-3 py-1 bg-white/20 backdrop-blur-sm font-minecraft text-xs text-white border border-white/30 rounded-lg shadow-sm`}>
             {persona.type}
           </div>
         </div>
-        <p className="text-white/90 text-sm font-minecraft mt-3">{persona.description}</p>
+        <p className="text-white/90 text-sm font-minecraft mt-3 drop-shadow-sm">{persona.description}</p>
       </div>
-      
       {/* Content */}
       <div className="p-6">
         {/* Pain Points */}
@@ -196,7 +201,6 @@ const PersonaCard = ({ persona, index }: { persona: Persona, index: number }) =>
             ))}
           </ul>
         </div>
-
         {/* Benefits */}
         <div>
           <h4 className="font-minecraft text-lg text-green-400 mb-3 flex items-center">
@@ -212,12 +216,11 @@ const PersonaCard = ({ persona, index }: { persona: Persona, index: number }) =>
           </ul>
         </div>
       </div>
-
       {/* CTA */}
       <div className="p-6 pt-0">
-        <button className={`w-full py-3 font-minecraft bg-gradient-to-r ${persona.gradient} text-white hover:opacity-90 transition-opacity duration-300 flex items-center justify-center`}>
+        <button className={`w-full py-3 font-minecraft bg-gradient-to-r ${persona.gradient} text-white hover:opacity-90 transition-all duration-300 flex items-center justify-center rounded-xl shadow-lg hover:shadow-cyan-400/30 focus:ring-2 focus:ring-cyan-400/40 animate-pulse-glow`}> 
           {persona.type === 'B2B' ? 'Get SDK Access' : 'Start Playing'}
-          <TrendingUp className="ml-2 h-4 w-4" />
+          <TrendingUp className="ml-2 h-4 w-4 animate-float" />
         </button>
       </div>
     </motion.div>
