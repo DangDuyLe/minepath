@@ -13,7 +13,7 @@ const features = [
     icon: Sword,
     blockType: "diamond",
     variant: "diamond",
-    image: "/images/feature_mint.png"
+    image: "/images/feature_sdk.png"
   },
   {
     title: "Seamless Web3",
@@ -21,7 +21,7 @@ const features = [
     icon: Shield,
     blockType: "iron",
     variant: "stone",
-    image: "/images/feature_secure.png"
+    image: "/images/feature_web3.png"
   },
   {
     title: "Sustainable Economy",
@@ -45,7 +45,7 @@ const features = [
     icon: Award,
     blockType: "emerald",
     variant: "grass",
-    image: "/images/feature_collect.png"
+    image: "/images/feature_product.png"
   },
   {
     title: "Developer-First API",
@@ -53,7 +53,7 @@ const features = [
     icon: Sparkles,
     blockType: "redstone",
     variant: "stone",
-    image: "/images/feature_abilities.png"
+    image: "/images/feature_api.png"
   },
 ];
 

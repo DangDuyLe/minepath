@@ -42,7 +42,6 @@ const Index = () => {
         
         {/* Less critical components loaded lazily */}
         <Suspense fallback={<SectionLoader />}>
-          <TargetPersonas />
           <FeaturesSection />
           <HowToPlay />
           <GameModes />
