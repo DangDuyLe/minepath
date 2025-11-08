@@ -146,6 +146,53 @@ const Hero = () => {
                 </motion.button>
               </Link>
             </motion.div>
+
+            {/* Logo badges below Play Now button - Pyramid layout */}
+            <motion.div
+              className="mt-8 flex flex-col items-center gap-4 md:gap-6 w-full"
+              variants={itemVariants}
+            >
+              {/* Swinburne badge - top of pyramid, centered */}
+              <motion.div
+                className="flex items-center text-sm md:text-base font-minecraft bg-black/40 px-4 py-3 border border-cyan-400/30 rounded"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 0 15px rgba(0, 195, 255, 0.4)",
+                  borderColor: "rgba(0, 195, 255, 0.5)"
+                }}
+              >
+                <img src="/images/swinburne.png" alt="Solana Swinburne Hackathon Winner" className="mr-3 h-8 w-8 md:h-10 md:w-10 object-contain" />
+                <span className="whitespace-nowrap">Solana Swinburne Hackathon Winner</span>
+              </motion.div>
+
+              {/* Second row: Solana + Superteam - base of pyramid, centered */}
+              <motion.div className="flex gap-4 md:gap-6 justify-center" variants={containerVariants}>
+                <motion.div
+                  className="flex items-center text-sm md:text-base font-minecraft bg-black/40 px-3 py-2 border border-cyan-400/30 rounded"
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 0 15px rgba(0, 195, 255, 0.4)",
+                    borderColor: "rgba(0, 195, 255, 0.5)"
+                  }}
+                >
+                  <img src="/images/solana-sol-logo.png" alt="Supported by Solana" className="mr-2 h-6 w-6 md:h-8 md:w-8 object-contain" />
+                  <span className="whitespace-nowrap">Supported by Solana</span>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-center text-sm md:text-base font-minecraft bg-black/40 px-3 py-2 border border-cyan-400/30 rounded"
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 0 15px rgba(0, 195, 255, 0.4)",
+                    borderColor: "rgba(0, 195, 255, 0.5)"
+                  }}
+                >
+                  <img src="/images/superteamvn.png" alt="Supported by SuperteamVN" className="mr-2 h-6 w-6 md:h-8 md:w-8 object-contain" />
+                  <span className="whitespace-nowrap">Supported by SuperteamVN</span>
+                </motion.div>
+              </motion.div>
+
+            </motion.div>
           </motion.div>
           
           {/* Right content - Game world image with enhanced animations - hidden on smaller screens */}
@@ -211,44 +258,6 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Logo bar with enhanced animations - mobile responsive */}
-      <motion.div 
-        className="mt-12 pt-4 md:mt-20 md:pt-10 absolute left-0 right-0 bottom-8 px-2"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.8 }}
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <motion.div 
-          className="flex flex-wrap justify-center gap-3 md:gap-10 lg:gap-16 opacity-60 hover:opacity-100 transition-opacity duration-300"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {[
-            { img: "/images/swinburne.png", text: "Solana Swinburne Hackathon Winner" },
-            { img: "/images/solana-sol-logo.png", text: "Supported by Solana" },
-            { img: "/images/superteamvn.png", text: "Supported by SuperteamVN" }
-          ].map((item, index) => (
-            <motion.div 
-              key={index}
-              className="flex items-center text-sm md:text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30"
-              variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05, 
-                boxShadow: "0 0 15px rgba(0, 195, 255, 0.4)",
-                borderColor: "rgba(0, 195, 255, 0.5)"
-              }}
-            >
-              {item.img && (
-                <img src={item.img} alt={item.text} className="mr-1 md:mr-2 h-4 w-4 md:h-6 md:w-6 object-contain" />
-              )}
-              <span>{item.text}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
     </div>
   );
 };
