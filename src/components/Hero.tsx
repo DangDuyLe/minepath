@@ -227,7 +227,7 @@ const Hero = () => {
           animate="visible"
         >
           {[
-            { icon: Sparkles, text: "Solana Swinburne Hackathon Winner" },
+            { img: "/images/swinburne.png", text: "Solana Swinburne Hackathon Winner" },
             { img: "/images/solana-sol-logo.png", text: "Supported by Solana" },
             { img: "/images/superteamvn.png", text: "Supported by SuperteamVN" }
           ].map((item, index) => (
@@ -241,10 +241,8 @@ const Hero = () => {
                 borderColor: "rgba(0, 195, 255, 0.5)"
               }}
             >
-              {item.img ? (
+              {item.img && (
                 <img src={item.img} alt={item.text} className="mr-1 md:mr-2 h-4 w-4 md:h-6 md:w-6 object-contain" />
-              ) : (
-                <item.icon className="mr-1 md:mr-2 h-4 w-4 md:h-6 md:w-6 text-cyan-400" />
               )}
               <span>{item.text}</span>
             </motion.div>
