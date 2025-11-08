@@ -132,26 +132,17 @@ const Hero = () => {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center"
+              className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center lg:pl-18"
               variants={itemVariants}
             >
               <Link to="/how-to-play">
                 <motion.button 
-                  className="play-now-btn w-full sm:w-auto relative px-8 py-3 bg-white text-black font-minecraft tracking-wider overflow-hidden group"
+                  className="play-now-btn w-full sm:w-auto relative px-16 py-3 bg-white text-black font-minecraft tracking-wider overflow-hidden group"
                   whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0, 195, 255, 0.6)" }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <span className="relative z-10">PLAY NOW</span>
                   <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                </motion.button>
-              </Link>
-              <Link to="/nfts">
-                <motion.button 
-                  className="minecraft-diamond-btn inline-flex items-center justify-center w-full sm:w-auto"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Explore NFTs <Eye className="ml-2 h-5 w-5" />
                 </motion.button>
               </Link>
             </motion.div>
@@ -236,10 +227,9 @@ const Hero = () => {
           animate="visible"
         >
           {[
-            { icon: Shield, text: "KYC" },
-            { icon: Sword, text: "DAPP" },
-            { icon: Sparkles, text: "Audit" },
-            { icon: Coins, text: "Dextools" }
+            { icon: Sparkles, text: "Solana Swinburne Hackathon Winner" },
+            { img: "/images/solana-sol-logo.png", text: "Supported by Solana" },
+            { img: "/images/superteamvn.png", text: "Supported by SuperteamVN" }
           ].map((item, index) => (
             <motion.div 
               key={index}
@@ -251,7 +241,11 @@ const Hero = () => {
                 borderColor: "rgba(0, 195, 255, 0.5)"
               }}
             >
-              <item.icon className="mr-1 md:mr-2 h-4 w-4 md:h-6 md:w-6 text-cyan-400" />
+              {item.img ? (
+                <img src={item.img} alt={item.text} className="mr-1 md:mr-2 h-4 w-4 md:h-6 md:w-6 object-contain" />
+              ) : (
+                <item.icon className="mr-1 md:mr-2 h-4 w-4 md:h-6 md:w-6 text-cyan-400" />
+              )}
               <span>{item.text}</span>
             </motion.div>
           ))}
