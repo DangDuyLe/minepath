@@ -12,7 +12,6 @@ import NFTDetail from "@/pages/NFTDetail";
 import HowToPlayPage from "@/pages/HowToPlayPage";
 import StorePage from "@/pages/StorePage";
 import LoginPage from "@/pages/LoginPage";
-import LivestreamPage from "@/pages/LivestreamPage";
 import ScrollToTop from "@/components/ScrollToTop";
 
 const toastStyles = {
@@ -66,7 +65,6 @@ const App = () => (
             <Route path="/how-to-play" element={<HowToPlayPage />} />
             <Route path="/store" element={<StorePage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/livestream" element={<LivestreamPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
