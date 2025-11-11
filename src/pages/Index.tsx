@@ -47,8 +47,6 @@ const Index = () => {
           <GameModes />
           <GameRewards />
           <Tokenomics />
-          <CommunitySection />
-          <TestimonialSection />
           <Roadmap />
           <Newsletter />
         </Suspense>

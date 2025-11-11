@@ -7,32 +7,32 @@ import { useIsMobile } from '@/hooks/use-mobile';
 const STEPS = [
   {
     number: '01',
-    title: 'Access the SDK',
-    description: 'Sign up and get instant access to our comprehensive SDK documentation and API keys',
+    title: 'Connect to Server',
+    description: 'Add play.minepath.com to your Minecraft client and join the server',
     icon: '/images/icons/minecraft-server.png'
   },
   {
     number: '02',
-    title: 'Integrate in Minutes',
-    description: 'Add our plugin to your server with simple configuration. No blockchain expertise needed',
+    title: 'Create Wallet',
+    description: 'Quick in-game wallet setup. Takes 30 seconds - no crypto experience needed',
     icon: '/images/icons/minecraft-wallet.png'
   },
   {
     number: '03',
-    title: 'Configure Economy',
-    description: 'Customize your Mine-to-Earn parameters, drop rates, and tokenomics through our dashboard',
+    title: 'Start Mining',
+    description: 'Mine blocks action earns you crypto rewards',
     icon: '/images/icons/minecraft-pickaxe.png'
   },
   {
     number: '04',
-    title: 'Launch & Scale',
-    description: 'Go live with sustainable Web3 economy. Our infrastructure handles all blockchain operations',
+    title: 'Claim Tokens',
+    description: 'Earn and claim your tokens directly in-game',
     icon: '/images/icons/minecraft-sword.png'
   },
   {
     number: '05',
-    title: 'Join Multiverse',
-    description: 'Connect to cross-server marketplace and shared liquidity pool. Grow with the ecosystem',
+    title: 'Trade & Earn (Future Integration)',
+    description: 'Use the marketplace to trade items with players across all servers. Your assets, your profit',
     icon: '/images/icons/minecraft-diamond.png'
   }
 ];
@@ -73,7 +73,7 @@ const HowToPlay = () => {
             className="font-minecraft text-3xl md:text-4xl lg:text-5xl mb-6 text-white"
           >
             <span className="bg-clip-text">
-              HOW TO <span className="text-cyan-400">INTEGRATE</span>
+              HOW TO <span className="text-cyan-400">GET STARTED</span>
             </span>
           </motion.h2>
 
@@ -84,8 +84,8 @@ const HowToPlay = () => {
             viewport={{ once: true }}
             className="text-base lg:text-lg text-white/80 max-w-3xl mx-auto"
           >
-            Launch a sustainable Mine-to-Earn economy on your server in 5 simple steps. 
-            From SDK integration to joining the multiverse:
+            Join MinePath and start earning crypto while playing Minecraft in 5 simple steps. 
+            From connecting to the server to trading your first NFT:
           </motion.p>
         </div>
         
@@ -127,7 +127,7 @@ const HowToPlay = () => {
             viewport={{ once: true }}
           >
             <span className="relative z-10 flex items-center">
-              Access SDK Documentation <ArrowRight className="ml-2 h-5 w-5" />
+              Join Server Now <ArrowRight className="ml-2 h-5 w-5" />
             </span>
             <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </motion.button>

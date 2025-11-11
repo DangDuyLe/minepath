@@ -4,62 +4,62 @@ import { Pickaxe } from './ui/icons/Pickaxe';
 import { Wheat, Swords, Hammer, Crown, ChevronRight, Lock } from 'lucide-react';
 import { MinecraftIcon } from '@/components/ui/minecraft-icon';
 
-// Define all phases of MinePath infrastructure rollout
+// Define all game modes available in MinePath
 const GAME_MODES = [
   {
-    id: 'phase1',
-    name: 'Core SDK Launch',
-    description: 'Launch our proven SDK/API to initial server partners. Plug-and-play integration for Mine-to-Earn economies.',
+    id: 'mining',
+    name: 'Mining & Exploration',
+    description: 'Mine resources and explore caves to earn crypto rewards. Every diamond, every ore - it all counts toward your earnings.',
     icon: Pickaxe,
     bgColor: 'bg-minecraft-stone',
     iconVariant: 'diamond',
     image: '/images/game_mode_mining.png',
     available: true,
-    phase: 'Phase 1',
+    phase: 'Available Now',
     additionalImages: ['/images/mining_1.png', '/images/mining_2.png']
   },
   {
-    id: 'phase2',
-    name: 'Economic Layer & Connectivity',
-    description: 'Scale the inter-server economic layer. Enable cross-server asset transfers and shared liquidity pools.',
+    id: 'farming',
+    name: 'Farming & Crafting',
+    description: 'Build automated farms and craft valuable items. Sell your products on the marketplace for profit.',
     icon: Wheat,
     bgColor: 'bg-minecraft-grass',
     iconVariant: 'grass',
     available: false,
-    phase: 'Phase 2',
+    phase: 'Coming Soon',
     previewImage: '/images/farming_preview.png'
   },
   {
-    id: 'phase3',
-    name: 'Governance & Shared Economy',
-    description: 'Launch $PATH governance token. Community-driven decisions and unified economic incentives across the multiverse.',
+    id: 'pvp',
+    name: 'PvP Arenas',
+    description: 'Battle other players in competitive arenas. Win matches to earn exclusive NFT weapons and armor.',
     icon: Crown,
     bgColor: 'bg-minecraft-diamond',
     iconVariant: 'iron',
     available: false,
-    phase: 'Phase 3',
+    phase: 'Coming Soon',
     previewImage: '/images/pvp_preview.png'
   },
   {
-    id: 'phase4',
-    name: 'Open Creator Economy',
-    description: 'Empower creators to build custom game modes, NFTs, and economies on top of MinePath infrastructure.',
+    id: 'questing',
+    name: 'Epic Quests',
+    description: 'Complete challenging story-driven quests. Earn massive rewards and unlock rare collectibles.',
     icon: Hammer,
     bgColor: 'bg-minecraft-planks',
     iconVariant: 'gold',
     available: false,
-    phase: 'Phase 4',
+    phase: 'Coming Soon',
     previewImage: '/images/crafting_preview.png'
   },
   {
-    id: 'phase5',
-    name: 'The Full Multiverse',
-    description: 'Complete integration: Mobile SDK, Metaverse hub, and the fully connected Minecraft multiverse ecosystem.',
+    id: 'bosses',
+    name: 'Boss Raids',
+    description: 'Team up with friends to defeat powerful bosses. Epic loot and legendary NFTs await the brave.',
     icon: Swords,
     bgColor: 'bg-solana-purple',
     iconVariant: 'gold',
     available: false,
-    phase: 'Phase 5',
+    phase: 'Coming Soon',
     previewImage: '/images/boss_preview.png'
   }
 ];
@@ -133,7 +133,7 @@ const GameModes = () => {
             className="inline-block p-1.5 rounded-md backdrop-blur-sm bg-gradient-to-r from-blue-600/20 to-purple-600/20 mb-5"
           >
             <div className="px-4 py-1.5 font-minecraft text-cyan-400 text-sm border-b border-cyan-400/30">
-              DEVELOPMENT ROADMAP
+              GAME MODES
             </div>
           </motion.div>
           
@@ -145,7 +145,7 @@ const GameModes = () => {
             viewport={{ once: true }}
           >
             <span className="bg-clip-text ">
-              THE <span className="text-cyan-400">MINEPATH</span> INFRASTRUCTURE
+              MULTIPLE WAYS TO <span className="text-cyan-400">PLAY & EARN</span>
             </span>
           </motion.h2>
           
@@ -156,8 +156,8 @@ const GameModes = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Our five-phase roadmap transforms Minecraft from isolated servers into a connected multiverse 
-            with shared economy, governance, and true creator ownership.
+            Choose your adventure in MinePath. Whether you love mining, farming, PvP, or questing - 
+            every play style earns real rewards.
           </motion.p>
         </motion.div>
         
@@ -192,15 +192,15 @@ const GameModes = () => {
               <ul className="space-y-3">
                 <li className="flex items-center text-sm font-minecraft text-white/80">
                   <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                  Plug-and-play SDK for server developers
+                  Earn crypto rewards for every block mined
                 </li>
                 <li className="flex items-center text-sm font-minecraft text-white/80">
                   <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                  Proven Mine-to-Earn economy infrastructure
+                  Discover rare NFT items while exploring
                 </li>
                 <li className="flex items-center text-sm font-minecraft text-white/80">
                   <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                  Seamless Web3 integration with zero friction
+                  Trade resources on cross-server marketplace
                 </li>
               </ul>
               
@@ -220,7 +220,7 @@ const GameModes = () => {
               
               <div className="mt-6">
                 <button className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group">
-                  <span className="relative z-10">Integrate SDK</span>
+                  <span className="relative z-10">Start Mining</span>
                   <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </button>
               </div>
@@ -229,7 +229,7 @@ const GameModes = () => {
         ))}
         
         {/* Future Modes (Locked) */}
-        <h3 className="font-minecraft text-xl text-cyan-400 text-center mb-6">UPCOMING PHASES</h3>
+        <h3 className="font-minecraft text-xl text-cyan-400 text-center mb-6">COMING SOON</h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {futureModes.map((mode) => (

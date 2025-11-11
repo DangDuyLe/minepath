@@ -34,31 +34,32 @@ const WhatIs = () => {
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-minecraft mb-6 text-white text-center lg:text-left">
-              Minecraft, Upgraded.
+              Minecraft Meets Crypto.
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-white/80 mb-6 text-center lg:text-left">
-              MinePath unlocks real value for Minecraft players and servers. No more wasted hours, no more isolated worlds.
+              MinePath is where your Minecraft adventures earn real rewards. Mine, battle, trade - and own what you earn.
             </p>
             <div className="space-y-4 md:space-y-6 mb-8">
-              <Feature title="For Players" description="Earn, trade, and own digital assets as you play." />
-              <Feature title="For Servers" description="Plug-and-play Web3 tools. Connect to a shared economy instantly." />
+              <Feature title="Mine to Earn" description="Every block you mine, every quest you complete earns you real crypto rewards." />
+              <Feature title="True Ownership" description="Your items, your assets - tradeable on the open market." />
+              <Feature title="Cross-Server Economy" description="Trade with players across the entire MinePath network, not just one server." />
             </div>
             <div className="inline-block p-1.5 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 mb-5 mt-8">
               <div className="px-4 py-1 rounded-full bg-black/60 backdrop-blur-sm text-sm font-medium text-green-400">
-                THE SOLUTION
+                POWERED BY SOLANA
               </div>
             </div>
             <h3 className="text-2xl md:text-3xl font-minecraft mb-6 text-white text-center lg:text-left">
-              Simple. Fast. Proven.
+              Fast. Secure. Proven.
             </h3>
             <div className="space-y-4 md:space-y-6 mb-8">
-              <Feature title="Instant Integration" description="Launch in minutes, not months." />
-              <Feature title="Sustainable Rewards" description="Real value, not inflation." />
+              <Feature title="Instant Transactions" description="Lightning-fast blockchain tech means no waiting." />
+              <Feature title="Sustainable Rewards" description="Built on real economic value, not pump-and-dump schemes." />
             </div>
             <Link to="/how-to-play">
               <button className="flex items-center gap-2 group">
                 <span className="font-minecraft text-white group-hover:text-cyan-400 transition-colors">
-                  See how it works
+                  Start Playing
                 </span>
                 <ArrowRight className="h-5 w-5 text-cyan-400 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -81,8 +82,8 @@ const WhatIs = () => {
               
               <div className="absolute -bottom-4 -right-4 p-3 bg-black/80 border border-cyan-400/30 max-w-xs">
                 <p className="text-sm text-white">
-                  <span className="text-cyan-400 font-bold">B2B2C Model:</span> We empower developers, 
-                  who in turn attract and retain players across the multiverse.
+                  <span className="text-cyan-400 font-bold">Join 1000+ Players:</span> Mining, trading, 
+                  and earning together in the MinePath multiverse.
                 </p>
               </div>
             </div>

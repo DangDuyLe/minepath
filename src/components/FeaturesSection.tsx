@@ -8,32 +8,32 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const features = [
   {
-    title: "Plug-and-Play SDK",
-    description: "Launch a Mine-to-Earn economy in minutes. No blockchain expertise needed. Save 90% of development time.",
+    title: "Mine to Earn Crypto",
+    description: "Every block you mine earns you real crypto rewards. The more you play, the more you earn.",
     icon: Sword,
     blockType: "diamond",
     variant: "diamond",
     image: "/images/feature_sdk.png"
   },
   {
-    title: "Seamless Web3",
-    description: "Every action is an instant on-chain micro-transaction. Fast, frictionless, zero crypto knowledge required.",
+    title: "Instant Transactions",
+    description: "Lightning-fast blockchain means your rewards appear instantly. No waiting, no fees, just smooth gameplay.",
     icon: Shield,
     blockType: "iron",
     variant: "stone",
     image: "/images/feature_web3.png"
   },
   {
-    title: "Sustainable Economy",
-    description: "Built on real transaction fees, not inflation. Long-term value creation and player retention.",
+    title: "Trade NFT Items",
+    description: "Own unique items as NFTs. Trade them on the marketplace for real value or use them in-game.",
     icon: Coins,
     blockType: "gold",
     variant: "gold",
     image: "/images/feature_trade.png"
   },
   {
-    title: "Cross-Server Connectivity",
-    description: "Shared liquidity and interoperability. Break down silos and connect the Minecraft multiverse.",
+    title: "Cross-Server Trading",
+    description: "Your assets work across all MinePath servers. Trade with anyone, anywhere in the network.",
     icon: Share2,
     blockType: "lapis",
     variant: "diamond",
@@ -49,7 +49,7 @@ const features = [
   },
   {
     title: "Developer-First API",
-    description: "Comprehensive API and tooling. Full control, easy integration, and ongoing support for your needs.",
+    description: "Comprehensive API and tooling for server. Full control, easy integration, and ongoing support for your needs.",
     icon: Sparkles,
     blockType: "redstone",
     variant: "stone",
@@ -139,7 +139,7 @@ const FeaturesSection = () => {
             className="inline-block p-1.5 rounded-md backdrop-blur-sm bg-gradient-to-r from-blue-600/20 to-purple-600/20 mb-5"
           >
             <div className="px-4 py-1.5 font-minecraft text-cyan-400 text-sm border-b border-cyan-400/30">
-              INFRASTRUCTURE FEATURES
+              GAME FEATURES
             </div>
           </motion.div>
           
@@ -151,7 +151,7 @@ const FeaturesSection = () => {
             viewport={{ once: true }}
           >
             <span className="bg-clip-text ">
-              BUILD FASTER, <span className="text-cyan-400">SCALE EASIER</span>
+              PLAY SMARTER, <span className="text-cyan-400">EARN MORE</span>
             </span>
           </motion.h2>
           
@@ -162,8 +162,8 @@ const FeaturesSection = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Our SDK/API provides everything server developers need to launch a sustainable, fun-first 
-            Mine-to-Earn economy—without the months of blockchain development.
+            MinePath combines the best of Minecraft with blockchain rewards. Every action you take 
+            has real value—powered by cutting-edge Solana technology.
           </motion.p>
         </motion.div>
         
@@ -181,7 +181,7 @@ const FeaturesSection = () => {
         
         <div className="mt-12 md:mt-16 text-center">
           <button className="play-now-btn relative px-6 md:px-8 py-2 md:py-3 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group">
-            <span className="relative z-10">INTEGRATE NOW</span>
+            <span className="relative z-10">JOIN SERVER NOW</span>
             <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </button>
         </div>

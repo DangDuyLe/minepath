@@ -3,22 +3,22 @@ import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 import { MinecraftProgress } from '@/components/ui/minecraft-progress';
 
-// Funding allocation for MinePath infrastructure development
+// Token distribution for $MINE (in-game currency)
 const TOKENOMICS_DATA = [
-  { name: 'Infrastructure', value: 20, color: '#9945FF' },
-  { name: 'Platform Dev', value: 16.7, color: '#14F195' },
-  { name: 'Ecosystem Growth', value: 33.3, color: '#00C2FF' },
-  { name: 'Audits & NFTs', value: 13.3, color: '#FF9900' },
-  { name: 'Operations', value: 16.7, color: '#8B5CF6' },
+  { name: 'Mining Rewards', value: 40, color: '#9945FF' },
+  { name: 'Quest Rewards', value: 25, color: '#14F195' },
+  { name: 'PvP & Events', value: 15, color: '#00C2FF' },
+  { name: 'Marketplace Fees', value: 10, color: '#FF9900' },
+  { name: 'Liquidity Pool', value: 10, color: '#8B5CF6' },
 ];
 
-// Detailed breakdown of funding use
-const fundingBreakdown = [
-  { name: "Infrastructure", color: "#9945FF", amount: "$3K", percentage: "20%", detail: "Scale nodes, databases & ecosystem fees" },
-  { name: "Platform Dev", color: "#14F195", amount: "$2.5K", percentage: "16.7%", detail: "Enhanced SDK/API & Mobile SDK" },
-  { name: "Ecosystem Growth", color: "#5feaea", amount: "$5K", percentage: "33.3%", detail: "Developer outreach & partnerships" },
-  { name: "Audits & NFTs", color: "#f8bd17", amount: "$2K", percentage: "13.3%", detail: "Smart contract audits & creator NFTs" },
-  { name: "Operations", color: "#b0b0b0", amount: "$2.5K", percentage: "16.7%", detail: "Hosting, legal, security & tooling" }
+// Detailed breakdown of token utility
+const tokenUtility = [
+  { name: "Mining Rewards", color: "#9945FF", amount: "40%", percentage: "40%", detail: "Earn tokens by mining blocks and resources" },
+  { name: "Quest Rewards", color: "#14F195", amount: "25%", percentage: "25%", detail: "Complete quests and challenges for rewards" },
+  { name: "PvP & Events", color: "#5feaea", amount: "15%", percentage: "15%", detail: "Win PvP battles and limited-time events" },
+  { name: "Marketplace Fees", color: "#f8bd17", amount: "10%", percentage: "10%", detail: "Small fees sustain the economy long-term" },
+  { name: "Liquidity Pool", color: "#b0b0b0", amount: "10%", percentage: "10%", detail: "Ensures you can always trade your earnings" }
 ];
 
 const Tokenomics = () => {
@@ -80,19 +80,19 @@ const Tokenomics = () => {
         >
           <div className="inline-block p-1.5 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-400/20 mb-4 border border-cyan-400/30">
             <div className="px-4 py-1.5 bg-black/60 backdrop-blur-sm font-minecraft text-cyan-400 text-sm">
-              FUNDING ALLOCATION
+              TOKENOMICS
             </div>
           </div>
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
             <span className="bg-clip-text ">
-              SEEKING <span className="text-blue-500">$15,000</span>
+              SUSTAINABLE <span className="text-blue-500">ECONOMY</span>
             </span>
           </h2>
           
           <p className="text-lg text-white/80 max-w-2xl mx-auto mb-12 font-minecraft tracking-wide">
-            We are seeking $15,000 for infrastructure scaling, platform development, 
-            and ecosystem go-to-market to power the Minecraft multiverse.
+            MinePath's economy is designed for long-term sustainability. Real rewards from real gameplay—
+            powered by Solana blockchain technology.
           </p>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -136,21 +136,21 @@ const Tokenomics = () => {
                 viewport={{ once: true }}
                 className="minecraft-chest col-span-full mb-8 bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-6 rounded-lg"
               >
-                <h3 className="font-minecraft text-2xl mb-6 text-minecraft-gold text-center">FUNDING USE CASE</h3>
+                <h3 className="font-minecraft text-2xl mb-6 text-minecraft-gold text-center">TOKEN UTILITY</h3>
                 <div className="bg-black/60 border border-cyan-400/30 p-4">
                   <div className="flex justify-center items-center mb-4">
                     <div className="text-minecraft-gold font-minecraft text-4xl animate-pulse-glow">
-                      $15,000
+                      $MINE
                     </div>
                   </div>
                   <p className="text-center text-white/80 font-minecraft text-sm">
-                    Infrastructure scaling, platform development, and ecosystem go-to-market
+                    In-game currency earned through mining, quests, and PvP. Trade on DEX or use in-game.
                   </p>
                 </div>
                 
                 <div className="mt-4">
                   <ul className="space-y-2">
-                    {fundingBreakdown.map((item, index) => (
+                    {tokenUtility.map((item, index) => (
                       <motion.li 
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
@@ -171,81 +171,81 @@ const Tokenomics = () => {
               </motion.div>
               
               <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#9945FF]">$3K</h3>
-                <p className="text-sm text-white/80 font-minecraft">Infrastructure Scaling</p>
+                <h3 className="font-minecraft text-3xl mb-4 text-[#9945FF]">40%</h3>
+                <p className="text-sm text-white/80 font-minecraft">Mining Rewards</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={20} 
+                    value={40} 
                     max={100} 
                     variant="blue" 
                     height="md" 
                     showValue 
                   />
                 </div>
-                <p className="text-xs text-white/60 mt-2">Scale nodes, databases & ecosystem growth fees</p>
+                <p className="text-xs text-white/60 mt-2">Earn tokens by mining blocks and resources</p>
               </div>
               
               <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#14F195]">$2.5K</h3>
-                <p className="text-sm text-white/80 font-minecraft">Platform Development</p>
+                <h3 className="font-minecraft text-3xl mb-4 text-[#14F195]">25%</h3>
+                <p className="text-sm text-white/80 font-minecraft">Quest Rewards</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={16.7} 
+                    value={25} 
                     max={100} 
                     variant="green" 
                     height="md" 
                     showValue 
                   />
                 </div>
-                <p className="text-xs text-white/60 mt-2">Enhanced SDK/API, Cross-Server & Mobile SDK</p>
+                <p className="text-xs text-white/60 mt-2">Complete quests and challenges for rewards</p>
               </div>
               
               <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#00C2FF]">$5K</h3>
-                <p className="text-sm text-white/80 font-minecraft">Ecosystem Growth</p>
+                <h3 className="font-minecraft text-3xl mb-4 text-[#00C2FF]">15%</h3>
+                <p className="text-sm text-white/80 font-minecraft">PvP & Events</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={33.3} 
+                    value={15} 
                     max={100} 
                     variant="blue" 
                     height="md" 
                     showValue 
                   />
                 </div>
-                <p className="text-xs text-white/60 mt-2">Developer outreach, server onboarding & partnerships</p>
+                <p className="text-xs text-white/60 mt-2">Win PvP battles and limited-time events</p>
               </div>
               
               <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#FF9900]">$2K</h3>
-                <p className="text-sm text-white/80 font-minecraft">Audits & NFTs</p>
+                <h3 className="font-minecraft text-3xl mb-4 text-[#FF9900]">10%</h3>
+                <p className="text-sm text-white/80 font-minecraft">Marketplace Fees</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={13.3} 
+                    value={10} 
                     max={100} 
                     variant="gold" 
                     height="md" 
                     showValue 
                   />
                 </div>
-                <p className="text-xs text-white/60 mt-2">Smart-contract audits & launch creator economy NFTs</p>
+                <p className="text-xs text-white/60 mt-2">Small fees sustain the economy long-term</p>
               </div>
               
               <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300 col-span-full">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#8B5CF6]">$2.5K</h3>
-                <p className="text-sm text-white/80 font-minecraft">Operations</p>
+                <h3 className="font-minecraft text-3xl mb-4 text-[#8B5CF6]">10%</h3>
+                <p className="text-sm text-white/80 font-minecraft">Liquidity Pool</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={16.7} 
+                    value={10} 
                     max={100} 
                     variant="blue" 
                     height="md" 
                     showValue 
                   />
                 </div>
-                <p className="text-xs text-white/60 mt-2">Cloud hosting, legal compliance, tooling & security</p>
+                <p className="text-xs text-white/60 mt-2">Ensures you can always trade your earnings</p>
               </div>
               
-              {/* Funding impact highlight */}
+              {/* Economy highlights */}
               <motion.div 
                 initial={{ scale: 0.9, y: 20, opacity: 0 }}
                 whileInView={{ scale: 1, y: 0, opacity: 1 }}
@@ -253,20 +253,20 @@ const Tokenomics = () => {
                 viewport={{ once: true }}
                 className="col-span-full mt-4 bg-black/40 backdrop-blur-sm border-2 border-[#00C2FF]/50 p-4 rounded-lg"
               >
-                <h3 className="font-minecraft text-xl mb-3 text-center text-[#00C2FF]">WHY THIS FUNDING MATTERS</h3>
+                <h3 className="font-minecraft text-xl mb-3 text-center text-[#00C2FF]">WHY IT WORKS</h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="bg-black/50 border border-cyan-400/20 p-3 text-center">
-                    <div className="font-minecraft text-2xl text-cyan-400 mb-2">90%</div>
-                    <div className="font-minecraft text-white text-sm">Dev Time Saved</div>
+                    <div className="font-minecraft text-2xl text-cyan-400 mb-2">No Inflation</div>
+                    <div className="font-minecraft text-white text-sm">Sustainable Model</div>
                   </div>
                   <div className="bg-black/50 border border-cyan-400/20 p-3 text-center">
-                    <div className="font-minecraft text-2xl text-green-400 mb-2">140M+</div>
-                    <div className="font-minecraft text-white text-sm">Potential Players</div>
+                    <div className="font-minecraft text-2xl text-green-400 mb-2">Real Utility</div>
+                    <div className="font-minecraft text-white text-sm">In-game & Trading</div>
                   </div>
                   <div className="bg-black/50 border border-cyan-400/20 p-3 text-center">
-                    <div className="font-minecraft text-2xl text-purple-400 mb-2">B2B2C</div>
-                    <div className="font-minecraft text-white text-sm">Scalable Model</div>
+                    <div className="font-minecraft text-2xl text-purple-400 mb-2">Fair Launch</div>
+                    <div className="font-minecraft text-white text-sm">Everyone Earns</div>
                   </div>
                 </div>
               </motion.div>

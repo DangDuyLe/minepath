@@ -8,72 +8,72 @@ import { MinecraftIcon } from '@/components/ui/minecraft-icon';
 const ROADMAP_DATA = [
   {
     year: "Q1 2025",
-    title: "Phase 1: Core SDK Launch",
-    description: "Launch proven SDK/API to initial server partners. Plug-and-play integration for sustainable Mine-to-Earn economies.",
+    title: "Phase 1: Server Launch",
+    description: "Launch MinePath server with core Mine-to-Earn gameplay. Players can start earning crypto through mining and quests.",
     icon: Pickaxe,
     iconVariant: "diamond",
     isActive: true,
     items: [
-      "Release production-ready SDK/API for server developers",
-      "Onboard initial server partners with full support",
-      "Deploy seamless Web3 integration layer",
-      "Launch developer documentation and support portal"
+      "Launch production server with 1000+ player capacity",
+      "Deploy wallet integration and NFT system",
+      "Release mining, questing, and trading features",
+      "Open cross-server marketplace for item trading"
     ]
   },
   {
     year: "Q3 2025",
-    title: "Phase 2: Economic Layer & Connectivity",
-    description: "Scale the inter-server economic layer. Enable cross-server asset transfers and shared liquidity pools.",
+    title: "Phase 2: New Game Modes",
+    description: "Expand gameplay with farming, PvP arenas, and boss raids. More ways to play means more ways to earn.",
     icon: Wheat,
     iconVariant: "grass",
     isActive: false,
     items: [
-      "Implement cross-server asset transfer protocol",
-      "Launch shared liquidity pools across servers",
-      "Deploy unified marketplace infrastructure",
-      "Release Mobile SDK for on-the-go access"
+      "Launch farming and crafting economy systems",
+      "Deploy competitive PvP arenas with ranked rewards",
+      "Introduce epic boss raids with rare NFT drops",
+      "Mobile companion app for inventory management"
     ]
   },
   {
     year: "Q1 2026",
-    title: "Phase 3: Governance & Shared Economy",
-    description: "Launch $PATH governance token. Community-driven decisions and unified economic incentives across the multiverse.",
+    title: "Phase 3: Governance Token",
+    description: "Launch $PATH governance token. Players vote on server features, events, and economy parameters.",
     icon: Crown,
     iconVariant: "iron",
     isActive: false,
     items: [
       "Launch $PATH governance token on Solana",
-      "Implement on-chain voting and proposal system",
-      "Deploy shared revenue distribution mechanisms",
-      "Create multiverse governance council"
+      "Enable community voting on server features",
+      "Distribute staking rewards to token holders",
+      "Launch DAO for community-driven decisions"
     ]
   },
   {
     year: "Q3 2026",
-    title: "Phase 4: Open Creator Economy",
-    description: "Empower creators to build custom game modes, NFTs, and economies on top of MinePath infrastructure.",
+    title: "Phase 4: Creator Economy",
+    description: "Empower players to create and sell custom skins, items, and mini-games as NFTs on the marketplace.",
     icon: Hammer,
     iconVariant: "gold",
     isActive: false,
     items: [
-      "Launch creator SDK and NFT minting tools",
-      "Deploy custom game mode framework",
-      "Implement creator revenue sharing system",
-      "Open marketplace for creator-made content"
+      "Creator tools for custom NFT items and skins",
+      "Player-designed mini-games and challenges",
+      "Revenue sharing for successful creators",
+      "NFT royalties system for secondary sales"
     ]
   },
   {
     year: "Q1 2027",
-    title: "Phase 5: The Full Multiverse",
-    description: "Complete integration: Mobile app, Metaverse hub, and the fully connected Minecraft multiverse ecosystem.",
+    title: "Phase 5: Multiverse Expansion",
+    description: "Connect multiple themed servers into a unified multiverse. Travel between worlds, keep your assets everywhere.",
     icon: Swords,
     iconVariant: "gold",
     isActive: false,
     items: [
-      "Launch full-featured Mobile App for iOS/Android",
-      "Deploy Metaverse Mini hub for social interaction",
-      "Complete ecosystem integration with all features",
-      "Achieve full decentralization and community ownership"
+      "Launch additional themed servers (Fantasy, Sci-Fi, etc.)",
+      "Cross-server travel and unified asset system",
+      "Metaverse social hub for player interaction",
+      "Full mobile app with complete gameplay features"
     ]
   }
 ];
@@ -143,13 +143,13 @@ const Roadmap = () => {
           
           <h2 className="font-minecraft text-4xl md:text-5xl mb-6 mt-6 text-white">
             <span className="bg-clip-text ">
-              BUILDING THE MULTIVERSE
+              OUR <span className="text-cyan-400">ROADMAP</span>
             </span>
           </h2>
           
           <p className="text-lg text-white/80 max-w-2xl mx-auto font-minecraft mb-12">
-            Our five-phase roadmap transforms Minecraft from isolated servers into a connected multiverse 
-            with shared infrastructure, economy, and true creator ownership.
+            From a single server to a connected multiverse. Here's how MinePath will evolve 
+            to give players more ways to play, earn, and own their gaming experience.
           </p>
         </motion.div>
         
@@ -193,7 +193,7 @@ const Roadmap = () => {
                 
                 <div className="flex justify-start">
                   <button className="bg-gradient-to-r from-cyan-500 to-blue-600 font-minecraft px-6 py-2 flex items-center text-white hover:from-cyan-400 hover:to-blue-500 transition-colors">
-                    Get SDK Access <ArrowRight className="ml-2 h-4 w-4" />
+                    Join Server Now <ArrowRight className="ml-2 h-4 w-4" />
                   </button>
                 </div>
               </div>
