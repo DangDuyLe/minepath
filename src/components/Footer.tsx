@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, Zap, ArrowRight, MessageSquare, Globe, Heart } from 'lucide-react';
+import { Twitter, Zap, ArrowRight, MessageSquare, Globe, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -84,12 +84,12 @@ const Footer = () => {
                 <MessageSquare size={16} className="text-cyan-400" />
               </a>
               <a 
-                href="https://github.com" 
+                href="https://t.me/MinePath_RPG" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-black/40 backdrop-blur-sm border border-cyan-400/30 text-white flex items-center justify-center hover:bg-cyan-500/20 transition-colors"
               >
-                <Github size={16} className="text-cyan-400" />
+                <Globe size={16} className="text-cyan-400" />
               </a>
             </div>
           </motion.div>
@@ -103,10 +103,7 @@ const Footer = () => {
           >
             <h4 className="font-minecraft text-lg mb-4 text-cyan-400 border-b border-cyan-400/30 pb-2">QUICK LINKS</h4>
             <ul>
-              <FooterLink href="/" text="Home" />
-              <FooterLink href="/nfts" text="NFT Catalog" />
-              <FooterLink href="/how-to-play" text="How to Play" />
-              <FooterLink href="/store" text="Store" />
+              <li className="mb-2.5 text-white/60 text-sm font-minecraft">Coming Soon</li>
             </ul>
           </motion.div>
           
@@ -119,10 +116,7 @@ const Footer = () => {
           >
             <h4 className="font-minecraft text-lg mb-4 text-cyan-400 border-b border-cyan-400/30 pb-2">RESOURCES</h4>
             <ul>
-              <FooterLink href="/wiki" text="Wiki" />
-              <FooterLink href="/gallery" text="NFT Gallery" />
-              <FooterLink href="/roadmap" text="Roadmap" />
-              <FooterLink href="/support" text="Support" />
+              <li className="mb-2.5 text-white/60 text-sm font-minecraft">Coming Soon</li>
             </ul>
           </motion.div>
           
@@ -139,12 +133,17 @@ const Footer = () => {
                 Connect to our Minecraft server 
               </p>
               <div className="bg-black/50 border border-cyan-400/20 px-3 py-2 mb-3 flex items-center justify-between">
-                <span className="font-minecraft text-sm text-cyan-400">play.minepath.com</span>
+                <span className="font-minecraft text-sm text-cyan-400">play.minepath.fun</span>
                 <Zap className="h-4 w-4 text-cyan-400" />
               </div>
-              <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 transition-colors text-white py-2 px-4 flex items-center justify-center text-sm font-minecraft">
+              <a 
+                href="https://discord.gg/HDc5QYXz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 transition-colors text-white py-2 px-4 flex items-center justify-center text-sm font-minecraft"
+              >
                 Join Discord <ArrowRight className="ml-2 h-4 w-4" />
-              </button>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -153,14 +152,6 @@ const Footer = () => {
           <p className="text-xs text-white/60 font-minecraft flex items-center">
             <Heart size={12} className="text-cyan-400 mr-1" /> © 2025 MinePath. All rights reserved.
           </p>
-          <div className="mt-4 md:mt-0 flex gap-6">
-            <a href="/privacy" className="text-xs text-white/60 hover:text-cyan-400 transition-colors font-minecraft">
-              Privacy Policy
-            </a>
-            <a href="/terms" className="text-xs text-white/60 hover:text-cyan-400 transition-colors font-minecraft">
-              Terms of Service
-            </a>
-          </div>
         </div>
       </div>
       
