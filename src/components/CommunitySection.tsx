@@ -123,7 +123,7 @@ const CommunitySection = () => {
               <h3 className="font-minecraft text-xl md:text-2xl text-cyan-400">LIMITED EVENTS</h3>
             </div>
             <p className="text-sm md:text-base text-white/80 mb-6">
-              Participate in exclusive events like Crystal Rush or Boss Raid Festival for rare rewards and unique NFTs.
+              Participate in exclusive events for rare rewards and airdrop.
             </p>
             <div className="bg-black/50 p-3 md:p-4 border border-cyan-400/20 rounded-md">
               <div className="flex justify-between items-center mb-4">

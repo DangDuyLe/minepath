@@ -24,8 +24,8 @@ const features = [
     image: "/images/feature_web3.png"
   },
   {
-    title: "Trade NFT Items",
-    description: "Own unique items as NFTs. Trade them on the marketplace for real value or use them in-game.",
+    title: "Trade Rare Items",
+    description: "Discover and collect unique items. Trade them on the marketplace for real value or use them in-game.",
     icon: Coins,
     blockType: "gold",
     variant: "gold",

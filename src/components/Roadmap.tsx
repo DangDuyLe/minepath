@@ -15,7 +15,7 @@ const ROADMAP_DATA = [
     isActive: true,
     items: [
       "Launch production server with 1000+ player capacity",
-      "Deploy wallet integration and NFT system",
+      "Deploy wallet integration and reward system",
       "Release mining, questing, and trading features",
       "Open cross-server marketplace for item trading"
     ]
@@ -30,7 +30,7 @@ const ROADMAP_DATA = [
     items: [
       "Launch farming and crafting economy systems",
       "Deploy competitive PvP arenas with ranked rewards",
-      "Introduce epic boss raids with rare NFT drops",
+      "Introduce epic boss raids with rare item drops",
       "Mobile companion app for inventory management"
     ]
   },
@@ -51,15 +51,15 @@ const ROADMAP_DATA = [
   {
     year: "Q3 2026",
     title: "Phase 4: Creator Economy",
-    description: "Empower players to create and sell custom skins, items, and mini-games as NFTs on the marketplace.",
+    description: "Empower players to create and sell custom skins, items, and mini-games on the marketplace.",
     icon: Hammer,
     iconVariant: "gold",
     isActive: false,
     items: [
-      "Creator tools for custom NFT items and skins",
+      "Creator tools for custom items and skins",
       "Player-designed mini-games and challenges",
       "Revenue sharing for successful creators",
-      "NFT royalties system for secondary sales"
+      "Royalties system for secondary sales"
     ]
   },
   {

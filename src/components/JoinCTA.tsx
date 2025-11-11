@@ -82,7 +82,7 @@ const JoinCTA = () => {
               
               <p className="text-base md:text-lg text-white/90 mb-8 font-minecraft leading-relaxed text-center lg:text-left">
                 Connect to MinePath and start earning crypto while playing Minecraft. 
-                Mine blocks, complete quests, trade NFTs - it all counts!
+                Mine blocks, complete quests, trade items - it all counts!
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -119,7 +119,7 @@ const JoinCTA = () => {
                   ease: "easeInOut"
                 }}
                 src="/images/minecraft_character.png" 
-                alt="Minecraft Character with NFT" 
+                alt="Minecraft Character" 
                 className="pixelated h-56 sm:h-64 md:h-72 lg:h-96 w-auto object-contain mx-auto"
               />
             </div>

@@ -8,7 +8,7 @@ const testimonials = [
     name: "Alex_Miner",
     role: "Early Access Player",
     avatar: "/images/user-icon.png",
-    quote: "MinePath revolutionized my Minecraft experience. The NFT drops while mining feel rewarding and exciting. It's like treasure hunting but with real value!",
+    quote: "MinePath revolutionized my Minecraft experience. The rewards while mining feel rewarding and exciting. It's like treasure hunting but with real value!",
     rating: 5,
   },
   {
@@ -16,7 +16,7 @@ const testimonials = [
     name: "BlockQueen",
     role: "Guild Leader",
     avatar: "/images/user-icon.png",
-    quote: "As a guild leader, MinePath offers amazing opportunities for community building. The tokenomics are well-balanced and the NFTs are genuinely useful in-game.",
+    quote: "As a guild leader, MinePath offers amazing opportunities for community building. The tokenomics are well-balanced and the items are genuinely useful in-game.",
     rating: 5,
   },
   {
@@ -103,7 +103,7 @@ const TestimonialSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-lg text-white/80 max-w-2xl mx-auto"
           >
-            Join thousands of players already experiencing the fusion of Minecraft gameplay with the earning potential of NFTs.
+            Join thousands of players already experiencing the fusion of Minecraft gameplay with the earning potential of crypto rewards.
           </motion.p>
         </div>
         

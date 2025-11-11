@@ -110,7 +110,7 @@ const GameRewards = () => {
             </h2>
             
             <p className="text-base lg:text-lg text-white/80 mb-8 lg:mb-10 font-minecraft tracking-wide">
-              Earn rewards through gameplay activities and own exclusive NFTs that have real-world value.
+              Earn rewards through gameplay activities and own items that have real-world value.
             </p>
             
             <div className="space-y-6 md:space-y-8">

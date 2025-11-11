@@ -32,7 +32,7 @@ const GAME_MODES = [
   {
     id: 'pvp',
     name: 'PvP Arenas',
-    description: 'Battle other players in competitive arenas. Win matches to earn exclusive NFT weapons and armor.',
+    description: 'Battle other players in competitive arenas. Win matches to earn exclusive weapons and armor.',
     icon: Crown,
     bgColor: 'bg-minecraft-diamond',
     iconVariant: 'iron',
@@ -54,7 +54,7 @@ const GAME_MODES = [
   {
     id: 'bosses',
     name: 'Boss Raids',
-    description: 'Team up with friends to defeat powerful bosses. Epic loot and legendary NFTs await the brave.',
+    description: 'Team up with friends to defeat powerful bosses. Epic loot and legendary items await the brave.',
     icon: Swords,
     bgColor: 'bg-solana-purple',
     iconVariant: 'gold',
@@ -196,7 +196,7 @@ const GameModes = () => {
                 </li>
                 <li className="flex items-center text-sm font-minecraft text-white/80">
                   <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
-                  Discover rare NFT items while exploring
+                  Discover rare items while exploring
                 </li>
                 <li className="flex items-center text-sm font-minecraft text-white/80">
                   <ChevronRight className="h-4 w-4 text-cyan-400 mr-2" />
