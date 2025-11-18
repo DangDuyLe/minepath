@@ -150,7 +150,7 @@ const Hero = () => {
           
           {/* Right content - Game world image with enhanced animations - hidden on smaller screens */}
           <motion.div 
-            className="flex-1 mt-12 lg:mt-0"
+            className="flex-1 mt-0 lg:mt-0"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
@@ -195,17 +195,6 @@ const Hero = () => {
                 >
                   <img src="/images/diamond.png" className="w-12 h-12 pixelated" alt="Diamond" />
                 </motion.div>
-                
-                <motion.div 
-                  className="absolute -bottom-6 -right-6 hidden sm:block"
-                  animate={{ 
-                    y: [0, -10, 0],
-                    rotate: [0, -5, 0]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                >
-                  <img src="/images/gold.png" className="w-10 h-10 pixelated" alt="Gold" />
-                </motion.div>
               </motion.div>
             </div>
           </motion.div>
@@ -214,40 +203,54 @@ const Hero = () => {
 
       {/* Logo bar with enhanced animations - mobile responsive */}
       <motion.div 
-        className="mt-12 pt-4 md:mt-20 md:pt-10 absolute left-0 right-0 bottom-8 px-2"
+        className="mt-12 pt-4 md:mt-20 md:pt-10 absolute left-0 right-0 bottom-8 overflow-hidden"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.8 }}
         viewport={{ once: true, margin: "-100px" }}
       >
-        <motion.div 
-          className="flex flex-wrap justify-center gap-3 md:gap-10 lg:gap-16 opacity-60 hover:opacity-100 transition-opacity duration-300"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {[
-            { img: "/images/swinburne.png", text: "Solana Swinburne Hackathon Winner" },
-            { img: "/images/solana-sol-logo.png", text: "Supported by Solana" },
-            { img: "/images/superteamvn.png", text: "Supported by SuperteamVN" }
-          ].map((item, index) => (
-            <motion.div 
-              key={index}
-              className="flex items-center text-sm md:text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30"
-              variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05, 
-                boxShadow: "0 0 15px rgba(0, 195, 255, 0.4)",
-                borderColor: "rgba(0, 195, 255, 0.5)"
-              }}
-            >
-              {item.img && (
-                <img src={item.img} alt={item.text} className="mr-1 md:mr-2 h-4 w-4 md:h-6 md:w-6 object-contain" />
-              )}
-              <span>{item.text}</span>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="relative opacity-90 hover:opacity-100 transition-opacity duration-300">
+          <motion.div 
+            className="flex gap-6 md:gap-10"
+            animate={{ x: ["-0%", "-50%"] }}
+            transition={{ 
+              duration: 30,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          >
+            {[
+              { img: "/images/swinburne.png", text: "Solana Swinburne Hackathon Winner" },
+              { img: "/images/solana-sol-logo.png", text: "Supported by Solana" },
+              { img: "/images/superteamvn.png", text: "Supported by SuperteamVN" },
+              { img: "/images/fystack.png", text: "Supported by FyStack" },
+              { img: "/images/gaian.png", text: "Supported by Gaian" },
+              { img: "/images/wannaplay.png", text: "Supported by WannaPlay" }
+            ].concat([
+              { img: "/images/swinburne.png", text: "Solana Swinburne Hackathon Winner" },
+              { img: "/images/solana-sol-logo.png", text: "Supported by Solana" },
+              { img: "/images/superteamvn.png", text: "Supported by SuperteamVN" },
+              { img: "/images/fystack.png", text: "Supported by FyStack" },
+              { img: "/images/gaian.png", text: "Supported by Gaian" },
+              { img: "/images/wannaplay.png", text: "Supported by WannaPlay" }
+            ]).map((item, index) => (
+              <motion.div 
+                key={index}
+                className="flex items-center text-sm md:text-xl font-minecraft bg-black/40 p-2 border border-cyan-400/30 whitespace-nowrap flex-shrink-0"
+                whileHover={{ 
+                  scale: 1.05, 
+                  boxShadow: "0 0 15px rgba(0, 195, 255, 0.4)",
+                  borderColor: "rgba(0, 195, 255, 0.5)"
+                }}
+              >
+                {item.img && (
+                  <img src={item.img} alt={item.text} className="mr-1 md:mr-2 h-4 w-4 md:h-6 md:w-6 object-contain" />
+                )}
+                <span>{item.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   );
