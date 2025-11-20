@@ -78,7 +78,7 @@ const HowToPlay = () => {
             viewport={{ once: true }}
             className="text-base lg:text-lg text-white/80 max-w-3xl mx-auto"
           >
-            Join MinePath and start earning crypto while playing Minecraft in 5 simple steps. 
+            Join MinePath and start earning crypto while playing Minecraft in 4 simple steps. 
             From connecting to the server to trading your first items:
           </motion.p>
         </div>
