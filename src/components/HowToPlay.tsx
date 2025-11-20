@@ -8,7 +8,7 @@ const STEPS = [
   {
     number: '01',
     title: 'Connect to Server',
-    description: 'Add play.minepath.com to your Minecraft client and join the server',
+    description: 'Add alphatest.minepath.fun to your Minecraft client and join the server',
     icon: '/images/icons/minecraft-server.png'
   },
   {
@@ -25,15 +25,9 @@ const STEPS = [
   },
   {
     number: '04',
-    title: 'Claim Tokens',
-    description: 'Earn and claim your tokens directly in-game',
+    title: 'Earn & Share Rewards',
+    description: 'Earn and share rewards directly in-game',
     icon: '/images/icons/minecraft-sword.png'
-  },
-  {
-    number: '05',
-    title: 'Trade & Earn (Future Integration)',
-    description: 'Use the marketplace to trade items with players across all servers. Your assets, your profit',
-    icon: '/images/icons/minecraft-diamond.png'
   }
 ];
 
@@ -89,17 +83,17 @@ const HowToPlay = () => {
           </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mb-12 md:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mb-12 md:mb-16 justify-center mx-auto max-w-6xl justify-items-center">
           {STEPS.map((step, index) => (
             <motion.div 
               key={index}
-              className="bg-black/30 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-4 md:p-6 relative"
+              className="bg-black/30 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-4 md:p-6 relative w-64 md:w-72 mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center font-minecraft text-black rounded-md">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center font-minecraft text-black rounded-md">
                 {step.number}
               </div>
               

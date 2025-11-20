@@ -75,14 +75,7 @@ const Footer = () => {
               >
                 <Twitter size={16} className="text-cyan-400" />
               </a>
-              <a 
-                href="https://discord.gg/HDc5QYXz" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-black/40 backdrop-blur-sm border border-cyan-400/30 text-white flex items-center justify-center hover:bg-cyan-500/20 transition-colors"
-              >
-                <MessageSquare size={16} className="text-cyan-400" />
-              </a>
+
               <a 
                 href="https://t.me/MinePath_RPG" 
                 target="_blank" 
@@ -133,16 +126,16 @@ const Footer = () => {
                 Connect to our Minecraft server 
               </p>
               <div className="bg-black/50 border border-cyan-400/20 px-3 py-2 mb-3 flex items-center justify-between">
-                <span className="font-minecraft text-sm text-cyan-400">play.minepath.fun</span>
+                <span className="font-minecraft text-sm text-cyan-400">alphatest.minepath.fun</span>
                 <Zap className="h-4 w-4 text-cyan-400" />
               </div>
               <a 
-                href="https://discord.gg/HDc5QYXz"
+                href="https://t.me/MinePath_RPG"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 transition-colors text-white py-2 px-4 flex items-center justify-center text-sm font-minecraft"
               >
-                Join Discord <ArrowRight className="ml-2 h-4 w-4" />
+                Join Telegram <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </div>
           </motion.div>

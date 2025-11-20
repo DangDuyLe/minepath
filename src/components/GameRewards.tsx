@@ -1,39 +1,16 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Shield, Pickaxe, Database } from 'lucide-react';
-import { MinecraftIcon } from '@/components/ui/minecraft-icon';
-import { MinecraftProgress } from '@/components/ui/minecraft-progress';
+import { Pickaxe } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const REWARDS = [
   {
-    title: "Quest Completion",
-    description: "Complete a variety of quests ranging from simple to epic. Successful completion rewards you with Solana-based tokens.",
-    icon: <Target className="h-8 w-8 md:h-10 md:w-10 text-cyan-400" />,
-    delay: 0.1,
-    progress: 75
-  },
-  {
-    title: "Defeat Enemies",
-    description: "Engage in our robust combat system where you earn tokens by defeating enemies and showcasing your combat skills.",
-    icon: <Shield className="h-8 w-8 md:h-10 md:w-10 text-cyan-400" />,
-    delay: 0.2,
-    progress: 60
-  },
-  {
     title: "Resource Mining",
-    description: "Mine in-game resources like ores and gems to earn Solana-based tokens. Play solo or cooperatively.",
+    description: "Mine in-game resources like ores and gems to earn Solana-based tokens — the primary and only way to earn in-game rewards.",
     icon: <Pickaxe className="h-8 w-8 md:h-10 md:w-10 text-cyan-400" />,
-    delay: 0.3,
+    delay: 0.1,
     progress: 85
-  },
-  {
-    title: "Token Utilization",
-    description: "Use earned tokens in-game for purchases and upgrades or trade them on cryptocurrency exchanges.",
-    icon: <Database className="h-8 w-8 md:h-10 md:w-10 text-cyan-400" />,
-    delay: 0.4,
-    progress: 50
   }
 ];
 
@@ -99,18 +76,16 @@ const GameRewards = () => {
           >
             <div className="inline-block p-1.5 rounded-md backdrop-blur-sm bg-gradient-to-r from-blue-600/20 to-purple-600/20 mb-5">
               <div className="px-4 py-1.5 font-minecraft text-cyan-400 text-sm border-b border-cyan-400/30">
-                CRYPTO IN GAME REWARDS
+                MINING REWARDS
               </div>
             </div>
-            
+
             <h2 className="font-minecraft text-3xl md:text-4xl lg:text-5xl mb-6 text-white">
-              <span className="bg-clip-text ">
-                PLAY, <span className="text-cyan-400">MINE</span>, <span className="text-blue-500">EARN</span>
-              </span>
+              <span className="bg-clip-text ">MINE TO <span className="text-cyan-400">EARN</span></span>
             </h2>
-            
+
             <p className="text-base lg:text-lg text-white/80 mb-8 lg:mb-10 font-minecraft tracking-wide">
-              Earn rewards through gameplay activities and own items that have real-world value.
+              Earn tokens exclusively by mining resources in-game — mining is the only way to generate rewards.
             </p>
             
             <div className="space-y-6 md:space-y-8">

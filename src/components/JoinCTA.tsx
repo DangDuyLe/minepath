@@ -11,7 +11,7 @@ const JoinCTA = () => {
   const isMobile = useIsMobile();
   
   const copyServerAddress = () => {
-    navigator.clipboard.writeText('play.minepath.fun');
+    navigator.clipboard.writeText('alphatest.minepath.fun');
     toast({
       title: "Server address copied!",
       description: "Ready to paste in your Minecraft client"
@@ -88,7 +88,7 @@ const JoinCTA = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <div className="relative w-full sm:w-auto">
                   <div className="flex items-center bg-black/60 border border-blue-400/30 px-4 py-2 w-full">
-                    <span className="font-minecraft text-white">play.minepath.fun</span>
+                    <span className="font-minecraft text-white">alphatest.minepath.fun</span>
                     <button 
                       onClick={copyServerAddress}
                       className="ml-3 p-1 hover:text-cyan-400 transition-colors ml-auto"

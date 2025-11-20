@@ -1,24 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { MinecraftProgress } from '@/components/ui/minecraft-progress';
 
 // Token distribution for $MINE (in-game currency)
 const TOKENOMICS_DATA = [
-  { name: 'Mining Rewards', value: 40, color: '#9945FF' },
-  { name: 'Quest Rewards', value: 25, color: '#14F195' },
-  { name: 'PvP & Events', value: 15, color: '#00C2FF' },
-  { name: 'Marketplace Fees', value: 10, color: '#FF9900' },
-  { name: 'Liquidity Pool', value: 10, color: '#8B5CF6' },
+  { name: 'Mining Rewards', value: 50, color: '#9945FF' },
+  { name: 'Liquidity Pool', value: 50, color: '#06b6d4' },
 ];
 
 // Detailed breakdown of token utility
 const tokenUtility = [
-  { name: "Mining Rewards", color: "#9945FF", amount: "40%", percentage: "40%", detail: "Earn tokens by mining blocks and resources" },
-  { name: "Quest Rewards", color: "#14F195", amount: "25%", percentage: "25%", detail: "Complete quests and challenges for rewards" },
-  { name: "PvP & Events", color: "#5feaea", amount: "15%", percentage: "15%", detail: "Win PvP battles and limited-time events" },
-  { name: "Marketplace Fees", color: "#f8bd17", amount: "10%", percentage: "10%", detail: "Small fees sustain the economy long-term" },
-  { name: "Liquidity Pool", color: "#b0b0b0", amount: "10%", percentage: "10%", detail: "Ensures you can always trade your earnings" }
+  { name: "Mining Rewards", color: "#9945FF", amount: "50%", percentage: "50%", detail: "Earn tokens exclusively by mining blocks and resources" },
+  { name: "Liquidity Pool", color: "#06b6d4", amount: "50%", percentage: "50%", detail: "Ensures liquidity for trading earned tokens" }
 ];
 
 const Tokenomics = () => {
@@ -144,7 +138,7 @@ const Tokenomics = () => {
                     </div>
                   </div>
                   <p className="text-center text-white/80 font-minecraft text-sm">
-                    In-game currency earned through mining, quests, and PvP. Trade on DEX or use in-game.
+                    In-game currency earned exclusively through mining. Trade on DEX or use in-game.
                   </p>
                 </div>
                 
@@ -171,11 +165,11 @@ const Tokenomics = () => {
               </motion.div>
               
               <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#9945FF]">40%</h3>
+                <h3 className="font-minecraft text-3xl mb-4 text-[#9945FF]">50%</h3>
                 <p className="text-sm text-white/80 font-minecraft">Mining Rewards</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={40} 
+                    value={50} 
                     max={100} 
                     variant="blue" 
                     height="md" 
@@ -184,65 +178,20 @@ const Tokenomics = () => {
                 </div>
                 <p className="text-xs text-white/60 mt-2">Earn tokens by mining blocks and resources</p>
               </div>
-              
-              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#14F195]">25%</h3>
-                <p className="text-sm text-white/80 font-minecraft">Quest Rewards</p>
-                <div className="mt-3">
-                  <MinecraftProgress 
-                    value={25} 
-                    max={100} 
-                    variant="green" 
-                    height="md" 
-                    showValue 
-                  />
-                </div>
-                <p className="text-xs text-white/60 mt-2">Complete quests and challenges for rewards</p>
-              </div>
-              
-              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#00C2FF]">15%</h3>
-                <p className="text-sm text-white/80 font-minecraft">PvP & Events</p>
-                <div className="mt-3">
-                  <MinecraftProgress 
-                    value={15} 
-                    max={100} 
-                    variant="blue" 
-                    height="md" 
-                    showValue 
-                  />
-                </div>
-                <p className="text-xs text-white/60 mt-2">Win PvP battles and limited-time events</p>
-              </div>
-              
-              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#FF9900]">10%</h3>
-                <p className="text-sm text-white/80 font-minecraft">Marketplace Fees</p>
-                <div className="mt-3">
-                  <MinecraftProgress 
-                    value={10} 
-                    max={100} 
-                    variant="gold" 
-                    height="md" 
-                    showValue 
-                  />
-                </div>
-                <p className="text-xs text-white/60 mt-2">Small fees sustain the economy long-term</p>
-              </div>
-              
-              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300 col-span-full">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#8B5CF6]">10%</h3>
+
+              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300 col-span-full sm:col-span-1">
+                <h3 className="font-minecraft text-3xl mb-4 text-[#06b6d4]">50%</h3>
                 <p className="text-sm text-white/80 font-minecraft">Liquidity Pool</p>
                 <div className="mt-3">
                   <MinecraftProgress 
-                    value={10} 
+                    value={50} 
                     max={100} 
                     variant="blue" 
                     height="md" 
                     showValue 
                   />
                 </div>
-                <p className="text-xs text-white/60 mt-2">Ensures you can always trade your earnings</p>
+                <p className="text-xs text-white/60 mt-2">Ensures liquidity for trading earned tokens</p>
               </div>
               
               {/* Economy highlights */}

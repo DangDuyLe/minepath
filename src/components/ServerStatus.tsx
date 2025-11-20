@@ -7,7 +7,7 @@ const ServerStatus = () => {
   const { toast } = useToast();
   const [playerCount, setPlayerCount] = useState<number | null>(null);
   const [isOnline, setIsOnline] = useState<boolean>(true);
-  const serverAddress = 'play.minepath.com';
+  const serverAddress = 'alphatest.minepath.fun';
 
   useEffect(() => {
     // Simulate fetching server status

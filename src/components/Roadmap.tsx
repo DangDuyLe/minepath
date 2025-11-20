@@ -7,35 +7,35 @@ import { MinecraftIcon } from '@/components/ui/minecraft-icon';
 
 const ROADMAP_DATA = [
   {
-    year: "Q1 2025",
-    title: "Phase 1: Server Launch",
-    description: "Launch MinePath server with core Mine-to-Earn gameplay. Players can start earning crypto through mining and quests.",
+    year: "Q4 2025",
+    title: "Phase 1: Alpha Test",
+    description: "Launch the MinePath alpha test. Invite early players to test core mine-to-earn systems and gather feedback.",
     icon: Pickaxe,
     iconVariant: "diamond",
     isActive: true,
     items: [
-      "Launch production server with 1000+ player capacity",
-      "Deploy wallet integration and reward system",
-      "Release mining, questing, and trading features",
-      "Open cross-server marketplace for item trading"
+      "Open alpha test server and invite community testers",
+      "Deploy initial wallet integration and basic reward flows",
+      "Test core mining mechanics and resource rewards",
+      "Collect feedback and iterate on bugs and balance"
     ]
   },
   {
-    year: "Q3 2025",
+    year: "Q2 2026",
     title: "Phase 2: New Game Modes",
-    description: "Expand gameplay with farming, PvP arenas, and boss raids. More ways to play means more ways to earn.",
+    description: "Expand gameplay with farming and boss raids. More ways to play means more ways to earn.",
     icon: Wheat,
     iconVariant: "grass",
     isActive: false,
     items: [
       "Launch farming and crafting economy systems",
-      "Deploy competitive PvP arenas with ranked rewards",
-      "Introduce epic boss raids with rare item drops",
+      "Introduce cooperative boss raids with rare item drops",
+      "Enhance balancing for mining rewards",
       "Mobile companion app for inventory management"
     ]
   },
   {
-    year: "Q1 2026",
+    year: "Q4 2026",
     title: "Phase 3: Governance Token",
     description: "Launch $PATH governance token. Players vote on server features, events, and economy parameters.",
     icon: Crown,
@@ -49,9 +49,9 @@ const ROADMAP_DATA = [
     ]
   },
   {
-    year: "Q3 2026",
+    year: "Q2 2027",
     title: "Phase 4: Creator Economy",
-    description: "Empower players to create and sell custom skins, items, and mini-games on the marketplace.",
+    description: "Empower players to create and sell custom skins, items, and mini-games for the community.",
     icon: Hammer,
     iconVariant: "gold",
     isActive: false,
@@ -63,7 +63,7 @@ const ROADMAP_DATA = [
     ]
   },
   {
-    year: "Q1 2027",
+    year: "Q4 2027",
     title: "Phase 5: Multiverse Expansion",
     description: "Connect multiple themed servers into a unified multiverse. Travel between worlds, keep your assets everywhere.",
     icon: Swords,
