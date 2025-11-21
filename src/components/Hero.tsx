@@ -144,7 +144,7 @@ const Hero = () => {
                 onClick={async () => {
                   const { copyServerAddressAndScroll } = await import('@/lib/clipboard');
                   await copyServerAddressAndScroll();
-                  toast({ title: 'Server address copied', description: 'alphatest.minepath.fun' });
+                  toast({ title: 'Server address copied', description: 'play.minepath.fun' });
                 }}
               >
                 <span className="relative z-10">PLAY NOW</span>

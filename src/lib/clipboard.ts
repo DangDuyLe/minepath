@@ -1,4 +1,4 @@
-export async function copyServerAddressAndScroll(address = 'alphatest.minepath.fun') {
+export async function copyServerAddressAndScroll(address = 'play.minepath.fun') {
   try {
     if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
       await navigator.clipboard.writeText(address);

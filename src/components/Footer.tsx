@@ -126,7 +126,7 @@ const Footer = () => {
                 Connect to our Minecraft server 
               </p>
               <div className="bg-black/50 border border-cyan-400/20 px-3 py-2 mb-3 flex items-center justify-between">
-                <span className="font-minecraft text-sm text-cyan-400">alphatest.minepath.fun</span>
+                <span className="font-minecraft text-sm text-cyan-400">play.minepath.fun</span>
                 <Zap className="h-4 w-4 text-cyan-400" />
               </div>
               <a 

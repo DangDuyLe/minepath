@@ -199,7 +199,7 @@ const Roadmap = () => {
                     onClick={async () => {
                         const { copyServerAddressAndScroll } = await import('@/lib/clipboard');
                         await copyServerAddressAndScroll();
-                        toast({ title: 'Server address copied', description: 'alphatest.minepath.fun' });
+                        toast({ title: 'Server address copied', description: 'play.minepath.fun' });
                       }}
                   >
                     Join Server Now <ArrowRight className="ml-2 h-4 w-4" />

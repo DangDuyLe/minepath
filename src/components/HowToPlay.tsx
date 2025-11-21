@@ -8,7 +8,7 @@ const STEPS = [
   {
     number: '01',
     title: 'Connect to Server',
-    description: 'Add alphatest.minepath.fun to your Minecraft client and join the server',
+    description: 'Add play.minepath.fun to your Minecraft client and join the server',
     icon: '/images/icons/minecraft-server.png'
   },
   {

@@ -9,8 +9,8 @@ import { useToast } from '@/hooks/use-toast';
 
 const features = [
   {
-    title: "Mine to Earn Crypto",
-    description: "Every block you mine earns you real crypto rewards. The more you play, the more you earn.",
+    title: "Mine to Earn Token",
+    description: "Every block you mine earns you token rewards. The more you play, the more you earn.",
     icon: Sword,
     blockType: "diamond",
     variant: "diamond",
@@ -18,27 +18,27 @@ const features = [
   },
   {
     title: "Instant Transactions",
-    description: "Lightning-fast blockchain means your rewards appear instantly. No waiting, no fees, just smooth gameplay.",
+    description: "Experience instant reward delivery powered by high-speed technology for a completely smooth experience.",
     icon: Shield,
     blockType: "iron",
     variant: "stone",
     image: "/images/feature_web3.png"
   },
   {
-    title: "Trade Rare Items",
-    description: "Discover and collect unique items. Trade them on the marketplace for real value or use them in-game.",
+    title: "Own Your Loot",
+    description: "Find token that are truly yours. Use them to power up your gameplay.",
     icon: Coins,
     blockType: "gold",
     variant: "gold",
     image: "/images/feature_trade.png"
   },
   {
-    title: "Cross-Server Trading",
-    description: "Your assets work across all MinePath servers. Trade with anyone, anywhere in the network.",
+    title: "Global Access",
+    description: "One network, endless possibilities. Access your profile and interact with players across server instantly.",
     icon: Share2,
     blockType: "lapis",
     variant: "diamond",
-    image: "/images/feature_servers.png"
+    image: "/images/feature_global.png"
   },
   {
     title: "Proven Product",
@@ -187,7 +187,7 @@ const FeaturesSection = () => {
             onClick={async () => {
               const { copyServerAddressAndScroll } = await import('@/lib/clipboard');
               await copyServerAddressAndScroll();
-              toast({ title: 'Server address copied', description: 'alphatest.minepath.fun' });
+              toast({ title: 'Server address copied', description: 'play.minepath.fun' });
             }}
           >
             <span className="relative z-10">JOIN SERVER NOW</span>
