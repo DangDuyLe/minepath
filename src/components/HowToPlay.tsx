@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -112,7 +113,18 @@ const HowToPlay = () => {
           ))}
         </div>
         
-        {/* Button removed per request - use join buttons elsewhere */}
+        <div className="text-center">
+          <Link to="/how-to-play">
+            <button
+              className="play-now-btn relative px-6 md:px-8 py-2 md:py-3 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group inline-flex items-center"
+            >
+              <span className="relative z-10 flex items-center">
+                More details <ArrowRight className="ml-2 h-5 w-5" />
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -88,6 +88,15 @@ const FAQS = [
 
 const HowToPlayPage = () => {
   const [copiedAddress, setCopiedAddress] = useState(false);
+  useEffect(() => {
+    // Ensure the page loads scrolled to top when navigated to
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    } catch (e) {
+      // fallback
+      window.scrollTo(0, 0);
+    }
+  }, []);
   const { toast } = useToast();
   const isMobile = useIsMobile();
 
