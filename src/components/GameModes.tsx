@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Pickaxe } from './ui/icons/Pickaxe';
 import { Wheat, Swords, Hammer, Crown, ChevronRight, Lock } from 'lucide-react';
 import { MinecraftIcon } from '@/components/ui/minecraft-icon';
+import { useToast } from '@/hooks/use-toast';
 
 // Define all game modes available in MinePath
 const GAME_MODES = [
@@ -68,6 +69,7 @@ const GameModes = () => {
   // Currently only Mining is available in Phase 1
   const availableModes = GAME_MODES.filter(mode => mode.available);
   const futureModes = GAME_MODES.filter(mode => !mode.available);
+  const { toast } = useToast();
   
   return (
     <section className="relative py-24 overflow-hidden" style={{ 
@@ -219,7 +221,14 @@ const GameModes = () => {
               )}
               
               <div className="mt-6">
-                <button className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group">
+                <button
+                  className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group"
+                  onClick={async () => {
+                      const { copyServerAddressAndScroll } = await import('@/lib/clipboard');
+                      await copyServerAddressAndScroll();
+                      toast({ title: 'Server address copied', description: 'alphatest.minepath.fun' });
+                    }}
+                >
                   <span className="relative z-10">Start Mining</span>
                   <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </button>

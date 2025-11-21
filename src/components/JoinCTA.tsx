@@ -10,8 +10,9 @@ const JoinCTA = () => {
   const { toast } = useToast();
   const isMobile = useIsMobile();
   
-  const copyServerAddress = () => {
-    navigator.clipboard.writeText('alphatest.minepath.fun');
+  const copyServerAddress = async () => {
+    const { copyServerAddressAndScroll } = await import('@/lib/clipboard');
+    await copyServerAddressAndScroll();
     toast({
       title: "Server address copied!",
       description: "Ready to paste in your Minecraft client"
@@ -99,7 +100,12 @@ const JoinCTA = () => {
                   </div>
                 </div>
                 
-                <button className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group inline-flex items-center justify-center w-full sm:w-auto">
+                <button
+                  className="play-now-btn relative px-6 py-2 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group inline-flex items-center justify-center w-full sm:w-auto"
+                  onClick={async () => {
+                    await copyServerAddress();
+                  }}
+                >
                   <span className="relative z-10 flex items-center">
                     Connect & Play <ArrowRight className="ml-2 h-4 w-4" />
                   </span>

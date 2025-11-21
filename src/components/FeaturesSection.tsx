@@ -5,6 +5,7 @@ import { Sword, Shield, Coins, Award, Share2, Sparkles, LucideIcon } from 'lucid
 import { MinecraftIcon } from '@/components/ui/minecraft-icon';
 import { EnhancedButton } from '@/components/ui/enhanced-button';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useToast } from '@/hooks/use-toast';
 
 const features = [
   {
@@ -74,6 +75,7 @@ const item = {
 
 const FeaturesSection = () => {
   const isMobile = useIsMobile();
+  const { toast } = useToast();
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden" style={{ 
@@ -180,7 +182,14 @@ const FeaturesSection = () => {
         </motion.div>
         
         <div className="mt-12 md:mt-16 text-center">
-          <button className="play-now-btn relative px-6 md:px-8 py-2 md:py-3 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group">
+          <button
+            className="play-now-btn relative px-6 md:px-8 py-2 md:py-3 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group"
+            onClick={async () => {
+              const { copyServerAddressAndScroll } = await import('@/lib/clipboard');
+              await copyServerAddressAndScroll();
+              toast({ title: 'Server address copied', description: 'alphatest.minepath.fun' });
+            }}
+          >
             <span className="relative z-10">JOIN SERVER NOW</span>
             <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </button>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { ArrowRight, Shield, Sword, Coins, Sparkles, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 import { EnhancedButton } from './ui/enhanced-button';
 import { Pickaxe } from './ui/icons/Pickaxe';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -33,6 +34,7 @@ const Hero = () => {
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const heroImageRef = useRef<HTMLImageElement>(null);
   const isMobile = useIsMobile();
+  const { toast } = useToast();
   
   useEffect(() => {
     // Preload critical images for faster perceived performance
@@ -135,16 +137,19 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center lg:pl-18"
               variants={itemVariants}
             >
-              <Link to="/how-to-play">
-                <motion.button 
-                  className="play-now-btn w-full sm:w-auto relative px-16 py-3 bg-white text-black font-minecraft tracking-wider overflow-hidden group"
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0, 195, 255, 0.6)" }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <span className="relative z-10">PLAY NOW</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                </motion.button>
-              </Link>
+              <motion.button 
+                className="play-now-btn w-full sm:w-auto relative px-16 py-3 bg-white text-black font-minecraft tracking-wider overflow-hidden group"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0, 195, 255, 0.6)" }}
+                whileTap={{ scale: 0.98 }}
+                onClick={async () => {
+                  const { copyServerAddressAndScroll } = await import('@/lib/clipboard');
+                  await copyServerAddressAndScroll();
+                  toast({ title: 'Server address copied', description: 'alphatest.minepath.fun' });
+                }}
+              >
+                <span className="relative z-10">PLAY NOW</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </motion.button>
             </motion.div>
           </motion.div>
           

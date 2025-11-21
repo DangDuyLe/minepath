@@ -5,14 +5,20 @@ import { MinecraftProgress } from '@/components/ui/minecraft-progress';
 
 // Token distribution for $MINE (in-game currency)
 const TOKENOMICS_DATA = [
-  { name: 'Mining Rewards', value: 50, color: '#9945FF' },
-  { name: 'Liquidity Pool', value: 50, color: '#06b6d4' },
+  { name: 'Mining Rewards', value: 35, color: '#9945FF' },
+  { name: 'Ecosystem Growth', value: 20, color: '#14F195' },
+  { name: 'Liquidity', value: 15, color: '#06b6d4' },
+  { name: 'Team & Advisors', value: 15, color: '#FF9900' },
+  { name: 'Treasury / Future Strategic Reserve', value: 15, color: '#8B5CF6' },
 ];
 
 // Detailed breakdown of token utility
 const tokenUtility = [
-  { name: "Mining Rewards", color: "#9945FF", amount: "50%", percentage: "50%", detail: "Earn tokens exclusively by mining blocks and resources" },
-  { name: "Liquidity Pool", color: "#06b6d4", amount: "50%", percentage: "50%", detail: "Ensures liquidity for trading earned tokens" }
+  { name: "Mining Rewards", color: "#9945FF", amount: "35%", percentage: "35%", detail: "Earn tokens by mining blocks and resources" },
+  { name: "Ecosystem Growth", color: "#14F195", amount: "20%", percentage: "20%", detail: "Funding growth initiatives, partnerships and community incentives" },
+  { name: "Liquidity", color: "#06b6d4", amount: "15%", percentage: "15%", detail: "Ensures liquidity for trading earned tokens" },
+  { name: "Team & Advisors", color: "#FF9900", amount: "15%", percentage: "15%", detail: "Compensation and vesting for core contributors and advisors" },
+  { name: "Treasury / Future Strategic Reserve", color: "#8B5CF6", amount: "15%", percentage: "15%", detail: "Reserve for future strategic initiatives and contingencies" }
 ];
 
 const Tokenomics = () => {
@@ -122,7 +128,7 @@ const Tokenomics = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               <motion.div 
                 initial={{ scale: 0.9, y: 20 }}
                 whileInView={{ scale: 1, y: 0 }}
@@ -138,7 +144,7 @@ const Tokenomics = () => {
                     </div>
                   </div>
                   <p className="text-center text-white/80 font-minecraft text-sm">
-                    In-game currency earned exclusively through mining. Trade on DEX or use in-game.
+                    In-game currency and ecosystem funding allocations.
                   </p>
                 </div>
                 
@@ -163,36 +169,23 @@ const Tokenomics = () => {
                   </ul>
                 </div>
               </motion.div>
-              
-              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#9945FF]">50%</h3>
-                <p className="text-sm text-white/80 font-minecraft">Mining Rewards</p>
-                <div className="mt-3">
-                  <MinecraftProgress 
-                    value={50} 
-                    max={100} 
-                    variant="blue" 
-                    height="md" 
-                    showValue 
-                  />
-                </div>
-                <p className="text-xs text-white/60 mt-2">Earn tokens by mining blocks and resources</p>
-              </div>
 
-              <div className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300 col-span-full sm:col-span-1">
-                <h3 className="font-minecraft text-3xl mb-4 text-[#06b6d4]">50%</h3>
-                <p className="text-sm text-white/80 font-minecraft">Liquidity Pool</p>
-                <div className="mt-3">
-                  <MinecraftProgress 
-                    value={50} 
-                    max={100} 
-                    variant="blue" 
-                    height="md" 
-                    showValue 
-                  />
+              {tokenUtility.map((t, i) => (
+                <div key={i} className="bg-black/40 backdrop-blur-sm border border-cyan-400/30 p-4 rounded-lg group hover:bg-black/50 transition-all duration-300">
+                  <h3 className="font-minecraft text-3xl mb-4" style={{ color: t.color }}>{t.amount}</h3>
+                  <p className="text-sm text-white/80 font-minecraft">{t.name}</p>
+                  <div className="mt-3">
+                    <MinecraftProgress 
+                      value={parseInt(t.amount)} 
+                      max={100} 
+                      variant="blue" 
+                      height="md" 
+                      showValue 
+                    />
+                  </div>
+                  <p className="text-xs text-white/60 mt-2">{t.detail}</p>
                 </div>
-                <p className="text-xs text-white/60 mt-2">Ensures liquidity for trading earned tokens</p>
-              </div>
+              ))}
               
               {/* Economy highlights */}
               <motion.div 
@@ -211,7 +204,7 @@ const Tokenomics = () => {
                   </div>
                   <div className="bg-black/50 border border-cyan-400/20 p-3 text-center">
                     <div className="font-minecraft text-2xl text-green-400 mb-2">Real Utility</div>
-                    <div className="font-minecraft text-white text-sm">In-game & Trading</div>
+                    <div className="font-minecraft text-white text-sm">In-game token</div>
                   </div>
                   <div className="bg-black/50 border border-cyan-400/20 p-3 text-center">
                     <div className="font-minecraft text-2xl text-purple-400 mb-2">Fair Launch</div>

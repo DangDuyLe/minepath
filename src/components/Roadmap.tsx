@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Pickaxe } from './ui/icons/Pickaxe';
 import { Wheat, Swords, Hammer, Crown, ArrowRight } from 'lucide-react';
 import { MinecraftIcon } from '@/components/ui/minecraft-icon';
+import { useToast } from '@/hooks/use-toast';
 
 const ROADMAP_DATA = [
   {
@@ -79,6 +80,7 @@ const ROADMAP_DATA = [
 ];
 
 const Roadmap = () => {
+  const { toast } = useToast();
   return (
     <section className="py-24 relative overflow-hidden" style={{ 
       background: 'linear-gradient(180deg, rgba(21,26,49,1) 0%, rgba(13,14,22,1) 100%)',
@@ -192,7 +194,14 @@ const Roadmap = () => {
                 </div>
                 
                 <div className="flex justify-start">
-                  <button className="bg-gradient-to-r from-cyan-500 to-blue-600 font-minecraft px-6 py-2 flex items-center text-white hover:from-cyan-400 hover:to-blue-500 transition-colors">
+                  <button
+                    className="bg-gradient-to-r from-cyan-500 to-blue-600 font-minecraft px-6 py-2 flex items-center text-white hover:from-cyan-400 hover:to-blue-500 transition-colors"
+                    onClick={async () => {
+                        const { copyServerAddressAndScroll } = await import('@/lib/clipboard');
+                        await copyServerAddressAndScroll();
+                        toast({ title: 'Server address copied', description: 'alphatest.minepath.fun' });
+                      }}
+                  >
                     Join Server Now <ArrowRight className="ml-2 h-4 w-4" />
                   </button>
                 </div>

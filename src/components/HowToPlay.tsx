@@ -35,7 +35,7 @@ const HowToPlay = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden">
+    <section id="how-to-play" className="relative py-16 md:py-24 overflow-hidden">
       {/* Background with overlay - Copied from WhatIs */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"></div>
@@ -112,20 +112,7 @@ const HowToPlay = () => {
           ))}
         </div>
         
-        <div className="text-center">
-          <motion.button 
-            className="play-now-btn relative px-6 md:px-8 py-2 md:py-3 bg-white text-black font-minecraft tracking-wider hover:scale-105 transition-all duration-300 overflow-hidden group inline-flex items-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <span className="relative z-10 flex items-center">
-              Join Server Now <ArrowRight className="ml-2 h-5 w-5" />
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-          </motion.button>
-        </div>
+        {/* Button removed per request - use join buttons elsewhere */}
       </div>
     </section>
   );

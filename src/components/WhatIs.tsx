@@ -2,8 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 const WhatIs = () => {
+  const { toast } = useToast();
+
   return (
     <section className="relative py-16 md:py-32 overflow-hidden">
       {/* Background with overlay */}
@@ -56,14 +59,19 @@ const WhatIs = () => {
               <Feature title="Instant Transactions" description="Lightning-fast blockchain tech means no waiting." />
               <Feature title="Sustainable Rewards" description="Built on real economic value, not pump-and-dump schemes." />
             </div>
-            <Link to="/how-to-play">
-              <button className="flex items-center gap-2 group">
-                <span className="font-minecraft text-white group-hover:text-cyan-400 transition-colors">
-                  Start Playing
-                </span>
-                <ArrowRight className="h-5 w-5 text-cyan-400 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
+            <button
+              className="flex items-center gap-2 group"
+              onClick={async () => {
+                  const { copyServerAddressAndScroll } = await import('@/lib/clipboard');
+                  await copyServerAddressAndScroll();
+                  toast({ title: 'Server address copied', description: 'alphatest.minepath.fun' });
+                }}
+            >
+              <span className="font-minecraft text-white group-hover:text-cyan-400 transition-colors">
+                Start Playing
+              </span>
+              <ArrowRight className="h-5 w-5 text-cyan-400 group-hover:translate-x-1 transition-transform" />
+            </button>
           </motion.div>
           
           <motion.div
